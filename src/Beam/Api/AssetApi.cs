@@ -27,27 +27,49 @@ namespace Beam.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get all players assets
+        /// Get all the assets listed by a player
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>GetPlayerAssetsResponse</returns>
-        GetPlayerAssetsResponse GetAssets(decimal offset, decimal limit, int operationIndex = 0);
+        /// <returns>GetAssetListingsResponse</returns>
+        GetAssetListingsResponse GetPlayerAssetListingsForGame(string playerId, int operationIndex = 0);
 
         /// <summary>
-        /// Get all players assets
+        /// Get all the assets listed by a player
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of GetAssetListingsResponse</returns>
+        ApiResponse<GetAssetListingsResponse> GetPlayerAssetListingsForGameWithHttpInfo(string playerId, int operationIndex = 0);
+        /// <summary>
+        /// Get all the assets of a player.
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>GetPlayerAssetsResponse</returns>
+        GetPlayerAssetsResponse GetPlayerAssetsForGame(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
+
+        /// <summary>
+        /// Get all the assets of a player.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetPlayerAssetsResponse</returns>
-        ApiResponse<GetPlayerAssetsResponse> GetAssetsWithHttpInfo(decimal offset, decimal limit, int operationIndex = 0);
+        ApiResponse<GetPlayerAssetsResponse> GetPlayerAssetsForGameWithHttpInfo(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -58,32 +80,59 @@ namespace Beam.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Get all players assets
+        /// Get all the assets listed by a player
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetListingsResponse</returns>
+        System.Threading.Tasks.Task<GetAssetListingsResponse> GetPlayerAssetListingsForGameAsync(string playerId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get all the assets listed by a player
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetPlayerAssetListingsForGameWithHttpInfoAsync(string playerId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get all the assets of a player.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetPlayerAssetsResponse</returns>
-        System.Threading.Tasks.Task<GetPlayerAssetsResponse> GetAssetsAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetPlayerAssetsResponse> GetPlayerAssetsForGameAsync(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Get all players assets
+        /// Get all the assets of a player.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetPlayerAssetsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetPlayerAssetsResponse>> GetAssetsWithHttpInfoAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetPlayerAssetsResponse>> GetPlayerAssetsForGameWithHttpInfoAsync(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -205,29 +254,33 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Get all players assets 
+        /// Get all the assets listed by a player 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>GetPlayerAssetsResponse</returns>
-        public GetPlayerAssetsResponse GetAssets(decimal offset, decimal limit, int operationIndex = 0)
+        /// <returns>GetAssetListingsResponse</returns>
+        public GetAssetListingsResponse GetPlayerAssetListingsForGame(string playerId, int operationIndex = 0)
         {
-            Beam.Client.ApiResponse<GetPlayerAssetsResponse> localVarResponse = GetAssetsWithHttpInfo(offset, limit);
+            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetPlayerAssetListingsForGameWithHttpInfo(playerId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get all players assets 
+        /// Get all the assets listed by a player 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of GetPlayerAssetsResponse</returns>
-        public Beam.Client.ApiResponse<GetPlayerAssetsResponse> GetAssetsWithHttpInfo(decimal offset, decimal limit, int operationIndex = 0)
+        /// <returns>ApiResponse of GetAssetListingsResponse</returns>
+        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetPlayerAssetListingsForGameWithHttpInfo(string playerId, int operationIndex = 0)
         {
+            // verify the required parameter 'playerId' is set
+            if (playerId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'playerId' when calling AssetApi->GetPlayerAssetListingsForGame");
+            }
+
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -250,18 +303,17 @@ namespace Beam.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            localVarRequestOptions.PathParameters.Add("playerId", Beam.Client.ClientUtils.ParameterToString(playerId)); // path parameter
 
-            localVarRequestOptions.Operation = "AssetApi.GetAssets";
+            localVarRequestOptions.Operation = "AssetApi.GetPlayerAssetListingsForGame";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetPlayerAssetsResponse>("/v1/asset/player", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetAssetListingsResponse>("/v1/asset/player/{playerId}/listings", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetAssets", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPlayerAssetListingsForGame", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -272,31 +324,35 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Get all players assets 
+        /// Get all the assets listed by a player 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetPlayerAssetsResponse</returns>
-        public async System.Threading.Tasks.Task<GetPlayerAssetsResponse> GetAssetsAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetAssetListingsResponse</returns>
+        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetPlayerAssetListingsForGameAsync(string playerId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetPlayerAssetsResponse> localVarResponse = await GetAssetsWithHttpInfoAsync(offset, limit, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetPlayerAssetListingsForGameWithHttpInfoAsync(playerId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get all players assets 
+        /// Get all the assets listed by a player 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="playerId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetPlayerAssetsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetPlayerAssetsResponse>> GetAssetsWithHttpInfoAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetPlayerAssetListingsForGameWithHttpInfoAsync(string playerId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'playerId' is set
+            if (playerId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'playerId' when calling AssetApi->GetPlayerAssetListingsForGame");
+            }
+
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -320,19 +376,186 @@ namespace Beam.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            localVarRequestOptions.PathParameters.Add("playerId", Beam.Client.ClientUtils.ParameterToString(playerId)); // path parameter
 
-            localVarRequestOptions.Operation = "AssetApi.GetAssets";
+            localVarRequestOptions.Operation = "AssetApi.GetPlayerAssetListingsForGame";
             localVarRequestOptions.OperationIndex = operationIndex;
 
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPlayerAssetsResponse>("/v1/asset/player", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAssetListingsResponse>("/v1/asset/player/{playerId}/listings", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetAssets", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetPlayerAssetListingsForGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all the assets of a player. 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>GetPlayerAssetsResponse</returns>
+        public GetPlayerAssetsResponse GetPlayerAssetsForGame(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
+        {
+            Beam.Client.ApiResponse<GetPlayerAssetsResponse> localVarResponse = GetPlayerAssetsForGameWithHttpInfo(playerId, limit, offset);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all the assets of a player. 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of GetPlayerAssetsResponse</returns>
+        public Beam.Client.ApiResponse<GetPlayerAssetsResponse> GetPlayerAssetsForGameWithHttpInfo(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
+        {
+            // verify the required parameter 'playerId' is set
+            if (playerId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'playerId' when calling AssetApi->GetPlayerAssetsForGame");
+            }
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("playerId", Beam.Client.ClientUtils.ParameterToString(playerId)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
+
+            localVarRequestOptions.Operation = "AssetApi.GetPlayerAssetsForGame";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetPlayerAssetsResponse>("/v1/asset/player/{playerId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPlayerAssetsForGame", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all the assets of a player. 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetPlayerAssetsResponse</returns>
+        public async System.Threading.Tasks.Task<GetPlayerAssetsResponse> GetPlayerAssetsForGameAsync(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<GetPlayerAssetsResponse> localVarResponse = await GetPlayerAssetsForGameWithHttpInfoAsync(playerId, limit, offset, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all the assets of a player. 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="playerId"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetPlayerAssetsResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetPlayerAssetsResponse>> GetPlayerAssetsForGameWithHttpInfoAsync(string playerId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'playerId' is set
+            if (playerId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'playerId' when calling AssetApi->GetPlayerAssetsForGame");
+            }
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("playerId", Beam.Client.ClientUtils.ParameterToString(playerId)); // path parameter
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
+
+            localVarRequestOptions.Operation = "AssetApi.GetPlayerAssetsForGame";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetPlayerAssetsResponse>("/v1/asset/player/{playerId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPlayerAssetsForGame", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

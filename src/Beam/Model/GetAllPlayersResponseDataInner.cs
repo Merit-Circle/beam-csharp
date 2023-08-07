@@ -42,7 +42,7 @@ namespace Beam.Model
         /// <param name="id">id (required).</param>
         /// <param name="identifier">identifier (required).</param>
         /// <param name="wallets">wallets (required).</param>
-        public GetAllPlayersResponseDataInner(string id = default(string), string identifier = default(string), List<GetPlayerResponseWalletsInner> wallets = default(List<GetPlayerResponseWalletsInner>))
+        public GetAllPlayersResponseDataInner(string id = default(string), string identifier = default(string), List<GetAllAccountsResponseDataInner> wallets = default(List<GetAllAccountsResponseDataInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -80,7 +80,7 @@ namespace Beam.Model
         /// Gets or Sets Wallets
         /// </summary>
         [DataMember(Name = "wallets", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetPlayerResponseWalletsInner> Wallets { get; set; }
+        public List<GetAllAccountsResponseDataInner> Wallets { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

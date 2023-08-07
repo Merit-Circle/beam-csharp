@@ -26,23 +26,23 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAllPlayersResponsePagination
+    /// GetAllAccountsResponsePagination
     /// </summary>
-    [DataContract(Name = "GetAllPlayersResponse_pagination")]
-    public partial class GetAllPlayersResponsePagination : IEquatable<GetAllPlayersResponsePagination>, IValidatableObject
+    [DataContract(Name = "GetAllAccountsResponse_pagination")]
+    public partial class GetAllAccountsResponsePagination : IEquatable<GetAllAccountsResponsePagination>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAllPlayersResponsePagination" /> class.
+        /// Initializes a new instance of the <see cref="GetAllAccountsResponsePagination" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAllPlayersResponsePagination() { }
+        protected GetAllAccountsResponsePagination() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAllPlayersResponsePagination" /> class.
+        /// Initializes a new instance of the <see cref="GetAllAccountsResponsePagination" /> class.
         /// </summary>
         /// <param name="count">count (required).</param>
-        /// <param name="limit">limit (required).</param>
+        /// <param name="limit">limit (default to 10M).</param>
         /// <param name="offset">offset (default to 0M).</param>
-        public GetAllPlayersResponsePagination(decimal count = default(decimal), decimal limit = default(decimal), decimal offset = 0M)
+        public GetAllAccountsResponsePagination(decimal count = default(decimal), decimal limit = 10M, decimal offset = 0M)
         {
             this.Count = count;
             this.Limit = limit;
@@ -58,7 +58,7 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets Limit
         /// </summary>
-        [DataMember(Name = "limit", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "limit", EmitDefaultValue = false)]
         public decimal Limit { get; set; }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAllPlayersResponsePagination {\n");
+            sb.Append("class GetAllAccountsResponsePagination {\n");
             sb.Append("  Count: ").Append(Count).Append("\n");
             sb.Append("  Limit: ").Append(Limit).Append("\n");
             sb.Append("  Offset: ").Append(Offset).Append("\n");
@@ -98,15 +98,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAllPlayersResponsePagination);
+            return this.Equals(input as GetAllAccountsResponsePagination);
         }
 
         /// <summary>
-        /// Returns true if GetAllPlayersResponsePagination instances are equal
+        /// Returns true if GetAllAccountsResponsePagination instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAllPlayersResponsePagination to be compared</param>
+        /// <param name="input">Instance of GetAllAccountsResponsePagination to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAllPlayersResponsePagination input)
+        public bool Equals(GetAllAccountsResponsePagination input)
         {
             if (input == null)
             {

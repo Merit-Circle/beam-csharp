@@ -41,7 +41,7 @@ namespace Beam.Model
         /// </summary>
         /// <param name="data">data (required).</param>
         /// <param name="pagination">pagination (required).</param>
-        public GetPlayerAssetsResponse(List<GetPlayerAssetsResponseDataInner> data = default(List<GetPlayerAssetsResponseDataInner>), GetAllPlayersResponsePagination pagination = default(GetAllPlayersResponsePagination))
+        public GetPlayerAssetsResponse(List<GetPlayerAssetsResponseDataInner> data = default(List<GetPlayerAssetsResponseDataInner>), GetAllAccountsResponsePagination pagination = default(GetAllAccountsResponsePagination))
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -67,7 +67,7 @@ namespace Beam.Model
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllPlayersResponsePagination Pagination { get; set; }
+        public GetAllAccountsResponsePagination Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

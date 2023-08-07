@@ -26,42 +26,42 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetPlayerResponseWalletsInner
+    /// GetAllAccountsResponseDataInner
     /// </summary>
-    [DataContract(Name = "GetPlayerResponse_wallets_inner")]
-    public partial class GetPlayerResponseWalletsInner : IEquatable<GetPlayerResponseWalletsInner>, IValidatableObject
+    [DataContract(Name = "GetAllAccountsResponse_data_inner")]
+    public partial class GetAllAccountsResponseDataInner : IEquatable<GetAllAccountsResponseDataInner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetPlayerResponseWalletsInner" /> class.
+        /// Initializes a new instance of the <see cref="GetAllAccountsResponseDataInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetPlayerResponseWalletsInner() { }
+        protected GetAllAccountsResponseDataInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetPlayerResponseWalletsInner" /> class.
+        /// Initializes a new instance of the <see cref="GetAllAccountsResponseDataInner" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="playerId">playerId (required).</param>
         /// <param name="address">address (required).</param>
         /// <param name="chainId">chainId (required).</param>
         /// <param name="custodial">custodial (required).</param>
-        public GetPlayerResponseWalletsInner(string id = default(string), string playerId = default(string), string address = default(string), int chainId = default(int), bool custodial = default(bool))
+        public GetAllAccountsResponseDataInner(string id = default(string), string playerId = default(string), string address = default(string), int chainId = default(int), bool custodial = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for GetPlayerResponseWalletsInner and cannot be null");
+                throw new ArgumentNullException("id is a required property for GetAllAccountsResponseDataInner and cannot be null");
             }
             this.Id = id;
             // to ensure "playerId" is required (not null)
             if (playerId == null)
             {
-                throw new ArgumentNullException("playerId is a required property for GetPlayerResponseWalletsInner and cannot be null");
+                throw new ArgumentNullException("playerId is a required property for GetAllAccountsResponseDataInner and cannot be null");
             }
             this.PlayerId = playerId;
             // to ensure "address" is required (not null)
             if (address == null)
             {
-                throw new ArgumentNullException("address is a required property for GetPlayerResponseWalletsInner and cannot be null");
+                throw new ArgumentNullException("address is a required property for GetAllAccountsResponseDataInner and cannot be null");
             }
             this.Address = address;
             this.ChainId = chainId;
@@ -105,7 +105,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetPlayerResponseWalletsInner {\n");
+            sb.Append("class GetAllAccountsResponseDataInner {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  PlayerId: ").Append(PlayerId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
@@ -131,15 +131,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetPlayerResponseWalletsInner);
+            return this.Equals(input as GetAllAccountsResponseDataInner);
         }
 
         /// <summary>
-        /// Returns true if GetPlayerResponseWalletsInner instances are equal
+        /// Returns true if GetAllAccountsResponseDataInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetPlayerResponseWalletsInner to be compared</param>
+        /// <param name="input">Instance of GetAllAccountsResponseDataInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetPlayerResponseWalletsInner input)
+        public bool Equals(GetAllAccountsResponseDataInner input)
         {
             if (input == null)
             {

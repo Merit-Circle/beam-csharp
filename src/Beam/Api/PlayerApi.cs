@@ -50,11 +50,11 @@ namespace Beam.Api
         /// Getting all players
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetAllPlayersResponse</returns>
-        GetAllPlayersResponse GetAllPlayers(decimal offset, decimal limit, int operationIndex = 0);
+        GetAllPlayersResponse GetAllPlayers(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
 
         /// <summary>
         /// Getting all players
@@ -63,11 +63,11 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetAllPlayersResponse</returns>
-        ApiResponse<GetAllPlayersResponse> GetAllPlayersWithHttpInfo(decimal offset, decimal limit, int operationIndex = 0);
+        ApiResponse<GetAllPlayersResponse> GetAllPlayersWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
         /// <summary>
         /// Getting information about authenticated player
         /// </summary>
@@ -129,12 +129,12 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllPlayersResponse</returns>
-        System.Threading.Tasks.Task<GetAllPlayersResponse> GetAllPlayersAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAllPlayersResponse> GetAllPlayersAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Getting all players
@@ -143,12 +143,12 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllPlayersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAllPlayersResponse>> GetAllPlayersWithHttpInfoAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAllPlayersResponse>> GetAllPlayersWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting information about authenticated player
         /// </summary>
@@ -454,13 +454,13 @@ namespace Beam.Api
         /// Getting all players 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetAllPlayersResponse</returns>
-        public GetAllPlayersResponse GetAllPlayers(decimal offset, decimal limit, int operationIndex = 0)
+        public GetAllPlayersResponse GetAllPlayers(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
         {
-            Beam.Client.ApiResponse<GetAllPlayersResponse> localVarResponse = GetAllPlayersWithHttpInfo(offset, limit);
+            Beam.Client.ApiResponse<GetAllPlayersResponse> localVarResponse = GetAllPlayersWithHttpInfo(limit, offset);
             return localVarResponse.Data;
         }
 
@@ -468,11 +468,11 @@ namespace Beam.Api
         /// Getting all players 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetAllPlayersResponse</returns>
-        public Beam.Client.ApiResponse<GetAllPlayersResponse> GetAllPlayersWithHttpInfo(decimal offset, decimal limit, int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetAllPlayersResponse> GetAllPlayersWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -496,8 +496,14 @@ namespace Beam.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             localVarRequestOptions.Operation = "PlayerApi.GetAllPlayers";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -526,14 +532,14 @@ namespace Beam.Api
         /// Getting all players 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllPlayersResponse</returns>
-        public async System.Threading.Tasks.Task<GetAllPlayersResponse> GetAllPlayersAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAllPlayersResponse> GetAllPlayersAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAllPlayersResponse> localVarResponse = await GetAllPlayersWithHttpInfoAsync(offset, limit, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAllPlayersResponse> localVarResponse = await GetAllPlayersWithHttpInfoAsync(limit, offset, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -541,12 +547,12 @@ namespace Beam.Api
         /// Getting all players 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="offset"></param>
-        /// <param name="limit"></param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllPlayersResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllPlayersResponse>> GetAllPlayersWithHttpInfoAsync(decimal offset, decimal limit, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllPlayersResponse>> GetAllPlayersWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -571,8 +577,14 @@ namespace Beam.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
-            localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             localVarRequestOptions.Operation = "PlayerApi.GetAllPlayers";
             localVarRequestOptions.OperationIndex = operationIndex;

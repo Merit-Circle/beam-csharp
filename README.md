@@ -121,7 +121,8 @@ Class | Method | HTTP request | Description
 *AccountApi* | [**Account_0**](docs/AccountApi.md#account_0) | **POST** /v1/account | Creating an account
 *AccountApi* | [**CreateTransferRequest**](docs/AccountApi.md#createtransferrequest) | **POST** /v1/account/{accountId}/create-transfer-request | Creates a transfer request to transfer custodial wallet ownership to an external wallet
 *AccountApi* | [**GetAccount**](docs/AccountApi.md#getaccount) | **GET** /v1/account/{accountId} | Getting information about authenticated player
-*AssetApi* | [**GetAssets**](docs/AssetApi.md#getassets) | **GET** /v1/asset/player | Get all players assets
+*AssetApi* | [**GetPlayerAssetListingsForGame**](docs/AssetApi.md#getplayerassetlistingsforgame) | **GET** /v1/asset/player/{playerId}/listings | Get all the assets listed by a player
+*AssetApi* | [**GetPlayerAssetsForGame**](docs/AssetApi.md#getplayerassetsforgame) | **GET** /v1/asset/player/{playerId} | Get all the assets of a player.
 *GameApi* | [**GenerateLinkCode**](docs/GameApi.md#generatelinkcode) | **POST** /v1/game/link | Generate QR code for linking player to the game
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *PlayerApi* | [**CreatePlayer**](docs/PlayerApi.md#createplayer) | **POST** /v1/player | Creating a new player
@@ -164,16 +165,18 @@ Class | Method | HTTP request | Description
  - [Model.GenerateLinkCodeResponse](docs/GenerateLinkCodeResponse.md)
  - [Model.GetAccountResponse](docs/GetAccountResponse.md)
  - [Model.GetAllAccountsResponse](docs/GetAllAccountsResponse.md)
+ - [Model.GetAllAccountsResponseDataInner](docs/GetAllAccountsResponseDataInner.md)
+ - [Model.GetAllAccountsResponsePagination](docs/GetAllAccountsResponsePagination.md)
  - [Model.GetAllPlayersResponse](docs/GetAllPlayersResponse.md)
  - [Model.GetAllPlayersResponseDataInner](docs/GetAllPlayersResponseDataInner.md)
- - [Model.GetAllPlayersResponsePagination](docs/GetAllPlayersResponsePagination.md)
+ - [Model.GetAssetListingsResponse](docs/GetAssetListingsResponse.md)
+ - [Model.GetAssetListingsResponseDataInner](docs/GetAssetListingsResponseDataInner.md)
  - [Model.GetGameResponse](docs/GetGameResponse.md)
  - [Model.GetGameResponseContractsInner](docs/GetGameResponseContractsInner.md)
  - [Model.GetGameResponsePoliciesInner](docs/GetGameResponsePoliciesInner.md)
  - [Model.GetPlayerAssetsResponse](docs/GetPlayerAssetsResponse.md)
  - [Model.GetPlayerAssetsResponseDataInner](docs/GetPlayerAssetsResponseDataInner.md)
  - [Model.GetPlayerResponse](docs/GetPlayerResponse.md)
- - [Model.GetPlayerResponseWalletsInner](docs/GetPlayerResponseWalletsInner.md)
  - [Model.GetTransactionResponse](docs/GetTransactionResponse.md)
 
 
