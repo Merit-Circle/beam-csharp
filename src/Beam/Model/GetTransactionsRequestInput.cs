@@ -26,35 +26,41 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// CreateAccountRequestInput
+    /// GetTransactionsRequestInput
     /// </summary>
-    [DataContract(Name = "CreateAccountRequestInput")]
-    public partial class CreateAccountRequestInput : IEquatable<CreateAccountRequestInput>, IValidatableObject
+    [DataContract(Name = "GetTransactionsRequestInput")]
+    public partial class GetTransactionsRequestInput : IEquatable<GetTransactionsRequestInput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAccountRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GetTransactionsRequestInput" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateAccountRequestInput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAccountRequestInput" /> class.
-        /// </summary>
-        /// <param name="playerId">playerId (required).</param>
-        public CreateAccountRequestInput(string playerId = default(string))
+        /// <param name="accountId">accountId.</param>
+        /// <param name="playerId">playerId.</param>
+        /// <param name="policyId">policyId.</param>
+        public GetTransactionsRequestInput(string accountId = default(string), string playerId = default(string), string policyId = default(string))
         {
-            // to ensure "playerId" is required (not null)
-            if (playerId == null)
-            {
-                throw new ArgumentNullException("playerId is a required property for CreateAccountRequestInput and cannot be null");
-            }
+            this.AccountId = accountId;
             this.PlayerId = playerId;
+            this.PolicyId = policyId;
         }
+
+        /// <summary>
+        /// Gets or Sets AccountId
+        /// </summary>
+        [DataMember(Name = "accountId", EmitDefaultValue = false)]
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets PlayerId
         /// </summary>
-        [DataMember(Name = "playerId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "playerId", EmitDefaultValue = false)]
         public string PlayerId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PolicyId
+        /// </summary>
+        [DataMember(Name = "policyId", EmitDefaultValue = false)]
+        public string PolicyId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +69,10 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateAccountRequestInput {\n");
+            sb.Append("class GetTransactionsRequestInput {\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  PlayerId: ").Append(PlayerId).Append("\n");
+            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,15 +93,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateAccountRequestInput);
+            return this.Equals(input as GetTransactionsRequestInput);
         }
 
         /// <summary>
-        /// Returns true if CreateAccountRequestInput instances are equal
+        /// Returns true if GetTransactionsRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateAccountRequestInput to be compared</param>
+        /// <param name="input">Instance of GetTransactionsRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateAccountRequestInput input)
+        public bool Equals(GetTransactionsRequestInput input)
         {
             if (input == null)
             {
@@ -101,9 +109,19 @@ namespace Beam.Model
             }
             return 
                 (
+                    this.AccountId == input.AccountId ||
+                    (this.AccountId != null &&
+                    this.AccountId.Equals(input.AccountId))
+                ) && 
+                (
                     this.PlayerId == input.PlayerId ||
                     (this.PlayerId != null &&
                     this.PlayerId.Equals(input.PlayerId))
+                ) && 
+                (
+                    this.PolicyId == input.PolicyId ||
+                    (this.PolicyId != null &&
+                    this.PolicyId.Equals(input.PolicyId))
                 );
         }
 
@@ -116,9 +134,17 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AccountId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AccountId.GetHashCode();
+                }
                 if (this.PlayerId != null)
                 {
                     hashCode = (hashCode * 59) + this.PlayerId.GetHashCode();
+                }
+                if (this.PolicyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
                 }
                 return hashCode;
             }

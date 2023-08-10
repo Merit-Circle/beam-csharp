@@ -41,8 +41,8 @@ namespace Beam.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="identifier">identifier (required).</param>
-        /// <param name="wallets">wallets (required).</param>
-        public GetAllPlayersResponseDataInner(string id = default(string), string identifier = default(string), List<GetAllAccountsResponseDataInner> wallets = default(List<GetAllAccountsResponseDataInner>))
+        /// <param name="accounts">accounts (required).</param>
+        public GetAllPlayersResponseDataInner(string id = default(string), string identifier = default(string), List<GetAllAccountsResponseDataInner> accounts = default(List<GetAllAccountsResponseDataInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -56,12 +56,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("identifier is a required property for GetAllPlayersResponseDataInner and cannot be null");
             }
             this.Identifier = identifier;
-            // to ensure "wallets" is required (not null)
-            if (wallets == null)
+            // to ensure "accounts" is required (not null)
+            if (accounts == null)
             {
-                throw new ArgumentNullException("wallets is a required property for GetAllPlayersResponseDataInner and cannot be null");
+                throw new ArgumentNullException("accounts is a required property for GetAllPlayersResponseDataInner and cannot be null");
             }
-            this.Wallets = wallets;
+            this.Accounts = accounts;
         }
 
         /// <summary>
@@ -77,10 +77,10 @@ namespace Beam.Model
         public string Identifier { get; set; }
 
         /// <summary>
-        /// Gets or Sets Wallets
+        /// Gets or Sets Accounts
         /// </summary>
-        [DataMember(Name = "wallets", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAllAccountsResponseDataInner> Wallets { get; set; }
+        [DataMember(Name = "accounts", IsRequired = true, EmitDefaultValue = true)]
+        public List<GetAllAccountsResponseDataInner> Accounts { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -92,7 +92,7 @@ namespace Beam.Model
             sb.Append("class GetAllPlayersResponseDataInner {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Identifier: ").Append(Identifier).Append("\n");
-            sb.Append("  Wallets: ").Append(Wallets).Append("\n");
+            sb.Append("  Accounts: ").Append(Accounts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -139,10 +139,10 @@ namespace Beam.Model
                     this.Identifier.Equals(input.Identifier))
                 ) && 
                 (
-                    this.Wallets == input.Wallets ||
-                    this.Wallets != null &&
-                    input.Wallets != null &&
-                    this.Wallets.SequenceEqual(input.Wallets)
+                    this.Accounts == input.Accounts ||
+                    this.Accounts != null &&
+                    input.Accounts != null &&
+                    this.Accounts.SequenceEqual(input.Accounts)
                 );
         }
 
@@ -163,9 +163,9 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.Identifier.GetHashCode();
                 }
-                if (this.Wallets != null)
+                if (this.Accounts != null)
                 {
-                    hashCode = (hashCode * 59) + this.Wallets.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Accounts.GetHashCode();
                 }
                 return hashCode;
             }

@@ -44,7 +44,7 @@ namespace Beam.Model
         /// <param name="varObject">varObject (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="address">address (required).</param>
-        /// <param name="ownerAddress">ownerAddress.</param>
+        /// <param name="ownerAddress">ownerAddress (required).</param>
         /// <param name="deployed">deployed (required).</param>
         /// <param name="custodial">custodial (required).</param>
         /// <param name="chainId">chainId (required).</param>
@@ -71,6 +71,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("address is a required property for CreateTransactionResponsePolicyTransactionIntentsInnerPlayerAccountsInner and cannot be null");
             }
             this.Address = address;
+            // to ensure "ownerAddress" is required (not null)
+            if (ownerAddress == null)
+            {
+                throw new ArgumentNullException("ownerAddress is a required property for CreateTransactionResponsePolicyTransactionIntentsInnerPlayerAccountsInner and cannot be null");
+            }
+            this.OwnerAddress = ownerAddress;
             this.Deployed = deployed;
             this.Custodial = custodial;
             this.ChainId = chainId;
@@ -81,7 +87,6 @@ namespace Beam.Model
             }
             this.AccountType = accountType;
             this.TransactionIntents = transactionIntents;
-            this.OwnerAddress = ownerAddress;
             this.PendingOwnerAddress = pendingOwnerAddress;
         }
 
@@ -118,7 +123,7 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets OwnerAddress
         /// </summary>
-        [DataMember(Name = "ownerAddress", EmitDefaultValue = false)]
+        [DataMember(Name = "ownerAddress", IsRequired = true, EmitDefaultValue = true)]
         public string OwnerAddress { get; set; }
 
         /// <summary>

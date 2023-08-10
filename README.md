@@ -90,17 +90,18 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // config.ApiKeyPrefix.Add("x-api-key", "Bearer");
 
-            var apiInstance = new AccountApi(config);
+            var apiInstance = new AccountsApi(config);
+            var createAccountRequestInput = new CreateAccountRequestInput(); // CreateAccountRequestInput | 
 
             try
             {
-                // Getting all accounts
-                GetAllAccountsResponse result = apiInstance.Account();
+                // Creating an account
+                CreateAccountResponse result = apiInstance.CreateAcount(createAccountRequestInput);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AccountApi.Account: " + e.Message );
+                Debug.Print("Exception when calling AccountsApi.CreateAcount: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -117,20 +118,23 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountApi* | [**Account**](docs/AccountApi.md#account) | **GET** /v1/account | Getting all accounts
-*AccountApi* | [**Account_0**](docs/AccountApi.md#account_0) | **POST** /v1/account | Creating an account
-*AccountApi* | [**CreateTransferRequest**](docs/AccountApi.md#createtransferrequest) | **POST** /v1/account/{accountId}/create-transfer-request | Creates a transfer request to transfer custodial wallet ownership to an external wallet
-*AccountApi* | [**GetAccount**](docs/AccountApi.md#getaccount) | **GET** /v1/account/{accountId} | Getting information about authenticated player
-*AssetApi* | [**GetPlayerAssetListingsForGame**](docs/AssetApi.md#getplayerassetlistingsforgame) | **GET** /v1/asset/player/{playerId}/listings | Get all the assets listed by a player
-*AssetApi* | [**GetPlayerAssetsForGame**](docs/AssetApi.md#getplayerassetsforgame) | **GET** /v1/asset/player/{playerId} | Get all the assets of a player.
-*GameApi* | [**GenerateLinkCode**](docs/GameApi.md#generatelinkcode) | **POST** /v1/game/link | Generate QR code for linking player to the game
+*AccountsApi* | [**CreateAcount**](docs/AccountsApi.md#createacount) | **POST** /v1/accounts | Creating an account
+*AccountsApi* | [**CreateTransferRequest**](docs/AccountsApi.md#createtransferrequest) | **POST** /v1/accounts/{accountId}/create-transfer-request | Creates a transfer request to transfer custodial wallet ownership to an external wallet
+*AccountsApi* | [**GetAccountById**](docs/AccountsApi.md#getaccountbyid) | **GET** /v1/accounts/{accountId} | Getting information about authenticated player
+*AccountsApi* | [**GetAllAccounts**](docs/AccountsApi.md#getallaccounts) | **GET** /v1/accounts | Getting all accounts
+*AssetsApi* | [**GetAssetsByPlayer**](docs/AssetsApi.md#getassetsbyplayer) | **GET** /v1/assets/player/{playerId} | Get all the assets of a player.
+*AssetsApi* | [**GetListedAssetsByPlayer**](docs/AssetsApi.md#getlistedassetsbyplayer) | **GET** /v1/assets/player/{playerId}/listings | Get all the assets listed by a player
+*GameApi* | [**GenerateConnectionRequest**](docs/GameApi.md#generateconnectionrequest) | **POST** /v1/game/link | Generate QR code for linking player to the game
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
-*PlayerApi* | [**CreatePlayer**](docs/PlayerApi.md#createplayer) | **POST** /v1/player | Creating a new player
-*PlayerApi* | [**GetAllPlayers**](docs/PlayerApi.md#getallplayers) | **GET** /v1/player | Getting all players
-*PlayerApi* | [**GetPlayer**](docs/PlayerApi.md#getplayer) | **GET** /v1/player/{playerId} | Getting information about authenticated player
-*TransactionApi* | [**ConfirmTransaction**](docs/TransactionApi.md#confirmtransaction) | **POST** /v1/transaction/signature | Confirming a transaction
-*TransactionApi* | [**CreateTransaction**](docs/TransactionApi.md#createtransaction) | **POST** /v1/transaction | Creating a new transaction
-*TransactionApi* | [**GetTransaction**](docs/TransactionApi.md#gettransaction) | **GET** /v1/transaction/{id} | Getting a transaction
+*GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
+*InventoriesApi* | [**GetPlayerInventory**](docs/InventoriesApi.md#getplayerinventory) | **GET** /v1/inventories/player/{playerId} | Get the player inventory
+*PlayersApi* | [**CreatePlayer**](docs/PlayersApi.md#createplayer) | **POST** /v1/players | Creating a new player
+*PlayersApi* | [**GetAllPlayers**](docs/PlayersApi.md#getallplayers) | **GET** /v1/players | Getting all players
+*PlayersApi* | [**GetPlayer**](docs/PlayersApi.md#getplayer) | **GET** /v1/players/{playerId} | Getting information about authenticated player
+*TransactionsApi* | [**ConfirmTransaction**](docs/TransactionsApi.md#confirmtransaction) | **POST** /v1/transactions/signature | Confirming a transaction
+*TransactionsApi* | [**CreateTransaction**](docs/TransactionsApi.md#createtransaction) | **POST** /v1/transactions | Creating a new transaction
+*TransactionsApi* | [**GetTransaction**](docs/TransactionsApi.md#gettransaction) | **GET** /v1/transactions/{transactionId} | Getting a transaction
+*TransactionsApi* | [**GetTransactions**](docs/TransactionsApi.md#gettransactions) | **GET** /v1/transactions | Get all the transactions
 
 
 <a id="documentation-for-models"></a>
@@ -174,10 +178,17 @@ Class | Method | HTTP request | Description
  - [Model.GetGameResponse](docs/GetGameResponse.md)
  - [Model.GetGameResponseContractsInner](docs/GetGameResponseContractsInner.md)
  - [Model.GetGameResponsePoliciesInner](docs/GetGameResponsePoliciesInner.md)
+ - [Model.GetInventoryResponse](docs/GetInventoryResponse.md)
+ - [Model.GetInventoryResponseNftAssetsInner](docs/GetInventoryResponseNftAssetsInner.md)
  - [Model.GetPlayerAssetsResponse](docs/GetPlayerAssetsResponse.md)
  - [Model.GetPlayerAssetsResponseDataInner](docs/GetPlayerAssetsResponseDataInner.md)
  - [Model.GetPlayerResponse](docs/GetPlayerResponse.md)
  - [Model.GetTransactionResponse](docs/GetTransactionResponse.md)
+ - [Model.GetTransactionsRequestInput](docs/GetTransactionsRequestInput.md)
+ - [Model.GetTransactionsResponse](docs/GetTransactionsResponse.md)
+ - [Model.GetTransactionsResponseDataInner](docs/GetTransactionsResponseDataInner.md)
+ - [Model.UpdateGameRequestInput](docs/UpdateGameRequestInput.md)
+ - [Model.UpdateGameResponse](docs/UpdateGameResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

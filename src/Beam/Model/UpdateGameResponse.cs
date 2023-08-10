@@ -26,18 +26,18 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetGameResponse
+    /// UpdateGameResponse
     /// </summary>
-    [DataContract(Name = "GetGameResponse")]
-    public partial class GetGameResponse : IEquatable<GetGameResponse>, IValidatableObject
+    [DataContract(Name = "UpdateGameResponse")]
+    public partial class UpdateGameResponse : IEquatable<UpdateGameResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetGameResponse" /> class.
+        /// Initializes a new instance of the <see cref="UpdateGameResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetGameResponse() { }
+        protected UpdateGameResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetGameResponse" /> class.
+        /// Initializes a new instance of the <see cref="UpdateGameResponse" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
@@ -45,37 +45,37 @@ namespace Beam.Model
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
         /// <param name="contracts">contracts (required).</param>
         /// <param name="policies">policies (required).</param>
-        public GetGameResponse(int id = default(int), string name = default(string), string description = default(string), string coverImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
+        public UpdateGameResponse(int id = default(int), string name = default(string), string description = default(string), string coverImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
         {
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for GetGameResponse and cannot be null");
+                throw new ArgumentNullException("name is a required property for UpdateGameResponse and cannot be null");
             }
             this.Name = name;
             // to ensure "description" is required (not null)
             if (description == null)
             {
-                throw new ArgumentNullException("description is a required property for GetGameResponse and cannot be null");
+                throw new ArgumentNullException("description is a required property for UpdateGameResponse and cannot be null");
             }
             this.Description = description;
             // to ensure "coverImageUrl" is required (not null)
             if (coverImageUrl == null)
             {
-                throw new ArgumentNullException("coverImageUrl is a required property for GetGameResponse and cannot be null");
+                throw new ArgumentNullException("coverImageUrl is a required property for UpdateGameResponse and cannot be null");
             }
             this.CoverImageUrl = coverImageUrl;
             // to ensure "contracts" is required (not null)
             if (contracts == null)
             {
-                throw new ArgumentNullException("contracts is a required property for GetGameResponse and cannot be null");
+                throw new ArgumentNullException("contracts is a required property for UpdateGameResponse and cannot be null");
             }
             this.Contracts = contracts;
             // to ensure "policies" is required (not null)
             if (policies == null)
             {
-                throw new ArgumentNullException("policies is a required property for GetGameResponse and cannot be null");
+                throw new ArgumentNullException("policies is a required property for UpdateGameResponse and cannot be null");
             }
             this.Policies = policies;
         }
@@ -123,7 +123,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetGameResponse {\n");
+            sb.Append("class UpdateGameResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -150,15 +150,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetGameResponse);
+            return this.Equals(input as UpdateGameResponse);
         }
 
         /// <summary>
-        /// Returns true if GetGameResponse instances are equal
+        /// Returns true if UpdateGameResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetGameResponse to be compared</param>
+        /// <param name="input">Instance of UpdateGameResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetGameResponse input)
+        public bool Equals(UpdateGameResponse input)
         {
             if (input == null)
             {

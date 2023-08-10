@@ -7,7 +7,7 @@
         "csharp": {
           "generatorName": "csharp",
           "output": "./",
-          "inputSpec": "https://api-test.onbeam.com/api/game-json",
+          "inputSpec": "https://api.testnet.onbeam.com/api/game-json",
           "skipValidateSpec": true,
           "globalProperty": {
             "modelTests": false,

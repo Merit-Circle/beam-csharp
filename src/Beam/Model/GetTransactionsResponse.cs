@@ -26,35 +26,48 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// CreateAccountRequestInput
+    /// GetTransactionsResponse
     /// </summary>
-    [DataContract(Name = "CreateAccountRequestInput")]
-    public partial class CreateAccountRequestInput : IEquatable<CreateAccountRequestInput>, IValidatableObject
+    [DataContract(Name = "GetTransactionsResponse")]
+    public partial class GetTransactionsResponse : IEquatable<GetTransactionsResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAccountRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GetTransactionsResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CreateAccountRequestInput() { }
+        protected GetTransactionsResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAccountRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GetTransactionsResponse" /> class.
         /// </summary>
-        /// <param name="playerId">playerId (required).</param>
-        public CreateAccountRequestInput(string playerId = default(string))
+        /// <param name="data">data (required).</param>
+        /// <param name="pagination">pagination (required).</param>
+        public GetTransactionsResponse(List<GetTransactionsResponseDataInner> data = default(List<GetTransactionsResponseDataInner>), GetAllAccountsResponsePagination pagination = default(GetAllAccountsResponsePagination))
         {
-            // to ensure "playerId" is required (not null)
-            if (playerId == null)
+            // to ensure "data" is required (not null)
+            if (data == null)
             {
-                throw new ArgumentNullException("playerId is a required property for CreateAccountRequestInput and cannot be null");
+                throw new ArgumentNullException("data is a required property for GetTransactionsResponse and cannot be null");
             }
-            this.PlayerId = playerId;
+            this.Data = data;
+            // to ensure "pagination" is required (not null)
+            if (pagination == null)
+            {
+                throw new ArgumentNullException("pagination is a required property for GetTransactionsResponse and cannot be null");
+            }
+            this.Pagination = pagination;
         }
 
         /// <summary>
-        /// Gets or Sets PlayerId
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "playerId", IsRequired = true, EmitDefaultValue = true)]
-        public string PlayerId { get; set; }
+        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
+        public List<GetTransactionsResponseDataInner> Data { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Pagination
+        /// </summary>
+        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
+        public GetAllAccountsResponsePagination Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +76,9 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateAccountRequestInput {\n");
-            sb.Append("  PlayerId: ").Append(PlayerId).Append("\n");
+            sb.Append("class GetTransactionsResponse {\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,15 +99,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateAccountRequestInput);
+            return this.Equals(input as GetTransactionsResponse);
         }
 
         /// <summary>
-        /// Returns true if CreateAccountRequestInput instances are equal
+        /// Returns true if GetTransactionsResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateAccountRequestInput to be compared</param>
+        /// <param name="input">Instance of GetTransactionsResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateAccountRequestInput input)
+        public bool Equals(GetTransactionsResponse input)
         {
             if (input == null)
             {
@@ -101,9 +115,15 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.PlayerId == input.PlayerId ||
-                    (this.PlayerId != null &&
-                    this.PlayerId.Equals(input.PlayerId))
+                    this.Data == input.Data ||
+                    this.Data != null &&
+                    input.Data != null &&
+                    this.Data.SequenceEqual(input.Data)
+                ) && 
+                (
+                    this.Pagination == input.Pagination ||
+                    (this.Pagination != null &&
+                    this.Pagination.Equals(input.Pagination))
                 );
         }
 
@@ -116,9 +136,13 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.PlayerId != null)
+                if (this.Data != null)
                 {
-                    hashCode = (hashCode * 59) + this.PlayerId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
+                }
+                if (this.Pagination != null)
+                {
+                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
                 }
                 return hashCode;
             }
