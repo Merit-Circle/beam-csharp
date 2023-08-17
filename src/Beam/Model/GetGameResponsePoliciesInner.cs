@@ -97,7 +97,7 @@ namespace Beam.Model
         /// <param name="gameId">gameId (required).</param>
         /// <param name="token">token (required).</param>
         /// <param name="exchangeRate">exchangeRate (required).</param>
-        public GetGameResponsePoliciesInner(ModelEnum model = default(ModelEnum), TypeEnum type = default(TypeEnum), string id = default(string), string name = default(string), int chainId = default(int), int gameId = default(int), string token = default(string), string exchangeRate = default(string))
+        public GetGameResponsePoliciesInner(ModelEnum model = default(ModelEnum), TypeEnum type = default(TypeEnum), string id = default(string), string name = default(string), int chainId = default(int), string gameId = default(string), string token = default(string), string exchangeRate = default(string))
         {
             this.Model = model;
             this.Type = type;
@@ -114,6 +114,11 @@ namespace Beam.Model
             }
             this.Name = name;
             this.ChainId = chainId;
+            // to ensure "gameId" is required (not null)
+            if (gameId == null)
+            {
+                throw new ArgumentNullException("gameId is a required property for GetGameResponsePoliciesInner and cannot be null");
+            }
             this.GameId = gameId;
             // to ensure "token" is required (not null)
             if (token == null)
@@ -151,7 +156,7 @@ namespace Beam.Model
         /// Gets or Sets GameId
         /// </summary>
         [DataMember(Name = "gameId", IsRequired = true, EmitDefaultValue = true)]
-        public int GameId { get; set; }
+        public string GameId { get; set; }
 
         /// <summary>
         /// Gets or Sets Token
@@ -240,7 +245,8 @@ namespace Beam.Model
                 ) && 
                 (
                     this.GameId == input.GameId ||
-                    this.GameId.Equals(input.GameId)
+                    (this.GameId != null &&
+                    this.GameId.Equals(input.GameId))
                 ) && 
                 (
                     this.Token == input.Token ||
@@ -274,7 +280,10 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
-                hashCode = (hashCode * 59) + this.GameId.GetHashCode();
+                if (this.GameId != null)
+                {
+                    hashCode = (hashCode * 59) + this.GameId.GetHashCode();
+                }
                 if (this.Token != null)
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();

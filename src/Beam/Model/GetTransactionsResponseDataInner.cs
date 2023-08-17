@@ -32,6 +32,25 @@ namespace Beam.Model
     public partial class GetTransactionsResponseDataInner : IEquatable<GetTransactionsResponseDataInner>, IValidatableObject
     {
         /// <summary>
+        /// Defines VarObject
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ObjectEnum
+        {
+            /// <summary>
+            /// Enum TransactionIntent for value: transactionIntent
+            /// </summary>
+            [EnumMember(Value = "transactionIntent")]
+            TransactionIntent = 1
+        }
+
+
+        /// <summary>
+        /// Gets or Sets VarObject
+        /// </summary>
+        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = true)]
+        public ObjectEnum VarObject { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetTransactionsResponseDataInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,7 +58,6 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetTransactionsResponseDataInner" /> class.
         /// </summary>
-        /// <param name="nextAction">nextAction.</param>
         /// <param name="policy">policy.</param>
         /// <param name="player">player.</param>
         /// <param name="account">account.</param>
@@ -52,7 +70,7 @@ namespace Beam.Model
         /// <param name="userOperation">userOperation.</param>
         /// <param name="response">response.</param>
         /// <param name="interactions">interactions.</param>
-        public GetTransactionsResponseDataInner(CreateTransactionResponseNextAction nextAction = default(CreateTransactionResponseNextAction), CreateTransactionResponsePolicy policy = default(CreateTransactionResponsePolicy), Object player = default(Object), Object account = default(Object), string id = default(string), string varObject = default(string), decimal createdAt = default(decimal), decimal updatedAt = default(decimal), decimal chainId = default(decimal), string userOperationHash = default(string), Object userOperation = default(Object), CreateTransactionResponsePolicyTransactionIntentsInnerResponse response = default(CreateTransactionResponsePolicyTransactionIntentsInnerResponse), List<CreateTransactionResponsePolicyTransactionIntentsInnerInteractionsInner> interactions = default(List<CreateTransactionResponsePolicyTransactionIntentsInnerInteractionsInner>))
+        public GetTransactionsResponseDataInner(GetTransactionsResponseDataInnerPolicy policy = default(GetTransactionsResponseDataInnerPolicy), Object player = default(Object), Object account = default(Object), string id = default(string), ObjectEnum varObject = default(ObjectEnum), decimal createdAt = default(decimal), decimal updatedAt = default(decimal), decimal chainId = default(decimal), string userOperationHash = default(string), Object userOperation = default(Object), GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse response = default(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse), List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner> interactions = default(List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -60,16 +78,10 @@ namespace Beam.Model
                 throw new ArgumentNullException("id is a required property for GetTransactionsResponseDataInner and cannot be null");
             }
             this.Id = id;
-            // to ensure "varObject" is required (not null)
-            if (varObject == null)
-            {
-                throw new ArgumentNullException("varObject is a required property for GetTransactionsResponseDataInner and cannot be null");
-            }
             this.VarObject = varObject;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.ChainId = chainId;
-            this.NextAction = nextAction;
             this.Policy = policy;
             this.Player = player;
             this.Account = account;
@@ -80,16 +92,10 @@ namespace Beam.Model
         }
 
         /// <summary>
-        /// Gets or Sets NextAction
-        /// </summary>
-        [DataMember(Name = "nextAction", EmitDefaultValue = false)]
-        public CreateTransactionResponseNextAction NextAction { get; set; }
-
-        /// <summary>
         /// Gets or Sets Policy
         /// </summary>
         [DataMember(Name = "policy", EmitDefaultValue = false)]
-        public CreateTransactionResponsePolicy Policy { get; set; }
+        public GetTransactionsResponseDataInnerPolicy Policy { get; set; }
 
         /// <summary>
         /// Gets or Sets Player
@@ -108,12 +114,6 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets VarObject
-        /// </summary>
-        [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = true)]
-        public string VarObject { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt
@@ -149,13 +149,13 @@ namespace Beam.Model
         /// Gets or Sets Response
         /// </summary>
         [DataMember(Name = "response", EmitDefaultValue = false)]
-        public CreateTransactionResponsePolicyTransactionIntentsInnerResponse Response { get; set; }
+        public GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse Response { get; set; }
 
         /// <summary>
         /// Gets or Sets Interactions
         /// </summary>
         [DataMember(Name = "interactions", EmitDefaultValue = false)]
-        public List<CreateTransactionResponsePolicyTransactionIntentsInnerInteractionsInner> Interactions { get; set; }
+        public List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner> Interactions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -165,7 +165,6 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetTransactionsResponseDataInner {\n");
-            sb.Append("  NextAction: ").Append(NextAction).Append("\n");
             sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("  Player: ").Append(Player).Append("\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
@@ -214,11 +213,6 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.NextAction == input.NextAction ||
-                    (this.NextAction != null &&
-                    this.NextAction.Equals(input.NextAction))
-                ) && 
-                (
                     this.Policy == input.Policy ||
                     (this.Policy != null &&
                     this.Policy.Equals(input.Policy))
@@ -240,8 +234,7 @@ namespace Beam.Model
                 ) && 
                 (
                     this.VarObject == input.VarObject ||
-                    (this.VarObject != null &&
-                    this.VarObject.Equals(input.VarObject))
+                    this.VarObject.Equals(input.VarObject)
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -287,10 +280,6 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.NextAction != null)
-                {
-                    hashCode = (hashCode * 59) + this.NextAction.GetHashCode();
-                }
                 if (this.Policy != null)
                 {
                     hashCode = (hashCode * 59) + this.Policy.GetHashCode();
@@ -307,10 +296,7 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.VarObject != null)
-                {
-                    hashCode = (hashCode * 59) + this.VarObject.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.VarObject.GetHashCode();
                 hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
                 hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 hashCode = (hashCode * 59) + this.ChainId.GetHashCode();

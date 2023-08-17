@@ -26,48 +26,46 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetListingsResponse
+    /// GetAllProfilesResponsePagination
     /// </summary>
-    [DataContract(Name = "GetAssetListingsResponse")]
-    public partial class GetAssetListingsResponse : IEquatable<GetAssetListingsResponse>, IValidatableObject
+    [DataContract(Name = "GetAllProfilesResponse_pagination")]
+    public partial class GetAllProfilesResponsePagination : IEquatable<GetAllProfilesResponsePagination>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetAllProfilesResponsePagination" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAssetListingsResponse() { }
+        protected GetAllProfilesResponsePagination() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetAllProfilesResponsePagination" /> class.
         /// </summary>
-        /// <param name="data">data (required).</param>
-        /// <param name="pagination">pagination (required).</param>
-        public GetAssetListingsResponse(List<GetAssetListingsResponseDataInner> data = default(List<GetAssetListingsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
+        /// <param name="count">count (required).</param>
+        /// <param name="limit">limit (default to 10M).</param>
+        /// <param name="offset">offset (default to 0M).</param>
+        public GetAllProfilesResponsePagination(decimal count = default(decimal), decimal limit = 10M, decimal offset = 0M)
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
-            {
-                throw new ArgumentNullException("data is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Data = data;
-            // to ensure "pagination" is required (not null)
-            if (pagination == null)
-            {
-                throw new ArgumentNullException("pagination is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Pagination = pagination;
+            this.Count = count;
+            this.Limit = limit;
+            this.Offset = offset;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets Count
         /// </summary>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAssetListingsResponseDataInner> Data { get; set; }
+        [DataMember(Name = "count", IsRequired = true, EmitDefaultValue = true)]
+        public decimal Count { get; set; }
 
         /// <summary>
-        /// Gets or Sets Pagination
+        /// Gets or Sets Limit
         /// </summary>
-        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllProfilesResponsePagination Pagination { get; set; }
+        [DataMember(Name = "limit", EmitDefaultValue = false)]
+        public decimal Limit { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Offset
+        /// </summary>
+        [DataMember(Name = "offset", EmitDefaultValue = false)]
+        public decimal Offset { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,9 +74,10 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetListingsResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
+            sb.Append("class GetAllProfilesResponsePagination {\n");
+            sb.Append("  Count: ").Append(Count).Append("\n");
+            sb.Append("  Limit: ").Append(Limit).Append("\n");
+            sb.Append("  Offset: ").Append(Offset).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +98,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetListingsResponse);
+            return this.Equals(input as GetAllProfilesResponsePagination);
         }
 
         /// <summary>
-        /// Returns true if GetAssetListingsResponse instances are equal
+        /// Returns true if GetAllProfilesResponsePagination instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetListingsResponse to be compared</param>
+        /// <param name="input">Instance of GetAllProfilesResponsePagination to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetListingsResponse input)
+        public bool Equals(GetAllProfilesResponsePagination input)
         {
             if (input == null)
             {
@@ -115,15 +114,16 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
+                    this.Count == input.Count ||
+                    this.Count.Equals(input.Count)
                 ) && 
                 (
-                    this.Pagination == input.Pagination ||
-                    (this.Pagination != null &&
-                    this.Pagination.Equals(input.Pagination))
+                    this.Limit == input.Limit ||
+                    this.Limit.Equals(input.Limit)
+                ) && 
+                (
+                    this.Offset == input.Offset ||
+                    this.Offset.Equals(input.Offset)
                 );
         }
 
@@ -136,14 +136,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
-                {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                if (this.Pagination != null)
-                {
-                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Count.GetHashCode();
+                hashCode = (hashCode * 59) + this.Limit.GetHashCode();
+                hashCode = (hashCode * 59) + this.Offset.GetHashCode();
                 return hashCode;
             }
         }

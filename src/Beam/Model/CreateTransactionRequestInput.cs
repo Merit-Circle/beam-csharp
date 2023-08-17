@@ -39,22 +39,11 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTransactionRequestInput" /> class.
         /// </summary>
-        /// <param name="playerId">playerId (required).</param>
-        /// <param name="chainId">chainId (required).</param>
         /// <param name="interactions">interactions (required).</param>
         /// <param name="optimistic">optimistic (required).</param>
         /// <param name="policyId">policyId.</param>
-        /// <param name="discriminator">discriminator.</param>
-        /// <param name="attributeTypes">attributeTypes (required).</param>
-        public CreateTransactionRequestInput(string playerId = default(string), decimal chainId = default(decimal), List<CreateTransactionRequestInputInteractionsInner> interactions = default(List<CreateTransactionRequestInputInteractionsInner>), bool optimistic = default(bool), string policyId = default(string), string discriminator = default(string), string attributeTypes = default(string))
+        public CreateTransactionRequestInput(List<CreateTransactionRequestInputInteractionsInner> interactions = default(List<CreateTransactionRequestInputInteractionsInner>), bool optimistic = default(bool), string policyId = default(string))
         {
-            // to ensure "playerId" is required (not null)
-            if (playerId == null)
-            {
-                throw new ArgumentNullException("playerId is a required property for CreateTransactionRequestInput and cannot be null");
-            }
-            this.PlayerId = playerId;
-            this.ChainId = chainId;
             // to ensure "interactions" is required (not null)
             if (interactions == null)
             {
@@ -62,27 +51,8 @@ namespace Beam.Model
             }
             this.Interactions = interactions;
             this.Optimistic = optimistic;
-            // to ensure "attributeTypes" is required (not null)
-            if (attributeTypes == null)
-            {
-                throw new ArgumentNullException("attributeTypes is a required property for CreateTransactionRequestInput and cannot be null");
-            }
-            this.AttributeTypes = attributeTypes;
             this.PolicyId = policyId;
-            this.Discriminator = discriminator;
         }
-
-        /// <summary>
-        /// Gets or Sets PlayerId
-        /// </summary>
-        [DataMember(Name = "playerId", IsRequired = true, EmitDefaultValue = true)]
-        public string PlayerId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChainId
-        /// </summary>
-        [DataMember(Name = "chainId", IsRequired = true, EmitDefaultValue = true)]
-        public decimal ChainId { get; set; }
 
         /// <summary>
         /// Gets or Sets Interactions
@@ -103,18 +73,6 @@ namespace Beam.Model
         public string PolicyId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Discriminator
-        /// </summary>
-        [DataMember(Name = "discriminator", EmitDefaultValue = false)]
-        public string Discriminator { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AttributeTypes
-        /// </summary>
-        [DataMember(Name = "attributeTypes", IsRequired = true, EmitDefaultValue = true)]
-        public string AttributeTypes { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,13 +80,9 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateTransactionRequestInput {\n");
-            sb.Append("  PlayerId: ").Append(PlayerId).Append("\n");
-            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("  Interactions: ").Append(Interactions).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
-            sb.Append("  Discriminator: ").Append(Discriminator).Append("\n");
-            sb.Append("  AttributeTypes: ").Append(AttributeTypes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -165,15 +119,6 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.PlayerId == input.PlayerId ||
-                    (this.PlayerId != null &&
-                    this.PlayerId.Equals(input.PlayerId))
-                ) && 
-                (
-                    this.ChainId == input.ChainId ||
-                    this.ChainId.Equals(input.ChainId)
-                ) && 
-                (
                     this.Interactions == input.Interactions ||
                     this.Interactions != null &&
                     input.Interactions != null &&
@@ -187,16 +132,6 @@ namespace Beam.Model
                     this.PolicyId == input.PolicyId ||
                     (this.PolicyId != null &&
                     this.PolicyId.Equals(input.PolicyId))
-                ) && 
-                (
-                    this.Discriminator == input.Discriminator ||
-                    (this.Discriminator != null &&
-                    this.Discriminator.Equals(input.Discriminator))
-                ) && 
-                (
-                    this.AttributeTypes == input.AttributeTypes ||
-                    (this.AttributeTypes != null &&
-                    this.AttributeTypes.Equals(input.AttributeTypes))
                 );
         }
 
@@ -209,11 +144,6 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.PlayerId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PlayerId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 if (this.Interactions != null)
                 {
                     hashCode = (hashCode * 59) + this.Interactions.GetHashCode();
@@ -222,14 +152,6 @@ namespace Beam.Model
                 if (this.PolicyId != null)
                 {
                     hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
-                }
-                if (this.Discriminator != null)
-                {
-                    hashCode = (hashCode * 59) + this.Discriminator.GetHashCode();
-                }
-                if (this.AttributeTypes != null)
-                {
-                    hashCode = (hashCode * 59) + this.AttributeTypes.GetHashCode();
                 }
                 return hashCode;
             }

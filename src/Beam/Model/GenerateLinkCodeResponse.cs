@@ -39,22 +39,22 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateLinkCodeResponse" /> class.
         /// </summary>
-        /// <param name="code">code (required).</param>
-        public GenerateLinkCodeResponse(string code = default(string))
+        /// <param name="challenge">challenge (required).</param>
+        public GenerateLinkCodeResponse(string challenge = default(string))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
+            // to ensure "challenge" is required (not null)
+            if (challenge == null)
             {
-                throw new ArgumentNullException("code is a required property for GenerateLinkCodeResponse and cannot be null");
+                throw new ArgumentNullException("challenge is a required property for GenerateLinkCodeResponse and cannot be null");
             }
-            this.Code = code;
+            this.Challenge = challenge;
         }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets Challenge
         /// </summary>
-        [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
-        public string Code { get; set; }
+        [DataMember(Name = "challenge", IsRequired = true, EmitDefaultValue = true)]
+        public string Challenge { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +64,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GenerateLinkCodeResponse {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,9 +101,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.Challenge == input.Challenge ||
+                    (this.Challenge != null &&
+                    this.Challenge.Equals(input.Challenge))
                 );
         }
 
@@ -116,9 +116,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
+                if (this.Challenge != null)
                 {
-                    hashCode = (hashCode * 59) + this.Code.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Challenge.GetHashCode();
                 }
                 return hashCode;
             }

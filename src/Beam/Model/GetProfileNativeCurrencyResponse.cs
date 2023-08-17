@@ -26,48 +26,35 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetListingsResponse
+    /// GetProfileNativeCurrencyResponse
     /// </summary>
-    [DataContract(Name = "GetAssetListingsResponse")]
-    public partial class GetAssetListingsResponse : IEquatable<GetAssetListingsResponse>, IValidatableObject
+    [DataContract(Name = "GetProfileNativeCurrencyResponse")]
+    public partial class GetProfileNativeCurrencyResponse : IEquatable<GetProfileNativeCurrencyResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetProfileNativeCurrencyResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAssetListingsResponse() { }
+        protected GetProfileNativeCurrencyResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetProfileNativeCurrencyResponse" /> class.
         /// </summary>
-        /// <param name="data">data (required).</param>
-        /// <param name="pagination">pagination (required).</param>
-        public GetAssetListingsResponse(List<GetAssetListingsResponseDataInner> data = default(List<GetAssetListingsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
+        /// <param name="nativeTokenBalance">nativeTokenBalance (required).</param>
+        public GetProfileNativeCurrencyResponse(GetProfileNativeCurrencyResponseNativeTokenBalance nativeTokenBalance = default(GetProfileNativeCurrencyResponseNativeTokenBalance))
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
+            // to ensure "nativeTokenBalance" is required (not null)
+            if (nativeTokenBalance == null)
             {
-                throw new ArgumentNullException("data is a required property for GetAssetListingsResponse and cannot be null");
+                throw new ArgumentNullException("nativeTokenBalance is a required property for GetProfileNativeCurrencyResponse and cannot be null");
             }
-            this.Data = data;
-            // to ensure "pagination" is required (not null)
-            if (pagination == null)
-            {
-                throw new ArgumentNullException("pagination is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Pagination = pagination;
+            this.NativeTokenBalance = nativeTokenBalance;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets NativeTokenBalance
         /// </summary>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAssetListingsResponseDataInner> Data { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Pagination
-        /// </summary>
-        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllProfilesResponsePagination Pagination { get; set; }
+        [DataMember(Name = "nativeTokenBalance", IsRequired = true, EmitDefaultValue = true)]
+        public GetProfileNativeCurrencyResponseNativeTokenBalance NativeTokenBalance { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,9 +63,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetListingsResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
+            sb.Append("class GetProfileNativeCurrencyResponse {\n");
+            sb.Append("  NativeTokenBalance: ").Append(NativeTokenBalance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +85,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetListingsResponse);
+            return this.Equals(input as GetProfileNativeCurrencyResponse);
         }
 
         /// <summary>
-        /// Returns true if GetAssetListingsResponse instances are equal
+        /// Returns true if GetProfileNativeCurrencyResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetListingsResponse to be compared</param>
+        /// <param name="input">Instance of GetProfileNativeCurrencyResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetListingsResponse input)
+        public bool Equals(GetProfileNativeCurrencyResponse input)
         {
             if (input == null)
             {
@@ -115,15 +101,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
-                ) && 
-                (
-                    this.Pagination == input.Pagination ||
-                    (this.Pagination != null &&
-                    this.Pagination.Equals(input.Pagination))
+                    this.NativeTokenBalance == input.NativeTokenBalance ||
+                    (this.NativeTokenBalance != null &&
+                    this.NativeTokenBalance.Equals(input.NativeTokenBalance))
                 );
         }
 
@@ -136,13 +116,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
+                if (this.NativeTokenBalance != null)
                 {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                if (this.Pagination != null)
-                {
-                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NativeTokenBalance.GetHashCode();
                 }
                 return hashCode;
             }
