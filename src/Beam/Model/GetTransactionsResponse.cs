@@ -41,7 +41,7 @@ namespace Beam.Model
         /// </summary>
         /// <param name="data">data (required).</param>
         /// <param name="pagination">pagination (required).</param>
-        public GetTransactionsResponse(List<GetTransactionsResponseDataInner> data = default(List<GetTransactionsResponseDataInner>), GetAllAccountsResponsePagination pagination = default(GetAllAccountsResponsePagination))
+        public GetTransactionsResponse(List<GetTransactionsResponseDataInner> data = default(List<GetTransactionsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -67,7 +67,7 @@ namespace Beam.Model
         /// Gets or Sets Pagination
         /// </summary>
         [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllAccountsResponsePagination Pagination { get; set; }
+        public GetAllProfilesResponsePagination Pagination { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -26,48 +26,51 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetListingsResponse
+    /// GetChainResponse
     /// </summary>
-    [DataContract(Name = "GetAssetListingsResponse")]
-    public partial class GetAssetListingsResponse : IEquatable<GetAssetListingsResponse>, IValidatableObject
+    [DataContract(Name = "GetChainResponse")]
+    public partial class GetChainResponse : IEquatable<GetChainResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetChainResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAssetListingsResponse() { }
+        protected GetChainResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetChainResponse" /> class.
         /// </summary>
-        /// <param name="data">data (required).</param>
-        /// <param name="pagination">pagination (required).</param>
-        public GetAssetListingsResponse(List<GetAssetListingsResponseDataInner> data = default(List<GetAssetListingsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
+        /// <param name="chainId">chainId (required).</param>
+        /// <param name="blockNumber">blockNumber (required).</param>
+        /// <param name="nativeCurrency">nativeCurrency (required).</param>
+        public GetChainResponse(decimal chainId = default(decimal), decimal blockNumber = default(decimal), GetChainResponseNativeCurrency nativeCurrency = default(GetChainResponseNativeCurrency))
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
+            this.ChainId = chainId;
+            this.BlockNumber = blockNumber;
+            // to ensure "nativeCurrency" is required (not null)
+            if (nativeCurrency == null)
             {
-                throw new ArgumentNullException("data is a required property for GetAssetListingsResponse and cannot be null");
+                throw new ArgumentNullException("nativeCurrency is a required property for GetChainResponse and cannot be null");
             }
-            this.Data = data;
-            // to ensure "pagination" is required (not null)
-            if (pagination == null)
-            {
-                throw new ArgumentNullException("pagination is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Pagination = pagination;
+            this.NativeCurrency = nativeCurrency;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets ChainId
         /// </summary>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAssetListingsResponseDataInner> Data { get; set; }
+        [DataMember(Name = "chainId", IsRequired = true, EmitDefaultValue = true)]
+        public decimal ChainId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Pagination
+        /// Gets or Sets BlockNumber
         /// </summary>
-        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllProfilesResponsePagination Pagination { get; set; }
+        [DataMember(Name = "blockNumber", IsRequired = true, EmitDefaultValue = true)]
+        public decimal BlockNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NativeCurrency
+        /// </summary>
+        [DataMember(Name = "nativeCurrency", IsRequired = true, EmitDefaultValue = true)]
+        public GetChainResponseNativeCurrency NativeCurrency { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,9 +79,10 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetListingsResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
+            sb.Append("class GetChainResponse {\n");
+            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
+            sb.Append("  BlockNumber: ").Append(BlockNumber).Append("\n");
+            sb.Append("  NativeCurrency: ").Append(NativeCurrency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +103,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetListingsResponse);
+            return this.Equals(input as GetChainResponse);
         }
 
         /// <summary>
-        /// Returns true if GetAssetListingsResponse instances are equal
+        /// Returns true if GetChainResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetListingsResponse to be compared</param>
+        /// <param name="input">Instance of GetChainResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetListingsResponse input)
+        public bool Equals(GetChainResponse input)
         {
             if (input == null)
             {
@@ -115,15 +119,17 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
+                    this.ChainId == input.ChainId ||
+                    this.ChainId.Equals(input.ChainId)
                 ) && 
                 (
-                    this.Pagination == input.Pagination ||
-                    (this.Pagination != null &&
-                    this.Pagination.Equals(input.Pagination))
+                    this.BlockNumber == input.BlockNumber ||
+                    this.BlockNumber.Equals(input.BlockNumber)
+                ) && 
+                (
+                    this.NativeCurrency == input.NativeCurrency ||
+                    (this.NativeCurrency != null &&
+                    this.NativeCurrency.Equals(input.NativeCurrency))
                 );
         }
 
@@ -136,13 +142,11 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
+                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
+                hashCode = (hashCode * 59) + this.BlockNumber.GetHashCode();
+                if (this.NativeCurrency != null)
                 {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                if (this.Pagination != null)
-                {
-                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NativeCurrency.GetHashCode();
                 }
                 return hashCode;
             }

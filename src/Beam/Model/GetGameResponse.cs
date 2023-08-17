@@ -45,8 +45,13 @@ namespace Beam.Model
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
         /// <param name="contracts">contracts (required).</param>
         /// <param name="policies">policies (required).</param>
-        public GetGameResponse(int id = default(int), string name = default(string), string description = default(string), string coverImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
+        public GetGameResponse(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for GetGameResponse and cannot be null");
+            }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -84,7 +89,7 @@ namespace Beam.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -167,7 +172,8 @@ namespace Beam.Model
             return 
                 (
                     this.Id == input.Id ||
-                    this.Id.Equals(input.Id)
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -207,7 +213,10 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                if (this.Id != null)
+                {
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();

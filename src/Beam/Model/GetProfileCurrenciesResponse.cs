@@ -26,48 +26,35 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetListingsResponse
+    /// GetProfileCurrenciesResponse
     /// </summary>
-    [DataContract(Name = "GetAssetListingsResponse")]
-    public partial class GetAssetListingsResponse : IEquatable<GetAssetListingsResponse>, IValidatableObject
+    [DataContract(Name = "GetProfileCurrenciesResponse")]
+    public partial class GetProfileCurrenciesResponse : IEquatable<GetProfileCurrenciesResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetProfileCurrenciesResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAssetListingsResponse() { }
+        protected GetProfileCurrenciesResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetProfileCurrenciesResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        /// <param name="pagination">pagination (required).</param>
-        public GetAssetListingsResponse(List<GetAssetListingsResponseDataInner> data = default(List<GetAssetListingsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
+        public GetProfileCurrenciesResponse(List<GetProfileCurrenciesResponseDataInner> data = default(List<GetProfileCurrenciesResponseDataInner>))
         {
             // to ensure "data" is required (not null)
             if (data == null)
             {
-                throw new ArgumentNullException("data is a required property for GetAssetListingsResponse and cannot be null");
+                throw new ArgumentNullException("data is a required property for GetProfileCurrenciesResponse and cannot be null");
             }
             this.Data = data;
-            // to ensure "pagination" is required (not null)
-            if (pagination == null)
-            {
-                throw new ArgumentNullException("pagination is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Pagination = pagination;
         }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAssetListingsResponseDataInner> Data { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Pagination
-        /// </summary>
-        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllProfilesResponsePagination Pagination { get; set; }
+        public List<GetProfileCurrenciesResponseDataInner> Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,9 +63,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetListingsResponse {\n");
+            sb.Append("class GetProfileCurrenciesResponse {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +85,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetListingsResponse);
+            return this.Equals(input as GetProfileCurrenciesResponse);
         }
 
         /// <summary>
-        /// Returns true if GetAssetListingsResponse instances are equal
+        /// Returns true if GetProfileCurrenciesResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetListingsResponse to be compared</param>
+        /// <param name="input">Instance of GetProfileCurrenciesResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetListingsResponse input)
+        public bool Equals(GetProfileCurrenciesResponse input)
         {
             if (input == null)
             {
@@ -119,11 +105,6 @@ namespace Beam.Model
                     this.Data != null &&
                     input.Data != null &&
                     this.Data.SequenceEqual(input.Data)
-                ) && 
-                (
-                    this.Pagination == input.Pagination ||
-                    (this.Pagination != null &&
-                    this.Pagination.Equals(input.Pagination))
                 );
         }
 
@@ -139,10 +120,6 @@ namespace Beam.Model
                 if (this.Data != null)
                 {
                     hashCode = (hashCode * 59) + this.Data.GetHashCode();
-                }
-                if (this.Pagination != null)
-                {
-                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
                 }
                 return hashCode;
             }

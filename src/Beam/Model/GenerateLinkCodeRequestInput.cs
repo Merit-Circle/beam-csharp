@@ -39,30 +39,35 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
         /// </summary>
+        /// <param name="profileId">profileId (required).</param>
         /// <param name="callbackUrl">callbackUrl (required).</param>
-        /// <param name="playerId">playerId.</param>
-        public GenerateLinkCodeRequestInput(string callbackUrl = default(string), string playerId = default(string))
+        public GenerateLinkCodeRequestInput(string profileId = default(string), string callbackUrl = default(string))
         {
+            // to ensure "profileId" is required (not null)
+            if (profileId == null)
+            {
+                throw new ArgumentNullException("profileId is a required property for GenerateLinkCodeRequestInput and cannot be null");
+            }
+            this.ProfileId = profileId;
             // to ensure "callbackUrl" is required (not null)
             if (callbackUrl == null)
             {
                 throw new ArgumentNullException("callbackUrl is a required property for GenerateLinkCodeRequestInput and cannot be null");
             }
             this.CallbackUrl = callbackUrl;
-            this.PlayerId = playerId;
         }
+
+        /// <summary>
+        /// Gets or Sets ProfileId
+        /// </summary>
+        [DataMember(Name = "profileId", IsRequired = true, EmitDefaultValue = true)]
+        public string ProfileId { get; set; }
 
         /// <summary>
         /// Gets or Sets CallbackUrl
         /// </summary>
         [DataMember(Name = "callbackUrl", IsRequired = true, EmitDefaultValue = true)]
         public string CallbackUrl { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PlayerId
-        /// </summary>
-        [DataMember(Name = "playerId", EmitDefaultValue = false)]
-        public string PlayerId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,8 +77,8 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GenerateLinkCodeRequestInput {\n");
+            sb.Append("  ProfileId: ").Append(ProfileId).Append("\n");
             sb.Append("  CallbackUrl: ").Append(CallbackUrl).Append("\n");
-            sb.Append("  PlayerId: ").Append(PlayerId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,14 +115,14 @@ namespace Beam.Model
             }
             return 
                 (
+                    this.ProfileId == input.ProfileId ||
+                    (this.ProfileId != null &&
+                    this.ProfileId.Equals(input.ProfileId))
+                ) && 
+                (
                     this.CallbackUrl == input.CallbackUrl ||
                     (this.CallbackUrl != null &&
                     this.CallbackUrl.Equals(input.CallbackUrl))
-                ) && 
-                (
-                    this.PlayerId == input.PlayerId ||
-                    (this.PlayerId != null &&
-                    this.PlayerId.Equals(input.PlayerId))
                 );
         }
 
@@ -130,13 +135,13 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ProfileId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProfileId.GetHashCode();
+                }
                 if (this.CallbackUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.CallbackUrl.GetHashCode();
-                }
-                if (this.PlayerId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PlayerId.GetHashCode();
                 }
                 return hashCode;
             }

@@ -26,10 +26,10 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetTransactionResponse
+    /// GetTransactionsResponseDataInnerPolicyTransactionIntentsInner
     /// </summary>
-    [DataContract(Name = "GetTransactionResponse")]
-    public partial class GetTransactionResponse : IEquatable<GetTransactionResponse>, IValidatableObject
+    [DataContract(Name = "GetTransactionsResponse_data_inner_policy_transactionIntents_inner")]
+    public partial class GetTransactionsResponseDataInnerPolicyTransactionIntentsInner : IEquatable<GetTransactionsResponseDataInnerPolicyTransactionIntentsInner>, IValidatableObject
     {
         /// <summary>
         /// Defines VarObject
@@ -51,13 +51,14 @@ namespace Beam.Model
         [DataMember(Name = "object", IsRequired = true, EmitDefaultValue = true)]
         public ObjectEnum VarObject { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetTransactionResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetTransactionsResponseDataInnerPolicyTransactionIntentsInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetTransactionResponse() { }
+        protected GetTransactionsResponseDataInnerPolicyTransactionIntentsInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetTransactionResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetTransactionsResponseDataInnerPolicyTransactionIntentsInner" /> class.
         /// </summary>
+        /// <param name="nextAction">nextAction.</param>
         /// <param name="policy">policy.</param>
         /// <param name="player">player.</param>
         /// <param name="account">account.</param>
@@ -70,18 +71,19 @@ namespace Beam.Model
         /// <param name="userOperation">userOperation.</param>
         /// <param name="response">response.</param>
         /// <param name="interactions">interactions.</param>
-        public GetTransactionResponse(GetTransactionsResponseDataInnerPolicy policy = default(GetTransactionsResponseDataInnerPolicy), Object player = default(Object), Object account = default(Object), string id = default(string), ObjectEnum varObject = default(ObjectEnum), decimal createdAt = default(decimal), decimal updatedAt = default(decimal), decimal chainId = default(decimal), string userOperationHash = default(string), Object userOperation = default(Object), GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse response = default(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse), List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner> interactions = default(List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner>))
+        public GetTransactionsResponseDataInnerPolicyTransactionIntentsInner(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction nextAction = default(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction), Object policy = default(Object), GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer player = default(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer), Object account = default(Object), string id = default(string), ObjectEnum varObject = default(ObjectEnum), decimal createdAt = default(decimal), decimal updatedAt = default(decimal), decimal chainId = default(decimal), string userOperationHash = default(string), Object userOperation = default(Object), GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse response = default(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse), List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner> interactions = default(List<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for GetTransactionResponse and cannot be null");
+                throw new ArgumentNullException("id is a required property for GetTransactionsResponseDataInnerPolicyTransactionIntentsInner and cannot be null");
             }
             this.Id = id;
             this.VarObject = varObject;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.ChainId = chainId;
+            this.NextAction = nextAction;
             this.Policy = policy;
             this.Player = player;
             this.Account = account;
@@ -92,16 +94,22 @@ namespace Beam.Model
         }
 
         /// <summary>
+        /// Gets or Sets NextAction
+        /// </summary>
+        [DataMember(Name = "nextAction", EmitDefaultValue = false)]
+        public GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction NextAction { get; set; }
+
+        /// <summary>
         /// Gets or Sets Policy
         /// </summary>
-        [DataMember(Name = "policy", EmitDefaultValue = false)]
-        public GetTransactionsResponseDataInnerPolicy Policy { get; set; }
+        [DataMember(Name = "policy", EmitDefaultValue = true)]
+        public Object Policy { get; set; }
 
         /// <summary>
         /// Gets or Sets Player
         /// </summary>
-        [DataMember(Name = "player", EmitDefaultValue = true)]
-        public Object Player { get; set; }
+        [DataMember(Name = "player", EmitDefaultValue = false)]
+        public GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer Player { get; set; }
 
         /// <summary>
         /// Gets or Sets Account
@@ -164,7 +172,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetTransactionResponse {\n");
+            sb.Append("class GetTransactionsResponseDataInnerPolicyTransactionIntentsInner {\n");
+            sb.Append("  NextAction: ").Append(NextAction).Append("\n");
             sb.Append("  Policy: ").Append(Policy).Append("\n");
             sb.Append("  Player: ").Append(Player).Append("\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
@@ -197,21 +206,26 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetTransactionResponse);
+            return this.Equals(input as GetTransactionsResponseDataInnerPolicyTransactionIntentsInner);
         }
 
         /// <summary>
-        /// Returns true if GetTransactionResponse instances are equal
+        /// Returns true if GetTransactionsResponseDataInnerPolicyTransactionIntentsInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetTransactionResponse to be compared</param>
+        /// <param name="input">Instance of GetTransactionsResponseDataInnerPolicyTransactionIntentsInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetTransactionResponse input)
+        public bool Equals(GetTransactionsResponseDataInnerPolicyTransactionIntentsInner input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
+                (
+                    this.NextAction == input.NextAction ||
+                    (this.NextAction != null &&
+                    this.NextAction.Equals(input.NextAction))
+                ) && 
                 (
                     this.Policy == input.Policy ||
                     (this.Policy != null &&
@@ -280,6 +294,10 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.NextAction != null)
+                {
+                    hashCode = (hashCode * 59) + this.NextAction.GetHashCode();
+                }
                 if (this.Policy != null)
                 {
                     hashCode = (hashCode * 59) + this.Policy.GetHashCode();

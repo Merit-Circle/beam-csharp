@@ -26,90 +26,53 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetGameResponseContractsInner
+    /// CreateProfileResponseWalletsInner
     /// </summary>
-    [DataContract(Name = "GetGameResponse_contracts_inner")]
-    public partial class GetGameResponseContractsInner : IEquatable<GetGameResponseContractsInner>, IValidatableObject
+    [DataContract(Name = "CreateProfileResponse_wallets_inner")]
+    public partial class CreateProfileResponseWalletsInner : IEquatable<CreateProfileResponseWalletsInner>, IValidatableObject
     {
         /// <summary>
-        /// Defines Type
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum ERC20 for value: ERC20
-            /// </summary>
-            [EnumMember(Value = "ERC20")]
-            ERC20 = 1,
-
-            /// <summary>
-            /// Enum ERC721 for value: ERC721
-            /// </summary>
-            [EnumMember(Value = "ERC721")]
-            ERC721 = 2,
-
-            /// <summary>
-            /// Enum ERC1155 for value: ERC1155
-            /// </summary>
-            [EnumMember(Value = "ERC1155")]
-            ERC1155 = 3,
-
-            /// <summary>
-            /// Enum SEAPORT for value: SEAPORT
-            /// </summary>
-            [EnumMember(Value = "SEAPORT")]
-            SEAPORT = 4
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
-        public TypeEnum Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetGameResponseContractsInner" /> class.
+        /// Initializes a new instance of the <see cref="CreateProfileResponseWalletsInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetGameResponseContractsInner() { }
+        protected CreateProfileResponseWalletsInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetGameResponseContractsInner" /> class.
+        /// Initializes a new instance of the <see cref="CreateProfileResponseWalletsInner" /> class.
         /// </summary>
-        /// <param name="type">type (required).</param>
         /// <param name="id">id (required).</param>
         /// <param name="externalId">externalId (required).</param>
         /// <param name="address">address (required).</param>
         /// <param name="chainId">chainId (required).</param>
-        /// <param name="gameId">gameId (required).</param>
-        public GetGameResponseContractsInner(TypeEnum type = default(TypeEnum), string id = default(string), string externalId = default(string), string address = default(string), int chainId = default(int), string gameId = default(string))
+        /// <param name="custodial">custodial (required).</param>
+        /// <param name="profileId">profileId (required).</param>
+        public CreateProfileResponseWalletsInner(string id = default(string), string externalId = default(string), string address = default(string), int chainId = default(int), bool custodial = default(bool), string profileId = default(string))
         {
-            this.Type = type;
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for GetGameResponseContractsInner and cannot be null");
+                throw new ArgumentNullException("id is a required property for CreateProfileResponseWalletsInner and cannot be null");
             }
             this.Id = id;
             // to ensure "externalId" is required (not null)
             if (externalId == null)
             {
-                throw new ArgumentNullException("externalId is a required property for GetGameResponseContractsInner and cannot be null");
+                throw new ArgumentNullException("externalId is a required property for CreateProfileResponseWalletsInner and cannot be null");
             }
             this.ExternalId = externalId;
             // to ensure "address" is required (not null)
             if (address == null)
             {
-                throw new ArgumentNullException("address is a required property for GetGameResponseContractsInner and cannot be null");
+                throw new ArgumentNullException("address is a required property for CreateProfileResponseWalletsInner and cannot be null");
             }
             this.Address = address;
             this.ChainId = chainId;
-            // to ensure "gameId" is required (not null)
-            if (gameId == null)
+            this.Custodial = custodial;
+            // to ensure "profileId" is required (not null)
+            if (profileId == null)
             {
-                throw new ArgumentNullException("gameId is a required property for GetGameResponseContractsInner and cannot be null");
+                throw new ArgumentNullException("profileId is a required property for CreateProfileResponseWalletsInner and cannot be null");
             }
-            this.GameId = gameId;
+            this.ProfileId = profileId;
         }
 
         /// <summary>
@@ -137,10 +100,16 @@ namespace Beam.Model
         public int ChainId { get; set; }
 
         /// <summary>
-        /// Gets or Sets GameId
+        /// Gets or Sets Custodial
         /// </summary>
-        [DataMember(Name = "gameId", IsRequired = true, EmitDefaultValue = true)]
-        public string GameId { get; set; }
+        [DataMember(Name = "custodial", IsRequired = true, EmitDefaultValue = true)]
+        public bool Custodial { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProfileId
+        /// </summary>
+        [DataMember(Name = "profileId", IsRequired = true, EmitDefaultValue = true)]
+        public string ProfileId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -149,13 +118,13 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetGameResponseContractsInner {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class CreateProfileResponseWalletsInner {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
-            sb.Append("  GameId: ").Append(GameId).Append("\n");
+            sb.Append("  Custodial: ").Append(Custodial).Append("\n");
+            sb.Append("  ProfileId: ").Append(ProfileId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -176,25 +145,21 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetGameResponseContractsInner);
+            return this.Equals(input as CreateProfileResponseWalletsInner);
         }
 
         /// <summary>
-        /// Returns true if GetGameResponseContractsInner instances are equal
+        /// Returns true if CreateProfileResponseWalletsInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetGameResponseContractsInner to be compared</param>
+        /// <param name="input">Instance of CreateProfileResponseWalletsInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetGameResponseContractsInner input)
+        public bool Equals(CreateProfileResponseWalletsInner input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
-                (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
-                ) && 
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
@@ -215,9 +180,13 @@ namespace Beam.Model
                     this.ChainId.Equals(input.ChainId)
                 ) && 
                 (
-                    this.GameId == input.GameId ||
-                    (this.GameId != null &&
-                    this.GameId.Equals(input.GameId))
+                    this.Custodial == input.Custodial ||
+                    this.Custodial.Equals(input.Custodial)
+                ) && 
+                (
+                    this.ProfileId == input.ProfileId ||
+                    (this.ProfileId != null &&
+                    this.ProfileId.Equals(input.ProfileId))
                 );
         }
 
@@ -230,7 +199,6 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -244,9 +212,10 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.Address.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
-                if (this.GameId != null)
+                hashCode = (hashCode * 59) + this.Custodial.GetHashCode();
+                if (this.ProfileId != null)
                 {
-                    hashCode = (hashCode * 59) + this.GameId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ProfileId.GetHashCode();
                 }
                 return hashCode;
             }

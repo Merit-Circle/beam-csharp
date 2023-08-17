@@ -26,48 +26,33 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetListingsResponse
+    /// GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload
     /// </summary>
-    [DataContract(Name = "GetAssetListingsResponse")]
-    public partial class GetAssetListingsResponse : IEquatable<GetAssetListingsResponse>, IValidatableObject
+    [DataContract(Name = "GetTransactionsResponse_data_inner_policy_transactionIntents_inner_nextAction_payload")]
+    public partial class GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload : IEquatable<GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GetAssetListingsResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
-        /// </summary>
-        /// <param name="data">data (required).</param>
-        /// <param name="pagination">pagination (required).</param>
-        public GetAssetListingsResponse(List<GetAssetListingsResponseDataInner> data = default(List<GetAssetListingsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
+        /// <param name="userOp">userOp.</param>
+        /// <param name="userOpHash">userOpHash.</param>
+        public GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload(Object userOp = default(Object), string userOpHash = default(string))
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
-            {
-                throw new ArgumentNullException("data is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Data = data;
-            // to ensure "pagination" is required (not null)
-            if (pagination == null)
-            {
-                throw new ArgumentNullException("pagination is a required property for GetAssetListingsResponse and cannot be null");
-            }
-            this.Pagination = pagination;
+            this.UserOp = userOp;
+            this.UserOpHash = userOpHash;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// Gets or Sets UserOp
         /// </summary>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAssetListingsResponseDataInner> Data { get; set; }
+        [DataMember(Name = "userOp", EmitDefaultValue = true)]
+        public Object UserOp { get; set; }
 
         /// <summary>
-        /// Gets or Sets Pagination
+        /// Gets or Sets UserOpHash
         /// </summary>
-        [DataMember(Name = "pagination", IsRequired = true, EmitDefaultValue = true)]
-        public GetAllProfilesResponsePagination Pagination { get; set; }
+        [DataMember(Name = "userOpHash", EmitDefaultValue = false)]
+        public string UserOpHash { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -76,9 +61,9 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetListingsResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  Pagination: ").Append(Pagination).Append("\n");
+            sb.Append("class GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload {\n");
+            sb.Append("  UserOp: ").Append(UserOp).Append("\n");
+            sb.Append("  UserOpHash: ").Append(UserOpHash).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +84,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetListingsResponse);
+            return this.Equals(input as GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload);
         }
 
         /// <summary>
-        /// Returns true if GetAssetListingsResponse instances are equal
+        /// Returns true if GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetListingsResponse to be compared</param>
+        /// <param name="input">Instance of GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetListingsResponse input)
+        public bool Equals(GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload input)
         {
             if (input == null)
             {
@@ -115,15 +100,14 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
+                    this.UserOp == input.UserOp ||
+                    (this.UserOp != null &&
+                    this.UserOp.Equals(input.UserOp))
                 ) && 
                 (
-                    this.Pagination == input.Pagination ||
-                    (this.Pagination != null &&
-                    this.Pagination.Equals(input.Pagination))
+                    this.UserOpHash == input.UserOpHash ||
+                    (this.UserOpHash != null &&
+                    this.UserOpHash.Equals(input.UserOpHash))
                 );
         }
 
@@ -136,13 +120,13 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Data != null)
+                if (this.UserOp != null)
                 {
-                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
+                    hashCode = (hashCode * 59) + this.UserOp.GetHashCode();
                 }
-                if (this.Pagination != null)
+                if (this.UserOpHash != null)
                 {
-                    hashCode = (hashCode * 59) + this.Pagination.GetHashCode();
+                    hashCode = (hashCode * 59) + this.UserOpHash.GetHashCode();
                 }
                 return hashCode;
             }

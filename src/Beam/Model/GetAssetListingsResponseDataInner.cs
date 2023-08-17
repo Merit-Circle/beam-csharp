@@ -54,7 +54,7 @@ namespace Beam.Model
         /// <param name="userId">userId (required).</param>
         /// <param name="contractId">contractId (required).</param>
         /// <param name="nft">nft (required).</param>
-        public GetAssetListingsResponseDataInner(string id = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string userId = default(string), string contractId = default(string), GetPlayerAssetsResponseDataInner nft = default(GetPlayerAssetsResponseDataInner))
+        public GetAssetListingsResponseDataInner(string id = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string userId = default(string), string contractId = default(string), GetAssetsResponseDataInner nft = default(GetAssetsResponseDataInner))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -226,7 +226,7 @@ namespace Beam.Model
         /// Gets or Sets Nft
         /// </summary>
         [DataMember(Name = "nft", IsRequired = true, EmitDefaultValue = true)]
-        public GetPlayerAssetsResponseDataInner Nft { get; set; }
+        public GetAssetsResponseDataInner Nft { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

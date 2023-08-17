@@ -26,33 +26,33 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetListingsResponse
+    /// GetAllProfilesResponse
     /// </summary>
-    [DataContract(Name = "GetAssetListingsResponse")]
-    public partial class GetAssetListingsResponse : IEquatable<GetAssetListingsResponse>, IValidatableObject
+    [DataContract(Name = "GetAllProfilesResponse")]
+    public partial class GetAllProfilesResponse : IEquatable<GetAllProfilesResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetAllProfilesResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAssetListingsResponse() { }
+        protected GetAllProfilesResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetListingsResponse" /> class.
+        /// Initializes a new instance of the <see cref="GetAllProfilesResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
         /// <param name="pagination">pagination (required).</param>
-        public GetAssetListingsResponse(List<GetAssetListingsResponseDataInner> data = default(List<GetAssetListingsResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
+        public GetAllProfilesResponse(List<GetAllProfilesResponseDataInner> data = default(List<GetAllProfilesResponseDataInner>), GetAllProfilesResponsePagination pagination = default(GetAllProfilesResponsePagination))
         {
             // to ensure "data" is required (not null)
             if (data == null)
             {
-                throw new ArgumentNullException("data is a required property for GetAssetListingsResponse and cannot be null");
+                throw new ArgumentNullException("data is a required property for GetAllProfilesResponse and cannot be null");
             }
             this.Data = data;
             // to ensure "pagination" is required (not null)
             if (pagination == null)
             {
-                throw new ArgumentNullException("pagination is a required property for GetAssetListingsResponse and cannot be null");
+                throw new ArgumentNullException("pagination is a required property for GetAllProfilesResponse and cannot be null");
             }
             this.Pagination = pagination;
         }
@@ -61,7 +61,7 @@ namespace Beam.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<GetAssetListingsResponseDataInner> Data { get; set; }
+        public List<GetAllProfilesResponseDataInner> Data { get; set; }
 
         /// <summary>
         /// Gets or Sets Pagination
@@ -76,7 +76,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetListingsResponse {\n");
+            sb.Append("class GetAllProfilesResponse {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Pagination: ").Append(Pagination).Append("\n");
             sb.Append("}\n");
@@ -99,15 +99,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetListingsResponse);
+            return this.Equals(input as GetAllProfilesResponse);
         }
 
         /// <summary>
-        /// Returns true if GetAssetListingsResponse instances are equal
+        /// Returns true if GetAllProfilesResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetListingsResponse to be compared</param>
+        /// <param name="input">Instance of GetAllProfilesResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetListingsResponse input)
+        public bool Equals(GetAllProfilesResponse input)
         {
             if (input == null)
             {

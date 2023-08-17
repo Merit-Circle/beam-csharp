@@ -90,18 +90,19 @@ namespace Example
             // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
             // config.ApiKeyPrefix.Add("x-api-key", "Bearer");
 
-            var apiInstance = new AccountsApi(config);
-            var createAccountRequestInput = new CreateAccountRequestInput(); // CreateAccountRequestInput | 
+            var apiInstance = new AssetsApi(config);
+            var contractAddress = "contractAddress_example";  // string | 
+            var tokenId = "tokenId_example";  // string | 
 
             try
             {
-                // Creating an account
-                CreateAccountResponse result = apiInstance.CreateAcount(createAccountRequestInput);
+                // Get a single NFT (e.g. ERC721 / ERC1155)
+                Object result = apiInstance.GetAsset(contractAddress, tokenId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AccountsApi.CreateAcount: " + e.Message );
+                Debug.Print("Exception when calling AssetsApi.GetAsset: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -118,75 +119,70 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountsApi* | [**CreateAcount**](docs/AccountsApi.md#createacount) | **POST** /v1/accounts | Creating an account
-*AccountsApi* | [**CreateTransferRequest**](docs/AccountsApi.md#createtransferrequest) | **POST** /v1/accounts/{accountId}/create-transfer-request | Creates a transfer request to transfer custodial wallet ownership to an external wallet
-*AccountsApi* | [**GetAccountById**](docs/AccountsApi.md#getaccountbyid) | **GET** /v1/accounts/{accountId} | Getting information about authenticated player
-*AccountsApi* | [**GetAllAccounts**](docs/AccountsApi.md#getallaccounts) | **GET** /v1/accounts | Getting all accounts
-*AssetsApi* | [**GetAssetsByPlayer**](docs/AssetsApi.md#getassetsbyplayer) | **GET** /v1/assets/player/{playerId} | Get all the assets of a player.
-*AssetsApi* | [**GetListedAssetsByPlayer**](docs/AssetsApi.md#getlistedassetsbyplayer) | **GET** /v1/assets/player/{playerId}/listings | Get all the assets listed by a player
-*GameApi* | [**GenerateConnectionRequest**](docs/GameApi.md#generateconnectionrequest) | **POST** /v1/game/link | Generate QR code for linking player to the game
+*AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{contractAddress}/{tokenId} | Get a single NFT (e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetContractAssets**](docs/AssetsApi.md#getcontractassets) | **GET** /v1/assets/{contractAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetProfileAssets**](docs/AssetsApi.md#getprofileassets) | **GET** /v1/assets/profiles/{profileId} | Get all the assets of an account (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetProfileCurrencies**](docs/AssetsApi.md#getprofilecurrencies) | **GET** /v1/assets/profiles/{profileId}/currencies | Get all the currencies owned by an account (ERC20)
+*AssetsApi* | [**GetProfileListedAssets**](docs/AssetsApi.md#getprofilelistedassets) | **GET** /v1/assets/profiles/{profileId}/listed | Get all the assets listed by an account (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetProfileNativeCurrency**](docs/AssetsApi.md#getprofilenativecurrency) | **GET** /v1/assets/profiles/{profileId}/native | Get the native token balance
+*ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
-*InventoriesApi* | [**GetPlayerInventory**](docs/InventoriesApi.md#getplayerinventory) | **GET** /v1/inventories/player/{playerId} | Get the player inventory
-*PlayersApi* | [**CreatePlayer**](docs/PlayersApi.md#createplayer) | **POST** /v1/players | Creating a new player
-*PlayersApi* | [**GetAllPlayers**](docs/PlayersApi.md#getallplayers) | **GET** /v1/players | Getting all players
-*PlayersApi* | [**GetPlayer**](docs/PlayersApi.md#getplayer) | **GET** /v1/players/{playerId} | Getting information about authenticated player
-*TransactionsApi* | [**ConfirmTransaction**](docs/TransactionsApi.md#confirmtransaction) | **POST** /v1/transactions/signature | Confirming a transaction
-*TransactionsApi* | [**CreateTransaction**](docs/TransactionsApi.md#createtransaction) | **POST** /v1/transactions | Creating a new transaction
+*ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{profileId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
+*ProfilesApi* | [**CreateProfile**](docs/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Creating a profile
+*ProfilesApi* | [**GetAllProfiles**](docs/ProfilesApi.md#getallprofiles) | **GET** /v1/profiles | Getting all profiles
+*ProfilesApi* | [**GetProfile**](docs/ProfilesApi.md#getprofile) | **GET** /v1/profiles/{profileId} | Getting information on a profile
+*TransactionsApi* | [**CreateProfileTransaction**](docs/TransactionsApi.md#createprofiletransaction) | **POST** /v1/transactions/profiles/{profileId} | Creating a new transaction on behalf of a profile
+*TransactionsApi* | [**GetProfileTransactions**](docs/TransactionsApi.md#getprofiletransactions) | **GET** /v1/transactions/profiles/{profileId} | Get a paginated list of transactions created on behalf of a prfoile
 *TransactionsApi* | [**GetTransaction**](docs/TransactionsApi.md#gettransaction) | **GET** /v1/transactions/{transactionId} | Getting a transaction
-*TransactionsApi* | [**GetTransactions**](docs/TransactionsApi.md#gettransactions) | **GET** /v1/transactions | Get all the transactions
+*TransactionsApi* | [**GetTransactions**](docs/TransactionsApi.md#gettransactions) | **GET** /v1/transactions | Get a paginated list of transactions from your game
 
 
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
- - [Model.ConfirmTransactionRequestInput](docs/ConfirmTransactionRequestInput.md)
- - [Model.ConfirmTransactionResponse](docs/ConfirmTransactionResponse.md)
- - [Model.CreateAccountRequestInput](docs/CreateAccountRequestInput.md)
- - [Model.CreateAccountResponse](docs/CreateAccountResponse.md)
- - [Model.CreatePlayerRequestInput](docs/CreatePlayerRequestInput.md)
- - [Model.CreatePlayerResponse](docs/CreatePlayerResponse.md)
+ - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
+ - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
+ - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)
  - [Model.CreateTransactionRequestInput](docs/CreateTransactionRequestInput.md)
  - [Model.CreateTransactionRequestInputInteractionsInner](docs/CreateTransactionRequestInputInteractionsInner.md)
  - [Model.CreateTransactionResponse](docs/CreateTransactionResponse.md)
- - [Model.CreateTransactionResponseNextAction](docs/CreateTransactionResponseNextAction.md)
- - [Model.CreateTransactionResponseNextActionPayload](docs/CreateTransactionResponseNextActionPayload.md)
- - [Model.CreateTransactionResponsePolicy](docs/CreateTransactionResponsePolicy.md)
- - [Model.CreateTransactionResponsePolicyPolicyRulesInner](docs/CreateTransactionResponsePolicyPolicyRulesInner.md)
- - [Model.CreateTransactionResponsePolicyPolicyRulesInnerContract](docs/CreateTransactionResponsePolicyPolicyRulesInnerContract.md)
- - [Model.CreateTransactionResponsePolicyPolicyRulesInnerContractAbiInner](docs/CreateTransactionResponsePolicyPolicyRulesInnerContractAbiInner.md)
- - [Model.CreateTransactionResponsePolicyPolicyRulesInnerContractAbiInnerInputsInner](docs/CreateTransactionResponsePolicyPolicyRulesInnerContractAbiInnerInputsInner.md)
- - [Model.CreateTransactionResponsePolicyStrategy](docs/CreateTransactionResponsePolicyStrategy.md)
- - [Model.CreateTransactionResponsePolicyTransactionIntentsInner](docs/CreateTransactionResponsePolicyTransactionIntentsInner.md)
- - [Model.CreateTransactionResponsePolicyTransactionIntentsInnerInteractionsInner](docs/CreateTransactionResponsePolicyTransactionIntentsInnerInteractionsInner.md)
- - [Model.CreateTransactionResponsePolicyTransactionIntentsInnerPlayer](docs/CreateTransactionResponsePolicyTransactionIntentsInnerPlayer.md)
- - [Model.CreateTransactionResponsePolicyTransactionIntentsInnerPlayerAccountsInner](docs/CreateTransactionResponsePolicyTransactionIntentsInnerPlayerAccountsInner.md)
- - [Model.CreateTransactionResponsePolicyTransactionIntentsInnerResponse](docs/CreateTransactionResponsePolicyTransactionIntentsInnerResponse.md)
- - [Model.CreateTransactionResponsePolicyTransactionIntentsInnerResponseLogsInner](docs/CreateTransactionResponsePolicyTransactionIntentsInnerResponseLogsInner.md)
- - [Model.CreateTransferOwnershipRequestInput](docs/CreateTransferOwnershipRequestInput.md)
- - [Model.CreateTransferOwnershipRequestResponse](docs/CreateTransferOwnershipRequestResponse.md)
  - [Model.GenerateLinkCodeRequestInput](docs/GenerateLinkCodeRequestInput.md)
  - [Model.GenerateLinkCodeResponse](docs/GenerateLinkCodeResponse.md)
- - [Model.GetAccountResponse](docs/GetAccountResponse.md)
- - [Model.GetAllAccountsResponse](docs/GetAllAccountsResponse.md)
- - [Model.GetAllAccountsResponseDataInner](docs/GetAllAccountsResponseDataInner.md)
- - [Model.GetAllAccountsResponsePagination](docs/GetAllAccountsResponsePagination.md)
- - [Model.GetAllPlayersResponse](docs/GetAllPlayersResponse.md)
- - [Model.GetAllPlayersResponseDataInner](docs/GetAllPlayersResponseDataInner.md)
+ - [Model.GetAllProfilesResponse](docs/GetAllProfilesResponse.md)
+ - [Model.GetAllProfilesResponseDataInner](docs/GetAllProfilesResponseDataInner.md)
+ - [Model.GetAllProfilesResponsePagination](docs/GetAllProfilesResponsePagination.md)
  - [Model.GetAssetListingsResponse](docs/GetAssetListingsResponse.md)
  - [Model.GetAssetListingsResponseDataInner](docs/GetAssetListingsResponseDataInner.md)
+ - [Model.GetAssetsResponse](docs/GetAssetsResponse.md)
+ - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
+ - [Model.GetChainResponse](docs/GetChainResponse.md)
+ - [Model.GetChainResponseNativeCurrency](docs/GetChainResponseNativeCurrency.md)
  - [Model.GetGameResponse](docs/GetGameResponse.md)
  - [Model.GetGameResponseContractsInner](docs/GetGameResponseContractsInner.md)
  - [Model.GetGameResponsePoliciesInner](docs/GetGameResponsePoliciesInner.md)
- - [Model.GetInventoryResponse](docs/GetInventoryResponse.md)
- - [Model.GetInventoryResponseNftAssetsInner](docs/GetInventoryResponseNftAssetsInner.md)
- - [Model.GetPlayerAssetsResponse](docs/GetPlayerAssetsResponse.md)
- - [Model.GetPlayerAssetsResponseDataInner](docs/GetPlayerAssetsResponseDataInner.md)
- - [Model.GetPlayerResponse](docs/GetPlayerResponse.md)
+ - [Model.GetProfileCurrenciesResponse](docs/GetProfileCurrenciesResponse.md)
+ - [Model.GetProfileCurrenciesResponseDataInner](docs/GetProfileCurrenciesResponseDataInner.md)
+ - [Model.GetProfileNativeCurrencyResponse](docs/GetProfileNativeCurrencyResponse.md)
+ - [Model.GetProfileNativeCurrencyResponseNativeTokenBalance](docs/GetProfileNativeCurrencyResponseNativeTokenBalance.md)
+ - [Model.GetProfileResponse](docs/GetProfileResponse.md)
  - [Model.GetTransactionResponse](docs/GetTransactionResponse.md)
- - [Model.GetTransactionsRequestInput](docs/GetTransactionsRequestInput.md)
  - [Model.GetTransactionsResponse](docs/GetTransactionsResponse.md)
  - [Model.GetTransactionsResponseDataInner](docs/GetTransactionsResponseDataInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicy](docs/GetTransactionsResponseDataInnerPolicy.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInner](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContract](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContract.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInner](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInnerInputsInner](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInnerInputsInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyStrategy](docs/GetTransactionsResponseDataInnerPolicyStrategy.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse.md)
+ - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner.md)
  - [Model.UpdateGameRequestInput](docs/UpdateGameRequestInput.md)
  - [Model.UpdateGameResponse](docs/UpdateGameResponse.md)
 
