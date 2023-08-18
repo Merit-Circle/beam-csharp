@@ -91,18 +91,18 @@ namespace Example
             // config.ApiKeyPrefix.Add("x-api-key", "Bearer");
 
             var apiInstance = new AssetsApi(config);
-            var contractAddress = "contractAddress_example";  // string | 
-            var tokenId = "tokenId_example";  // string | 
+            var profileId = "profileId_example";  // string | 
+            var buyAssetRequestInput = new BuyAssetRequestInput(); // BuyAssetRequestInput | 
 
             try
             {
-                // Get a single NFT (e.g. ERC721 / ERC1155)
-                Object result = apiInstance.GetAsset(contractAddress, tokenId);
+                // Buy listed asset
+                BuyAssetResponse result = apiInstance.BuyAsset(profileId, buyAssetRequestInput);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AssetsApi.GetAsset: " + e.Message );
+                Debug.Print("Exception when calling AssetsApi.BuyAsset: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -119,12 +119,15 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{contractAddress}/{tokenId} | Get a single NFT (e.g. ERC721 / ERC1155)
+*AssetsApi* | [**BuyAsset**](docs/AssetsApi.md#buyasset) | **POST** /v1/assets/profiles/{profileId}/buy | Buy listed asset
+*AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{contractAddress}/{assetId} | Get a single NFT (e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetContractAssets**](docs/AssetsApi.md#getcontractassets) | **GET** /v1/assets/{contractAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileAssets**](docs/AssetsApi.md#getprofileassets) | **GET** /v1/assets/profiles/{profileId} | Get all the assets of an account (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileCurrencies**](docs/AssetsApi.md#getprofilecurrencies) | **GET** /v1/assets/profiles/{profileId}/currencies | Get all the currencies owned by an account (ERC20)
 *AssetsApi* | [**GetProfileListedAssets**](docs/AssetsApi.md#getprofilelistedassets) | **GET** /v1/assets/profiles/{profileId}/listed | Get all the assets listed by an account (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileNativeCurrency**](docs/AssetsApi.md#getprofilenativecurrency) | **GET** /v1/assets/profiles/{profileId}/native | Get the native token balance
+*AssetsApi* | [**SellAsset**](docs/AssetsApi.md#sellasset) | **POST** /v1/assets/profiles/{profileId}/sell | List an asset for sale
+*AssetsApi* | [**TransferAsset**](docs/AssetsApi.md#transferasset) | **POST** /v1/assets/profiles/{profileId}/transfer | Transfer an asset
 *ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
@@ -141,6 +144,8 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.BuyAssetRequestInput](docs/BuyAssetRequestInput.md)
+ - [Model.BuyAssetResponse](docs/BuyAssetResponse.md)
  - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
  - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
  - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)
@@ -183,6 +188,10 @@ Class | Method | HTTP request | Description
  - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner.md)
  - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse.md)
  - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner.md)
+ - [Model.SellAssetRequestInput](docs/SellAssetRequestInput.md)
+ - [Model.SellAssetResponse](docs/SellAssetResponse.md)
+ - [Model.TransferAssetRequestInput](docs/TransferAssetRequestInput.md)
+ - [Model.TransferAssetResponse](docs/TransferAssetResponse.md)
  - [Model.UpdateGameRequestInput](docs/UpdateGameRequestInput.md)
  - [Model.UpdateGameResponse](docs/UpdateGameResponse.md)
 

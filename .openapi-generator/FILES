@@ -25,6 +25,8 @@ src/Beam/Client/OpenAPIDateConverter.cs
 src/Beam/Client/RequestOptions.cs
 src/Beam/Client/RetryConfiguration.cs
 src/Beam/Model/AbstractOpenAPISchema.cs
+src/Beam/Model/BuyAssetRequestInput.cs
+src/Beam/Model/BuyAssetResponse.cs
 src/Beam/Model/CreateProfileRequestInput.cs
 src/Beam/Model/CreateProfileResponse.cs
 src/Beam/Model/CreateProfileResponseWalletsInner.cs
@@ -67,5 +69,9 @@ src/Beam/Model/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlay
 src/Beam/Model/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner.cs
 src/Beam/Model/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse.cs
 src/Beam/Model/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner.cs
+src/Beam/Model/SellAssetRequestInput.cs
+src/Beam/Model/SellAssetResponse.cs
+src/Beam/Model/TransferAssetRequestInput.cs
+src/Beam/Model/TransferAssetResponse.cs
 src/Beam/Model/UpdateGameRequestInput.cs
 src/Beam/Model/UpdateGameResponse.cs
