@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
+*HealthApi* | [**Check**](docs/HealthApi.md#check) | **GET** /v1/health | 
 *ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{profileId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
 *ProfilesApi* | [**CreateProfile**](docs/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Creating a profile
 *ProfilesApi* | [**GetAllProfiles**](docs/ProfilesApi.md#getallprofiles) | **GET** /v1/profiles | Getting all profiles
@@ -146,6 +147,9 @@ Class | Method | HTTP request | Description
 
  - [Model.BuyAssetRequestInput](docs/BuyAssetRequestInput.md)
  - [Model.BuyAssetResponse](docs/BuyAssetResponse.md)
+ - [Model.Check200Response](docs/Check200Response.md)
+ - [Model.Check200ResponseInfoValue](docs/Check200ResponseInfoValue.md)
+ - [Model.Check503Response](docs/Check503Response.md)
  - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
  - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
  - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)

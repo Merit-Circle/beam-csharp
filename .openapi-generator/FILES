@@ -5,6 +5,7 @@ appveyor.yml
 src/Beam/Api/AssetsApi.cs
 src/Beam/Api/ChainApi.cs
 src/Beam/Api/GameApi.cs
+src/Beam/Api/HealthApi.cs
 src/Beam/Api/ProfilesApi.cs
 src/Beam/Api/TransactionsApi.cs
 src/Beam/Beam.csproj
@@ -27,6 +28,9 @@ src/Beam/Client/RetryConfiguration.cs
 src/Beam/Model/AbstractOpenAPISchema.cs
 src/Beam/Model/BuyAssetRequestInput.cs
 src/Beam/Model/BuyAssetResponse.cs
+src/Beam/Model/Check200Response.cs
+src/Beam/Model/Check200ResponseInfoValue.cs
+src/Beam/Model/Check503Response.cs
 src/Beam/Model/CreateProfileRequestInput.cs
 src/Beam/Model/CreateProfileResponse.cs
 src/Beam/Model/CreateProfileResponseWalletsInner.cs
