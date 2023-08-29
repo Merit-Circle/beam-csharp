@@ -46,7 +46,7 @@ namespace Beam.Model
         /// <param name="logoUri">logoUri.</param>
         /// <param name="chainId">chainId (required).</param>
         /// <param name="balance">balance (required).</param>
-        public GetProfileCurrenciesResponseDataInner(string address = default(string), string name = default(string), string symbol = default(string), decimal decimals = default(decimal), string logoUri = default(string), string chainId = default(string), string balance = default(string))
+        public GetProfileCurrenciesResponseDataInner(string address = default(string), string name = default(string), string symbol = default(string), decimal decimals = default(decimal), string logoUri = default(string), decimal chainId = default(decimal), string balance = default(string))
         {
             // to ensure "address" is required (not null)
             if (address == null)
@@ -67,11 +67,6 @@ namespace Beam.Model
             }
             this.Symbol = symbol;
             this.Decimals = decimals;
-            // to ensure "chainId" is required (not null)
-            if (chainId == null)
-            {
-                throw new ArgumentNullException("chainId is a required property for GetProfileCurrenciesResponseDataInner and cannot be null");
-            }
             this.ChainId = chainId;
             // to ensure "balance" is required (not null)
             if (balance == null)
@@ -116,7 +111,7 @@ namespace Beam.Model
         /// Gets or Sets ChainId
         /// </summary>
         [DataMember(Name = "chainId", IsRequired = true, EmitDefaultValue = true)]
-        public string ChainId { get; set; }
+        public decimal ChainId { get; set; }
 
         /// <summary>
         /// Gets or Sets Balance
@@ -200,8 +195,7 @@ namespace Beam.Model
                 ) && 
                 (
                     this.ChainId == input.ChainId ||
-                    (this.ChainId != null &&
-                    this.ChainId.Equals(input.ChainId))
+                    this.ChainId.Equals(input.ChainId)
                 ) && 
                 (
                     this.Balance == input.Balance ||
@@ -236,10 +230,7 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.LogoUri.GetHashCode();
                 }
-                if (this.ChainId != null)
-                {
-                    hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 if (this.Balance != null)
                 {
                     hashCode = (hashCode * 59) + this.Balance.GetHashCode();

@@ -80,9 +80,10 @@ namespace Beam.Model
         /// <param name="id">id (required).</param>
         /// <param name="externalId">externalId (required).</param>
         /// <param name="address">address (required).</param>
+        /// <param name="name">name (required).</param>
         /// <param name="chainId">chainId (required).</param>
         /// <param name="gameId">gameId (required).</param>
-        public GetGameResponseContractsInner(TypeEnum type = default(TypeEnum), string id = default(string), string externalId = default(string), string address = default(string), int chainId = default(int), string gameId = default(string))
+        public GetGameResponseContractsInner(TypeEnum type = default(TypeEnum), string id = default(string), string externalId = default(string), string address = default(string), string name = default(string), int chainId = default(int), string gameId = default(string))
         {
             this.Type = type;
             // to ensure "id" is required (not null)
@@ -103,6 +104,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("address is a required property for GetGameResponseContractsInner and cannot be null");
             }
             this.Address = address;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new ArgumentNullException("name is a required property for GetGameResponseContractsInner and cannot be null");
+            }
+            this.Name = name;
             this.ChainId = chainId;
             // to ensure "gameId" is required (not null)
             if (gameId == null)
@@ -131,6 +138,12 @@ namespace Beam.Model
         public string Address { get; set; }
 
         /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or Sets ChainId
         /// </summary>
         [DataMember(Name = "chainId", IsRequired = true, EmitDefaultValue = true)]
@@ -154,6 +167,7 @@ namespace Beam.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("  GameId: ").Append(GameId).Append("\n");
             sb.Append("}\n");
@@ -211,6 +225,11 @@ namespace Beam.Model
                     this.Address.Equals(input.Address))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.ChainId == input.ChainId ||
                     this.ChainId.Equals(input.ChainId)
                 ) && 
@@ -242,6 +261,10 @@ namespace Beam.Model
                 if (this.Address != null)
                 {
                     hashCode = (hashCode * 59) + this.Address.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 if (this.GameId != null)

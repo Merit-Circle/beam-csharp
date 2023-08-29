@@ -26,26 +26,26 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GenerateLinkCodeRequestInput
+    /// GenerateSignInCodeRequestInput
     /// </summary>
-    [DataContract(Name = "GenerateLinkCodeRequestInput")]
-    public partial class GenerateLinkCodeRequestInput : IEquatable<GenerateLinkCodeRequestInput>, IValidatableObject
+    [DataContract(Name = "GenerateSignInCodeRequestInput")]
+    public partial class GenerateSignInCodeRequestInput : IEquatable<GenerateSignInCodeRequestInput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GenerateSignInCodeRequestInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GenerateLinkCodeRequestInput() { }
+        protected GenerateSignInCodeRequestInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GenerateSignInCodeRequestInput" /> class.
         /// </summary>
         /// <param name="callbackUrl">callbackUrl (required).</param>
-        public GenerateLinkCodeRequestInput(string callbackUrl = default(string))
+        public GenerateSignInCodeRequestInput(string callbackUrl = default(string))
         {
             // to ensure "callbackUrl" is required (not null)
             if (callbackUrl == null)
             {
-                throw new ArgumentNullException("callbackUrl is a required property for GenerateLinkCodeRequestInput and cannot be null");
+                throw new ArgumentNullException("callbackUrl is a required property for GenerateSignInCodeRequestInput and cannot be null");
             }
             this.CallbackUrl = callbackUrl;
         }
@@ -63,7 +63,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GenerateLinkCodeRequestInput {\n");
+            sb.Append("class GenerateSignInCodeRequestInput {\n");
             sb.Append("  CallbackUrl: ").Append(CallbackUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -85,15 +85,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GenerateLinkCodeRequestInput);
+            return this.Equals(input as GenerateSignInCodeRequestInput);
         }
 
         /// <summary>
-        /// Returns true if GenerateLinkCodeRequestInput instances are equal
+        /// Returns true if GenerateSignInCodeRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of GenerateLinkCodeRequestInput to be compared</param>
+        /// <param name="input">Instance of GenerateSignInCodeRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GenerateLinkCodeRequestInput input)
+        public bool Equals(GenerateSignInCodeRequestInput input)
         {
             if (input == null)
             {

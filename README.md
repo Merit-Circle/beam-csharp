@@ -127,12 +127,16 @@ Class | Method | HTTP request | Description
 *AssetsApi* | [**GetProfileListedAssets**](docs/AssetsApi.md#getprofilelistedassets) | **GET** /v1/assets/profiles/{profileId}/listed | Get all the assets listed by an account (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileNativeCurrency**](docs/AssetsApi.md#getprofilenativecurrency) | **GET** /v1/assets/profiles/{profileId}/native | Get the native token balance
 *AssetsApi* | [**SellAsset**](docs/AssetsApi.md#sellasset) | **POST** /v1/assets/profiles/{profileId}/sell | List an asset for sale
-*AssetsApi* | [**TransferAsset**](docs/AssetsApi.md#transferasset) | **POST** /v1/assets/profiles/{profileId}/transfer | Transfer an asset
+*AssetsApi* | [**TransferAsset**](docs/AssetsApi.md#transferasset) | **POST** /v1/assets/profiles/{profileId}/transfer-asset | Transfer an asset (NFT assets, ERC721 / ERC1155)
+*AssetsApi* | [**TransferNativeToken**](docs/AssetsApi.md#transfernativetoken) | **POST** /v1/assets/profiles/{profileId}/transfer-native | Transfer the native token (MC)
+*AssetsApi* | [**TransferToken**](docs/AssetsApi.md#transfertoken) | **POST** /v1/assets/profiles/{profileId}/transfer-token | Transfer a token (token assets, ERC20)
 *ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
+*HealthApi* | [**Check**](docs/HealthApi.md#check) | **GET** /v1/health | 
 *ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{profileId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
 *ProfilesApi* | [**CreateProfile**](docs/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Creating a profile
+*ProfilesApi* | [**CreateSignInRequest**](docs/ProfilesApi.md#createsigninrequest) | **POST** /v1/profiles/{profileId}/create-sign-in-request | Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
 *ProfilesApi* | [**GetAllProfiles**](docs/ProfilesApi.md#getallprofiles) | **GET** /v1/profiles | Getting all profiles
 *ProfilesApi* | [**GetProfile**](docs/ProfilesApi.md#getprofile) | **GET** /v1/profiles/{profileId} | Getting information on a profile
 *TransactionsApi* | [**CreateProfileTransaction**](docs/TransactionsApi.md#createprofiletransaction) | **POST** /v1/transactions/profiles/{profileId} | Creating a new transaction on behalf of a profile
@@ -146,6 +150,9 @@ Class | Method | HTTP request | Description
 
  - [Model.BuyAssetRequestInput](docs/BuyAssetRequestInput.md)
  - [Model.BuyAssetResponse](docs/BuyAssetResponse.md)
+ - [Model.Check200Response](docs/Check200Response.md)
+ - [Model.Check200ResponseInfoValue](docs/Check200ResponseInfoValue.md)
+ - [Model.Check503Response](docs/Check503Response.md)
  - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
  - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
  - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)
@@ -154,11 +161,21 @@ Class | Method | HTTP request | Description
  - [Model.CreateTransactionResponse](docs/CreateTransactionResponse.md)
  - [Model.GenerateLinkCodeRequestInput](docs/GenerateLinkCodeRequestInput.md)
  - [Model.GenerateLinkCodeResponse](docs/GenerateLinkCodeResponse.md)
+ - [Model.GenerateSignInCodeRequestInput](docs/GenerateSignInCodeRequestInput.md)
+ - [Model.GenerateSignInCodeResponse](docs/GenerateSignInCodeResponse.md)
  - [Model.GetAllProfilesResponse](docs/GetAllProfilesResponse.md)
  - [Model.GetAllProfilesResponseDataInner](docs/GetAllProfilesResponseDataInner.md)
  - [Model.GetAllProfilesResponsePagination](docs/GetAllProfilesResponsePagination.md)
  - [Model.GetAssetListingsResponse](docs/GetAssetListingsResponse.md)
  - [Model.GetAssetListingsResponseDataInner](docs/GetAssetListingsResponseDataInner.md)
+ - [Model.GetAssetListingsResponseDataInnerNft](docs/GetAssetListingsResponseDataInnerNft.md)
+ - [Model.GetAssetResponse](docs/GetAssetResponse.md)
+ - [Model.GetAssetResponseAttributesInner](docs/GetAssetResponseAttributesInner.md)
+ - [Model.GetAssetResponseContract](docs/GetAssetResponseContract.md)
+ - [Model.GetAssetResponseContractAvatar](docs/GetAssetResponseContractAvatar.md)
+ - [Model.GetAssetResponseContractHeader](docs/GetAssetResponseContractHeader.md)
+ - [Model.GetAssetResponseContractHeaderBackground](docs/GetAssetResponseContractHeaderBackground.md)
+ - [Model.GetAssetResponseListing](docs/GetAssetResponseListing.md)
  - [Model.GetAssetsResponse](docs/GetAssetsResponse.md)
  - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
  - [Model.GetChainResponse](docs/GetChainResponse.md)
@@ -174,24 +191,16 @@ Class | Method | HTTP request | Description
  - [Model.GetTransactionResponse](docs/GetTransactionResponse.md)
  - [Model.GetTransactionsResponse](docs/GetTransactionsResponse.md)
  - [Model.GetTransactionsResponseDataInner](docs/GetTransactionsResponseDataInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicy](docs/GetTransactionsResponseDataInnerPolicy.md)
- - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInner](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContract](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContract.md)
- - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInner](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInnerInputsInner](docs/GetTransactionsResponseDataInnerPolicyPolicyRulesInnerContractAbiInnerInputsInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicyStrategy](docs/GetTransactionsResponseDataInnerPolicyStrategy.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerInteractionsInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextAction.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerNextActionPayload.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayer.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerPlayerAccountsInner.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponse.md)
- - [Model.GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner](docs/GetTransactionsResponseDataInnerPolicyTransactionIntentsInnerResponseLogsInner.md)
+ - [Model.GetTransactionsResponseDataInnerInteractionsInner](docs/GetTransactionsResponseDataInnerInteractionsInner.md)
+ - [Model.GetTransactionsResponseDataInnerResponse](docs/GetTransactionsResponseDataInnerResponse.md)
+ - [Model.GetTransactionsResponseDataInnerResponseLogsInner](docs/GetTransactionsResponseDataInnerResponseLogsInner.md)
  - [Model.SellAssetRequestInput](docs/SellAssetRequestInput.md)
  - [Model.SellAssetResponse](docs/SellAssetResponse.md)
  - [Model.TransferAssetRequestInput](docs/TransferAssetRequestInput.md)
  - [Model.TransferAssetResponse](docs/TransferAssetResponse.md)
+ - [Model.TransferNativeTokenRequestInput](docs/TransferNativeTokenRequestInput.md)
+ - [Model.TransferTokenRequestInput](docs/TransferTokenRequestInput.md)
+ - [Model.TransferTokenResponse](docs/TransferTokenResponse.md)
  - [Model.UpdateGameRequestInput](docs/UpdateGameRequestInput.md)
  - [Model.UpdateGameResponse](docs/UpdateGameResponse.md)
 

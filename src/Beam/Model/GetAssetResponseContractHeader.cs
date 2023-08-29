@@ -26,35 +26,25 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GenerateLinkCodeRequestInput
+    /// GetAssetResponseContractHeader
     /// </summary>
-    [DataContract(Name = "GenerateLinkCodeRequestInput")]
-    public partial class GenerateLinkCodeRequestInput : IEquatable<GenerateLinkCodeRequestInput>, IValidatableObject
+    [DataContract(Name = "GetAssetResponse_contract_header")]
+    public partial class GetAssetResponseContractHeader : IEquatable<GetAssetResponseContractHeader>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetResponseContractHeader" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GenerateLinkCodeRequestInput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
-        /// </summary>
-        /// <param name="callbackUrl">callbackUrl (required).</param>
-        public GenerateLinkCodeRequestInput(string callbackUrl = default(string))
+        /// <param name="background">background.</param>
+        public GetAssetResponseContractHeader(GetAssetResponseContractHeaderBackground background = default(GetAssetResponseContractHeaderBackground))
         {
-            // to ensure "callbackUrl" is required (not null)
-            if (callbackUrl == null)
-            {
-                throw new ArgumentNullException("callbackUrl is a required property for GenerateLinkCodeRequestInput and cannot be null");
-            }
-            this.CallbackUrl = callbackUrl;
+            this.Background = background;
         }
 
         /// <summary>
-        /// Gets or Sets CallbackUrl
+        /// Gets or Sets Background
         /// </summary>
-        [DataMember(Name = "callbackUrl", IsRequired = true, EmitDefaultValue = true)]
-        public string CallbackUrl { get; set; }
+        [DataMember(Name = "background", EmitDefaultValue = true)]
+        public GetAssetResponseContractHeaderBackground Background { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +53,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GenerateLinkCodeRequestInput {\n");
-            sb.Append("  CallbackUrl: ").Append(CallbackUrl).Append("\n");
+            sb.Append("class GetAssetResponseContractHeader {\n");
+            sb.Append("  Background: ").Append(Background).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,15 +75,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GenerateLinkCodeRequestInput);
+            return this.Equals(input as GetAssetResponseContractHeader);
         }
 
         /// <summary>
-        /// Returns true if GenerateLinkCodeRequestInput instances are equal
+        /// Returns true if GetAssetResponseContractHeader instances are equal
         /// </summary>
-        /// <param name="input">Instance of GenerateLinkCodeRequestInput to be compared</param>
+        /// <param name="input">Instance of GetAssetResponseContractHeader to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GenerateLinkCodeRequestInput input)
+        public bool Equals(GetAssetResponseContractHeader input)
         {
             if (input == null)
             {
@@ -101,9 +91,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.CallbackUrl == input.CallbackUrl ||
-                    (this.CallbackUrl != null &&
-                    this.CallbackUrl.Equals(input.CallbackUrl))
+                    this.Background == input.Background ||
+                    (this.Background != null &&
+                    this.Background.Equals(input.Background))
                 );
         }
 
@@ -116,9 +106,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CallbackUrl != null)
+                if (this.Background != null)
                 {
-                    hashCode = (hashCode * 59) + this.CallbackUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Background.GetHashCode();
                 }
                 return hashCode;
             }
