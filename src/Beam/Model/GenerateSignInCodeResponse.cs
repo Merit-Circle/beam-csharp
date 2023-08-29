@@ -26,35 +26,35 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GenerateLinkCodeRequestInput
+    /// GenerateSignInCodeResponse
     /// </summary>
-    [DataContract(Name = "GenerateLinkCodeRequestInput")]
-    public partial class GenerateLinkCodeRequestInput : IEquatable<GenerateLinkCodeRequestInput>, IValidatableObject
+    [DataContract(Name = "GenerateSignInCodeResponse")]
+    public partial class GenerateSignInCodeResponse : IEquatable<GenerateSignInCodeResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GenerateSignInCodeResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GenerateLinkCodeRequestInput() { }
+        protected GenerateSignInCodeResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GenerateSignInCodeResponse" /> class.
         /// </summary>
-        /// <param name="callbackUrl">callbackUrl (required).</param>
-        public GenerateLinkCodeRequestInput(string callbackUrl = default(string))
+        /// <param name="challenge">challenge (required).</param>
+        public GenerateSignInCodeResponse(string challenge = default(string))
         {
-            // to ensure "callbackUrl" is required (not null)
-            if (callbackUrl == null)
+            // to ensure "challenge" is required (not null)
+            if (challenge == null)
             {
-                throw new ArgumentNullException("callbackUrl is a required property for GenerateLinkCodeRequestInput and cannot be null");
+                throw new ArgumentNullException("challenge is a required property for GenerateSignInCodeResponse and cannot be null");
             }
-            this.CallbackUrl = callbackUrl;
+            this.Challenge = challenge;
         }
 
         /// <summary>
-        /// Gets or Sets CallbackUrl
+        /// Gets or Sets Challenge
         /// </summary>
-        [DataMember(Name = "callbackUrl", IsRequired = true, EmitDefaultValue = true)]
-        public string CallbackUrl { get; set; }
+        [DataMember(Name = "challenge", IsRequired = true, EmitDefaultValue = true)]
+        public string Challenge { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +63,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GenerateLinkCodeRequestInput {\n");
-            sb.Append("  CallbackUrl: ").Append(CallbackUrl).Append("\n");
+            sb.Append("class GenerateSignInCodeResponse {\n");
+            sb.Append("  Challenge: ").Append(Challenge).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,15 +85,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GenerateLinkCodeRequestInput);
+            return this.Equals(input as GenerateSignInCodeResponse);
         }
 
         /// <summary>
-        /// Returns true if GenerateLinkCodeRequestInput instances are equal
+        /// Returns true if GenerateSignInCodeResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of GenerateLinkCodeRequestInput to be compared</param>
+        /// <param name="input">Instance of GenerateSignInCodeResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GenerateLinkCodeRequestInput input)
+        public bool Equals(GenerateSignInCodeResponse input)
         {
             if (input == null)
             {
@@ -101,9 +101,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.CallbackUrl == input.CallbackUrl ||
-                    (this.CallbackUrl != null &&
-                    this.CallbackUrl.Equals(input.CallbackUrl))
+                    this.Challenge == input.Challenge ||
+                    (this.Challenge != null &&
+                    this.Challenge.Equals(input.Challenge))
                 );
         }
 
@@ -116,9 +116,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CallbackUrl != null)
+                if (this.Challenge != null)
                 {
-                    hashCode = (hashCode * 59) + this.CallbackUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Challenge.GetHashCode();
                 }
                 return hashCode;
             }

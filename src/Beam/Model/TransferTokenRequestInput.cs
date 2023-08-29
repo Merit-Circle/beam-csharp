@@ -26,39 +26,46 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// TransferAssetRequestInput
+    /// TransferTokenRequestInput
     /// </summary>
-    [DataContract(Name = "TransferAssetRequestInput")]
-    public partial class TransferAssetRequestInput : IEquatable<TransferAssetRequestInput>, IValidatableObject
+    [DataContract(Name = "TransferTokenRequestInput")]
+    public partial class TransferTokenRequestInput : IEquatable<TransferTokenRequestInput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransferAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="TransferTokenRequestInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected TransferAssetRequestInput() { }
+        protected TransferTokenRequestInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransferAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="TransferTokenRequestInput" /> class.
         /// </summary>
         /// <param name="receiverProfileId">receiverProfileId (required).</param>
         /// <param name="assetAddress">assetAddress (required).</param>
-        /// <param name="assetId">assetId (required).</param>
+        /// <param name="amountToTransfer">amountToTransfer (required).</param>
         /// <param name="optimistic">optimistic (default to false).</param>
-        public TransferAssetRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), decimal assetId = default(decimal), bool optimistic = false)
+        /// <param name="sponsor">sponsor (default to true).</param>
+        public TransferTokenRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), string amountToTransfer = default(string), bool optimistic = false, bool sponsor = true)
         {
             // to ensure "receiverProfileId" is required (not null)
             if (receiverProfileId == null)
             {
-                throw new ArgumentNullException("receiverProfileId is a required property for TransferAssetRequestInput and cannot be null");
+                throw new ArgumentNullException("receiverProfileId is a required property for TransferTokenRequestInput and cannot be null");
             }
             this.ReceiverProfileId = receiverProfileId;
             // to ensure "assetAddress" is required (not null)
             if (assetAddress == null)
             {
-                throw new ArgumentNullException("assetAddress is a required property for TransferAssetRequestInput and cannot be null");
+                throw new ArgumentNullException("assetAddress is a required property for TransferTokenRequestInput and cannot be null");
             }
             this.AssetAddress = assetAddress;
-            this.AssetId = assetId;
+            // to ensure "amountToTransfer" is required (not null)
+            if (amountToTransfer == null)
+            {
+                throw new ArgumentNullException("amountToTransfer is a required property for TransferTokenRequestInput and cannot be null");
+            }
+            this.AmountToTransfer = amountToTransfer;
             this.Optimistic = optimistic;
+            this.Sponsor = sponsor;
         }
 
         /// <summary>
@@ -74,10 +81,10 @@ namespace Beam.Model
         public string AssetAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets AssetId
+        /// Gets or Sets AmountToTransfer
         /// </summary>
-        [DataMember(Name = "assetId", IsRequired = true, EmitDefaultValue = true)]
-        public decimal AssetId { get; set; }
+        [DataMember(Name = "amountToTransfer", IsRequired = true, EmitDefaultValue = true)]
+        public string AmountToTransfer { get; set; }
 
         /// <summary>
         /// Gets or Sets Optimistic
@@ -86,17 +93,24 @@ namespace Beam.Model
         public bool Optimistic { get; set; }
 
         /// <summary>
+        /// Gets or Sets Sponsor
+        /// </summary>
+        [DataMember(Name = "sponsor", EmitDefaultValue = true)]
+        public bool Sponsor { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class TransferAssetRequestInput {\n");
+            sb.Append("class TransferTokenRequestInput {\n");
             sb.Append("  ReceiverProfileId: ").Append(ReceiverProfileId).Append("\n");
             sb.Append("  AssetAddress: ").Append(AssetAddress).Append("\n");
-            sb.Append("  AssetId: ").Append(AssetId).Append("\n");
+            sb.Append("  AmountToTransfer: ").Append(AmountToTransfer).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
+            sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,15 +131,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransferAssetRequestInput);
+            return this.Equals(input as TransferTokenRequestInput);
         }
 
         /// <summary>
-        /// Returns true if TransferAssetRequestInput instances are equal
+        /// Returns true if TransferTokenRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of TransferAssetRequestInput to be compared</param>
+        /// <param name="input">Instance of TransferTokenRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TransferAssetRequestInput input)
+        public bool Equals(TransferTokenRequestInput input)
         {
             if (input == null)
             {
@@ -143,12 +157,17 @@ namespace Beam.Model
                     this.AssetAddress.Equals(input.AssetAddress))
                 ) && 
                 (
-                    this.AssetId == input.AssetId ||
-                    this.AssetId.Equals(input.AssetId)
+                    this.AmountToTransfer == input.AmountToTransfer ||
+                    (this.AmountToTransfer != null &&
+                    this.AmountToTransfer.Equals(input.AmountToTransfer))
                 ) && 
                 (
                     this.Optimistic == input.Optimistic ||
                     this.Optimistic.Equals(input.Optimistic)
+                ) && 
+                (
+                    this.Sponsor == input.Sponsor ||
+                    this.Sponsor.Equals(input.Sponsor)
                 );
         }
 
@@ -169,8 +188,12 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.AssetAddress.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
+                if (this.AmountToTransfer != null)
+                {
+                    hashCode = (hashCode * 59) + this.AmountToTransfer.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
+                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 return hashCode;
             }
         }

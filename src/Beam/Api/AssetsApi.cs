@@ -55,8 +55,8 @@ namespace Beam.Api
         /// <param name="contractAddress"></param>
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Object</returns>
-        Object GetAsset(string contractAddress, string assetId, int operationIndex = 0);
+        /// <returns>GetAssetResponse</returns>
+        GetAssetResponse GetAsset(string contractAddress, string assetId, int operationIndex = 0);
 
         /// <summary>
         /// Get a single NFT (e.g. ERC721 / ERC1155)
@@ -68,8 +68,8 @@ namespace Beam.Api
         /// <param name="contractAddress"></param>
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object</returns>
-        ApiResponse<Object> GetAssetWithHttpInfo(string contractAddress, string assetId, int operationIndex = 0);
+        /// <returns>ApiResponse of GetAssetResponse</returns>
+        ApiResponse<GetAssetResponse> GetAssetWithHttpInfo(string contractAddress, string assetId, int operationIndex = 0);
         /// <summary>
         /// Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -201,7 +201,7 @@ namespace Beam.Api
         /// <returns>ApiResponse of SellAssetResponse</returns>
         ApiResponse<SellAssetResponse> SellAssetWithHttpInfo(string profileId, SellAssetRequestInput sellAssetRequestInput, int operationIndex = 0);
         /// <summary>
-        /// Transfer an asset
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155)
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
@@ -211,7 +211,7 @@ namespace Beam.Api
         TransferAssetResponse TransferAsset(string profileId, TransferAssetRequestInput transferAssetRequestInput, int operationIndex = 0);
 
         /// <summary>
-        /// Transfer an asset
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155)
         /// </summary>
         /// <remarks>
         /// 
@@ -222,6 +222,50 @@ namespace Beam.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransferAssetResponse</returns>
         ApiResponse<TransferAssetResponse> TransferAssetWithHttpInfo(string profileId, TransferAssetRequestInput transferAssetRequestInput, int operationIndex = 0);
+        /// <summary>
+        /// Transfer the native token (MC)
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransferTokenResponse</returns>
+        TransferTokenResponse TransferNativeToken(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0);
+
+        /// <summary>
+        /// Transfer the native token (MC)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransferTokenResponse</returns>
+        ApiResponse<TransferTokenResponse> TransferNativeTokenWithHttpInfo(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0);
+        /// <summary>
+        /// Transfer a token (token assets, ERC20)
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransferTokenResponse</returns>
+        TransferTokenResponse TransferToken(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0);
+
+        /// <summary>
+        /// Transfer a token (token assets, ERC20)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransferTokenResponse</returns>
+        ApiResponse<TransferTokenResponse> TransferTokenWithHttpInfo(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -269,8 +313,8 @@ namespace Beam.Api
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Object</returns>
-        System.Threading.Tasks.Task<Object> GetAssetAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetAssetResponse</returns>
+        System.Threading.Tasks.Task<GetAssetResponse> GetAssetAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a single NFT (e.g. ERC721 / ERC1155)
@@ -283,8 +327,8 @@ namespace Beam.Api
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetAssetWithHttpInfoAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetAssetResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAssetResponse>> GetAssetWithHttpInfoAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -446,7 +490,7 @@ namespace Beam.Api
         /// <returns>Task of ApiResponse (SellAssetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SellAssetResponse>> SellAssetWithHttpInfoAsync(string profileId, SellAssetRequestInput sellAssetRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Transfer an asset
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155)
         /// </summary>
         /// <remarks>
         /// 
@@ -460,7 +504,7 @@ namespace Beam.Api
         System.Threading.Tasks.Task<TransferAssetResponse> TransferAssetAsync(string profileId, TransferAssetRequestInput transferAssetRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Transfer an asset
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155)
         /// </summary>
         /// <remarks>
         /// 
@@ -472,6 +516,60 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TransferAssetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TransferAssetResponse>> TransferAssetWithHttpInfoAsync(string profileId, TransferAssetRequestInput transferAssetRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Transfer the native token (MC)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TransferTokenResponse</returns>
+        System.Threading.Tasks.Task<TransferTokenResponse> TransferNativeTokenAsync(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Transfer the native token (MC)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TransferTokenResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransferTokenResponse>> TransferNativeTokenWithHttpInfoAsync(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Transfer a token (token assets, ERC20)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TransferTokenResponse</returns>
+        System.Threading.Tasks.Task<TransferTokenResponse> TransferTokenAsync(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Transfer a token (token assets, ERC20)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TransferTokenResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransferTokenResponse>> TransferTokenWithHttpInfoAsync(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -773,10 +871,10 @@ namespace Beam.Api
         /// <param name="contractAddress"></param>
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>Object</returns>
-        public Object GetAsset(string contractAddress, string assetId, int operationIndex = 0)
+        /// <returns>GetAssetResponse</returns>
+        public GetAssetResponse GetAsset(string contractAddress, string assetId, int operationIndex = 0)
         {
-            Beam.Client.ApiResponse<Object> localVarResponse = GetAssetWithHttpInfo(contractAddress, assetId);
+            Beam.Client.ApiResponse<GetAssetResponse> localVarResponse = GetAssetWithHttpInfo(contractAddress, assetId);
             return localVarResponse.Data;
         }
 
@@ -787,8 +885,8 @@ namespace Beam.Api
         /// <param name="contractAddress"></param>
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of Object</returns>
-        public Beam.Client.ApiResponse<Object> GetAssetWithHttpInfo(string contractAddress, string assetId, int operationIndex = 0)
+        /// <returns>ApiResponse of GetAssetResponse</returns>
+        public Beam.Client.ApiResponse<GetAssetResponse> GetAssetWithHttpInfo(string contractAddress, string assetId, int operationIndex = 0)
         {
             // verify the required parameter 'contractAddress' is set
             if (contractAddress == null)
@@ -837,7 +935,7 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<Object>("/v1/assets/{contractAddress}/{assetId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetAssetResponse>("/v1/assets/{contractAddress}/{assetId}", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAsset", localVarResponse);
@@ -858,10 +956,10 @@ namespace Beam.Api
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> GetAssetAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetAssetResponse</returns>
+        public async System.Threading.Tasks.Task<GetAssetResponse> GetAssetAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<Object> localVarResponse = await GetAssetWithHttpInfoAsync(contractAddress, assetId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetResponse> localVarResponse = await GetAssetWithHttpInfoAsync(contractAddress, assetId, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -873,8 +971,8 @@ namespace Beam.Api
         /// <param name="assetId"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<Object>> GetAssetWithHttpInfoAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetAssetResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetResponse>> GetAssetWithHttpInfoAsync(string contractAddress, string assetId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'contractAddress' is set
             if (contractAddress == null)
@@ -924,7 +1022,7 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/v1/assets/{contractAddress}/{assetId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAssetResponse>("/v1/assets/{contractAddress}/{assetId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1931,7 +2029,7 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Transfer an asset 
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155) 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
@@ -1945,7 +2043,7 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Transfer an asset 
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155) 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
@@ -2002,7 +2100,7 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<TransferAssetResponse>("/v1/assets/profiles/{profileId}/transfer", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TransferAssetResponse>("/v1/assets/profiles/{profileId}/transfer-asset", localVarRequestOptions, this.Configuration);
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TransferAsset", localVarResponse);
@@ -2016,7 +2114,7 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Transfer an asset 
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155) 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
@@ -2031,7 +2129,7 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Transfer an asset 
+        /// Transfer an asset (NFT assets, ERC721 / ERC1155) 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
@@ -2090,11 +2188,359 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<TransferAssetResponse>("/v1/assets/profiles/{profileId}/transfer", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransferAssetResponse>("/v1/assets/profiles/{profileId}/transfer-asset", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("TransferAsset", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Transfer the native token (MC) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransferTokenResponse</returns>
+        public TransferTokenResponse TransferNativeToken(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0)
+        {
+            Beam.Client.ApiResponse<TransferTokenResponse> localVarResponse = TransferNativeTokenWithHttpInfo(profileId, transferNativeTokenRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Transfer the native token (MC) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransferTokenResponse</returns>
+        public Beam.Client.ApiResponse<TransferTokenResponse> TransferNativeTokenWithHttpInfo(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0)
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling AssetsApi->TransferNativeToken");
+            }
+
+            // verify the required parameter 'transferNativeTokenRequestInput' is set
+            if (transferNativeTokenRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'transferNativeTokenRequestInput' when calling AssetsApi->TransferNativeToken");
+            }
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = transferNativeTokenRequestInput;
+
+            localVarRequestOptions.Operation = "AssetsApi.TransferNativeToken";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TransferTokenResponse>("/v1/assets/profiles/{profileId}/transfer-native", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TransferNativeToken", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Transfer the native token (MC) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TransferTokenResponse</returns>
+        public async System.Threading.Tasks.Task<TransferTokenResponse> TransferNativeTokenAsync(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<TransferTokenResponse> localVarResponse = await TransferNativeTokenWithHttpInfoAsync(profileId, transferNativeTokenRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Transfer the native token (MC) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferNativeTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TransferTokenResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<TransferTokenResponse>> TransferNativeTokenWithHttpInfoAsync(string profileId, TransferNativeTokenRequestInput transferNativeTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling AssetsApi->TransferNativeToken");
+            }
+
+            // verify the required parameter 'transferNativeTokenRequestInput' is set
+            if (transferNativeTokenRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'transferNativeTokenRequestInput' when calling AssetsApi->TransferNativeToken");
+            }
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = transferNativeTokenRequestInput;
+
+            localVarRequestOptions.Operation = "AssetsApi.TransferNativeToken";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransferTokenResponse>("/v1/assets/profiles/{profileId}/transfer-native", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TransferNativeToken", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Transfer a token (token assets, ERC20) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransferTokenResponse</returns>
+        public TransferTokenResponse TransferToken(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0)
+        {
+            Beam.Client.ApiResponse<TransferTokenResponse> localVarResponse = TransferTokenWithHttpInfo(profileId, transferTokenRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Transfer a token (token assets, ERC20) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransferTokenResponse</returns>
+        public Beam.Client.ApiResponse<TransferTokenResponse> TransferTokenWithHttpInfo(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0)
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling AssetsApi->TransferToken");
+            }
+
+            // verify the required parameter 'transferTokenRequestInput' is set
+            if (transferTokenRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'transferTokenRequestInput' when calling AssetsApi->TransferToken");
+            }
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = transferTokenRequestInput;
+
+            localVarRequestOptions.Operation = "AssetsApi.TransferToken";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TransferTokenResponse>("/v1/assets/profiles/{profileId}/transfer-token", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TransferToken", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Transfer a token (token assets, ERC20) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TransferTokenResponse</returns>
+        public async System.Threading.Tasks.Task<TransferTokenResponse> TransferTokenAsync(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<TransferTokenResponse> localVarResponse = await TransferTokenWithHttpInfoAsync(profileId, transferTokenRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Transfer a token (token assets, ERC20) 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="transferTokenRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TransferTokenResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<TransferTokenResponse>> TransferTokenWithHttpInfoAsync(string profileId, TransferTokenRequestInput transferTokenRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling AssetsApi->TransferToken");
+            }
+
+            // verify the required parameter 'transferTokenRequestInput' is set
+            if (transferTokenRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'transferTokenRequestInput' when calling AssetsApi->TransferToken");
+            }
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = transferTokenRequestInput;
+
+            localVarRequestOptions.Operation = "AssetsApi.TransferToken";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TransferTokenResponse>("/v1/assets/profiles/{profileId}/transfer-token", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TransferToken", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -26,18 +26,18 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetsResponseDataInner
+    /// GetAssetListingsResponseDataInnerNft
     /// </summary>
-    [DataContract(Name = "GetAssetsResponse_data_inner")]
-    public partial class GetAssetsResponseDataInner : IEquatable<GetAssetsResponseDataInner>, IValidatableObject
+    [DataContract(Name = "GetAssetListingsResponse_data_inner_nft")]
+    public partial class GetAssetListingsResponseDataInnerNft : IEquatable<GetAssetListingsResponseDataInnerNft>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetsResponseDataInner" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetListingsResponseDataInnerNft" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetAssetsResponseDataInner() { }
+        protected GetAssetListingsResponseDataInnerNft() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetsResponseDataInner" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetListingsResponseDataInnerNft" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
@@ -45,46 +45,44 @@ namespace Beam.Model
         /// <param name="assetType">assetType (required).</param>
         /// <param name="assetAddress">assetAddress (required).</param>
         /// <param name="assetId">assetId (required).</param>
-        /// <param name="quantity">quantity (required).</param>
-        public GetAssetsResponseDataInner(string id = default(string), string name = default(string), string imageUrl = default(string), string assetType = default(string), string assetAddress = default(string), string assetId = default(string), decimal quantity = default(decimal))
+        public GetAssetListingsResponseDataInnerNft(string id = default(string), string name = default(string), string imageUrl = default(string), string assetType = default(string), string assetAddress = default(string), string assetId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new ArgumentNullException("id is a required property for GetAssetsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("id is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.Id = id;
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new ArgumentNullException("name is a required property for GetAssetsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("name is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.Name = name;
             // to ensure "imageUrl" is required (not null)
             if (imageUrl == null)
             {
-                throw new ArgumentNullException("imageUrl is a required property for GetAssetsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("imageUrl is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.ImageUrl = imageUrl;
             // to ensure "assetType" is required (not null)
             if (assetType == null)
             {
-                throw new ArgumentNullException("assetType is a required property for GetAssetsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("assetType is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.AssetType = assetType;
             // to ensure "assetAddress" is required (not null)
             if (assetAddress == null)
             {
-                throw new ArgumentNullException("assetAddress is a required property for GetAssetsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("assetAddress is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.AssetAddress = assetAddress;
             // to ensure "assetId" is required (not null)
             if (assetId == null)
             {
-                throw new ArgumentNullException("assetId is a required property for GetAssetsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("assetId is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.AssetId = assetId;
-            this.Quantity = quantity;
         }
 
         /// <summary>
@@ -124,26 +122,19 @@ namespace Beam.Model
         public string AssetId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
-        /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Quantity { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetsResponseDataInner {\n");
+            sb.Append("class GetAssetListingsResponseDataInnerNft {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  AssetType: ").Append(AssetType).Append("\n");
             sb.Append("  AssetAddress: ").Append(AssetAddress).Append("\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -164,15 +155,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetsResponseDataInner);
+            return this.Equals(input as GetAssetListingsResponseDataInnerNft);
         }
 
         /// <summary>
-        /// Returns true if GetAssetsResponseDataInner instances are equal
+        /// Returns true if GetAssetListingsResponseDataInnerNft instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetsResponseDataInner to be compared</param>
+        /// <param name="input">Instance of GetAssetListingsResponseDataInnerNft to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetsResponseDataInner input)
+        public bool Equals(GetAssetListingsResponseDataInnerNft input)
         {
             if (input == null)
             {
@@ -208,10 +199,6 @@ namespace Beam.Model
                     this.AssetId == input.AssetId ||
                     (this.AssetId != null &&
                     this.AssetId.Equals(input.AssetId))
-                ) && 
-                (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
                 );
         }
 
@@ -248,7 +235,6 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 return hashCode;
             }
         }

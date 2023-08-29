@@ -45,16 +45,17 @@ namespace Beam.Model
         /// <param name="startPrice">startPrice (required).</param>
         /// <param name="endPrice">endPrice (required).</param>
         /// <param name="platformFee">platformFee (required).</param>
+        /// <param name="royaltyFee">royaltyFee (required).</param>
         /// <param name="currency">currency (required).</param>
         /// <param name="startTime">startTime (required).</param>
         /// <param name="endTime">endTime (required).</param>
         /// <param name="quantityListed">quantityListed (required).</param>
         /// <param name="signedOrderId">signedOrderId (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
-        /// <param name="userId">userId (required).</param>
+        /// <param name="sellerAddress">sellerAddress (required).</param>
         /// <param name="contractId">contractId (required).</param>
         /// <param name="nft">nft (required).</param>
-        public GetAssetListingsResponseDataInner(string id = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string userId = default(string), string contractId = default(string), GetAssetsResponseDataInner nft = default(GetAssetsResponseDataInner))
+        public GetAssetListingsResponseDataInner(string id = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -87,6 +88,7 @@ namespace Beam.Model
             }
             this.EndPrice = endPrice;
             this.PlatformFee = platformFee;
+            this.RoyaltyFee = royaltyFee;
             // to ensure "currency" is required (not null)
             if (currency == null)
             {
@@ -118,12 +120,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("expiresAt is a required property for GetAssetListingsResponseDataInner and cannot be null");
             }
             this.ExpiresAt = expiresAt;
-            // to ensure "userId" is required (not null)
-            if (userId == null)
+            // to ensure "sellerAddress" is required (not null)
+            if (sellerAddress == null)
             {
-                throw new ArgumentNullException("userId is a required property for GetAssetListingsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("sellerAddress is a required property for GetAssetListingsResponseDataInner and cannot be null");
             }
-            this.UserId = userId;
+            this.SellerAddress = sellerAddress;
             // to ensure "contractId" is required (not null)
             if (contractId == null)
             {
@@ -175,6 +177,12 @@ namespace Beam.Model
         public decimal PlatformFee { get; set; }
 
         /// <summary>
+        /// Gets or Sets RoyaltyFee
+        /// </summary>
+        [DataMember(Name = "royaltyFee", IsRequired = true, EmitDefaultValue = true)]
+        public decimal RoyaltyFee { get; set; }
+
+        /// <summary>
         /// Gets or Sets Currency
         /// </summary>
         [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
@@ -211,10 +219,10 @@ namespace Beam.Model
         public string ExpiresAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets SellerAddress
         /// </summary>
-        [DataMember(Name = "userId", IsRequired = true, EmitDefaultValue = true)]
-        public string UserId { get; set; }
+        [DataMember(Name = "sellerAddress", IsRequired = true, EmitDefaultValue = true)]
+        public string SellerAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets ContractId
@@ -226,7 +234,7 @@ namespace Beam.Model
         /// Gets or Sets Nft
         /// </summary>
         [DataMember(Name = "nft", IsRequired = true, EmitDefaultValue = true)]
-        public GetAssetsResponseDataInner Nft { get; set; }
+        public GetAssetListingsResponseDataInnerNft Nft { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -242,13 +250,14 @@ namespace Beam.Model
             sb.Append("  StartPrice: ").Append(StartPrice).Append("\n");
             sb.Append("  EndPrice: ").Append(EndPrice).Append("\n");
             sb.Append("  PlatformFee: ").Append(PlatformFee).Append("\n");
+            sb.Append("  RoyaltyFee: ").Append(RoyaltyFee).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  QuantityListed: ").Append(QuantityListed).Append("\n");
             sb.Append("  SignedOrderId: ").Append(SignedOrderId).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  SellerAddress: ").Append(SellerAddress).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
             sb.Append("  Nft: ").Append(Nft).Append("\n");
             sb.Append("}\n");
@@ -316,6 +325,10 @@ namespace Beam.Model
                     this.PlatformFee.Equals(input.PlatformFee)
                 ) && 
                 (
+                    this.RoyaltyFee == input.RoyaltyFee ||
+                    this.RoyaltyFee.Equals(input.RoyaltyFee)
+                ) && 
+                (
                     this.Currency == input.Currency ||
                     (this.Currency != null &&
                     this.Currency.Equals(input.Currency))
@@ -345,9 +358,9 @@ namespace Beam.Model
                     this.ExpiresAt.Equals(input.ExpiresAt))
                 ) && 
                 (
-                    this.UserId == input.UserId ||
-                    (this.UserId != null &&
-                    this.UserId.Equals(input.UserId))
+                    this.SellerAddress == input.SellerAddress ||
+                    (this.SellerAddress != null &&
+                    this.SellerAddress.Equals(input.SellerAddress))
                 ) && 
                 (
                     this.ContractId == input.ContractId ||
@@ -391,6 +404,7 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.EndPrice.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.PlatformFee.GetHashCode();
+                hashCode = (hashCode * 59) + this.RoyaltyFee.GetHashCode();
                 if (this.Currency != null)
                 {
                     hashCode = (hashCode * 59) + this.Currency.GetHashCode();
@@ -412,9 +426,9 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.ExpiresAt.GetHashCode();
                 }
-                if (this.UserId != null)
+                if (this.SellerAddress != null)
                 {
-                    hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SellerAddress.GetHashCode();
                 }
                 if (this.ContractId != null)
                 {

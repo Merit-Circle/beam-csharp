@@ -26,35 +26,25 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GenerateLinkCodeRequestInput
+    /// Check200ResponseInfoValue
     /// </summary>
-    [DataContract(Name = "GenerateLinkCodeRequestInput")]
-    public partial class GenerateLinkCodeRequestInput : IEquatable<GenerateLinkCodeRequestInput>, IValidatableObject
+    [DataContract(Name = "check_200_response_info_value")]
+    public partial class Check200ResponseInfoValue : Dictionary<String, string>, IEquatable<Check200ResponseInfoValue>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="Check200ResponseInfoValue" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected GenerateLinkCodeRequestInput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenerateLinkCodeRequestInput" /> class.
-        /// </summary>
-        /// <param name="callbackUrl">callbackUrl (required).</param>
-        public GenerateLinkCodeRequestInput(string callbackUrl = default(string))
+        /// <param name="status">status.</param>
+        public Check200ResponseInfoValue(string status = default(string)) : base()
         {
-            // to ensure "callbackUrl" is required (not null)
-            if (callbackUrl == null)
-            {
-                throw new ArgumentNullException("callbackUrl is a required property for GenerateLinkCodeRequestInput and cannot be null");
-            }
-            this.CallbackUrl = callbackUrl;
+            this.Status = status;
         }
 
         /// <summary>
-        /// Gets or Sets CallbackUrl
+        /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "callbackUrl", IsRequired = true, EmitDefaultValue = true)]
-        public string CallbackUrl { get; set; }
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public string Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +53,9 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GenerateLinkCodeRequestInput {\n");
-            sb.Append("  CallbackUrl: ").Append(CallbackUrl).Append("\n");
+            sb.Append("class Check200ResponseInfoValue {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -73,7 +64,7 @@ namespace Beam.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -85,25 +76,25 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GenerateLinkCodeRequestInput);
+            return this.Equals(input as Check200ResponseInfoValue);
         }
 
         /// <summary>
-        /// Returns true if GenerateLinkCodeRequestInput instances are equal
+        /// Returns true if Check200ResponseInfoValue instances are equal
         /// </summary>
-        /// <param name="input">Instance of GenerateLinkCodeRequestInput to be compared</param>
+        /// <param name="input">Instance of Check200ResponseInfoValue to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GenerateLinkCodeRequestInput input)
+        public bool Equals(Check200ResponseInfoValue input)
         {
             if (input == null)
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
-                    this.CallbackUrl == input.CallbackUrl ||
-                    (this.CallbackUrl != null &&
-                    this.CallbackUrl.Equals(input.CallbackUrl))
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
                 );
         }
 
@@ -115,10 +106,10 @@ namespace Beam.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
-                if (this.CallbackUrl != null)
+                int hashCode = base.GetHashCode();
+                if (this.Status != null)
                 {
-                    hashCode = (hashCode * 59) + this.CallbackUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 }
                 return hashCode;
             }

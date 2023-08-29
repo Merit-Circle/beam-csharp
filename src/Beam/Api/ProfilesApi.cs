@@ -69,6 +69,28 @@ namespace Beam.Api
         /// <returns>ApiResponse of CreateProfileResponse</returns>
         ApiResponse<CreateProfileResponse> CreateProfileWithHttpInfo(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0);
         /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>GenerateSignInCodeResponse</returns>
+        GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0);
+
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of GenerateSignInCodeResponse</returns>
+        ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0);
+        /// <summary>
         /// Getting all profiles
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
@@ -167,6 +189,33 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProfileResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateProfileResponse>> CreateProfileWithHttpInfoAsync(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GenerateSignInCodeResponse</returns>
+        System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GenerateSignInCodeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting all profiles
         /// </summary>
@@ -656,6 +705,180 @@ namespace Beam.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>GenerateSignInCodeResponse</returns>
+        public GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0)
+        {
+            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = CreateSignInRequestWithHttpInfo(profileId, generateSignInCodeRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of GenerateSignInCodeResponse</returns>
+        public Beam.Client.ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0)
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateSignInRequest");
+            }
+
+            // verify the required parameter 'generateSignInCodeRequestInput' is set
+            if (generateSignInCodeRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'generateSignInCodeRequestInput' when calling ProfilesApi->CreateSignInRequest");
+            }
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = generateSignInCodeRequestInput;
+
+            localVarRequestOptions.Operation = "ProfilesApi.CreateSignInRequest";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GenerateSignInCodeResponse>("/v1/profiles/{profileId}/create-sign-in-request", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateSignInRequest", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GenerateSignInCodeResponse</returns>
+        public async System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = await CreateSignInRequestWithHttpInfoAsync(profileId, generateSignInCodeRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="generateSignInCodeRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GenerateSignInCodeResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateSignInRequest");
+            }
+
+            // verify the required parameter 'generateSignInCodeRequestInput' is set
+            if (generateSignInCodeRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'generateSignInCodeRequestInput' when calling ProfilesApi->CreateSignInRequest");
+            }
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = generateSignInCodeRequestInput;
+
+            localVarRequestOptions.Operation = "ProfilesApi.CreateSignInRequest";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GenerateSignInCodeResponse>("/v1/profiles/{profileId}/create-sign-in-request", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateSignInRequest", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
