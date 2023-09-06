@@ -42,8 +42,11 @@ namespace Beam.Model
         /// <param name="receiverProfileId">receiverProfileId (required).</param>
         /// <param name="assetAddress">assetAddress (required).</param>
         /// <param name="assetId">assetId (required).</param>
+        /// <param name="amountToTransfer">amountToTransfer (default to 1M).</param>
         /// <param name="optimistic">optimistic (default to false).</param>
-        public TransferAssetRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), decimal assetId = default(decimal), bool optimistic = false)
+        /// <param name="sponsor">sponsor (default to true).</param>
+        /// <param name="policyId">policyId.</param>
+        public TransferAssetRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), decimal assetId = default(decimal), decimal amountToTransfer = 1M, bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
             // to ensure "receiverProfileId" is required (not null)
             if (receiverProfileId == null)
@@ -58,7 +61,10 @@ namespace Beam.Model
             }
             this.AssetAddress = assetAddress;
             this.AssetId = assetId;
+            this.AmountToTransfer = amountToTransfer;
             this.Optimistic = optimistic;
+            this.Sponsor = sponsor;
+            this.PolicyId = policyId;
         }
 
         /// <summary>
@@ -80,10 +86,28 @@ namespace Beam.Model
         public decimal AssetId { get; set; }
 
         /// <summary>
+        /// Gets or Sets AmountToTransfer
+        /// </summary>
+        [DataMember(Name = "amountToTransfer", EmitDefaultValue = false)]
+        public decimal AmountToTransfer { get; set; }
+
+        /// <summary>
         /// Gets or Sets Optimistic
         /// </summary>
         [DataMember(Name = "optimistic", EmitDefaultValue = true)]
         public bool Optimistic { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Sponsor
+        /// </summary>
+        [DataMember(Name = "sponsor", EmitDefaultValue = true)]
+        public bool Sponsor { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PolicyId
+        /// </summary>
+        [DataMember(Name = "policyId", EmitDefaultValue = false)]
+        public string PolicyId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -96,7 +120,10 @@ namespace Beam.Model
             sb.Append("  ReceiverProfileId: ").Append(ReceiverProfileId).Append("\n");
             sb.Append("  AssetAddress: ").Append(AssetAddress).Append("\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
+            sb.Append("  AmountToTransfer: ").Append(AmountToTransfer).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
+            sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
+            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -147,8 +174,21 @@ namespace Beam.Model
                     this.AssetId.Equals(input.AssetId)
                 ) && 
                 (
+                    this.AmountToTransfer == input.AmountToTransfer ||
+                    this.AmountToTransfer.Equals(input.AmountToTransfer)
+                ) && 
+                (
                     this.Optimistic == input.Optimistic ||
                     this.Optimistic.Equals(input.Optimistic)
+                ) && 
+                (
+                    this.Sponsor == input.Sponsor ||
+                    this.Sponsor.Equals(input.Sponsor)
+                ) && 
+                (
+                    this.PolicyId == input.PolicyId ||
+                    (this.PolicyId != null &&
+                    this.PolicyId.Equals(input.PolicyId))
                 );
         }
 
@@ -170,7 +210,13 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.AssetAddress.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
+                hashCode = (hashCode * 59) + this.AmountToTransfer.GetHashCode();
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
+                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
+                if (this.PolicyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
+                }
                 return hashCode;
             }
         }
@@ -182,6 +228,12 @@ namespace Beam.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // AmountToTransfer (decimal) minimum
+            if (this.AmountToTransfer < (decimal)0)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AmountToTransfer, must be a value greater than or equal to 0.", new [] { "AmountToTransfer" });
+            }
+
             yield break;
         }
     }

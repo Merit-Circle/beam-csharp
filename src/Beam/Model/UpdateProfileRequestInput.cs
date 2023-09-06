@@ -26,46 +26,35 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// BuyAssetResponse
+    /// UpdateProfileRequestInput
     /// </summary>
-    [DataContract(Name = "BuyAssetResponse")]
-    public partial class BuyAssetResponse : IEquatable<BuyAssetResponse>, IValidatableObject
+    [DataContract(Name = "UpdateProfileRequestInput")]
+    public partial class UpdateProfileRequestInput : IEquatable<UpdateProfileRequestInput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuyAssetResponse" /> class.
+        /// Initializes a new instance of the <see cref="UpdateProfileRequestInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BuyAssetResponse() { }
+        protected UpdateProfileRequestInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuyAssetResponse" /> class.
+        /// Initializes a new instance of the <see cref="UpdateProfileRequestInput" /> class.
         /// </summary>
-        /// <param name="success">success (required).</param>
-        /// <param name="transactionHash">transactionHash.</param>
-        /// <param name="explorerUrl">explorerUrl.</param>
-        public BuyAssetResponse(bool success = default(bool), string transactionHash = default(string), string explorerUrl = default(string))
+        /// <param name="newProfileId">newProfileId (required).</param>
+        public UpdateProfileRequestInput(string newProfileId = default(string))
         {
-            this.Success = success;
-            this.TransactionHash = transactionHash;
-            this.ExplorerUrl = explorerUrl;
+            // to ensure "newProfileId" is required (not null)
+            if (newProfileId == null)
+            {
+                throw new ArgumentNullException("newProfileId is a required property for UpdateProfileRequestInput and cannot be null");
+            }
+            this.NewProfileId = newProfileId;
         }
 
         /// <summary>
-        /// Gets or Sets Success
+        /// Gets or Sets NewProfileId
         /// </summary>
-        [DataMember(Name = "success", IsRequired = true, EmitDefaultValue = true)]
-        public bool Success { get; set; }
-
-        /// <summary>
-        /// Gets or Sets TransactionHash
-        /// </summary>
-        [DataMember(Name = "transactionHash", EmitDefaultValue = false)]
-        public string TransactionHash { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ExplorerUrl
-        /// </summary>
-        [DataMember(Name = "explorerUrl", EmitDefaultValue = false)]
-        public string ExplorerUrl { get; set; }
+        [DataMember(Name = "newProfileId", IsRequired = true, EmitDefaultValue = true)]
+        public string NewProfileId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,10 +63,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class BuyAssetResponse {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  TransactionHash: ").Append(TransactionHash).Append("\n");
-            sb.Append("  ExplorerUrl: ").Append(ExplorerUrl).Append("\n");
+            sb.Append("class UpdateProfileRequestInput {\n");
+            sb.Append("  NewProfileId: ").Append(NewProfileId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,15 +85,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BuyAssetResponse);
+            return this.Equals(input as UpdateProfileRequestInput);
         }
 
         /// <summary>
-        /// Returns true if BuyAssetResponse instances are equal
+        /// Returns true if UpdateProfileRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of BuyAssetResponse to be compared</param>
+        /// <param name="input">Instance of UpdateProfileRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BuyAssetResponse input)
+        public bool Equals(UpdateProfileRequestInput input)
         {
             if (input == null)
             {
@@ -114,18 +101,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Success == input.Success ||
-                    this.Success.Equals(input.Success)
-                ) && 
-                (
-                    this.TransactionHash == input.TransactionHash ||
-                    (this.TransactionHash != null &&
-                    this.TransactionHash.Equals(input.TransactionHash))
-                ) && 
-                (
-                    this.ExplorerUrl == input.ExplorerUrl ||
-                    (this.ExplorerUrl != null &&
-                    this.ExplorerUrl.Equals(input.ExplorerUrl))
+                    this.NewProfileId == input.NewProfileId ||
+                    (this.NewProfileId != null &&
+                    this.NewProfileId.Equals(input.NewProfileId))
                 );
         }
 
@@ -138,14 +116,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Success.GetHashCode();
-                if (this.TransactionHash != null)
+                if (this.NewProfileId != null)
                 {
-                    hashCode = (hashCode * 59) + this.TransactionHash.GetHashCode();
-                }
-                if (this.ExplorerUrl != null)
-                {
-                    hashCode = (hashCode * 59) + this.ExplorerUrl.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NewProfileId.GetHashCode();
                 }
                 return hashCode;
             }

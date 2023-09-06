@@ -128,6 +128,28 @@ namespace Beam.Api
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetProfileResponse</returns>
         ApiResponse<GetProfileResponse> GetProfileWithHttpInfo(string profileId, int operationIndex = 0);
+        /// <summary>
+        /// Update a profile
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>UpdateProfileResponse</returns>
+        UpdateProfileResponse UpdateProfile(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0);
+
+        /// <summary>
+        /// Update a profile
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of UpdateProfileResponse</returns>
+        ApiResponse<UpdateProfileResponse> UpdateProfileWithHttpInfo(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -264,6 +286,33 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetProfileResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(string profileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Update a profile
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateProfileResponse</returns>
+        System.Threading.Tasks.Task<UpdateProfileResponse> UpdateProfileAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Update a profile
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateProfileResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UpdateProfileResponse>> UpdateProfileWithHttpInfoAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -1169,6 +1218,180 @@ namespace Beam.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>UpdateProfileResponse</returns>
+        public UpdateProfileResponse UpdateProfile(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0)
+        {
+            Beam.Client.ApiResponse<UpdateProfileResponse> localVarResponse = UpdateProfileWithHttpInfo(profileId, updateProfileRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of UpdateProfileResponse</returns>
+        public Beam.Client.ApiResponse<UpdateProfileResponse> UpdateProfileWithHttpInfo(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0)
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->UpdateProfile");
+            }
+
+            // verify the required parameter 'updateProfileRequestInput' is set
+            if (updateProfileRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'updateProfileRequestInput' when calling ProfilesApi->UpdateProfile");
+            }
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = updateProfileRequestInput;
+
+            localVarRequestOptions.Operation = "ProfilesApi.UpdateProfile";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Patch<UpdateProfileResponse>("/v1/profiles/{profileId}", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateProfile", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Update a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UpdateProfileResponse</returns>
+        public async System.Threading.Tasks.Task<UpdateProfileResponse> UpdateProfileAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<UpdateProfileResponse> localVarResponse = await UpdateProfileWithHttpInfoAsync(profileId, updateProfileRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="profileId"></param>
+        /// <param name="updateProfileRequestInput"></param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UpdateProfileResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<UpdateProfileResponse>> UpdateProfileWithHttpInfoAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'profileId' is set
+            if (profileId == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->UpdateProfile");
+            }
+
+            // verify the required parameter 'updateProfileRequestInput' is set
+            if (updateProfileRequestInput == null)
+            {
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'updateProfileRequestInput' when calling ProfilesApi->UpdateProfile");
+            }
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.Data = updateProfileRequestInput;
+
+            localVarRequestOptions.Operation = "ProfilesApi.UpdateProfile";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateProfileResponse>("/v1/profiles/{profileId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("UpdateProfile", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
