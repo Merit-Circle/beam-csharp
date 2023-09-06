@@ -92,11 +92,15 @@ namespace Beam.Model
         /// <param name="status">status (required).</param>
         /// <param name="type">type (required).</param>
         /// <param name="payloadToSign">payloadToSign.</param>
-        public TransferTokenResponse(StatusEnum status = default(StatusEnum), TypeEnum type = default(TypeEnum), string payloadToSign = default(string))
+        /// <param name="transactionHash">transactionHash.</param>
+        /// <param name="explorerUrl">explorerUrl.</param>
+        public TransferTokenResponse(StatusEnum status = default(StatusEnum), TypeEnum type = default(TypeEnum), string payloadToSign = default(string), string transactionHash = default(string), string explorerUrl = default(string))
         {
             this.Status = status;
             this.Type = type;
             this.PayloadToSign = payloadToSign;
+            this.TransactionHash = transactionHash;
+            this.ExplorerUrl = explorerUrl;
         }
 
         /// <summary>
@@ -104,6 +108,18 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "payloadToSign", EmitDefaultValue = false)]
         public string PayloadToSign { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TransactionHash
+        /// </summary>
+        [DataMember(Name = "transactionHash", EmitDefaultValue = false)]
+        public string TransactionHash { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExplorerUrl
+        /// </summary>
+        [DataMember(Name = "explorerUrl", EmitDefaultValue = false)]
+        public string ExplorerUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,6 +132,8 @@ namespace Beam.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  PayloadToSign: ").Append(PayloadToSign).Append("\n");
+            sb.Append("  TransactionHash: ").Append(TransactionHash).Append("\n");
+            sb.Append("  ExplorerUrl: ").Append(ExplorerUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -163,6 +181,16 @@ namespace Beam.Model
                     this.PayloadToSign == input.PayloadToSign ||
                     (this.PayloadToSign != null &&
                     this.PayloadToSign.Equals(input.PayloadToSign))
+                ) && 
+                (
+                    this.TransactionHash == input.TransactionHash ||
+                    (this.TransactionHash != null &&
+                    this.TransactionHash.Equals(input.TransactionHash))
+                ) && 
+                (
+                    this.ExplorerUrl == input.ExplorerUrl ||
+                    (this.ExplorerUrl != null &&
+                    this.ExplorerUrl.Equals(input.ExplorerUrl))
                 );
         }
 
@@ -180,6 +208,14 @@ namespace Beam.Model
                 if (this.PayloadToSign != null)
                 {
                     hashCode = (hashCode * 59) + this.PayloadToSign.GetHashCode();
+                }
+                if (this.TransactionHash != null)
+                {
+                    hashCode = (hashCode * 59) + this.TransactionHash.GetHashCode();
+                }
+                if (this.ExplorerUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExplorerUrl.GetHashCode();
                 }
                 return hashCode;
             }

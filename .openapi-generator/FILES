@@ -28,6 +28,7 @@ src/Beam/Client/RetryConfiguration.cs
 src/Beam/Model/AbstractOpenAPISchema.cs
 src/Beam/Model/BuyAssetRequestInput.cs
 src/Beam/Model/BuyAssetResponse.cs
+src/Beam/Model/CancelAssetListingRequestInput.cs
 src/Beam/Model/Check200Response.cs
 src/Beam/Model/Check200ResponseInfoValue.cs
 src/Beam/Model/Check503Response.cs
@@ -58,6 +59,7 @@ src/Beam/Model/GetAssetsResponse.cs
 src/Beam/Model/GetAssetsResponseDataInner.cs
 src/Beam/Model/GetChainResponse.cs
 src/Beam/Model/GetChainResponseNativeCurrency.cs
+src/Beam/Model/GetGameListedAssetsRequestInput.cs
 src/Beam/Model/GetGameResponse.cs
 src/Beam/Model/GetGameResponseContractsInner.cs
 src/Beam/Model/GetGameResponsePoliciesInner.cs
@@ -81,3 +83,5 @@ src/Beam/Model/TransferTokenRequestInput.cs
 src/Beam/Model/TransferTokenResponse.cs
 src/Beam/Model/UpdateGameRequestInput.cs
 src/Beam/Model/UpdateGameResponse.cs
+src/Beam/Model/UpdateProfileRequestInput.cs
+src/Beam/Model/UpdateProfileResponse.cs

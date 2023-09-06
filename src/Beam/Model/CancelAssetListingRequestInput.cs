@@ -26,49 +26,23 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// BuyAssetRequestInput
+    /// CancelAssetListingRequestInput
     /// </summary>
-    [DataContract(Name = "BuyAssetRequestInput")]
-    public partial class BuyAssetRequestInput : IEquatable<BuyAssetRequestInput>, IValidatableObject
+    [DataContract(Name = "CancelAssetListingRequestInput")]
+    public partial class CancelAssetListingRequestInput : IEquatable<CancelAssetListingRequestInput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuyAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="CancelAssetListingRequestInput" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected BuyAssetRequestInput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BuyAssetRequestInput" /> class.
-        /// </summary>
-        /// <param name="orderId">orderId (required).</param>
-        /// <param name="quantity">quantity (required).</param>
         /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public BuyAssetRequestInput(string orderId = default(string), decimal quantity = default(decimal), bool optimistic = false, bool sponsor = true, string policyId = default(string))
+        public CancelAssetListingRequestInput(bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
-            // to ensure "orderId" is required (not null)
-            if (orderId == null)
-            {
-                throw new ArgumentNullException("orderId is a required property for BuyAssetRequestInput and cannot be null");
-            }
-            this.OrderId = orderId;
-            this.Quantity = quantity;
             this.Optimistic = optimistic;
             this.Sponsor = sponsor;
             this.PolicyId = policyId;
         }
-
-        /// <summary>
-        /// Gets or Sets OrderId
-        /// </summary>
-        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = true)]
-        public string OrderId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Quantity
-        /// </summary>
-        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets Optimistic
@@ -95,9 +69,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class BuyAssetRequestInput {\n");
-            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("class CancelAssetListingRequestInput {\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
@@ -121,30 +93,21 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BuyAssetRequestInput);
+            return this.Equals(input as CancelAssetListingRequestInput);
         }
 
         /// <summary>
-        /// Returns true if BuyAssetRequestInput instances are equal
+        /// Returns true if CancelAssetListingRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of BuyAssetRequestInput to be compared</param>
+        /// <param name="input">Instance of CancelAssetListingRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BuyAssetRequestInput input)
+        public bool Equals(CancelAssetListingRequestInput input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
-                (
-                    this.OrderId == input.OrderId ||
-                    (this.OrderId != null &&
-                    this.OrderId.Equals(input.OrderId))
-                ) && 
-                (
-                    this.Quantity == input.Quantity ||
-                    this.Quantity.Equals(input.Quantity)
-                ) && 
                 (
                     this.Optimistic == input.Optimistic ||
                     this.Optimistic.Equals(input.Optimistic)
@@ -169,11 +132,6 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.OrderId != null)
-                {
-                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 if (this.PolicyId != null)

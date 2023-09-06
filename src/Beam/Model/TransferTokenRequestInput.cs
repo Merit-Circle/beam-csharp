@@ -44,7 +44,8 @@ namespace Beam.Model
         /// <param name="amountToTransfer">amountToTransfer (required).</param>
         /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
-        public TransferTokenRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), string amountToTransfer = default(string), bool optimistic = false, bool sponsor = true)
+        /// <param name="policyId">policyId.</param>
+        public TransferTokenRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), string amountToTransfer = default(string), bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
             // to ensure "receiverProfileId" is required (not null)
             if (receiverProfileId == null)
@@ -66,6 +67,7 @@ namespace Beam.Model
             this.AmountToTransfer = amountToTransfer;
             this.Optimistic = optimistic;
             this.Sponsor = sponsor;
+            this.PolicyId = policyId;
         }
 
         /// <summary>
@@ -99,6 +101,12 @@ namespace Beam.Model
         public bool Sponsor { get; set; }
 
         /// <summary>
+        /// Gets or Sets PolicyId
+        /// </summary>
+        [DataMember(Name = "policyId", EmitDefaultValue = false)]
+        public string PolicyId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -111,6 +119,7 @@ namespace Beam.Model
             sb.Append("  AmountToTransfer: ").Append(AmountToTransfer).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
+            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,6 +177,11 @@ namespace Beam.Model
                 (
                     this.Sponsor == input.Sponsor ||
                     this.Sponsor.Equals(input.Sponsor)
+                ) && 
+                (
+                    this.PolicyId == input.PolicyId ||
+                    (this.PolicyId != null &&
+                    this.PolicyId.Equals(input.PolicyId))
                 );
         }
 
@@ -194,6 +208,10 @@ namespace Beam.Model
                 }
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
+                if (this.PolicyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
+                }
                 return hashCode;
             }
         }

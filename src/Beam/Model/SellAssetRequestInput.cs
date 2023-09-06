@@ -82,7 +82,9 @@ namespace Beam.Model
         /// <param name="startTime">startTime (required).</param>
         /// <param name="endTime">endTime (required).</param>
         /// <param name="sellType">sellType (required).</param>
-        public SellAssetRequestInput(string marketplaceAssetId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum))
+        /// <param name="sponsor">sponsor (default to true).</param>
+        /// <param name="policyId">policyId.</param>
+        public SellAssetRequestInput(string marketplaceAssetId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), bool sponsor = true, string policyId = default(string))
         {
             // to ensure "marketplaceAssetId" is required (not null)
             if (marketplaceAssetId == null)
@@ -110,6 +112,8 @@ namespace Beam.Model
             }
             this.EndTime = endTime;
             this.SellType = sellType;
+            this.Sponsor = sponsor;
+            this.PolicyId = policyId;
         }
 
         /// <summary>
@@ -143,6 +147,18 @@ namespace Beam.Model
         public string EndTime { get; set; }
 
         /// <summary>
+        /// Gets or Sets Sponsor
+        /// </summary>
+        [DataMember(Name = "sponsor", EmitDefaultValue = true)]
+        public bool Sponsor { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PolicyId
+        /// </summary>
+        [DataMember(Name = "policyId", EmitDefaultValue = false)]
+        public string PolicyId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -156,6 +172,8 @@ namespace Beam.Model
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  SellType: ").Append(SellType).Append("\n");
+            sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
+            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -218,6 +236,15 @@ namespace Beam.Model
                 (
                     this.SellType == input.SellType ||
                     this.SellType.Equals(input.SellType)
+                ) && 
+                (
+                    this.Sponsor == input.Sponsor ||
+                    this.Sponsor.Equals(input.Sponsor)
+                ) && 
+                (
+                    this.PolicyId == input.PolicyId ||
+                    (this.PolicyId != null &&
+                    this.PolicyId.Equals(input.PolicyId))
                 );
         }
 
@@ -248,6 +275,11 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.EndTime.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SellType.GetHashCode();
+                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
+                if (this.PolicyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
+                }
                 return hashCode;
             }
         }
