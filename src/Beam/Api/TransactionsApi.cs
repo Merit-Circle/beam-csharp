@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mime;
 using Beam.Client;
 using Beam.Model;
@@ -32,9 +33,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CreateTransactionResponse</returns>
-        CreateTransactionResponse CreateProfileTransaction(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0);
+        CreateTransactionResponse CreateProfileTransaction(string profileId, CreateTransactionRequestInput createTransactionRequestInput);
 
         /// <summary>
         /// Creating a new transaction on behalf of a profile
@@ -45,9 +45,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CreateTransactionResponse</returns>
-        ApiResponse<CreateTransactionResponse> CreateProfileTransactionWithHttpInfo(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0);
+        ApiResponse<CreateTransactionResponse> CreateProfileTransactionWithHttpInfo(string profileId, CreateTransactionRequestInput createTransactionRequestInput);
         /// <summary>
         /// Get a paginated list of transactions created on behalf of a prfoile
         /// </summary>
@@ -55,9 +54,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetTransactionsResponse</returns>
-        GetTransactionsResponse GetProfileTransactions(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
+        GetTransactionsResponse GetProfileTransactions(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Get a paginated list of transactions created on behalf of a prfoile
@@ -69,17 +67,15 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
+        ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Getting a transaction
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetTransactionResponse</returns>
-        GetTransactionResponse GetTransaction(string transactionId, int operationIndex = 0);
+        GetTransactionResponse GetTransaction(string transactionId);
 
         /// <summary>
         /// Getting a transaction
@@ -89,18 +85,16 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetTransactionResponse</returns>
-        ApiResponse<GetTransactionResponse> GetTransactionWithHttpInfo(string transactionId, int operationIndex = 0);
+        ApiResponse<GetTransactionResponse> GetTransactionWithHttpInfo(string transactionId);
         /// <summary>
         /// Get a paginated list of transactions from your game
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetTransactionsResponse</returns>
-        GetTransactionsResponse GetTransactions(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
+        GetTransactionsResponse GetTransactions(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Get a paginated list of transactions from your game
@@ -111,9 +105,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0);
+        ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         #endregion Synchronous Operations
     }
 
@@ -132,10 +125,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTransactionResponse</returns>
-        System.Threading.Tasks.Task<CreateTransactionResponse> CreateProfileTransactionAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateTransactionResponse> CreateProfileTransactionAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creating a new transaction on behalf of a profile
@@ -146,10 +138,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTransactionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTransactionResponse>> CreateProfileTransactionWithHttpInfoAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateTransactionResponse>> CreateProfileTransactionWithHttpInfoAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get a paginated list of transactions created on behalf of a prfoile
         /// </summary>
@@ -160,10 +151,9 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a paginated list of transactions created on behalf of a prfoile
@@ -175,10 +165,9 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting a transaction
         /// </summary>
@@ -187,10 +176,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionResponse</returns>
-        System.Threading.Tasks.Task<GetTransactionResponse> GetTransactionAsync(string transactionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetTransactionResponse> GetTransactionAsync(string transactionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Getting a transaction
@@ -200,10 +188,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransactionResponse>> GetTransactionWithHttpInfoAsync(string transactionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetTransactionResponse>> GetTransactionWithHttpInfoAsync(string transactionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get a paginated list of transactions from your game
         /// </summary>
@@ -213,10 +200,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a paginated list of transactions from your game
@@ -227,10 +213,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -245,12 +230,14 @@ namespace Beam.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class TransactionsApi : ITransactionsApi
+    public partial class TransactionsApi : IDisposable, ITransactionsApi
     {
         private Beam.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionsApi"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public TransactionsApi() : this((string)null)
@@ -259,7 +246,11 @@ namespace Beam.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionsApi"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public TransactionsApi(string basePath)
         {
@@ -267,16 +258,19 @@ namespace Beam.Api
                 Beam.Client.GlobalConfiguration.Instance,
                 new Beam.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Beam.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionsApi"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="TransactionsApi"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public TransactionsApi(Beam.Client.Configuration configuration)
         {
@@ -286,8 +280,78 @@ namespace Beam.Api
                 Beam.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Beam.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
+            ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionsApi"/> class.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public TransactionsApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionsApi"/> class.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public TransactionsApi(HttpClient client, string basePath, HttpClientHandler handler = null)
+        {
+            if (client == null) throw new ArgumentNullException("client");
+
+            this.Configuration = Beam.Client.Configuration.MergeConfigurations(
+                Beam.Client.GlobalConfiguration.Instance,
+                new Beam.Client.Configuration { BasePath = basePath }
+            );
+            this.ApiClient = new Beam.Client.ApiClient(client, this.Configuration.BasePath, handler);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
+            this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionsApi"/> class using Configuration object.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public TransactionsApi(HttpClient client, Beam.Client.Configuration configuration, HttpClientHandler handler = null)
+        {
+            if (configuration == null) throw new ArgumentNullException("configuration");
+            if (client == null) throw new ArgumentNullException("client");
+
+            this.Configuration = Beam.Client.Configuration.MergeConfigurations(
+                Beam.Client.GlobalConfiguration.Instance,
+                configuration
+            );
+            this.ApiClient = new Beam.Client.ApiClient(client, this.Configuration.BasePath, handler);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -298,6 +362,7 @@ namespace Beam.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public TransactionsApi(Beam.Client.ISynchronousClient client, Beam.Client.IAsynchronousClient asyncClient, Beam.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -309,6 +374,19 @@ namespace Beam.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Beam.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -357,9 +435,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CreateTransactionResponse</returns>
-        public CreateTransactionResponse CreateProfileTransaction(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0)
+        public CreateTransactionResponse CreateProfileTransaction(string profileId, CreateTransactionRequestInput createTransactionRequestInput)
         {
             Beam.Client.ApiResponse<CreateTransactionResponse> localVarResponse = CreateProfileTransactionWithHttpInfo(profileId, createTransactionRequestInput);
             return localVarResponse.Data;
@@ -371,21 +448,16 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CreateTransactionResponse</returns>
-        public Beam.Client.ApiResponse<CreateTransactionResponse> CreateProfileTransactionWithHttpInfo(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0)
+        public Beam.Client.ApiResponse<CreateTransactionResponse> CreateProfileTransactionWithHttpInfo(string profileId, CreateTransactionRequestInput createTransactionRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling TransactionsApi->CreateProfileTransaction");
-            }
 
             // verify the required parameter 'createTransactionRequestInput' is set
             if (createTransactionRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'createTransactionRequestInput' when calling TransactionsApi->CreateProfileTransaction");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -399,22 +471,13 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = createTransactionRequestInput;
-
-            localVarRequestOptions.Operation = "TransactionsApi.CreateProfileTransaction";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -424,13 +487,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<CreateTransactionResponse>("/v1/transactions/profiles/{profileId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateProfileTransaction", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -442,12 +503,11 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTransactionResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTransactionResponse> CreateProfileTransactionAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateTransactionResponse> CreateProfileTransactionAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<CreateTransactionResponse> localVarResponse = await CreateProfileTransactionWithHttpInfoAsync(profileId, createTransactionRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<CreateTransactionResponse> localVarResponse = await CreateProfileTransactionWithHttpInfoAsync(profileId, createTransactionRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -457,22 +517,17 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="createTransactionRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTransactionResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<CreateTransactionResponse>> CreateProfileTransactionWithHttpInfoAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<CreateTransactionResponse>> CreateProfileTransactionWithHttpInfoAsync(string profileId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling TransactionsApi->CreateProfileTransaction");
-            }
 
             // verify the required parameter 'createTransactionRequestInput' is set
             if (createTransactionRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'createTransactionRequestInput' when calling TransactionsApi->CreateProfileTransaction");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -486,23 +541,15 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = createTransactionRequestInput;
-
-            localVarRequestOptions.Operation = "TransactionsApi.CreateProfileTransaction";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -511,15 +558,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTransactionResponse>("/v1/transactions/profiles/{profileId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateProfileTransaction", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -532,9 +577,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetTransactionsResponse</returns>
-        public GetTransactionsResponse GetProfileTransactions(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
+        public GetTransactionsResponse GetProfileTransactions(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = GetProfileTransactionsWithHttpInfo(profileId, limit, offset);
             return localVarResponse.Data;
@@ -547,15 +591,12 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        public Beam.Client.ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling TransactionsApi->GetProfileTransactions");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -568,16 +609,10 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             if (limit != null)
@@ -589,9 +624,6 @@ namespace Beam.Api
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             }
 
-            localVarRequestOptions.Operation = "TransactionsApi.GetProfileTransactions";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
             {
@@ -600,13 +632,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<GetTransactionsResponse>("/v1/transactions/profiles/{profileId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProfileTransactions", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -619,12 +649,11 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = await GetProfileTransactionsWithHttpInfoAsync(profileId, limit, offset, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = await GetProfileTransactionsWithHttpInfoAsync(profileId, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -635,16 +664,13 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string profileId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling TransactionsApi->GetProfileTransactions");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -657,17 +683,12 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             if (limit != null)
@@ -679,9 +700,6 @@ namespace Beam.Api
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             }
 
-            localVarRequestOptions.Operation = "TransactionsApi.GetProfileTransactions";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
             {
@@ -689,15 +707,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.GetAsync<GetTransactionsResponse>("/v1/transactions/profiles/{profileId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProfileTransactions", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -708,9 +724,8 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetTransactionResponse</returns>
-        public GetTransactionResponse GetTransaction(string transactionId, int operationIndex = 0)
+        public GetTransactionResponse GetTransaction(string transactionId)
         {
             Beam.Client.ApiResponse<GetTransactionResponse> localVarResponse = GetTransactionWithHttpInfo(transactionId);
             return localVarResponse.Data;
@@ -721,15 +736,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetTransactionResponse</returns>
-        public Beam.Client.ApiResponse<GetTransactionResponse> GetTransactionWithHttpInfo(string transactionId, int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetTransactionResponse> GetTransactionWithHttpInfo(string transactionId)
         {
             // verify the required parameter 'transactionId' is set
             if (transactionId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'transactionId' when calling TransactionsApi->GetTransaction");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -742,21 +754,12 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("transactionId", Beam.Client.ClientUtils.ParameterToString(transactionId)); // path parameter
-
-            localVarRequestOptions.Operation = "TransactionsApi.GetTransaction";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -766,13 +769,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<GetTransactionResponse>("/v1/transactions/{transactionId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTransaction", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -783,12 +784,11 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionResponse</returns>
-        public async System.Threading.Tasks.Task<GetTransactionResponse> GetTransactionAsync(string transactionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetTransactionResponse> GetTransactionAsync(string transactionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetTransactionResponse> localVarResponse = await GetTransactionWithHttpInfoAsync(transactionId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetTransactionResponse> localVarResponse = await GetTransactionWithHttpInfoAsync(transactionId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -797,16 +797,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionResponse>> GetTransactionWithHttpInfoAsync(string transactionId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionResponse>> GetTransactionWithHttpInfoAsync(string transactionId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'transactionId' is set
             if (transactionId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'transactionId' when calling TransactionsApi->GetTransaction");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -819,22 +816,14 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("transactionId", Beam.Client.ClientUtils.ParameterToString(transactionId)); // path parameter
-
-            localVarRequestOptions.Operation = "TransactionsApi.GetTransaction";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -843,15 +832,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.GetAsync<GetTransactionResponse>("/v1/transactions/{transactionId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTransaction", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -863,9 +850,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetTransactionsResponse</returns>
-        public GetTransactionsResponse GetTransactions(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
+        public GetTransactionsResponse GetTransactions(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = GetTransactionsWithHttpInfo(limit, offset);
             return localVarResponse.Data;
@@ -877,9 +863,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        public Beam.Client.ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -892,16 +877,10 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (limit != null)
             {
@@ -912,9 +891,6 @@ namespace Beam.Api
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             }
 
-            localVarRequestOptions.Operation = "TransactionsApi.GetTransactions";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
             {
@@ -923,13 +899,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<GetTransactionsResponse>("/v1/transactions", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTransactions", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -941,12 +915,11 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = await GetTransactionsWithHttpInfoAsync(limit, offset, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = await GetTransactionsWithHttpInfoAsync(limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -956,10 +929,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -972,17 +944,12 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             if (limit != null)
             {
@@ -993,9 +960,6 @@ namespace Beam.Api
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             }
 
-            localVarRequestOptions.Operation = "TransactionsApi.GetTransactions";
-            localVarRequestOptions.OperationIndex = operationIndex;
-
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
             {
@@ -1003,15 +967,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.GetAsync<GetTransactionsResponse>("/v1/transactions", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetTransactions", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mime;
 using Beam.Client;
 using Beam.Model;
@@ -32,9 +33,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GenerateLinkCodeResponse</returns>
-        GenerateLinkCodeResponse CreateConnectionRequest(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0);
+        GenerateLinkCodeResponse CreateConnectionRequest(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput);
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
@@ -45,17 +45,15 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GenerateLinkCodeResponse</returns>
-        ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0);
+        ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput);
         /// <summary>
         /// Creating a profile
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CreateProfileResponse</returns>
-        CreateProfileResponse CreateProfile(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0);
+        CreateProfileResponse CreateProfile(CreateProfileRequestInput createProfileRequestInput);
 
         /// <summary>
         /// Creating a profile
@@ -65,18 +63,16 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CreateProfileResponse</returns>
-        ApiResponse<CreateProfileResponse> CreateProfileWithHttpInfo(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0);
+        ApiResponse<CreateProfileResponse> CreateProfileWithHttpInfo(CreateProfileRequestInput createProfileRequestInput);
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GenerateSignInCodeResponse</returns>
-        GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0);
+        GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput);
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
@@ -87,16 +83,14 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GenerateSignInCodeResponse</returns>
-        ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0);
+        ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput);
         /// <summary>
         /// Getting all profiles
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetAllProfilesResponse</returns>
-        GetAllProfilesResponse GetAllProfiles(int operationIndex = 0);
+        GetAllProfilesResponse GetAllProfiles();
 
         /// <summary>
         /// Getting all profiles
@@ -105,17 +99,15 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetAllProfilesResponse</returns>
-        ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(int operationIndex = 0);
+        ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo();
         /// <summary>
         /// Getting information on a profile
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetProfileResponse</returns>
-        GetProfileResponse GetProfile(string profileId, int operationIndex = 0);
+        GetProfileResponse GetProfile(string profileId);
 
         /// <summary>
         /// Getting information on a profile
@@ -125,18 +117,16 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetProfileResponse</returns>
-        ApiResponse<GetProfileResponse> GetProfileWithHttpInfo(string profileId, int operationIndex = 0);
+        ApiResponse<GetProfileResponse> GetProfileWithHttpInfo(string profileId);
         /// <summary>
         /// Update a profile
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateProfileResponse</returns>
-        UpdateProfileResponse UpdateProfile(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0);
+        UpdateProfileResponse UpdateProfile(string profileId, UpdateProfileRequestInput updateProfileRequestInput);
 
         /// <summary>
         /// Update a profile
@@ -147,9 +137,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateProfileResponse</returns>
-        ApiResponse<UpdateProfileResponse> UpdateProfileWithHttpInfo(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0);
+        ApiResponse<UpdateProfileResponse> UpdateProfileWithHttpInfo(string profileId, UpdateProfileRequestInput updateProfileRequestInput);
         #endregion Synchronous Operations
     }
 
@@ -168,10 +157,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateLinkCodeResponse</returns>
-        System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
@@ -182,10 +170,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateLinkCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Creating a profile
         /// </summary>
@@ -194,10 +181,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProfileResponse</returns>
-        System.Threading.Tasks.Task<CreateProfileResponse> CreateProfileAsync(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<CreateProfileResponse> CreateProfileAsync(CreateProfileRequestInput createProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creating a profile
@@ -207,10 +193,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProfileResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateProfileResponse>> CreateProfileWithHttpInfoAsync(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<CreateProfileResponse>> CreateProfileWithHttpInfoAsync(CreateProfileRequestInput createProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
         /// </summary>
@@ -220,10 +205,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateSignInCodeResponse</returns>
-        System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
@@ -234,10 +218,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateSignInCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting all profiles
         /// </summary>
@@ -245,10 +228,9 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllProfilesResponse</returns>
-        System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Getting all profiles
@@ -257,10 +239,9 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllProfilesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting information on a profile
         /// </summary>
@@ -269,10 +250,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetProfileResponse</returns>
-        System.Threading.Tasks.Task<GetProfileResponse> GetProfileAsync(string profileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetProfileResponse> GetProfileAsync(string profileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Getting information on a profile
@@ -282,10 +262,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetProfileResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(string profileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(string profileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Update a profile
         /// </summary>
@@ -295,10 +274,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateProfileResponse</returns>
-        System.Threading.Tasks.Task<UpdateProfileResponse> UpdateProfileAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateProfileResponse> UpdateProfileAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Update a profile
@@ -309,10 +287,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateProfileResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateProfileResponse>> UpdateProfileWithHttpInfoAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateProfileResponse>> UpdateProfileWithHttpInfoAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -327,12 +304,14 @@ namespace Beam.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ProfilesApi : IProfilesApi
+    public partial class ProfilesApi : IDisposable, IProfilesApi
     {
         private Beam.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfilesApi"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public ProfilesApi() : this((string)null)
@@ -341,7 +320,11 @@ namespace Beam.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProfilesApi"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public ProfilesApi(string basePath)
         {
@@ -349,16 +332,19 @@ namespace Beam.Api
                 Beam.Client.GlobalConfiguration.Instance,
                 new Beam.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Beam.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProfilesApi"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="ProfilesApi"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public ProfilesApi(Beam.Client.Configuration configuration)
         {
@@ -368,8 +354,78 @@ namespace Beam.Api
                 Beam.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Beam.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
+            ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProfilesApi"/> class.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public ProfilesApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProfilesApi"/> class.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public ProfilesApi(HttpClient client, string basePath, HttpClientHandler handler = null)
+        {
+            if (client == null) throw new ArgumentNullException("client");
+
+            this.Configuration = Beam.Client.Configuration.MergeConfigurations(
+                Beam.Client.GlobalConfiguration.Instance,
+                new Beam.Client.Configuration { BasePath = basePath }
+            );
+            this.ApiClient = new Beam.Client.ApiClient(client, this.Configuration.BasePath, handler);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
+            this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProfilesApi"/> class using Configuration object.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public ProfilesApi(HttpClient client, Beam.Client.Configuration configuration, HttpClientHandler handler = null)
+        {
+            if (configuration == null) throw new ArgumentNullException("configuration");
+            if (client == null) throw new ArgumentNullException("client");
+
+            this.Configuration = Beam.Client.Configuration.MergeConfigurations(
+                Beam.Client.GlobalConfiguration.Instance,
+                configuration
+            );
+            this.ApiClient = new Beam.Client.ApiClient(client, this.Configuration.BasePath, handler);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -380,6 +436,7 @@ namespace Beam.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public ProfilesApi(Beam.Client.ISynchronousClient client, Beam.Client.IAsynchronousClient asyncClient, Beam.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -391,6 +448,19 @@ namespace Beam.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Beam.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -439,9 +509,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GenerateLinkCodeResponse</returns>
-        public GenerateLinkCodeResponse CreateConnectionRequest(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0)
+        public GenerateLinkCodeResponse CreateConnectionRequest(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput)
         {
             Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = CreateConnectionRequestWithHttpInfo(profileId, generateLinkCodeRequestInput);
             return localVarResponse.Data;
@@ -453,21 +522,16 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GenerateLinkCodeResponse</returns>
-        public Beam.Client.ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0)
+        public Beam.Client.ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateConnectionRequest");
-            }
 
             // verify the required parameter 'generateLinkCodeRequestInput' is set
             if (generateLinkCodeRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'generateLinkCodeRequestInput' when calling ProfilesApi->CreateConnectionRequest");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -481,22 +545,13 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = generateLinkCodeRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.CreateConnectionRequest";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -506,13 +561,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<GenerateLinkCodeResponse>("/v1/profiles/{profileId}/create-connection-request", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateConnectionRequest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -524,12 +577,11 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateLinkCodeResponse</returns>
-        public async System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = await CreateConnectionRequestWithHttpInfoAsync(profileId, generateLinkCodeRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = await CreateConnectionRequestWithHttpInfoAsync(profileId, generateLinkCodeRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -539,22 +591,17 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateLinkCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateConnectionRequest");
-            }
 
             // verify the required parameter 'generateLinkCodeRequestInput' is set
             if (generateLinkCodeRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'generateLinkCodeRequestInput' when calling ProfilesApi->CreateConnectionRequest");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -568,23 +615,15 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = generateLinkCodeRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.CreateConnectionRequest";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -593,15 +632,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.PostAsync<GenerateLinkCodeResponse>("/v1/profiles/{profileId}/create-connection-request", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateConnectionRequest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -612,9 +649,8 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CreateProfileResponse</returns>
-        public CreateProfileResponse CreateProfile(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0)
+        public CreateProfileResponse CreateProfile(CreateProfileRequestInput createProfileRequestInput)
         {
             Beam.Client.ApiResponse<CreateProfileResponse> localVarResponse = CreateProfileWithHttpInfo(createProfileRequestInput);
             return localVarResponse.Data;
@@ -625,15 +661,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CreateProfileResponse</returns>
-        public Beam.Client.ApiResponse<CreateProfileResponse> CreateProfileWithHttpInfo(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0)
+        public Beam.Client.ApiResponse<CreateProfileResponse> CreateProfileWithHttpInfo(CreateProfileRequestInput createProfileRequestInput)
         {
             // verify the required parameter 'createProfileRequestInput' is set
             if (createProfileRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'createProfileRequestInput' when calling ProfilesApi->CreateProfile");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -647,21 +680,12 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.Data = createProfileRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.CreateProfile";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -671,13 +695,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<CreateProfileResponse>("/v1/profiles", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateProfile", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -688,12 +710,11 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateProfileResponse</returns>
-        public async System.Threading.Tasks.Task<CreateProfileResponse> CreateProfileAsync(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<CreateProfileResponse> CreateProfileAsync(CreateProfileRequestInput createProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<CreateProfileResponse> localVarResponse = await CreateProfileWithHttpInfoAsync(createProfileRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<CreateProfileResponse> localVarResponse = await CreateProfileWithHttpInfoAsync(createProfileRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -702,16 +723,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="createProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateProfileResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<CreateProfileResponse>> CreateProfileWithHttpInfoAsync(CreateProfileRequestInput createProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<CreateProfileResponse>> CreateProfileWithHttpInfoAsync(CreateProfileRequestInput createProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'createProfileRequestInput' is set
             if (createProfileRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'createProfileRequestInput' when calling ProfilesApi->CreateProfile");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -725,22 +743,14 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.Data = createProfileRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.CreateProfile";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -749,15 +759,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.PostAsync<CreateProfileResponse>("/v1/profiles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateProfile", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -769,9 +777,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GenerateSignInCodeResponse</returns>
-        public GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0)
+        public GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput)
         {
             Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = CreateSignInRequestWithHttpInfo(profileId, generateSignInCodeRequestInput);
             return localVarResponse.Data;
@@ -783,21 +790,16 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GenerateSignInCodeResponse</returns>
-        public Beam.Client.ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0)
+        public Beam.Client.ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateSignInRequest");
-            }
 
             // verify the required parameter 'generateSignInCodeRequestInput' is set
             if (generateSignInCodeRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'generateSignInCodeRequestInput' when calling ProfilesApi->CreateSignInRequest");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -811,22 +813,13 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = generateSignInCodeRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.CreateSignInRequest";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -836,13 +829,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Post<GenerateSignInCodeResponse>("/v1/profiles/{profileId}/create-sign-in-request", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateSignInRequest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -854,12 +845,11 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateSignInCodeResponse</returns>
-        public async System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = await CreateSignInRequestWithHttpInfoAsync(profileId, generateSignInCodeRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = await CreateSignInRequestWithHttpInfoAsync(profileId, generateSignInCodeRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -869,22 +859,17 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateSignInCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateSignInRequest");
-            }
 
             // verify the required parameter 'generateSignInCodeRequestInput' is set
             if (generateSignInCodeRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'generateSignInCodeRequestInput' when calling ProfilesApi->CreateSignInRequest");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -898,23 +883,15 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = generateSignInCodeRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.CreateSignInRequest";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -923,15 +900,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.PostAsync<GenerateSignInCodeResponse>("/v1/profiles/{profileId}/create-sign-in-request", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("CreateSignInRequest", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -941,9 +916,8 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetAllProfilesResponse</returns>
-        public GetAllProfilesResponse GetAllProfiles(int operationIndex = 0)
+        public GetAllProfilesResponse GetAllProfiles()
         {
             Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = GetAllProfilesWithHttpInfo();
             return localVarResponse.Data;
@@ -953,9 +927,8 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetAllProfilesResponse</returns>
-        public Beam.Client.ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo()
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -968,20 +941,11 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-
-            localVarRequestOptions.Operation = "ProfilesApi.GetAllProfiles";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -991,13 +955,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<GetAllProfilesResponse>("/v1/profiles", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAllProfiles", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1007,12 +969,11 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllProfilesResponse</returns>
-        public async System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = await GetAllProfilesWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = await GetAllProfilesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1020,10 +981,9 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllProfilesResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -1036,21 +996,13 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-
-            localVarRequestOptions.Operation = "ProfilesApi.GetAllProfiles";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -1059,15 +1011,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.GetAsync<GetAllProfilesResponse>("/v1/profiles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetAllProfiles", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1078,9 +1028,8 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetProfileResponse</returns>
-        public GetProfileResponse GetProfile(string profileId, int operationIndex = 0)
+        public GetProfileResponse GetProfile(string profileId)
         {
             Beam.Client.ApiResponse<GetProfileResponse> localVarResponse = GetProfileWithHttpInfo(profileId);
             return localVarResponse.Data;
@@ -1091,15 +1040,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetProfileResponse</returns>
-        public Beam.Client.ApiResponse<GetProfileResponse> GetProfileWithHttpInfo(string profileId, int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetProfileResponse> GetProfileWithHttpInfo(string profileId)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->GetProfile");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -1112,21 +1058,12 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
-
-            localVarRequestOptions.Operation = "ProfilesApi.GetProfile";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -1136,13 +1073,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<GetProfileResponse>("/v1/profiles/{profileId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProfile", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1153,12 +1088,11 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetProfileResponse</returns>
-        public async System.Threading.Tasks.Task<GetProfileResponse> GetProfileAsync(string profileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetProfileResponse> GetProfileAsync(string profileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetProfileResponse> localVarResponse = await GetProfileWithHttpInfoAsync(profileId, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetProfileResponse> localVarResponse = await GetProfileWithHttpInfoAsync(profileId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1167,16 +1101,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetProfileResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(string profileId, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetProfileResponse>> GetProfileWithHttpInfoAsync(string profileId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->GetProfile");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -1189,22 +1120,14 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
-
-            localVarRequestOptions.Operation = "ProfilesApi.GetProfile";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -1213,15 +1136,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.GetAsync<GetProfileResponse>("/v1/profiles/{profileId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetProfile", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1233,9 +1154,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateProfileResponse</returns>
-        public UpdateProfileResponse UpdateProfile(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0)
+        public UpdateProfileResponse UpdateProfile(string profileId, UpdateProfileRequestInput updateProfileRequestInput)
         {
             Beam.Client.ApiResponse<UpdateProfileResponse> localVarResponse = UpdateProfileWithHttpInfo(profileId, updateProfileRequestInput);
             return localVarResponse.Data;
@@ -1247,21 +1167,16 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateProfileResponse</returns>
-        public Beam.Client.ApiResponse<UpdateProfileResponse> UpdateProfileWithHttpInfo(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0)
+        public Beam.Client.ApiResponse<UpdateProfileResponse> UpdateProfileWithHttpInfo(string profileId, UpdateProfileRequestInput updateProfileRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->UpdateProfile");
-            }
 
             // verify the required parameter 'updateProfileRequestInput' is set
             if (updateProfileRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'updateProfileRequestInput' when calling ProfilesApi->UpdateProfile");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -1275,22 +1190,13 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = updateProfileRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.UpdateProfile";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -1300,13 +1206,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Patch<UpdateProfileResponse>("/v1/profiles/{profileId}", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateProfile", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -1318,12 +1222,11 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateProfileResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateProfileResponse> UpdateProfileAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateProfileResponse> UpdateProfileAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<UpdateProfileResponse> localVarResponse = await UpdateProfileWithHttpInfoAsync(profileId, updateProfileRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<UpdateProfileResponse> localVarResponse = await UpdateProfileWithHttpInfoAsync(profileId, updateProfileRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1333,22 +1236,17 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="updateProfileRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateProfileResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<UpdateProfileResponse>> UpdateProfileWithHttpInfoAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<UpdateProfileResponse>> UpdateProfileWithHttpInfoAsync(string profileId, UpdateProfileRequestInput updateProfileRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->UpdateProfile");
-            }
 
             // verify the required parameter 'updateProfileRequestInput' is set
             if (updateProfileRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'updateProfileRequestInput' when calling ProfilesApi->UpdateProfile");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -1362,23 +1260,15 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
             localVarRequestOptions.Data = updateProfileRequestInput;
-
-            localVarRequestOptions.Operation = "ProfilesApi.UpdateProfile";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -1387,15 +1277,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateProfileResponse>("/v1/profiles/{profileId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateProfile", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;

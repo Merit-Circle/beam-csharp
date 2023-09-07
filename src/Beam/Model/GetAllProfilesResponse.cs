@@ -21,6 +21,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
+using FileParameter = Beam.Client.FileParameter;
 using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 
 namespace Beam.Model

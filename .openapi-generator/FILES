@@ -15,8 +15,8 @@ src/Beam/Client/ApiResponse.cs
 src/Beam/Client/ClientUtils.cs
 src/Beam/Client/Configuration.cs
 src/Beam/Client/ExceptionFactory.cs
+src/Beam/Client/FileParameter.cs
 src/Beam/Client/GlobalConfiguration.cs
-src/Beam/Client/HttpMethod.cs
 src/Beam/Client/IApiAccessor.cs
 src/Beam/Client/IAsynchronousClient.cs
 src/Beam/Client/IReadableConfiguration.cs
@@ -25,6 +25,7 @@ src/Beam/Client/Multimap.cs
 src/Beam/Client/OpenAPIDateConverter.cs
 src/Beam/Client/RequestOptions.cs
 src/Beam/Client/RetryConfiguration.cs
+src/Beam/Client/WebRequestPathBuilder.cs
 src/Beam/Model/AbstractOpenAPISchema.cs
 src/Beam/Model/BuyAssetRequestInput.cs
 src/Beam/Model/BuyAssetResponse.cs

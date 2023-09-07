@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Net.Mime;
 using Beam.Client;
 using Beam.Model;
@@ -30,9 +31,8 @@ namespace Beam.Api
         /// Get information about your game
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetGameResponse</returns>
-        GetGameResponse GetGame(int operationIndex = 0);
+        GetGameResponse GetGame();
 
         /// <summary>
         /// Get information about your game
@@ -41,17 +41,15 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetGameResponse</returns>
-        ApiResponse<GetGameResponse> GetGameWithHttpInfo(int operationIndex = 0);
+        ApiResponse<GetGameResponse> GetGameWithHttpInfo();
         /// <summary>
         /// Updating name, description and/or coverImageUrl
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateGameResponse</returns>
-        UpdateGameResponse UpdateGame(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0);
+        UpdateGameResponse UpdateGame(UpdateGameRequestInput updateGameRequestInput);
 
         /// <summary>
         /// Updating name, description and/or coverImageUrl
@@ -61,9 +59,8 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateGameResponse</returns>
-        ApiResponse<UpdateGameResponse> UpdateGameWithHttpInfo(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0);
+        ApiResponse<UpdateGameResponse> UpdateGameWithHttpInfo(UpdateGameRequestInput updateGameRequestInput);
         #endregion Synchronous Operations
     }
 
@@ -80,10 +77,9 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetGameResponse</returns>
-        System.Threading.Tasks.Task<GetGameResponse> GetGameAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetGameResponse> GetGameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get information about your game
@@ -92,10 +88,9 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetGameResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetGameResponse>> GetGameWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetGameResponse>> GetGameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Updating name, description and/or coverImageUrl
         /// </summary>
@@ -104,10 +99,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateGameResponse</returns>
-        System.Threading.Tasks.Task<UpdateGameResponse> UpdateGameAsync(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<UpdateGameResponse> UpdateGameAsync(UpdateGameRequestInput updateGameRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Updating name, description and/or coverImageUrl
@@ -117,10 +111,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateGameResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateGameResponse>> UpdateGameWithHttpInfoAsync(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<UpdateGameResponse>> UpdateGameWithHttpInfoAsync(UpdateGameRequestInput updateGameRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -135,12 +128,14 @@ namespace Beam.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class GameApi : IGameApi
+    public partial class GameApi : IDisposable, IGameApi
     {
         private Beam.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameApi"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
         public GameApi() : this((string)null)
@@ -149,7 +144,11 @@ namespace Beam.Api
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameApi"/> class.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
         public GameApi(string basePath)
         {
@@ -157,16 +156,19 @@ namespace Beam.Api
                 Beam.Client.GlobalConfiguration.Instance,
                 new Beam.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Beam.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameApi"/> class
-        /// using Configuration object
+        /// Initializes a new instance of the <see cref="GameApi"/> class using Configuration object.
+        /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
+        /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
-        /// <param name="configuration">An instance of Configuration</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
         public GameApi(Beam.Client.Configuration configuration)
         {
@@ -176,8 +178,78 @@ namespace Beam.Api
                 Beam.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Beam.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.ApiClient = new Beam.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
+            ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameApi"/> class.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public GameApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameApi"/> class.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="basePath">The target service's base path in URL format.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public GameApi(HttpClient client, string basePath, HttpClientHandler handler = null)
+        {
+            if (client == null) throw new ArgumentNullException("client");
+
+            this.Configuration = Beam.Client.Configuration.MergeConfigurations(
+                Beam.Client.GlobalConfiguration.Instance,
+                new Beam.Client.Configuration { BasePath = basePath }
+            );
+            this.ApiClient = new Beam.Client.ApiClient(client, this.Configuration.BasePath, handler);
+            this.Client =  this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
+            this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameApi"/> class using Configuration object.
+        /// </summary>
+        /// <param name="client">An instance of HttpClient.</param>
+        /// <param name="configuration">An instance of Configuration.</param>
+        /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <returns></returns>
+        /// <remarks>
+        /// Some configuration settings will not be applied without passing an HttpClientHandler.
+        /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
+        /// </remarks>
+        public GameApi(HttpClient client, Beam.Client.Configuration configuration, HttpClientHandler handler = null)
+        {
+            if (configuration == null) throw new ArgumentNullException("configuration");
+            if (client == null) throw new ArgumentNullException("client");
+
+            this.Configuration = Beam.Client.Configuration.MergeConfigurations(
+                Beam.Client.GlobalConfiguration.Instance,
+                configuration
+            );
+            this.ApiClient = new Beam.Client.ApiClient(client, this.Configuration.BasePath, handler);
+            this.Client = this.ApiClient;
+            this.AsynchronousClient = this.ApiClient;
             ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -188,6 +260,7 @@ namespace Beam.Api
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public GameApi(Beam.Client.ISynchronousClient client, Beam.Client.IAsynchronousClient asyncClient, Beam.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
@@ -199,6 +272,19 @@ namespace Beam.Api
             this.Configuration = configuration;
             this.ExceptionFactory = Beam.Client.Configuration.DefaultExceptionFactory;
         }
+
+        /// <summary>
+        /// Disposes resources if they were created by us
+        /// </summary>
+        public void Dispose()
+        {
+            this.ApiClient?.Dispose();
+        }
+
+        /// <summary>
+        /// Holds the ApiClient if created
+        /// </summary>
+        public Beam.Client.ApiClient ApiClient { get; set; } = null;
 
         /// <summary>
         /// The client for accessing this underlying API asynchronously.
@@ -245,9 +331,8 @@ namespace Beam.Api
         /// Get information about your game 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>GetGameResponse</returns>
-        public GetGameResponse GetGame(int operationIndex = 0)
+        public GetGameResponse GetGame()
         {
             Beam.Client.ApiResponse<GetGameResponse> localVarResponse = GetGameWithHttpInfo();
             return localVarResponse.Data;
@@ -257,9 +342,8 @@ namespace Beam.Api
         /// Get information about your game 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of GetGameResponse</returns>
-        public Beam.Client.ApiResponse<GetGameResponse> GetGameWithHttpInfo(int operationIndex = 0)
+        public Beam.Client.ApiResponse<GetGameResponse> GetGameWithHttpInfo()
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -272,20 +356,11 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-
-            localVarRequestOptions.Operation = "GameApi.GetGame";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -295,13 +370,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Get<GetGameResponse>("/v1/game", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetGame", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -311,12 +384,11 @@ namespace Beam.Api
         /// Get information about your game 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetGameResponse</returns>
-        public async System.Threading.Tasks.Task<GetGameResponse> GetGameAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetGameResponse> GetGameAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetGameResponse> localVarResponse = await GetGameWithHttpInfoAsync(operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetGameResponse> localVarResponse = await GetGameWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -324,10 +396,9 @@ namespace Beam.Api
         /// Get information about your game 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetGameResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetGameResponse>> GetGameWithHttpInfoAsync(int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetGameResponse>> GetGameWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -340,21 +411,13 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-
-            localVarRequestOptions.Operation = "GameApi.GetGame";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -363,15 +426,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.GetAsync<GetGameResponse>("/v1/game", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetGame", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -382,9 +443,8 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UpdateGameResponse</returns>
-        public UpdateGameResponse UpdateGame(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0)
+        public UpdateGameResponse UpdateGame(UpdateGameRequestInput updateGameRequestInput)
         {
             Beam.Client.ApiResponse<UpdateGameResponse> localVarResponse = UpdateGameWithHttpInfo(updateGameRequestInput);
             return localVarResponse.Data;
@@ -395,15 +455,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UpdateGameResponse</returns>
-        public Beam.Client.ApiResponse<UpdateGameResponse> UpdateGameWithHttpInfo(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0)
+        public Beam.Client.ApiResponse<UpdateGameResponse> UpdateGameWithHttpInfo(UpdateGameRequestInput updateGameRequestInput)
         {
             // verify the required parameter 'updateGameRequestInput' is set
             if (updateGameRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'updateGameRequestInput' when calling GameApi->UpdateGame");
-            }
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -417,21 +474,12 @@ namespace Beam.Api
             };
 
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.Data = updateGameRequestInput;
-
-            localVarRequestOptions.Operation = "GameApi.UpdateGame";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -441,13 +489,11 @@ namespace Beam.Api
 
             // make the HTTP request
             var localVarResponse = this.Client.Patch<UpdateGameResponse>("/v1/game", localVarRequestOptions, this.Configuration);
+
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateGame", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
@@ -458,12 +504,11 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateGameResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateGameResponse> UpdateGameAsync(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<UpdateGameResponse> UpdateGameAsync(UpdateGameRequestInput updateGameRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<UpdateGameResponse> localVarResponse = await UpdateGameWithHttpInfoAsync(updateGameRequestInput, operationIndex, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<UpdateGameResponse> localVarResponse = await UpdateGameWithHttpInfoAsync(updateGameRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -472,16 +517,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="updateGameRequestInput"></param>
-        /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateGameResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<UpdateGameResponse>> UpdateGameWithHttpInfoAsync(UpdateGameRequestInput updateGameRequestInput, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<UpdateGameResponse>> UpdateGameWithHttpInfoAsync(UpdateGameRequestInput updateGameRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'updateGameRequestInput' is set
             if (updateGameRequestInput == null)
-            {
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'updateGameRequestInput' when calling GameApi->UpdateGame");
-            }
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -495,22 +537,14 @@ namespace Beam.Api
                 "application/json"
             };
 
+
             var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
 
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.Data = updateGameRequestInput;
-
-            localVarRequestOptions.Operation = "GameApi.UpdateGame";
-            localVarRequestOptions.OperationIndex = operationIndex;
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -519,15 +553,13 @@ namespace Beam.Api
             }
 
             // make the HTTP request
+
             var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateGameResponse>("/v1/game", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("UpdateGame", localVarResponse);
-                if (_exception != null)
-                {
-                    throw _exception;
-                }
+                if (_exception != null) throw _exception;
             }
 
             return localVarResponse;
