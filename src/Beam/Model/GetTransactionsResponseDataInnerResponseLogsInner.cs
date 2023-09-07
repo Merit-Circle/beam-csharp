@@ -43,7 +43,7 @@ namespace Beam.Model
         /// <param name="blockNumber">blockNumber (required).</param>
         /// <param name="blockHash">blockHash (required).</param>
         /// <param name="transactionIndex">transactionIndex (required).</param>
-        /// <param name="removed">removed (required).</param>
+        /// <param name="removed">removed.</param>
         /// <param name="address">address (required).</param>
         /// <param name="data">data (required).</param>
         /// <param name="topics">topics (required).</param>
@@ -59,7 +59,6 @@ namespace Beam.Model
             }
             this.BlockHash = blockHash;
             this.TransactionIndex = transactionIndex;
-            this.Removed = removed;
             // to ensure "address" is required (not null)
             if (address == null)
             {
@@ -85,6 +84,7 @@ namespace Beam.Model
             }
             this.TransactionHash = transactionHash;
             this.LogIndex = logIndex;
+            this.Removed = removed;
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets Removed
         /// </summary>
-        [DataMember(Name = "removed", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "removed", EmitDefaultValue = true)]
         public bool Removed { get; set; }
 
         /// <summary>

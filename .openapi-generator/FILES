@@ -75,6 +75,9 @@ src/Beam/Model/GetTransactionsResponseDataInner.cs
 src/Beam/Model/GetTransactionsResponseDataInnerInteractionsInner.cs
 src/Beam/Model/GetTransactionsResponseDataInnerResponse.cs
 src/Beam/Model/GetTransactionsResponseDataInnerResponseLogsInner.cs
+src/Beam/Model/RegenerateGameApiKeysRequestInput.cs
+src/Beam/Model/RegenerateGameApiKeysResponse.cs
+src/Beam/Model/RegenerateGameApiKeysResponseApiKeysInner.cs
 src/Beam/Model/SellAssetRequestInput.cs
 src/Beam/Model/SellAssetResponse.cs
 src/Beam/Model/TransferAssetRequestInput.cs

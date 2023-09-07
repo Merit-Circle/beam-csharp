@@ -159,6 +159,7 @@ Class | Method | HTTP request | Description
 *AssetsApi* | [**TransferToken**](docs/AssetsApi.md#transfertoken) | **POST** /v1/assets/profiles/{profileId}/transfer-token | Transfer a token (token assets, ERC20)
 *ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
+*GameApi* | [**RegenerateApiKeys**](docs/GameApi.md#regenerateapikeys) | **POST** /v1/game/regenerate-api-keys | Regenerate API keys
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
 *HealthApi* | [**Check**](docs/HealthApi.md#check) | **GET** /v1/health | 
 *ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{profileId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
@@ -224,6 +225,9 @@ Class | Method | HTTP request | Description
  - [Model.GetTransactionsResponseDataInnerInteractionsInner](docs/GetTransactionsResponseDataInnerInteractionsInner.md)
  - [Model.GetTransactionsResponseDataInnerResponse](docs/GetTransactionsResponseDataInnerResponse.md)
  - [Model.GetTransactionsResponseDataInnerResponseLogsInner](docs/GetTransactionsResponseDataInnerResponseLogsInner.md)
+ - [Model.RegenerateGameApiKeysRequestInput](docs/RegenerateGameApiKeysRequestInput.md)
+ - [Model.RegenerateGameApiKeysResponse](docs/RegenerateGameApiKeysResponse.md)
+ - [Model.RegenerateGameApiKeysResponseApiKeysInner](docs/RegenerateGameApiKeysResponseApiKeysInner.md)
  - [Model.SellAssetRequestInput](docs/SellAssetRequestInput.md)
  - [Model.SellAssetResponse](docs/SellAssetResponse.md)
  - [Model.TransferAssetRequestInput](docs/TransferAssetRequestInput.md)
