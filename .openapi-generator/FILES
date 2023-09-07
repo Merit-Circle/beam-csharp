@@ -60,7 +60,6 @@ src/Beam/Model/GetAssetsResponse.cs
 src/Beam/Model/GetAssetsResponseDataInner.cs
 src/Beam/Model/GetChainResponse.cs
 src/Beam/Model/GetChainResponseNativeCurrency.cs
-src/Beam/Model/GetGameListedAssetsRequestInput.cs
 src/Beam/Model/GetGameResponse.cs
 src/Beam/Model/GetGameResponseContractsInner.cs
 src/Beam/Model/GetGameResponsePoliciesInner.cs
