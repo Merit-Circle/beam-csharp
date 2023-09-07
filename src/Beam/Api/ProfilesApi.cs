@@ -32,9 +32,10 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <returns>GenerateLinkCodeResponse</returns>
-        GenerateLinkCodeResponse CreateConnectionRequest(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput);
+        GenerateLinkCodeResponse CreateConnectionRequest(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput);
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
@@ -44,9 +45,10 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <returns>ApiResponse of GenerateLinkCodeResponse</returns>
-        ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput);
+        ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput);
         /// <summary>
         /// Creating a profile
         /// </summary>
@@ -70,9 +72,10 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <returns>GenerateSignInCodeResponse</returns>
-        GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput);
+        GenerateSignInCodeResponse CreateSignInRequest(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput);
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
@@ -82,9 +85,10 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <returns>ApiResponse of GenerateSignInCodeResponse</returns>
-        ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput);
+        ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput);
         /// <summary>
         /// Getting all profiles
         /// </summary>
@@ -156,10 +160,11 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateLinkCodeResponse</returns>
-        System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
@@ -169,10 +174,11 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateLinkCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Creating a profile
         /// </summary>
@@ -204,10 +210,11 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateSignInCodeResponse</returns>
-        System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
@@ -217,10 +224,11 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateSignInCodeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting all profiles
         /// </summary>
@@ -508,11 +516,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <returns>GenerateLinkCodeResponse</returns>
-        public GenerateLinkCodeResponse CreateConnectionRequest(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput)
+        public GenerateLinkCodeResponse CreateConnectionRequest(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput)
         {
-            Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = CreateConnectionRequestWithHttpInfo(profileId, generateLinkCodeRequestInput);
+            Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = CreateConnectionRequestWithHttpInfo(profileId, xApiKey, generateLinkCodeRequestInput);
             return localVarResponse.Data;
         }
 
@@ -521,13 +530,18 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <returns>ApiResponse of GenerateLinkCodeResponse</returns>
-        public Beam.Client.ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput)
+        public Beam.Client.ApiResponse<GenerateLinkCodeResponse> CreateConnectionRequestWithHttpInfo(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateConnectionRequest");
+
+            // verify the required parameter 'xApiKey' is set
+            if (xApiKey == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'xApiKey' when calling ProfilesApi->CreateConnectionRequest");
 
             // verify the required parameter 'generateLinkCodeRequestInput' is set
             if (generateLinkCodeRequestInput == null)
@@ -551,6 +565,7 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("x-api-key", Beam.Client.ClientUtils.ParameterToString(xApiKey)); // header parameter
             localVarRequestOptions.Data = generateLinkCodeRequestInput;
 
             // authentication (Beam API game key) required
@@ -576,12 +591,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateLinkCodeResponse</returns>
-        public async System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GenerateLinkCodeResponse> CreateConnectionRequestAsync(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = await CreateConnectionRequestWithHttpInfoAsync(profileId, generateLinkCodeRequestInput, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GenerateLinkCodeResponse> localVarResponse = await CreateConnectionRequestWithHttpInfoAsync(profileId, xApiKey, generateLinkCodeRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -590,14 +606,19 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateLinkCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateLinkCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateLinkCodeResponse>> CreateConnectionRequestWithHttpInfoAsync(string profileId, string xApiKey, GenerateLinkCodeRequestInput generateLinkCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateConnectionRequest");
+
+            // verify the required parameter 'xApiKey' is set
+            if (xApiKey == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'xApiKey' when calling ProfilesApi->CreateConnectionRequest");
 
             // verify the required parameter 'generateLinkCodeRequestInput' is set
             if (generateLinkCodeRequestInput == null)
@@ -623,6 +644,7 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("x-api-key", Beam.Client.ClientUtils.ParameterToString(xApiKey)); // header parameter
             localVarRequestOptions.Data = generateLinkCodeRequestInput;
 
             // authentication (Beam API game key) required
@@ -776,11 +798,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <returns>GenerateSignInCodeResponse</returns>
-        public GenerateSignInCodeResponse CreateSignInRequest(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput)
+        public GenerateSignInCodeResponse CreateSignInRequest(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput)
         {
-            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = CreateSignInRequestWithHttpInfo(profileId, generateSignInCodeRequestInput);
+            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = CreateSignInRequestWithHttpInfo(profileId, xApiKey, generateSignInCodeRequestInput);
             return localVarResponse.Data;
         }
 
@@ -789,13 +812,18 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <returns>ApiResponse of GenerateSignInCodeResponse</returns>
-        public Beam.Client.ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput)
+        public Beam.Client.ApiResponse<GenerateSignInCodeResponse> CreateSignInRequestWithHttpInfo(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateSignInRequest");
+
+            // verify the required parameter 'xApiKey' is set
+            if (xApiKey == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'xApiKey' when calling ProfilesApi->CreateSignInRequest");
 
             // verify the required parameter 'generateSignInCodeRequestInput' is set
             if (generateSignInCodeRequestInput == null)
@@ -819,6 +847,7 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("x-api-key", Beam.Client.ClientUtils.ParameterToString(xApiKey)); // header parameter
             localVarRequestOptions.Data = generateSignInCodeRequestInput;
 
             // authentication (Beam API game key) required
@@ -844,12 +873,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GenerateSignInCodeResponse</returns>
-        public async System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GenerateSignInCodeResponse> CreateSignInRequestAsync(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = await CreateSignInRequestWithHttpInfoAsync(profileId, generateSignInCodeRequestInput, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GenerateSignInCodeResponse> localVarResponse = await CreateSignInRequestWithHttpInfoAsync(profileId, xApiKey, generateSignInCodeRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -858,14 +888,19 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
+        /// <param name="xApiKey"></param>
         /// <param name="generateSignInCodeRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GenerateSignInCodeResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GenerateSignInCodeResponse>> CreateSignInRequestWithHttpInfoAsync(string profileId, string xApiKey, GenerateSignInCodeRequestInput generateSignInCodeRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
                 throw new Beam.Client.ApiException(400, "Missing required parameter 'profileId' when calling ProfilesApi->CreateSignInRequest");
+
+            // verify the required parameter 'xApiKey' is set
+            if (xApiKey == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'xApiKey' when calling ProfilesApi->CreateSignInRequest");
 
             // verify the required parameter 'generateSignInCodeRequestInput' is set
             if (generateSignInCodeRequestInput == null)
@@ -891,6 +926,7 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("profileId", Beam.Client.ClientUtils.ParameterToString(profileId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("x-api-key", Beam.Client.ClientUtils.ParameterToString(xApiKey)); // header parameter
             localVarRequestOptions.Data = generateSignInCodeRequestInput;
 
             // authentication (Beam API game key) required
