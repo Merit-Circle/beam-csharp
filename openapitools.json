@@ -1,25 +1,25 @@
 {
-    "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
-    "spaces": 2,
-    "generator-cli": {
-      "version": "7.0.0-beta",
-      "generators": {
-        "csharp": {
-          "generatorName": "csharp",
-          "output": "./",
-          "inputSpec": "https://api.testnet.onbeam.com/api/game-json",
-          "skipValidateSpec": true,
-          "globalProperty": {
-            "modelTests": false,
-            "apiTests": false,
-            "modelDocs": false,
-            "apiDocs": false
-          },
-          "additionalProperties": {
-            "packageName": "Beam"
-          }
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.0.0",
+    "generators": {
+      "csharp": {
+        "generatorName": "csharp",
+        "output": "./",
+        "library": "httpclient",
+        "inputSpec": "https://api.testnet.onbeam.com/api/game-json",
+        "skipValidateSpec": true,
+        "globalProperty": {
+          "modelTests": false,
+          "apiTests": false,
+          "modelDocs": false,
+          "apiDocs": false
+        },
+        "additionalProperties": {
+          "packageName": "Beam"
         }
       }
     }
   }
-  
+}
