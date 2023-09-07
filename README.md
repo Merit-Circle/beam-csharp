@@ -146,8 +146,8 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssetsApi* | [**BuyAsset**](docs/AssetsApi.md#buyasset) | **POST** /v1/assets/profiles/{profileId}/buy | Buy listed asset
 *AssetsApi* | [**CancelAssetListing**](docs/AssetsApi.md#cancelassetlisting) | **DELETE** /v1/assets/profiles/{profileId}/listing/{orderId} | Cancel asset listing
-*AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{contractAddress}/{assetId} | Get a single NFT (e.g. ERC721 / ERC1155)
-*AssetsApi* | [**GetContractAssets**](docs/AssetsApi.md#getcontractassets) | **GET** /v1/assets/{contractAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{assetAddress}/{assetId} | Get a single NFT (e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetContractAssets**](docs/AssetsApi.md#getcontractassets) | **GET** /v1/assets/{assetAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetListedAssets**](docs/AssetsApi.md#getlistedassets) | **GET** /v1/assets/game/listed | Get all listed assets for a game
 *AssetsApi* | [**GetProfileAssets**](docs/AssetsApi.md#getprofileassets) | **GET** /v1/assets/profiles/{profileId} | Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileCurrencies**](docs/AssetsApi.md#getprofilecurrencies) | **GET** /v1/assets/profiles/{profileId}/currencies | Get all the currencies owned by an account (ERC20)
@@ -210,7 +210,6 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
  - [Model.GetChainResponse](docs/GetChainResponse.md)
  - [Model.GetChainResponseNativeCurrency](docs/GetChainResponseNativeCurrency.md)
- - [Model.GetGameListedAssetsRequestInput](docs/GetGameListedAssetsRequestInput.md)
  - [Model.GetGameResponse](docs/GetGameResponse.md)
  - [Model.GetGameResponseContractsInner](docs/GetGameResponseContractsInner.md)
  - [Model.GetGameResponsePoliciesInner](docs/GetGameResponsePoliciesInner.md)
