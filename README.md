@@ -116,18 +116,19 @@ namespace Example
             HttpClient httpClient = new HttpClient();
             HttpClientHandler httpClientHandler = new HttpClientHandler();
             var apiInstance = new AssetsApi(httpClient, config, httpClientHandler);
-            var profileId = "profileId_example";  // string | 
-            var buyAssetRequestInput = new BuyAssetRequestInput(); // BuyAssetRequestInput | 
+            var assetAddress = "assetAddress_example";  // string | 
+            var assetId = "assetId_example";  // string | 
+            var profileId = "profileId_example";  // string? |  (optional) 
 
             try
             {
-                // Buy listed asset
-                BuyAssetResponse result = apiInstance.BuyAsset(profileId, buyAssetRequestInput);
+                // Get a single NFT (e.g. ERC721 / ERC1155)
+                GetAssetResponse result = apiInstance.GetAsset(assetAddress, assetId, profileId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Debug.Print("Exception when calling AssetsApi.BuyAsset: " + e.Message );
+                Debug.Print("Exception when calling AssetsApi.GetAsset: " + e.Message );
                 Debug.Print("Status Code: "+ e.ErrorCode);
                 Debug.Print(e.StackTrace);
             }
@@ -144,24 +145,28 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AssetsApi* | [**BuyAsset**](docs/AssetsApi.md#buyasset) | **POST** /v1/assets/profiles/{profileId}/buy | Buy listed asset
-*AssetsApi* | [**CancelAssetListing**](docs/AssetsApi.md#cancelassetlisting) | **DELETE** /v1/assets/profiles/{profileId}/listing/{orderId} | Cancel asset listing
 *AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{assetAddress}/{assetId} | Get a single NFT (e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetContractAssets**](docs/AssetsApi.md#getcontractassets) | **GET** /v1/assets/{assetAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
-*AssetsApi* | [**GetListedAssets**](docs/AssetsApi.md#getlistedassets) | **GET** /v1/assets/game/listed | Get all listed assets for a game
 *AssetsApi* | [**GetProfileAssets**](docs/AssetsApi.md#getprofileassets) | **GET** /v1/assets/profiles/{profileId} | Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileCurrencies**](docs/AssetsApi.md#getprofilecurrencies) | **GET** /v1/assets/profiles/{profileId}/currencies | Get all the currencies owned by an account (ERC20)
-*AssetsApi* | [**GetProfileListedAssets**](docs/AssetsApi.md#getprofilelistedassets) | **GET** /v1/assets/profiles/{profileId}/listed | Get all the assets listed by an account (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileNativeCurrency**](docs/AssetsApi.md#getprofilenativecurrency) | **GET** /v1/assets/profiles/{profileId}/native | Get the native token balance
-*AssetsApi* | [**ListAssetForSale**](docs/AssetsApi.md#listassetforsale) | **POST** /v1/assets/profiles/{profileId}/listing | List an asset for sale
 *AssetsApi* | [**TransferAsset**](docs/AssetsApi.md#transferasset) | **POST** /v1/assets/profiles/{profileId}/transfer-asset | Transfer an asset (NFT assets, ERC721 / ERC1155)
 *AssetsApi* | [**TransferNativeToken**](docs/AssetsApi.md#transfernativetoken) | **POST** /v1/assets/profiles/{profileId}/transfer-native | Transfer the native token (MC)
 *AssetsApi* | [**TransferToken**](docs/AssetsApi.md#transfertoken) | **POST** /v1/assets/profiles/{profileId}/transfer-token | Transfer a token (token assets, ERC20)
 *ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
+*ExchangeApi* | [**ConvertInput**](docs/ExchangeApi.md#convertinput) | **POST** /v1/exchange/profiles/{profileId}/convert/input | Trade an exact amount of `tokenIn` for a minimum amount of `tokenOut`
+*ExchangeApi* | [**ConvertToOutput**](docs/ExchangeApi.md#converttooutput) | **POST** /v1/exchange/profiles/{profileId}/convert/output | Swap a maximum amount of `tokenIn` for an exact amount of `tokenOut`
+*ExchangeApi* | [**GetQuoteForInput**](docs/ExchangeApi.md#getquoteforinput) | **GET** /v1/exchange/quote/input | Returns the maximum necessary input amount for a token trade, given a desired output amount
+*ExchangeApi* | [**GetQuoteForOutput**](docs/ExchangeApi.md#getquoteforoutput) | **GET** /v1/exchange/quote/output | Returns the minimum expected output amount for a token trade, given an input amount
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**RegenerateApiKeys**](docs/GameApi.md#regenerateapikeys) | **POST** /v1/game/regenerate-api-keys | Regenerate API keys
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
 *HealthApi* | [**Check**](docs/HealthApi.md#check) | **GET** /v1/health | 
+*MarketplaceApi* | [**BuyListedAsset**](docs/MarketplaceApi.md#buylistedasset) | **POST** /v1/marketplace/profiles/{profileId}/listing/{orderId} | Buy listed asset
+*MarketplaceApi* | [**CancelListing**](docs/MarketplaceApi.md#cancellisting) | **DELETE** /v1/marketplace/profiles/{profileId}/listing/{orderId} | Cancel asset listing
+*MarketplaceApi* | [**GetListedAssets**](docs/MarketplaceApi.md#getlistedassets) | **GET** /v1/marketplace | Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
+*MarketplaceApi* | [**GetListedAssetsForProfile**](docs/MarketplaceApi.md#getlistedassetsforprofile) | **GET** /v1/marketplace/profiles/{profileId} | Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+*MarketplaceApi* | [**ListAsset**](docs/MarketplaceApi.md#listasset) | **POST** /v1/marketplace/profiles/{profileId}/listing | List an asset for sale
 *ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{profileId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
 *ProfilesApi* | [**CreateProfile**](docs/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Creating a profile
 *ProfilesApi* | [**CreateSignInRequest**](docs/ProfilesApi.md#createsigninrequest) | **POST** /v1/profiles/{profileId}/create-sign-in-request | Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
@@ -169,7 +174,7 @@ Class | Method | HTTP request | Description
 *ProfilesApi* | [**GetProfile**](docs/ProfilesApi.md#getprofile) | **GET** /v1/profiles/{profileId} | Getting information on a profile
 *ProfilesApi* | [**UpdateProfile**](docs/ProfilesApi.md#updateprofile) | **PATCH** /v1/profiles/{profileId} | Update a profile
 *TransactionsApi* | [**CreateProfileTransaction**](docs/TransactionsApi.md#createprofiletransaction) | **POST** /v1/transactions/profiles/{profileId} | Creating a new transaction on behalf of a profile
-*TransactionsApi* | [**GetProfileTransactions**](docs/TransactionsApi.md#getprofiletransactions) | **GET** /v1/transactions/profiles/{profileId} | Get a paginated list of transactions created on behalf of a prfoile
+*TransactionsApi* | [**GetProfileTransactions**](docs/TransactionsApi.md#getprofiletransactions) | **GET** /v1/transactions/profiles/{profileId} | Get a paginated list of transactions created on behalf of a profile
 *TransactionsApi* | [**GetTransaction**](docs/TransactionsApi.md#gettransaction) | **GET** /v1/transactions/{transactionId} | Getting a transaction
 *TransactionsApi* | [**GetTransactions**](docs/TransactionsApi.md#gettransactions) | **GET** /v1/transactions | Get a paginated list of transactions from your game
 
@@ -183,6 +188,8 @@ Class | Method | HTTP request | Description
  - [Model.Check200Response](docs/Check200Response.md)
  - [Model.Check200ResponseInfoValue](docs/Check200ResponseInfoValue.md)
  - [Model.Check503Response](docs/Check503Response.md)
+ - [Model.ConvertTokenRequestInput](docs/ConvertTokenRequestInput.md)
+ - [Model.ConvertTokenRespone](docs/ConvertTokenRespone.md)
  - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
  - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
  - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)
@@ -206,6 +213,9 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetResponseContractHeader](docs/GetAssetResponseContractHeader.md)
  - [Model.GetAssetResponseContractHeaderBackground](docs/GetAssetResponseContractHeaderBackground.md)
  - [Model.GetAssetResponseListing](docs/GetAssetResponseListing.md)
+ - [Model.GetAssetResponseOwnershipByAddressesInner](docs/GetAssetResponseOwnershipByAddressesInner.md)
+ - [Model.GetAssetResponseOwnershipByAddressesInnerUser](docs/GetAssetResponseOwnershipByAddressesInnerUser.md)
+ - [Model.GetAssetResponseOwnershipByAddressesInnerUserProfile](docs/GetAssetResponseOwnershipByAddressesInnerUserProfile.md)
  - [Model.GetAssetsResponse](docs/GetAssetsResponse.md)
  - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
  - [Model.GetChainResponse](docs/GetChainResponse.md)
@@ -218,6 +228,7 @@ Class | Method | HTTP request | Description
  - [Model.GetProfileNativeCurrencyResponse](docs/GetProfileNativeCurrencyResponse.md)
  - [Model.GetProfileNativeCurrencyResponseNativeTokenBalance](docs/GetProfileNativeCurrencyResponseNativeTokenBalance.md)
  - [Model.GetProfileResponse](docs/GetProfileResponse.md)
+ - [Model.GetQuoteResponse](docs/GetQuoteResponse.md)
  - [Model.GetTransactionResponse](docs/GetTransactionResponse.md)
  - [Model.GetTransactionsResponse](docs/GetTransactionsResponse.md)
  - [Model.GetTransactionsResponseDataInner](docs/GetTransactionsResponseDataInner.md)

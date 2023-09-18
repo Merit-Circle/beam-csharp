@@ -44,8 +44,9 @@ namespace Beam.Model
         /// <param name="gameId">gameId (required).</param>
         /// <param name="externalId">externalId (required).</param>
         /// <param name="userId">userId (required).</param>
+        /// <param name="userConnectionCreatedAt">userConnectionCreatedAt (required).</param>
         /// <param name="wallets">wallets (required).</param>
-        public GetAllProfilesResponseDataInner(string id = default(string), string gameId = default(string), string externalId = default(string), string userId = default(string), List<CreateProfileResponseWalletsInner> wallets = default(List<CreateProfileResponseWalletsInner>))
+        public GetAllProfilesResponseDataInner(string id = default(string), string gameId = default(string), string externalId = default(string), string userId = default(string), Object userConnectionCreatedAt = default(Object), List<CreateProfileResponseWalletsInner> wallets = default(List<CreateProfileResponseWalletsInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -71,6 +72,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("userId is a required property for GetAllProfilesResponseDataInner and cannot be null");
             }
             this.UserId = userId;
+            // to ensure "userConnectionCreatedAt" is required (not null)
+            if (userConnectionCreatedAt == null)
+            {
+                throw new ArgumentNullException("userConnectionCreatedAt is a required property for GetAllProfilesResponseDataInner and cannot be null");
+            }
+            this.UserConnectionCreatedAt = userConnectionCreatedAt;
             // to ensure "wallets" is required (not null)
             if (wallets == null)
             {
@@ -104,6 +111,12 @@ namespace Beam.Model
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets UserConnectionCreatedAt
+        /// </summary>
+        [DataMember(Name = "userConnectionCreatedAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object UserConnectionCreatedAt { get; set; }
+
+        /// <summary>
         /// Gets or Sets Wallets
         /// </summary>
         [DataMember(Name = "wallets", IsRequired = true, EmitDefaultValue = true)]
@@ -121,6 +134,7 @@ namespace Beam.Model
             sb.Append("  GameId: ").Append(GameId).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  UserConnectionCreatedAt: ").Append(UserConnectionCreatedAt).Append("\n");
             sb.Append("  Wallets: ").Append(Wallets).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -178,6 +192,11 @@ namespace Beam.Model
                     this.UserId.Equals(input.UserId))
                 ) && 
                 (
+                    this.UserConnectionCreatedAt == input.UserConnectionCreatedAt ||
+                    (this.UserConnectionCreatedAt != null &&
+                    this.UserConnectionCreatedAt.Equals(input.UserConnectionCreatedAt))
+                ) && 
+                (
                     this.Wallets == input.Wallets ||
                     this.Wallets != null &&
                     input.Wallets != null &&
@@ -209,6 +228,10 @@ namespace Beam.Model
                 if (this.UserId != null)
                 {
                     hashCode = (hashCode * 59) + this.UserId.GetHashCode();
+                }
+                if (this.UserConnectionCreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserConnectionCreatedAt.GetHashCode();
                 }
                 if (this.Wallets != null)
                 {

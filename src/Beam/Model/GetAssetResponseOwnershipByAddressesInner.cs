@@ -27,30 +27,44 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// BuyAssetRequestInput
+    /// GetAssetResponseOwnershipByAddressesInner
     /// </summary>
-    [DataContract(Name = "BuyAssetRequestInput")]
-    public partial class BuyAssetRequestInput : IEquatable<BuyAssetRequestInput>, IValidatableObject
+    [DataContract(Name = "GetAssetResponse_ownershipByAddresses_inner")]
+    public partial class GetAssetResponseOwnershipByAddressesInner : IEquatable<GetAssetResponseOwnershipByAddressesInner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuyAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetResponseOwnershipByAddressesInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BuyAssetRequestInput() { }
+        protected GetAssetResponseOwnershipByAddressesInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="BuyAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetResponseOwnershipByAddressesInner" /> class.
         /// </summary>
+        /// <param name="address">address (required).</param>
         /// <param name="quantity">quantity (required).</param>
-        /// <param name="optimistic">optimistic (default to false).</param>
-        /// <param name="sponsor">sponsor (default to true).</param>
-        /// <param name="policyId">policyId.</param>
-        public BuyAssetRequestInput(decimal quantity = default(decimal), bool optimistic = false, bool sponsor = true, string policyId = default(string))
+        /// <param name="user">user (required).</param>
+        public GetAssetResponseOwnershipByAddressesInner(string address = default(string), decimal quantity = default(decimal), GetAssetResponseOwnershipByAddressesInnerUser user = default(GetAssetResponseOwnershipByAddressesInnerUser))
         {
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for GetAssetResponseOwnershipByAddressesInner and cannot be null");
+            }
+            this.Address = address;
             this.Quantity = quantity;
-            this.Optimistic = optimistic;
-            this.Sponsor = sponsor;
-            this.PolicyId = policyId;
+            // to ensure "user" is required (not null)
+            if (user == null)
+            {
+                throw new ArgumentNullException("user is a required property for GetAssetResponseOwnershipByAddressesInner and cannot be null");
+            }
+            this.User = user;
         }
+
+        /// <summary>
+        /// Gets or Sets Address
+        /// </summary>
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
+        public string Address { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
@@ -59,22 +73,10 @@ namespace Beam.Model
         public decimal Quantity { get; set; }
 
         /// <summary>
-        /// Gets or Sets Optimistic
+        /// Gets or Sets User
         /// </summary>
-        [DataMember(Name = "optimistic", EmitDefaultValue = true)]
-        public bool Optimistic { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Sponsor
-        /// </summary>
-        [DataMember(Name = "sponsor", EmitDefaultValue = true)]
-        public bool Sponsor { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PolicyId
-        /// </summary>
-        [DataMember(Name = "policyId", EmitDefaultValue = false)]
-        public string PolicyId { get; set; }
+        [DataMember(Name = "user", IsRequired = true, EmitDefaultValue = true)]
+        public GetAssetResponseOwnershipByAddressesInnerUser User { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,11 +85,10 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class BuyAssetRequestInput {\n");
+            sb.Append("class GetAssetResponseOwnershipByAddressesInner {\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
-            sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
-            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
+            sb.Append("  User: ").Append(User).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,15 +109,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as BuyAssetRequestInput);
+            return this.Equals(input as GetAssetResponseOwnershipByAddressesInner);
         }
 
         /// <summary>
-        /// Returns true if BuyAssetRequestInput instances are equal
+        /// Returns true if GetAssetResponseOwnershipByAddressesInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of BuyAssetRequestInput to be compared</param>
+        /// <param name="input">Instance of GetAssetResponseOwnershipByAddressesInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(BuyAssetRequestInput input)
+        public bool Equals(GetAssetResponseOwnershipByAddressesInner input)
         {
             if (input == null)
             {
@@ -124,21 +125,18 @@ namespace Beam.Model
             }
             return 
                 (
+                    this.Address == input.Address ||
+                    (this.Address != null &&
+                    this.Address.Equals(input.Address))
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
                 ) && 
                 (
-                    this.Optimistic == input.Optimistic ||
-                    this.Optimistic.Equals(input.Optimistic)
-                ) && 
-                (
-                    this.Sponsor == input.Sponsor ||
-                    this.Sponsor.Equals(input.Sponsor)
-                ) && 
-                (
-                    this.PolicyId == input.PolicyId ||
-                    (this.PolicyId != null &&
-                    this.PolicyId.Equals(input.PolicyId))
+                    this.User == input.User ||
+                    (this.User != null &&
+                    this.User.Equals(input.User))
                 );
         }
 
@@ -151,12 +149,14 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
-                hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
-                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
-                if (this.PolicyId != null)
+                if (this.Address != null)
                 {
-                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Address.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
+                if (this.User != null)
+                {
+                    hashCode = (hashCode * 59) + this.User.GetHashCode();
                 }
                 return hashCode;
             }

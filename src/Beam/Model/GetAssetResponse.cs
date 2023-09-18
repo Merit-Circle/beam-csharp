@@ -210,7 +210,8 @@ namespace Beam.Model
         /// <param name="attributes">attributes.</param>
         /// <param name="contract">contract (required).</param>
         /// <param name="listing">listing.</param>
-        public GetAssetResponse(string id = default(string), string name = default(string), NetworkEnum network = default(NetworkEnum), decimal chainId = default(decimal), string contractAddress = default(string), string tokenId = default(string), string description = default(string), string mintedAt = default(string), string standardImageUrl = default(string), string thumbnailImageUrl = default(string), string youtubeUrl = default(string), string backgroundColor = default(string), string externalUrl = default(string), string tokenUri = default(string), RarityEnum? rarity = default(RarityEnum?), decimal? rarityScore = default(decimal?), decimal? normalizedRarityScore = default(decimal?), string lastSoldTokenAmount = default(string), LastSoldTokenCurrencyEnum? lastSoldTokenCurrency = default(LastSoldTokenCurrencyEnum?), string indexerDataSyncedAt = default(string), List<GetAssetResponseAttributesInner> attributes = default(List<GetAssetResponseAttributesInner>), GetAssetResponseContract contract = default(GetAssetResponseContract), GetAssetResponseListing listing = default(GetAssetResponseListing))
+        /// <param name="ownershipByAddresses">ownershipByAddresses.</param>
+        public GetAssetResponse(string id = default(string), string name = default(string), NetworkEnum network = default(NetworkEnum), decimal chainId = default(decimal), string contractAddress = default(string), string tokenId = default(string), string description = default(string), string mintedAt = default(string), string standardImageUrl = default(string), string thumbnailImageUrl = default(string), string youtubeUrl = default(string), string backgroundColor = default(string), string externalUrl = default(string), string tokenUri = default(string), RarityEnum? rarity = default(RarityEnum?), decimal? rarityScore = default(decimal?), decimal? normalizedRarityScore = default(decimal?), string lastSoldTokenAmount = default(string), LastSoldTokenCurrencyEnum? lastSoldTokenCurrency = default(LastSoldTokenCurrencyEnum?), string indexerDataSyncedAt = default(string), List<GetAssetResponseAttributesInner> attributes = default(List<GetAssetResponseAttributesInner>), GetAssetResponseContract contract = default(GetAssetResponseContract), GetAssetResponseListing listing = default(GetAssetResponseListing), List<GetAssetResponseOwnershipByAddressesInner> ownershipByAddresses = default(List<GetAssetResponseOwnershipByAddressesInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -265,6 +266,7 @@ namespace Beam.Model
             this.IndexerDataSyncedAt = indexerDataSyncedAt;
             this.Attributes = attributes;
             this.Listing = listing;
+            this.OwnershipByAddresses = ownershipByAddresses;
         }
 
         /// <summary>
@@ -388,6 +390,12 @@ namespace Beam.Model
         public GetAssetResponseListing Listing { get; set; }
 
         /// <summary>
+        /// Gets or Sets OwnershipByAddresses
+        /// </summary>
+        [DataMember(Name = "ownershipByAddresses", EmitDefaultValue = true)]
+        public List<GetAssetResponseOwnershipByAddressesInner> OwnershipByAddresses { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -418,6 +426,7 @@ namespace Beam.Model
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  Contract: ").Append(Contract).Append("\n");
             sb.Append("  Listing: ").Append(Listing).Append("\n");
+            sb.Append("  OwnershipByAddresses: ").Append(OwnershipByAddresses).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -564,6 +573,12 @@ namespace Beam.Model
                     this.Listing == input.Listing ||
                     (this.Listing != null &&
                     this.Listing.Equals(input.Listing))
+                ) && 
+                (
+                    this.OwnershipByAddresses == input.OwnershipByAddresses ||
+                    this.OwnershipByAddresses != null &&
+                    input.OwnershipByAddresses != null &&
+                    this.OwnershipByAddresses.SequenceEqual(input.OwnershipByAddresses)
                 );
         }
 
@@ -655,6 +670,10 @@ namespace Beam.Model
                 if (this.Listing != null)
                 {
                     hashCode = (hashCode * 59) + this.Listing.GetHashCode();
+                }
+                if (this.OwnershipByAddresses != null)
+                {
+                    hashCode = (hashCode * 59) + this.OwnershipByAddresses.GetHashCode();
                 }
                 return hashCode;
             }

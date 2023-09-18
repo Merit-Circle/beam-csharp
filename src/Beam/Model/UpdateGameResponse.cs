@@ -44,9 +44,10 @@ namespace Beam.Model
         /// <param name="name">name (required).</param>
         /// <param name="description">description (required).</param>
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
+        /// <param name="logoImageUrl">logoImageUrl (required).</param>
         /// <param name="contracts">contracts (required).</param>
         /// <param name="policies">policies (required).</param>
-        public UpdateGameResponse(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
+        public UpdateGameResponse(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -72,6 +73,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("coverImageUrl is a required property for UpdateGameResponse and cannot be null");
             }
             this.CoverImageUrl = coverImageUrl;
+            // to ensure "logoImageUrl" is required (not null)
+            if (logoImageUrl == null)
+            {
+                throw new ArgumentNullException("logoImageUrl is a required property for UpdateGameResponse and cannot be null");
+            }
+            this.LogoImageUrl = logoImageUrl;
             // to ensure "contracts" is required (not null)
             if (contracts == null)
             {
@@ -111,6 +118,12 @@ namespace Beam.Model
         public string CoverImageUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets LogoImageUrl
+        /// </summary>
+        [DataMember(Name = "logoImageUrl", IsRequired = true, EmitDefaultValue = true)]
+        public string LogoImageUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets Contracts
         /// </summary>
         [DataMember(Name = "contracts", IsRequired = true, EmitDefaultValue = true)]
@@ -134,6 +147,7 @@ namespace Beam.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
+            sb.Append("  LogoImageUrl: ").Append(LogoImageUrl).Append("\n");
             sb.Append("  Contracts: ").Append(Contracts).Append("\n");
             sb.Append("  Policies: ").Append(Policies).Append("\n");
             sb.Append("}\n");
@@ -192,6 +206,11 @@ namespace Beam.Model
                     this.CoverImageUrl.Equals(input.CoverImageUrl))
                 ) && 
                 (
+                    this.LogoImageUrl == input.LogoImageUrl ||
+                    (this.LogoImageUrl != null &&
+                    this.LogoImageUrl.Equals(input.LogoImageUrl))
+                ) && 
+                (
                     this.Contracts == input.Contracts ||
                     this.Contracts != null &&
                     input.Contracts != null &&
@@ -229,6 +248,10 @@ namespace Beam.Model
                 if (this.CoverImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.CoverImageUrl.GetHashCode();
+                }
+                if (this.LogoImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.LogoImageUrl.GetHashCode();
                 }
                 if (this.Contracts != null)
                 {

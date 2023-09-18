@@ -35,53 +35,41 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateGameRequestInput" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected UpdateGameRequestInput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateGameRequestInput" /> class.
-        /// </summary>
-        /// <param name="name">name (required).</param>
-        /// <param name="description">description (required).</param>
-        /// <param name="coverImageUrl">coverImageUrl (required).</param>
-        public UpdateGameRequestInput(string name = default(string), string description = default(string), string coverImageUrl = default(string))
+        /// <param name="name">name.</param>
+        /// <param name="description">description.</param>
+        /// <param name="coverImageUrl">coverImageUrl.</param>
+        /// <param name="logoImageUrl">logoImageUrl.</param>
+        public UpdateGameRequestInput(string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string))
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
-            {
-                throw new ArgumentNullException("name is a required property for UpdateGameRequestInput and cannot be null");
-            }
             this.Name = name;
-            // to ensure "description" is required (not null)
-            if (description == null)
-            {
-                throw new ArgumentNullException("description is a required property for UpdateGameRequestInput and cannot be null");
-            }
             this.Description = description;
-            // to ensure "coverImageUrl" is required (not null)
-            if (coverImageUrl == null)
-            {
-                throw new ArgumentNullException("coverImageUrl is a required property for UpdateGameRequestInput and cannot be null");
-            }
             this.CoverImageUrl = coverImageUrl;
+            this.LogoImageUrl = logoImageUrl;
         }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name = "description", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "description", EmitDefaultValue = true)]
         public string Description { get; set; }
 
         /// <summary>
         /// Gets or Sets CoverImageUrl
         /// </summary>
-        [DataMember(Name = "coverImageUrl", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "coverImageUrl", EmitDefaultValue = true)]
         public string CoverImageUrl { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LogoImageUrl
+        /// </summary>
+        [DataMember(Name = "logoImageUrl", EmitDefaultValue = true)]
+        public string LogoImageUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,6 +82,7 @@ namespace Beam.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
+            sb.Append("  LogoImageUrl: ").Append(LogoImageUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -143,6 +132,11 @@ namespace Beam.Model
                     this.CoverImageUrl == input.CoverImageUrl ||
                     (this.CoverImageUrl != null &&
                     this.CoverImageUrl.Equals(input.CoverImageUrl))
+                ) && 
+                (
+                    this.LogoImageUrl == input.LogoImageUrl ||
+                    (this.LogoImageUrl != null &&
+                    this.LogoImageUrl.Equals(input.LogoImageUrl))
                 );
         }
 
@@ -166,6 +160,10 @@ namespace Beam.Model
                 if (this.CoverImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.CoverImageUrl.GetHashCode();
+                }
+                if (this.LogoImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.LogoImageUrl.GetHashCode();
                 }
                 return hashCode;
             }
