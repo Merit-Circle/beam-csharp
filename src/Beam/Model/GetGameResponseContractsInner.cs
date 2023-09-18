@@ -60,7 +60,19 @@ namespace Beam.Model
             /// Enum SEAPORT for value: SEAPORT
             /// </summary>
             [EnumMember(Value = "SEAPORT")]
-            SEAPORT = 4
+            SEAPORT = 4,
+
+            /// <summary>
+            /// Enum UNISWAPV2 for value: UNISWAPV2
+            /// </summary>
+            [EnumMember(Value = "UNISWAPV2")]
+            UNISWAPV2 = 5,
+
+            /// <summary>
+            /// Enum WETH for value: WETH
+            /// </summary>
+            [EnumMember(Value = "WETH")]
+            WETH = 6
         }
 
 

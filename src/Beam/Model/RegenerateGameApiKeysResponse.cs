@@ -44,8 +44,9 @@ namespace Beam.Model
         /// <param name="name">name (required).</param>
         /// <param name="description">description (required).</param>
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
+        /// <param name="logoImageUrl">logoImageUrl (required).</param>
         /// <param name="apiKeys">apiKeys (required).</param>
-        public RegenerateGameApiKeysResponse(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), List<RegenerateGameApiKeysResponseApiKeysInner> apiKeys = default(List<RegenerateGameApiKeysResponseApiKeysInner>))
+        public RegenerateGameApiKeysResponse(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<RegenerateGameApiKeysResponseApiKeysInner> apiKeys = default(List<RegenerateGameApiKeysResponseApiKeysInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -71,6 +72,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("coverImageUrl is a required property for RegenerateGameApiKeysResponse and cannot be null");
             }
             this.CoverImageUrl = coverImageUrl;
+            // to ensure "logoImageUrl" is required (not null)
+            if (logoImageUrl == null)
+            {
+                throw new ArgumentNullException("logoImageUrl is a required property for RegenerateGameApiKeysResponse and cannot be null");
+            }
+            this.LogoImageUrl = logoImageUrl;
             // to ensure "apiKeys" is required (not null)
             if (apiKeys == null)
             {
@@ -104,6 +111,12 @@ namespace Beam.Model
         public string CoverImageUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets LogoImageUrl
+        /// </summary>
+        [DataMember(Name = "logoImageUrl", IsRequired = true, EmitDefaultValue = true)]
+        public string LogoImageUrl { get; set; }
+
+        /// <summary>
         /// Gets or Sets ApiKeys
         /// </summary>
         [DataMember(Name = "apiKeys", IsRequired = true, EmitDefaultValue = true)]
@@ -121,6 +134,7 @@ namespace Beam.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
+            sb.Append("  LogoImageUrl: ").Append(LogoImageUrl).Append("\n");
             sb.Append("  ApiKeys: ").Append(ApiKeys).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -178,6 +192,11 @@ namespace Beam.Model
                     this.CoverImageUrl.Equals(input.CoverImageUrl))
                 ) && 
                 (
+                    this.LogoImageUrl == input.LogoImageUrl ||
+                    (this.LogoImageUrl != null &&
+                    this.LogoImageUrl.Equals(input.LogoImageUrl))
+                ) && 
+                (
                     this.ApiKeys == input.ApiKeys ||
                     this.ApiKeys != null &&
                     input.ApiKeys != null &&
@@ -209,6 +228,10 @@ namespace Beam.Model
                 if (this.CoverImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.CoverImageUrl.GetHashCode();
+                }
+                if (this.LogoImageUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.LogoImageUrl.GetHashCode();
                 }
                 if (this.ApiKeys != null)
                 {
