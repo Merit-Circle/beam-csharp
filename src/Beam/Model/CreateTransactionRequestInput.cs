@@ -43,7 +43,8 @@ namespace Beam.Model
         /// <param name="interactions">interactions (required).</param>
         /// <param name="optimistic">optimistic (required).</param>
         /// <param name="policyId">policyId.</param>
-        public CreateTransactionRequestInput(List<CreateTransactionRequestInputInteractionsInner> interactions = default(List<CreateTransactionRequestInputInteractionsInner>), bool optimistic = default(bool), string policyId = default(string))
+        /// <param name="sponsor">sponsor (default to true).</param>
+        public CreateTransactionRequestInput(List<CreateTransactionRequestInputInteractionsInner> interactions = default(List<CreateTransactionRequestInputInteractionsInner>), bool optimistic = default(bool), string policyId = default(string), bool sponsor = true)
         {
             // to ensure "interactions" is required (not null)
             if (interactions == null)
@@ -53,6 +54,7 @@ namespace Beam.Model
             this.Interactions = interactions;
             this.Optimistic = optimistic;
             this.PolicyId = policyId;
+            this.Sponsor = sponsor;
         }
 
         /// <summary>
@@ -74,6 +76,12 @@ namespace Beam.Model
         public string PolicyId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Sponsor
+        /// </summary>
+        [DataMember(Name = "sponsor", EmitDefaultValue = true)]
+        public bool Sponsor { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -84,6 +92,7 @@ namespace Beam.Model
             sb.Append("  Interactions: ").Append(Interactions).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
+            sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,6 +142,10 @@ namespace Beam.Model
                     this.PolicyId == input.PolicyId ||
                     (this.PolicyId != null &&
                     this.PolicyId.Equals(input.PolicyId))
+                ) && 
+                (
+                    this.Sponsor == input.Sponsor ||
+                    this.Sponsor.Equals(input.Sponsor)
                 );
         }
 
@@ -154,6 +167,7 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 return hashCode;
             }
         }

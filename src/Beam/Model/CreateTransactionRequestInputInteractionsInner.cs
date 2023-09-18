@@ -40,36 +40,33 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateTransactionRequestInputInteractionsInner" /> class.
         /// </summary>
-        /// <param name="contract">contract (required).</param>
+        /// <param name="contractAddress">contractAddress (required).</param>
         /// <param name="functionName">functionName (required).</param>
-        /// <param name="functionArgs">functionArgs (required).</param>
-        public CreateTransactionRequestInputInteractionsInner(string contract = default(string), string functionName = default(string), List<Object> functionArgs = default(List<Object>))
+        /// <param name="functionArgs">functionArgs.</param>
+        /// <param name="value">value.</param>
+        public CreateTransactionRequestInputInteractionsInner(string contractAddress = default(string), string functionName = default(string), List<Object> functionArgs = default(List<Object>), string value = default(string))
         {
-            // to ensure "contract" is required (not null)
-            if (contract == null)
+            // to ensure "contractAddress" is required (not null)
+            if (contractAddress == null)
             {
-                throw new ArgumentNullException("contract is a required property for CreateTransactionRequestInputInteractionsInner and cannot be null");
+                throw new ArgumentNullException("contractAddress is a required property for CreateTransactionRequestInputInteractionsInner and cannot be null");
             }
-            this.Contract = contract;
+            this.ContractAddress = contractAddress;
             // to ensure "functionName" is required (not null)
             if (functionName == null)
             {
                 throw new ArgumentNullException("functionName is a required property for CreateTransactionRequestInputInteractionsInner and cannot be null");
             }
             this.FunctionName = functionName;
-            // to ensure "functionArgs" is required (not null)
-            if (functionArgs == null)
-            {
-                throw new ArgumentNullException("functionArgs is a required property for CreateTransactionRequestInputInteractionsInner and cannot be null");
-            }
             this.FunctionArgs = functionArgs;
+            this.Value = value;
         }
 
         /// <summary>
-        /// Gets or Sets Contract
+        /// Gets or Sets ContractAddress
         /// </summary>
-        [DataMember(Name = "contract", IsRequired = true, EmitDefaultValue = true)]
-        public string Contract { get; set; }
+        [DataMember(Name = "contractAddress", IsRequired = true, EmitDefaultValue = true)]
+        public string ContractAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets FunctionName
@@ -80,8 +77,14 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets FunctionArgs
         /// </summary>
-        [DataMember(Name = "functionArgs", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "functionArgs", EmitDefaultValue = false)]
         public List<Object> FunctionArgs { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Value
+        /// </summary>
+        [DataMember(Name = "value", EmitDefaultValue = false)]
+        public string Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,9 +94,10 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateTransactionRequestInputInteractionsInner {\n");
-            sb.Append("  Contract: ").Append(Contract).Append("\n");
+            sb.Append("  ContractAddress: ").Append(ContractAddress).Append("\n");
             sb.Append("  FunctionName: ").Append(FunctionName).Append("\n");
             sb.Append("  FunctionArgs: ").Append(FunctionArgs).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -130,9 +134,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Contract == input.Contract ||
-                    (this.Contract != null &&
-                    this.Contract.Equals(input.Contract))
+                    this.ContractAddress == input.ContractAddress ||
+                    (this.ContractAddress != null &&
+                    this.ContractAddress.Equals(input.ContractAddress))
                 ) && 
                 (
                     this.FunctionName == input.FunctionName ||
@@ -144,6 +148,11 @@ namespace Beam.Model
                     this.FunctionArgs != null &&
                     input.FunctionArgs != null &&
                     this.FunctionArgs.SequenceEqual(input.FunctionArgs)
+                ) && 
+                (
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 );
         }
 
@@ -156,9 +165,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Contract != null)
+                if (this.ContractAddress != null)
                 {
-                    hashCode = (hashCode * 59) + this.Contract.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ContractAddress.GetHashCode();
                 }
                 if (this.FunctionName != null)
                 {
@@ -167,6 +176,10 @@ namespace Beam.Model
                 if (this.FunctionArgs != null)
                 {
                     hashCode = (hashCode * 59) + this.FunctionArgs.GetHashCode();
+                }
+                if (this.Value != null)
+                {
+                    hashCode = (hashCode * 59) + this.Value.GetHashCode();
                 }
                 return hashCode;
             }
