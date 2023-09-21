@@ -77,22 +77,22 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SellAssetRequestInput" /> class.
         /// </summary>
-        /// <param name="marketplaceAssetId">marketplaceAssetId (required).</param>
+        /// <param name="marketplaceId">marketplaceId (required).</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="price">price (required).</param>
-        /// <param name="startTime">startTime (required).</param>
-        /// <param name="endTime">endTime (required).</param>
+        /// <param name="startTime">startTime.</param>
+        /// <param name="endTime">endTime.</param>
         /// <param name="sellType">sellType (required).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public SellAssetRequestInput(string marketplaceAssetId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), bool sponsor = true, string policyId = default(string))
+        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), bool sponsor = true, string policyId = default(string))
         {
-            // to ensure "marketplaceAssetId" is required (not null)
-            if (marketplaceAssetId == null)
+            // to ensure "marketplaceId" is required (not null)
+            if (marketplaceId == null)
             {
-                throw new ArgumentNullException("marketplaceAssetId is a required property for SellAssetRequestInput and cannot be null");
+                throw new ArgumentNullException("marketplaceId is a required property for SellAssetRequestInput and cannot be null");
             }
-            this.MarketplaceAssetId = marketplaceAssetId;
+            this.MarketplaceId = marketplaceId;
             this.Quantity = quantity;
             // to ensure "price" is required (not null)
             if (price == null)
@@ -100,28 +100,18 @@ namespace Beam.Model
                 throw new ArgumentNullException("price is a required property for SellAssetRequestInput and cannot be null");
             }
             this.Price = price;
-            // to ensure "startTime" is required (not null)
-            if (startTime == null)
-            {
-                throw new ArgumentNullException("startTime is a required property for SellAssetRequestInput and cannot be null");
-            }
-            this.StartTime = startTime;
-            // to ensure "endTime" is required (not null)
-            if (endTime == null)
-            {
-                throw new ArgumentNullException("endTime is a required property for SellAssetRequestInput and cannot be null");
-            }
-            this.EndTime = endTime;
             this.SellType = sellType;
+            this.StartTime = startTime;
+            this.EndTime = endTime;
             this.Sponsor = sponsor;
             this.PolicyId = policyId;
         }
 
         /// <summary>
-        /// Gets or Sets MarketplaceAssetId
+        /// Gets or Sets MarketplaceId
         /// </summary>
-        [DataMember(Name = "marketplaceAssetId", IsRequired = true, EmitDefaultValue = true)]
-        public string MarketplaceAssetId { get; set; }
+        [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
+        public string MarketplaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
@@ -138,13 +128,13 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets StartTime
         /// </summary>
-        [DataMember(Name = "startTime", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "startTime", EmitDefaultValue = false)]
         public string StartTime { get; set; }
 
         /// <summary>
         /// Gets or Sets EndTime
         /// </summary>
-        [DataMember(Name = "endTime", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "endTime", EmitDefaultValue = false)]
         public string EndTime { get; set; }
 
         /// <summary>
@@ -167,7 +157,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SellAssetRequestInput {\n");
-            sb.Append("  MarketplaceAssetId: ").Append(MarketplaceAssetId).Append("\n");
+            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
@@ -211,9 +201,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.MarketplaceAssetId == input.MarketplaceAssetId ||
-                    (this.MarketplaceAssetId != null &&
-                    this.MarketplaceAssetId.Equals(input.MarketplaceAssetId))
+                    this.MarketplaceId == input.MarketplaceId ||
+                    (this.MarketplaceId != null &&
+                    this.MarketplaceId.Equals(input.MarketplaceId))
                 ) && 
                 (
                     this.Quantity == input.Quantity ||
@@ -258,9 +248,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.MarketplaceAssetId != null)
+                if (this.MarketplaceId != null)
                 {
-                    hashCode = (hashCode * 59) + this.MarketplaceAssetId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 if (this.Price != null)

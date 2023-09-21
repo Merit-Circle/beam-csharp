@@ -36,7 +36,7 @@ src/Beam/Model/Check200Response.cs
 src/Beam/Model/Check200ResponseInfoValue.cs
 src/Beam/Model/Check503Response.cs
 src/Beam/Model/ConvertTokenRequestInput.cs
-src/Beam/Model/ConvertTokenRespone.cs
+src/Beam/Model/ConvertTokenResponse.cs
 src/Beam/Model/CreateProfileRequestInput.cs
 src/Beam/Model/CreateProfileResponse.cs
 src/Beam/Model/CreateProfileResponseWalletsInner.cs

@@ -27,10 +27,10 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// ConvertTokenRespone
+    /// ConvertTokenResponse
     /// </summary>
-    [DataContract(Name = "ConvertTokenRespone")]
-    public partial class ConvertTokenRespone : IEquatable<ConvertTokenRespone>, IValidatableObject
+    [DataContract(Name = "ConvertTokenResponse")]
+    public partial class ConvertTokenResponse : IEquatable<ConvertTokenResponse>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
@@ -83,18 +83,18 @@ namespace Beam.Model
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConvertTokenRespone" /> class.
+        /// Initializes a new instance of the <see cref="ConvertTokenResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ConvertTokenRespone() { }
+        protected ConvertTokenResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConvertTokenRespone" /> class.
+        /// Initializes a new instance of the <see cref="ConvertTokenResponse" /> class.
         /// </summary>
         /// <param name="status">status (required).</param>
         /// <param name="type">type (required).</param>
         /// <param name="transactionHash">transactionHash.</param>
         /// <param name="explorerUrl">explorerUrl.</param>
-        public ConvertTokenRespone(StatusEnum status = default(StatusEnum), TypeEnum type = default(TypeEnum), string transactionHash = default(string), string explorerUrl = default(string))
+        public ConvertTokenResponse(StatusEnum status = default(StatusEnum), TypeEnum type = default(TypeEnum), string transactionHash = default(string), string explorerUrl = default(string))
         {
             this.Status = status;
             this.Type = type;
@@ -121,7 +121,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ConvertTokenRespone {\n");
+            sb.Append("class ConvertTokenResponse {\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  TransactionHash: ").Append(TransactionHash).Append("\n");
@@ -146,15 +146,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ConvertTokenRespone);
+            return this.Equals(input as ConvertTokenResponse);
         }
 
         /// <summary>
-        /// Returns true if ConvertTokenRespone instances are equal
+        /// Returns true if ConvertTokenResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of ConvertTokenRespone to be compared</param>
+        /// <param name="input">Instance of ConvertTokenResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ConvertTokenRespone input)
+        public bool Equals(ConvertTokenResponse input)
         {
             if (input == null)
             {
