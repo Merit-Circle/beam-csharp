@@ -93,8 +93,10 @@ namespace Beam.Api
         /// Getting all profiles
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>GetAllProfilesResponse</returns>
-        GetAllProfilesResponse GetAllProfiles();
+        GetAllProfilesResponse GetAllProfiles(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Getting all profiles
@@ -103,8 +105,10 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAllProfilesResponse</returns>
-        ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo();
+        ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Getting information on a profile
         /// </summary>
@@ -236,9 +240,11 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllProfilesResponse</returns>
-        System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Getting all profiles
@@ -247,9 +253,11 @@ namespace Beam.Api
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllProfilesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting information on a profile
         /// </summary>
@@ -952,10 +960,12 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>GetAllProfilesResponse</returns>
-        public GetAllProfilesResponse GetAllProfiles()
+        public GetAllProfilesResponse GetAllProfiles(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = GetAllProfilesWithHttpInfo();
+            Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = GetAllProfilesWithHttpInfo(limit, offset);
             return localVarResponse.Data;
         }
 
@@ -963,8 +973,10 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAllProfilesResponse</returns>
-        public Beam.Client.ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo()
+        public Beam.Client.ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -982,6 +994,14 @@ namespace Beam.Api
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -1005,11 +1025,13 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllProfilesResponse</returns>
-        public async System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = await GetAllProfilesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = await GetAllProfilesWithHttpInfoAsync(limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1017,9 +1039,11 @@ namespace Beam.Api
         /// Getting all profiles 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllProfilesResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -1039,6 +1063,14 @@ namespace Beam.Api
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))

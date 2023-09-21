@@ -40,20 +40,20 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAssetListingsResponseDataInnerNft" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
+        /// <param name="marketplaceId">marketplaceId (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="imageUrl">imageUrl (required).</param>
         /// <param name="assetType">assetType (required).</param>
         /// <param name="assetAddress">assetAddress (required).</param>
         /// <param name="assetId">assetId (required).</param>
-        public GetAssetListingsResponseDataInnerNft(string id = default(string), string name = default(string), string imageUrl = default(string), string assetType = default(string), string assetAddress = default(string), string assetId = default(string))
+        public GetAssetListingsResponseDataInnerNft(string marketplaceId = default(string), string name = default(string), string imageUrl = default(string), string assetType = default(string), string assetAddress = default(string), string assetId = default(string))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
+            // to ensure "marketplaceId" is required (not null)
+            if (marketplaceId == null)
             {
-                throw new ArgumentNullException("id is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
+                throw new ArgumentNullException("marketplaceId is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
-            this.Id = id;
+            this.MarketplaceId = marketplaceId;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -87,10 +87,10 @@ namespace Beam.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets MarketplaceId
         /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public string Id { get; set; }
+        [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
+        public string MarketplaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -130,7 +130,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAssetListingsResponseDataInnerNft {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  AssetType: ").Append(AssetType).Append("\n");
@@ -172,9 +172,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.MarketplaceId == input.MarketplaceId ||
+                    (this.MarketplaceId != null &&
+                    this.MarketplaceId.Equals(input.MarketplaceId))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -212,9 +212,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.MarketplaceId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
                 }
                 if (this.Name != null)
                 {

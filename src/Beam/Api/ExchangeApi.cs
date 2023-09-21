@@ -33,8 +33,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ConvertTokenRespone</returns>
-        ConvertTokenRespone ConvertInput(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
+        /// <returns>ConvertTokenResponse</returns>
+        ConvertTokenResponse ConvertInput(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
 
         /// <summary>
         /// Trade an exact amount of &#x60;tokenIn&#x60; for a minimum amount of &#x60;tokenOut&#x60;
@@ -45,16 +45,16 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ApiResponse of ConvertTokenRespone</returns>
-        ApiResponse<ConvertTokenRespone> ConvertInputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
+        /// <returns>ApiResponse of ConvertTokenResponse</returns>
+        ApiResponse<ConvertTokenResponse> ConvertInputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
         /// <summary>
         /// Swap a maximum amount of &#x60;tokenIn&#x60; for an exact amount of &#x60;tokenOut&#x60;
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ConvertTokenRespone</returns>
-        ConvertTokenRespone ConvertToOutput(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
+        /// <returns>ConvertTokenResponse</returns>
+        ConvertTokenResponse ConvertToOutput(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
 
         /// <summary>
         /// Swap a maximum amount of &#x60;tokenIn&#x60; for an exact amount of &#x60;tokenOut&#x60;
@@ -65,8 +65,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ApiResponse of ConvertTokenRespone</returns>
-        ApiResponse<ConvertTokenRespone> ConvertToOutputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
+        /// <returns>ApiResponse of ConvertTokenResponse</returns>
+        ApiResponse<ConvertTokenResponse> ConvertToOutputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput);
         /// <summary>
         /// Returns the maximum necessary input amount for a token trade, given a desired output amount
         /// </summary>
@@ -130,8 +130,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConvertTokenRespone</returns>
-        System.Threading.Tasks.Task<ConvertTokenRespone> ConvertInputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ConvertTokenResponse</returns>
+        System.Threading.Tasks.Task<ConvertTokenResponse> ConvertInputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Trade an exact amount of &#x60;tokenIn&#x60; for a minimum amount of &#x60;tokenOut&#x60;
@@ -143,8 +143,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConvertTokenRespone)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConvertTokenRespone>> ConvertInputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ConvertTokenResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ConvertTokenResponse>> ConvertInputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Swap a maximum amount of &#x60;tokenIn&#x60; for an exact amount of &#x60;tokenOut&#x60;
         /// </summary>
@@ -155,8 +155,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConvertTokenRespone</returns>
-        System.Threading.Tasks.Task<ConvertTokenRespone> ConvertToOutputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ConvertTokenResponse</returns>
+        System.Threading.Tasks.Task<ConvertTokenResponse> ConvertToOutputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Swap a maximum amount of &#x60;tokenIn&#x60; for an exact amount of &#x60;tokenOut&#x60;
@@ -168,8 +168,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConvertTokenRespone)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ConvertTokenRespone>> ConvertToOutputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (ConvertTokenResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ConvertTokenResponse>> ConvertToOutputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Returns the maximum necessary input amount for a token trade, given a desired output amount
         /// </summary>
@@ -443,10 +443,10 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ConvertTokenRespone</returns>
-        public ConvertTokenRespone ConvertInput(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
+        /// <returns>ConvertTokenResponse</returns>
+        public ConvertTokenResponse ConvertInput(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
         {
-            Beam.Client.ApiResponse<ConvertTokenRespone> localVarResponse = ConvertInputWithHttpInfo(profileId, convertTokenRequestInput);
+            Beam.Client.ApiResponse<ConvertTokenResponse> localVarResponse = ConvertInputWithHttpInfo(profileId, convertTokenRequestInput);
             return localVarResponse.Data;
         }
 
@@ -456,8 +456,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ApiResponse of ConvertTokenRespone</returns>
-        public Beam.Client.ApiResponse<ConvertTokenRespone> ConvertInputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
+        /// <returns>ApiResponse of ConvertTokenResponse</returns>
+        public Beam.Client.ApiResponse<ConvertTokenResponse> ConvertInputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
@@ -494,7 +494,7 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ConvertTokenRespone>("/v1/exchange/profiles/{profileId}/convert/input", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<ConvertTokenResponse>("/v1/exchange/profiles/{profileId}/convert/input", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -512,10 +512,10 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConvertTokenRespone</returns>
-        public async System.Threading.Tasks.Task<ConvertTokenRespone> ConvertInputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ConvertTokenResponse</returns>
+        public async System.Threading.Tasks.Task<ConvertTokenResponse> ConvertInputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<ConvertTokenRespone> localVarResponse = await ConvertInputWithHttpInfoAsync(profileId, convertTokenRequestInput, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<ConvertTokenResponse> localVarResponse = await ConvertInputWithHttpInfoAsync(profileId, convertTokenRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -526,8 +526,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConvertTokenRespone)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<ConvertTokenRespone>> ConvertInputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ConvertTokenResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<ConvertTokenResponse>> ConvertInputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
@@ -567,7 +567,7 @@ namespace Beam.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ConvertTokenRespone>("/v1/exchange/profiles/{profileId}/convert/input", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ConvertTokenResponse>("/v1/exchange/profiles/{profileId}/convert/input", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -584,10 +584,10 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ConvertTokenRespone</returns>
-        public ConvertTokenRespone ConvertToOutput(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
+        /// <returns>ConvertTokenResponse</returns>
+        public ConvertTokenResponse ConvertToOutput(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
         {
-            Beam.Client.ApiResponse<ConvertTokenRespone> localVarResponse = ConvertToOutputWithHttpInfo(profileId, convertTokenRequestInput);
+            Beam.Client.ApiResponse<ConvertTokenResponse> localVarResponse = ConvertToOutputWithHttpInfo(profileId, convertTokenRequestInput);
             return localVarResponse.Data;
         }
 
@@ -597,8 +597,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
-        /// <returns>ApiResponse of ConvertTokenRespone</returns>
-        public Beam.Client.ApiResponse<ConvertTokenRespone> ConvertToOutputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
+        /// <returns>ApiResponse of ConvertTokenResponse</returns>
+        public Beam.Client.ApiResponse<ConvertTokenResponse> ConvertToOutputWithHttpInfo(string profileId, ConvertTokenRequestInput convertTokenRequestInput)
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
@@ -635,7 +635,7 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<ConvertTokenRespone>("/v1/exchange/profiles/{profileId}/convert/output", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<ConvertTokenResponse>("/v1/exchange/profiles/{profileId}/convert/output", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -653,10 +653,10 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ConvertTokenRespone</returns>
-        public async System.Threading.Tasks.Task<ConvertTokenRespone> ConvertToOutputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ConvertTokenResponse</returns>
+        public async System.Threading.Tasks.Task<ConvertTokenResponse> ConvertToOutputAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<ConvertTokenRespone> localVarResponse = await ConvertToOutputWithHttpInfoAsync(profileId, convertTokenRequestInput, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<ConvertTokenResponse> localVarResponse = await ConvertToOutputWithHttpInfoAsync(profileId, convertTokenRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -667,8 +667,8 @@ namespace Beam.Api
         /// <param name="profileId"></param>
         /// <param name="convertTokenRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ConvertTokenRespone)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<ConvertTokenRespone>> ConvertToOutputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (ConvertTokenResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<ConvertTokenResponse>> ConvertToOutputWithHttpInfoAsync(string profileId, ConvertTokenRequestInput convertTokenRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'profileId' is set
             if (profileId == null)
@@ -708,7 +708,7 @@ namespace Beam.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ConvertTokenRespone>("/v1/exchange/profiles/{profileId}/convert/output", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<ConvertTokenResponse>("/v1/exchange/profiles/{profileId}/convert/output", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

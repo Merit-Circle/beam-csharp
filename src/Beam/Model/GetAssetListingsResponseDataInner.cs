@@ -40,7 +40,7 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAssetListingsResponseDataInner" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
+        /// <param name="marketplaceId">marketplaceId (required).</param>
         /// <param name="price">price (required).</param>
         /// <param name="sellType">sellType (required).</param>
         /// <param name="startPrice">startPrice (required).</param>
@@ -56,14 +56,14 @@ namespace Beam.Model
         /// <param name="sellerAddress">sellerAddress (required).</param>
         /// <param name="contractId">contractId (required).</param>
         /// <param name="nft">nft (required).</param>
-        public GetAssetListingsResponseDataInner(string id = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
+        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
+            // to ensure "marketplaceId" is required (not null)
+            if (marketplaceId == null)
             {
-                throw new ArgumentNullException("id is a required property for GetAssetListingsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("marketplaceId is a required property for GetAssetListingsResponseDataInner and cannot be null");
             }
-            this.Id = id;
+            this.MarketplaceId = marketplaceId;
             // to ensure "price" is required (not null)
             if (price == null)
             {
@@ -142,10 +142,10 @@ namespace Beam.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Gets or Sets MarketplaceId
         /// </summary>
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public string Id { get; set; }
+        [DataMember(Name = "marketplaceId", IsRequired = true, EmitDefaultValue = true)]
+        public string MarketplaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Price
@@ -245,7 +245,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAssetListingsResponseDataInner {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  SellType: ").Append(SellType).Append("\n");
             sb.Append("  StartPrice: ").Append(StartPrice).Append("\n");
@@ -297,9 +297,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.MarketplaceId == input.MarketplaceId ||
+                    (this.MarketplaceId != null &&
+                    this.MarketplaceId.Equals(input.MarketplaceId))
                 ) && 
                 (
                     this.Price == input.Price ||
@@ -384,9 +384,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
+                if (this.MarketplaceId != null)
                 {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                    hashCode = (hashCode * 59) + this.MarketplaceId.GetHashCode();
                 }
                 if (this.Price != null)
                 {

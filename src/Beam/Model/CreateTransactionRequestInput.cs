@@ -41,10 +41,10 @@ namespace Beam.Model
         /// Initializes a new instance of the <see cref="CreateTransactionRequestInput" /> class.
         /// </summary>
         /// <param name="interactions">interactions (required).</param>
-        /// <param name="optimistic">optimistic (required).</param>
-        /// <param name="policyId">policyId.</param>
+        /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
-        public CreateTransactionRequestInput(List<CreateTransactionRequestInputInteractionsInner> interactions = default(List<CreateTransactionRequestInputInteractionsInner>), bool optimistic = default(bool), string policyId = default(string), bool sponsor = true)
+        /// <param name="policyId">policyId.</param>
+        public CreateTransactionRequestInput(List<CreateTransactionRequestInputInteractionsInner> interactions = default(List<CreateTransactionRequestInputInteractionsInner>), bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
             // to ensure "interactions" is required (not null)
             if (interactions == null)
@@ -53,8 +53,8 @@ namespace Beam.Model
             }
             this.Interactions = interactions;
             this.Optimistic = optimistic;
-            this.PolicyId = policyId;
             this.Sponsor = sponsor;
+            this.PolicyId = policyId;
         }
 
         /// <summary>
@@ -66,20 +66,20 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets Optimistic
         /// </summary>
-        [DataMember(Name = "optimistic", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "optimistic", EmitDefaultValue = true)]
         public bool Optimistic { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PolicyId
-        /// </summary>
-        [DataMember(Name = "policyId", EmitDefaultValue = false)]
-        public string PolicyId { get; set; }
 
         /// <summary>
         /// Gets or Sets Sponsor
         /// </summary>
         [DataMember(Name = "sponsor", EmitDefaultValue = true)]
         public bool Sponsor { get; set; }
+
+        /// <summary>
+        /// Gets or Sets PolicyId
+        /// </summary>
+        [DataMember(Name = "policyId", EmitDefaultValue = false)]
+        public string PolicyId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,8 +91,8 @@ namespace Beam.Model
             sb.Append("class CreateTransactionRequestInput {\n");
             sb.Append("  Interactions: ").Append(Interactions).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
-            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
+            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -139,13 +139,13 @@ namespace Beam.Model
                     this.Optimistic.Equals(input.Optimistic)
                 ) && 
                 (
+                    this.Sponsor == input.Sponsor ||
+                    this.Sponsor.Equals(input.Sponsor)
+                ) && 
+                (
                     this.PolicyId == input.PolicyId ||
                     (this.PolicyId != null &&
                     this.PolicyId.Equals(input.PolicyId))
-                ) && 
-                (
-                    this.Sponsor == input.Sponsor ||
-                    this.Sponsor.Equals(input.Sponsor)
                 );
         }
 
@@ -163,11 +163,11 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.Interactions.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
+                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 if (this.PolicyId != null)
                 {
                     hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 return hashCode;
             }
         }

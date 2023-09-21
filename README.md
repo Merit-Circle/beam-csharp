@@ -189,7 +189,7 @@ Class | Method | HTTP request | Description
  - [Model.Check200ResponseInfoValue](docs/Check200ResponseInfoValue.md)
  - [Model.Check503Response](docs/Check503Response.md)
  - [Model.ConvertTokenRequestInput](docs/ConvertTokenRequestInput.md)
- - [Model.ConvertTokenRespone](docs/ConvertTokenRespone.md)
+ - [Model.ConvertTokenResponse](docs/ConvertTokenResponse.md)
  - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
  - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
  - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)
