@@ -41,12 +41,15 @@ namespace Beam.Model
         /// Initializes a new instance of the <see cref="CreateProfileResponse" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="gameId">gameId (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="externalId">externalId (required).</param>
+        /// <param name="externalEntityId">externalEntityId (required).</param>
+        /// <param name="gameId">gameId (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="userConnectionCreatedAt">userConnectionCreatedAt (required).</param>
         /// <param name="wallets">wallets (required).</param>
-        public CreateProfileResponse(string id = default(string), string gameId = default(string), string externalId = default(string), string userId = default(string), Object userConnectionCreatedAt = default(Object), List<CreateProfileResponseWalletsInner> wallets = default(List<CreateProfileResponseWalletsInner>))
+        public CreateProfileResponse(string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string externalId = default(string), string externalEntityId = default(string), string gameId = default(string), string userId = default(string), Object userConnectionCreatedAt = default(Object), List<CreateProfileResponseWalletsInner> wallets = default(List<CreateProfileResponseWalletsInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -54,18 +57,36 @@ namespace Beam.Model
                 throw new ArgumentNullException("id is a required property for CreateProfileResponse and cannot be null");
             }
             this.Id = id;
-            // to ensure "gameId" is required (not null)
-            if (gameId == null)
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null)
             {
-                throw new ArgumentNullException("gameId is a required property for CreateProfileResponse and cannot be null");
+                throw new ArgumentNullException("createdAt is a required property for CreateProfileResponse and cannot be null");
             }
-            this.GameId = gameId;
+            this.CreatedAt = createdAt;
+            // to ensure "updatedAt" is required (not null)
+            if (updatedAt == null)
+            {
+                throw new ArgumentNullException("updatedAt is a required property for CreateProfileResponse and cannot be null");
+            }
+            this.UpdatedAt = updatedAt;
             // to ensure "externalId" is required (not null)
             if (externalId == null)
             {
                 throw new ArgumentNullException("externalId is a required property for CreateProfileResponse and cannot be null");
             }
             this.ExternalId = externalId;
+            // to ensure "externalEntityId" is required (not null)
+            if (externalEntityId == null)
+            {
+                throw new ArgumentNullException("externalEntityId is a required property for CreateProfileResponse and cannot be null");
+            }
+            this.ExternalEntityId = externalEntityId;
+            // to ensure "gameId" is required (not null)
+            if (gameId == null)
+            {
+                throw new ArgumentNullException("gameId is a required property for CreateProfileResponse and cannot be null");
+            }
+            this.GameId = gameId;
             // to ensure "userId" is required (not null)
             if (userId == null)
             {
@@ -93,16 +114,34 @@ namespace Beam.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets GameId
+        /// Gets or Sets CreatedAt
         /// </summary>
-        [DataMember(Name = "gameId", IsRequired = true, EmitDefaultValue = true)]
-        public string GameId { get; set; }
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
         /// </summary>
         [DataMember(Name = "externalId", IsRequired = true, EmitDefaultValue = true)]
         public string ExternalId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExternalEntityId
+        /// </summary>
+        [DataMember(Name = "externalEntityId", IsRequired = true, EmitDefaultValue = true)]
+        public string ExternalEntityId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets GameId
+        /// </summary>
+        [DataMember(Name = "gameId", IsRequired = true, EmitDefaultValue = true)]
+        public string GameId { get; set; }
 
         /// <summary>
         /// Gets or Sets UserId
@@ -131,8 +170,11 @@ namespace Beam.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateProfileResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  GameId: ").Append(GameId).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  ExternalEntityId: ").Append(ExternalEntityId).Append("\n");
+            sb.Append("  GameId: ").Append(GameId).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  UserConnectionCreatedAt: ").Append(UserConnectionCreatedAt).Append("\n");
             sb.Append("  Wallets: ").Append(Wallets).Append("\n");
@@ -177,14 +219,29 @@ namespace Beam.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.GameId == input.GameId ||
-                    (this.GameId != null &&
-                    this.GameId.Equals(input.GameId))
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
+                    this.ExternalEntityId == input.ExternalEntityId ||
+                    (this.ExternalEntityId != null &&
+                    this.ExternalEntityId.Equals(input.ExternalEntityId))
+                ) && 
+                (
+                    this.GameId == input.GameId ||
+                    (this.GameId != null &&
+                    this.GameId.Equals(input.GameId))
                 ) && 
                 (
                     this.UserId == input.UserId ||
@@ -217,13 +274,25 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
-                if (this.GameId != null)
+                if (this.CreatedAt != null)
                 {
-                    hashCode = (hashCode * 59) + this.GameId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 if (this.ExternalId != null)
                 {
                     hashCode = (hashCode * 59) + this.ExternalId.GetHashCode();
+                }
+                if (this.ExternalEntityId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExternalEntityId.GetHashCode();
+                }
+                if (this.GameId != null)
+                {
+                    hashCode = (hashCode * 59) + this.GameId.GetHashCode();
                 }
                 if (this.UserId != null)
                 {

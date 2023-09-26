@@ -83,9 +83,10 @@ namespace Beam.Model
         /// <param name="startTime">startTime.</param>
         /// <param name="endTime">endTime.</param>
         /// <param name="sellType">sellType (required).</param>
+        /// <param name="priceTokenAddress">priceTokenAddress (required).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), bool sponsor = true, string policyId = default(string))
+        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), string priceTokenAddress = default(string), bool sponsor = true, string policyId = default(string))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -101,6 +102,12 @@ namespace Beam.Model
             }
             this.Price = price;
             this.SellType = sellType;
+            // to ensure "priceTokenAddress" is required (not null)
+            if (priceTokenAddress == null)
+            {
+                throw new ArgumentNullException("priceTokenAddress is a required property for SellAssetRequestInput and cannot be null");
+            }
+            this.PriceTokenAddress = priceTokenAddress;
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.Sponsor = sponsor;
@@ -138,6 +145,12 @@ namespace Beam.Model
         public string EndTime { get; set; }
 
         /// <summary>
+        /// Gets or Sets PriceTokenAddress
+        /// </summary>
+        [DataMember(Name = "priceTokenAddress", IsRequired = true, EmitDefaultValue = true)]
+        public string PriceTokenAddress { get; set; }
+
+        /// <summary>
         /// Gets or Sets Sponsor
         /// </summary>
         [DataMember(Name = "sponsor", EmitDefaultValue = true)]
@@ -163,6 +176,7 @@ namespace Beam.Model
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  SellType: ").Append(SellType).Append("\n");
+            sb.Append("  PriceTokenAddress: ").Append(PriceTokenAddress).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
@@ -229,6 +243,11 @@ namespace Beam.Model
                     this.SellType.Equals(input.SellType)
                 ) && 
                 (
+                    this.PriceTokenAddress == input.PriceTokenAddress ||
+                    (this.PriceTokenAddress != null &&
+                    this.PriceTokenAddress.Equals(input.PriceTokenAddress))
+                ) && 
+                (
                     this.Sponsor == input.Sponsor ||
                     this.Sponsor.Equals(input.Sponsor)
                 ) && 
@@ -266,6 +285,10 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.EndTime.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.SellType.GetHashCode();
+                if (this.PriceTokenAddress != null)
+                {
+                    hashCode = (hashCode * 59) + this.PriceTokenAddress.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 if (this.PolicyId != null)
                 {

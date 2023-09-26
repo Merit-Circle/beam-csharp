@@ -40,22 +40,22 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateProfileRequestInput" /> class.
         /// </summary>
-        /// <param name="newProfileId">newProfileId (required).</param>
-        public UpdateProfileRequestInput(string newProfileId = default(string))
+        /// <param name="newEntityId">newEntityId (required).</param>
+        public UpdateProfileRequestInput(string newEntityId = default(string))
         {
-            // to ensure "newProfileId" is required (not null)
-            if (newProfileId == null)
+            // to ensure "newEntityId" is required (not null)
+            if (newEntityId == null)
             {
-                throw new ArgumentNullException("newProfileId is a required property for UpdateProfileRequestInput and cannot be null");
+                throw new ArgumentNullException("newEntityId is a required property for UpdateProfileRequestInput and cannot be null");
             }
-            this.NewProfileId = newProfileId;
+            this.NewEntityId = newEntityId;
         }
 
         /// <summary>
-        /// Gets or Sets NewProfileId
+        /// Gets or Sets NewEntityId
         /// </summary>
-        [DataMember(Name = "newProfileId", IsRequired = true, EmitDefaultValue = true)]
-        public string NewProfileId { get; set; }
+        [DataMember(Name = "newEntityId", IsRequired = true, EmitDefaultValue = true)]
+        public string NewEntityId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,7 +65,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateProfileRequestInput {\n");
-            sb.Append("  NewProfileId: ").Append(NewProfileId).Append("\n");
+            sb.Append("  NewEntityId: ").Append(NewEntityId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,9 +102,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.NewProfileId == input.NewProfileId ||
-                    (this.NewProfileId != null &&
-                    this.NewProfileId.Equals(input.NewProfileId))
+                    this.NewEntityId == input.NewEntityId ||
+                    (this.NewEntityId != null &&
+                    this.NewEntityId.Equals(input.NewEntityId))
                 );
         }
 
@@ -117,9 +117,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.NewProfileId != null)
+                if (this.NewEntityId != null)
                 {
-                    hashCode = (hashCode * 59) + this.NewProfileId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NewEntityId.GetHashCode();
                 }
                 return hashCode;
             }

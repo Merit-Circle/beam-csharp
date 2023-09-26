@@ -73,9 +73,11 @@ namespace Beam.Model
         /// </summary>
         /// <param name="type">type (required).</param>
         /// <param name="id">id (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="apiKey">apiKey (required).</param>
         /// <param name="gameId">gameId (required).</param>
-        public RegenerateGameApiKeysResponseApiKeysInner(TypeEnum type = default(TypeEnum), string id = default(string), string apiKey = default(string), string gameId = default(string))
+        public RegenerateGameApiKeysResponseApiKeysInner(TypeEnum type = default(TypeEnum), string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string apiKey = default(string), string gameId = default(string))
         {
             this.Type = type;
             // to ensure "id" is required (not null)
@@ -84,6 +86,18 @@ namespace Beam.Model
                 throw new ArgumentNullException("id is a required property for RegenerateGameApiKeysResponseApiKeysInner and cannot be null");
             }
             this.Id = id;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null)
+            {
+                throw new ArgumentNullException("createdAt is a required property for RegenerateGameApiKeysResponseApiKeysInner and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            // to ensure "updatedAt" is required (not null)
+            if (updatedAt == null)
+            {
+                throw new ArgumentNullException("updatedAt is a required property for RegenerateGameApiKeysResponseApiKeysInner and cannot be null");
+            }
+            this.UpdatedAt = updatedAt;
             // to ensure "apiKey" is required (not null)
             if (apiKey == null)
             {
@@ -103,6 +117,18 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets ApiKey
@@ -126,6 +152,8 @@ namespace Beam.Model
             sb.Append("class RegenerateGameApiKeysResponseApiKeysInner {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  ApiKey: ").Append(ApiKey).Append("\n");
             sb.Append("  GameId: ").Append(GameId).Append("\n");
             sb.Append("}\n");
@@ -173,6 +201,16 @@ namespace Beam.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
                     this.ApiKey == input.ApiKey ||
                     (this.ApiKey != null &&
                     this.ApiKey.Equals(input.ApiKey))
@@ -197,6 +235,14 @@ namespace Beam.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 if (this.ApiKey != null)
                 {

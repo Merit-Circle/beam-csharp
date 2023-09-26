@@ -41,13 +41,15 @@ namespace Beam.Model
         /// Initializes a new instance of the <see cref="GetGameResponse" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="description">description (required).</param>
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
         /// <param name="logoImageUrl">logoImageUrl (required).</param>
         /// <param name="contracts">contracts (required).</param>
         /// <param name="policies">policies (required).</param>
-        public GetGameResponse(string id = default(string), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
+        public GetGameResponse(string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -55,6 +57,18 @@ namespace Beam.Model
                 throw new ArgumentNullException("id is a required property for GetGameResponse and cannot be null");
             }
             this.Id = id;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null)
+            {
+                throw new ArgumentNullException("createdAt is a required property for GetGameResponse and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            // to ensure "updatedAt" is required (not null)
+            if (updatedAt == null)
+            {
+                throw new ArgumentNullException("updatedAt is a required property for GetGameResponse and cannot be null");
+            }
+            this.UpdatedAt = updatedAt;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -98,6 +112,18 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -144,6 +170,8 @@ namespace Beam.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetGameResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
@@ -191,6 +219,16 @@ namespace Beam.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -236,6 +274,14 @@ namespace Beam.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 if (this.Name != null)
                 {
