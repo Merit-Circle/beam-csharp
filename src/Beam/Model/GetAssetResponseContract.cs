@@ -131,28 +131,34 @@ namespace Beam.Model
             Usdc = 5,
 
             /// <summary>
+            /// Enum Usdt for value: Usdt
+            /// </summary>
+            [EnumMember(Value = "Usdt")]
+            Usdt = 6,
+
+            /// <summary>
             /// Enum Wavax for value: Wavax
             /// </summary>
             [EnumMember(Value = "Wavax")]
-            Wavax = 6,
+            Wavax = 7,
 
             /// <summary>
             /// Enum Weth for value: Weth
             /// </summary>
             [EnumMember(Value = "Weth")]
-            Weth = 7,
+            Weth = 8,
 
             /// <summary>
             /// Enum Wmatic for value: Wmatic
             /// </summary>
             [EnumMember(Value = "Wmatic")]
-            Wmatic = 8,
+            Wmatic = 9,
 
             /// <summary>
             /// Enum Wmc for value: Wmc
             /// </summary>
             [EnumMember(Value = "Wmc")]
-            Wmc = 9
+            Wmc = 10
         }
 
 

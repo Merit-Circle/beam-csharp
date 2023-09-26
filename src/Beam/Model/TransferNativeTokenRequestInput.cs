@@ -40,33 +40,38 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferNativeTokenRequestInput" /> class.
         /// </summary>
-        /// <param name="receiverProfileId">receiverProfileId (required).</param>
+        /// <param name="receiverEntityId">receiverEntityId.</param>
+        /// <param name="receiverWalletAddress">receiverWalletAddress.</param>
         /// <param name="amountToTransfer">amountToTransfer (required).</param>
         /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
-        public TransferNativeTokenRequestInput(string receiverProfileId = default(string), string amountToTransfer = default(string), bool optimistic = false, bool sponsor = true)
+        /// <param name="policyId">policyId.</param>
+        public TransferNativeTokenRequestInput(string receiverEntityId = default(string), string receiverWalletAddress = default(string), string amountToTransfer = default(string), bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
-            // to ensure "receiverProfileId" is required (not null)
-            if (receiverProfileId == null)
-            {
-                throw new ArgumentNullException("receiverProfileId is a required property for TransferNativeTokenRequestInput and cannot be null");
-            }
-            this.ReceiverProfileId = receiverProfileId;
             // to ensure "amountToTransfer" is required (not null)
             if (amountToTransfer == null)
             {
                 throw new ArgumentNullException("amountToTransfer is a required property for TransferNativeTokenRequestInput and cannot be null");
             }
             this.AmountToTransfer = amountToTransfer;
+            this.ReceiverEntityId = receiverEntityId;
+            this.ReceiverWalletAddress = receiverWalletAddress;
             this.Optimistic = optimistic;
             this.Sponsor = sponsor;
+            this.PolicyId = policyId;
         }
 
         /// <summary>
-        /// Gets or Sets ReceiverProfileId
+        /// Gets or Sets ReceiverEntityId
         /// </summary>
-        [DataMember(Name = "receiverProfileId", IsRequired = true, EmitDefaultValue = true)]
-        public string ReceiverProfileId { get; set; }
+        [DataMember(Name = "receiverEntityId", EmitDefaultValue = false)]
+        public string ReceiverEntityId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ReceiverWalletAddress
+        /// </summary>
+        [DataMember(Name = "receiverWalletAddress", EmitDefaultValue = false)]
+        public string ReceiverWalletAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountToTransfer
@@ -87,6 +92,12 @@ namespace Beam.Model
         public bool Sponsor { get; set; }
 
         /// <summary>
+        /// Gets or Sets PolicyId
+        /// </summary>
+        [DataMember(Name = "policyId", EmitDefaultValue = false)]
+        public string PolicyId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -94,10 +105,12 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TransferNativeTokenRequestInput {\n");
-            sb.Append("  ReceiverProfileId: ").Append(ReceiverProfileId).Append("\n");
+            sb.Append("  ReceiverEntityId: ").Append(ReceiverEntityId).Append("\n");
+            sb.Append("  ReceiverWalletAddress: ").Append(ReceiverWalletAddress).Append("\n");
             sb.Append("  AmountToTransfer: ").Append(AmountToTransfer).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
+            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,9 +147,14 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.ReceiverProfileId == input.ReceiverProfileId ||
-                    (this.ReceiverProfileId != null &&
-                    this.ReceiverProfileId.Equals(input.ReceiverProfileId))
+                    this.ReceiverEntityId == input.ReceiverEntityId ||
+                    (this.ReceiverEntityId != null &&
+                    this.ReceiverEntityId.Equals(input.ReceiverEntityId))
+                ) && 
+                (
+                    this.ReceiverWalletAddress == input.ReceiverWalletAddress ||
+                    (this.ReceiverWalletAddress != null &&
+                    this.ReceiverWalletAddress.Equals(input.ReceiverWalletAddress))
                 ) && 
                 (
                     this.AmountToTransfer == input.AmountToTransfer ||
@@ -150,6 +168,11 @@ namespace Beam.Model
                 (
                     this.Sponsor == input.Sponsor ||
                     this.Sponsor.Equals(input.Sponsor)
+                ) && 
+                (
+                    this.PolicyId == input.PolicyId ||
+                    (this.PolicyId != null &&
+                    this.PolicyId.Equals(input.PolicyId))
                 );
         }
 
@@ -162,9 +185,13 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ReceiverProfileId != null)
+                if (this.ReceiverEntityId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReceiverProfileId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ReceiverEntityId.GetHashCode();
+                }
+                if (this.ReceiverWalletAddress != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReceiverWalletAddress.GetHashCode();
                 }
                 if (this.AmountToTransfer != null)
                 {
@@ -172,6 +199,10 @@ namespace Beam.Model
                 }
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
+                if (this.PolicyId != null)
+                {
+                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
+                }
                 return hashCode;
             }
         }

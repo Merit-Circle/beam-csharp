@@ -44,11 +44,11 @@ namespace Beam.Model
         /// <param name="tokenOut">tokenOut (required).</param>
         /// <param name="amountIn">amountIn (required).</param>
         /// <param name="amountOut">amountOut (required).</param>
-        /// <param name="receiverProfileId">receiverProfileId.</param>
+        /// <param name="receiverEntityId">receiverEntityId.</param>
         /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public ConvertTokenRequestInput(string tokenIn = default(string), string tokenOut = default(string), string amountIn = default(string), string amountOut = default(string), string receiverProfileId = default(string), bool optimistic = false, bool sponsor = true, string policyId = default(string))
+        public ConvertTokenRequestInput(string tokenIn = default(string), string tokenOut = default(string), string amountIn = default(string), string amountOut = default(string), string receiverEntityId = default(string), bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
             // to ensure "tokenIn" is required (not null)
             if (tokenIn == null)
@@ -74,7 +74,7 @@ namespace Beam.Model
                 throw new ArgumentNullException("amountOut is a required property for ConvertTokenRequestInput and cannot be null");
             }
             this.AmountOut = amountOut;
-            this.ReceiverProfileId = receiverProfileId;
+            this.ReceiverEntityId = receiverEntityId;
             this.Optimistic = optimistic;
             this.Sponsor = sponsor;
             this.PolicyId = policyId;
@@ -105,10 +105,10 @@ namespace Beam.Model
         public string AmountOut { get; set; }
 
         /// <summary>
-        /// Gets or Sets ReceiverProfileId
+        /// Gets or Sets ReceiverEntityId
         /// </summary>
-        [DataMember(Name = "receiverProfileId", EmitDefaultValue = false)]
-        public string ReceiverProfileId { get; set; }
+        [DataMember(Name = "receiverEntityId", EmitDefaultValue = false)]
+        public string ReceiverEntityId { get; set; }
 
         /// <summary>
         /// Gets or Sets Optimistic
@@ -140,7 +140,7 @@ namespace Beam.Model
             sb.Append("  TokenOut: ").Append(TokenOut).Append("\n");
             sb.Append("  AmountIn: ").Append(AmountIn).Append("\n");
             sb.Append("  AmountOut: ").Append(AmountOut).Append("\n");
-            sb.Append("  ReceiverProfileId: ").Append(ReceiverProfileId).Append("\n");
+            sb.Append("  ReceiverEntityId: ").Append(ReceiverEntityId).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
@@ -200,9 +200,9 @@ namespace Beam.Model
                     this.AmountOut.Equals(input.AmountOut))
                 ) && 
                 (
-                    this.ReceiverProfileId == input.ReceiverProfileId ||
-                    (this.ReceiverProfileId != null &&
-                    this.ReceiverProfileId.Equals(input.ReceiverProfileId))
+                    this.ReceiverEntityId == input.ReceiverEntityId ||
+                    (this.ReceiverEntityId != null &&
+                    this.ReceiverEntityId.Equals(input.ReceiverEntityId))
                 ) && 
                 (
                     this.Optimistic == input.Optimistic ||
@@ -244,9 +244,9 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.AmountOut.GetHashCode();
                 }
-                if (this.ReceiverProfileId != null)
+                if (this.ReceiverEntityId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReceiverProfileId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ReceiverEntityId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();

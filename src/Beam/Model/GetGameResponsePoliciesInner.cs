@@ -93,12 +93,15 @@ namespace Beam.Model
         /// <param name="model">model (required).</param>
         /// <param name="type">type (required).</param>
         /// <param name="id">id (required).</param>
+        /// <param name="createdAt">createdAt (required).</param>
+        /// <param name="updatedAt">updatedAt (required).</param>
+        /// <param name="externalId">externalId (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="chainId">chainId (required).</param>
         /// <param name="gameId">gameId (required).</param>
         /// <param name="token">token (required).</param>
         /// <param name="exchangeRate">exchangeRate (required).</param>
-        public GetGameResponsePoliciesInner(ModelEnum model = default(ModelEnum), TypeEnum type = default(TypeEnum), string id = default(string), string name = default(string), int chainId = default(int), string gameId = default(string), string token = default(string), string exchangeRate = default(string))
+        public GetGameResponsePoliciesInner(ModelEnum model = default(ModelEnum), TypeEnum type = default(TypeEnum), string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string externalId = default(string), string name = default(string), int chainId = default(int), string gameId = default(string), string token = default(string), string exchangeRate = default(string))
         {
             this.Model = model;
             this.Type = type;
@@ -108,6 +111,24 @@ namespace Beam.Model
                 throw new ArgumentNullException("id is a required property for GetGameResponsePoliciesInner and cannot be null");
             }
             this.Id = id;
+            // to ensure "createdAt" is required (not null)
+            if (createdAt == null)
+            {
+                throw new ArgumentNullException("createdAt is a required property for GetGameResponsePoliciesInner and cannot be null");
+            }
+            this.CreatedAt = createdAt;
+            // to ensure "updatedAt" is required (not null)
+            if (updatedAt == null)
+            {
+                throw new ArgumentNullException("updatedAt is a required property for GetGameResponsePoliciesInner and cannot be null");
+            }
+            this.UpdatedAt = updatedAt;
+            // to ensure "externalId" is required (not null)
+            if (externalId == null)
+            {
+                throw new ArgumentNullException("externalId is a required property for GetGameResponsePoliciesInner and cannot be null");
+            }
+            this.ExternalId = externalId;
             // to ensure "name" is required (not null)
             if (name == null)
             {
@@ -140,6 +161,24 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CreatedAt
+        /// </summary>
+        [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object CreatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
+        public Object UpdatedAt { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExternalId
+        /// </summary>
+        [DataMember(Name = "externalId", IsRequired = true, EmitDefaultValue = true)]
+        public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -182,6 +221,9 @@ namespace Beam.Model
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("  GameId: ").Append(GameId).Append("\n");
@@ -236,6 +278,21 @@ namespace Beam.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -275,6 +332,18 @@ namespace Beam.Model
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
+                }
+                if (this.CreatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.CreatedAt.GetHashCode();
+                }
+                if (this.UpdatedAt != null)
+                {
+                    hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
+                }
+                if (this.ExternalId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExternalId.GetHashCode();
                 }
                 if (this.Name != null)
                 {

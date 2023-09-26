@@ -40,22 +40,22 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateProfileRequestInput" /> class.
         /// </summary>
-        /// <param name="profileId">profileId (required).</param>
-        public CreateProfileRequestInput(string profileId = default(string))
+        /// <param name="entityId">entityId (required).</param>
+        public CreateProfileRequestInput(string entityId = default(string))
         {
-            // to ensure "profileId" is required (not null)
-            if (profileId == null)
+            // to ensure "entityId" is required (not null)
+            if (entityId == null)
             {
-                throw new ArgumentNullException("profileId is a required property for CreateProfileRequestInput and cannot be null");
+                throw new ArgumentNullException("entityId is a required property for CreateProfileRequestInput and cannot be null");
             }
-            this.ProfileId = profileId;
+            this.EntityId = entityId;
         }
 
         /// <summary>
-        /// Gets or Sets ProfileId
+        /// Gets or Sets EntityId
         /// </summary>
-        [DataMember(Name = "profileId", IsRequired = true, EmitDefaultValue = true)]
-        public string ProfileId { get; set; }
+        [DataMember(Name = "entityId", IsRequired = true, EmitDefaultValue = true)]
+        public string EntityId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,7 +65,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateProfileRequestInput {\n");
-            sb.Append("  ProfileId: ").Append(ProfileId).Append("\n");
+            sb.Append("  EntityId: ").Append(EntityId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,9 +102,9 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.ProfileId == input.ProfileId ||
-                    (this.ProfileId != null &&
-                    this.ProfileId.Equals(input.ProfileId))
+                    this.EntityId == input.EntityId ||
+                    (this.EntityId != null &&
+                    this.EntityId.Equals(input.EntityId))
                 );
         }
 
@@ -117,9 +117,9 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ProfileId != null)
+                if (this.EntityId != null)
                 {
-                    hashCode = (hashCode * 59) + this.ProfileId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.EntityId.GetHashCode();
                 }
                 return hashCode;
             }

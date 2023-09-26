@@ -40,57 +40,28 @@ namespace Beam.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferAssetRequestInput" /> class.
         /// </summary>
-        /// <param name="receiverProfileId">receiverProfileId (required).</param>
-        /// <param name="assetAddress">assetAddress (required).</param>
-        /// <param name="assetId">assetId (required).</param>
-        /// <param name="amountToTransfer">amountToTransfer (default to 1M).</param>
+        /// <param name="assets">assets (required).</param>
         /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public TransferAssetRequestInput(string receiverProfileId = default(string), string assetAddress = default(string), decimal assetId = default(decimal), decimal amountToTransfer = 1M, bool optimistic = false, bool sponsor = true, string policyId = default(string))
+        public TransferAssetRequestInput(List<TransferAssetRequestInputAssetsInner> assets = default(List<TransferAssetRequestInputAssetsInner>), bool optimistic = false, bool sponsor = true, string policyId = default(string))
         {
-            // to ensure "receiverProfileId" is required (not null)
-            if (receiverProfileId == null)
+            // to ensure "assets" is required (not null)
+            if (assets == null)
             {
-                throw new ArgumentNullException("receiverProfileId is a required property for TransferAssetRequestInput and cannot be null");
+                throw new ArgumentNullException("assets is a required property for TransferAssetRequestInput and cannot be null");
             }
-            this.ReceiverProfileId = receiverProfileId;
-            // to ensure "assetAddress" is required (not null)
-            if (assetAddress == null)
-            {
-                throw new ArgumentNullException("assetAddress is a required property for TransferAssetRequestInput and cannot be null");
-            }
-            this.AssetAddress = assetAddress;
-            this.AssetId = assetId;
-            this.AmountToTransfer = amountToTransfer;
+            this.Assets = assets;
             this.Optimistic = optimistic;
             this.Sponsor = sponsor;
             this.PolicyId = policyId;
         }
 
         /// <summary>
-        /// Gets or Sets ReceiverProfileId
+        /// Gets or Sets Assets
         /// </summary>
-        [DataMember(Name = "receiverProfileId", IsRequired = true, EmitDefaultValue = true)]
-        public string ReceiverProfileId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AssetAddress
-        /// </summary>
-        [DataMember(Name = "assetAddress", IsRequired = true, EmitDefaultValue = true)]
-        public string AssetAddress { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AssetId
-        /// </summary>
-        [DataMember(Name = "assetId", IsRequired = true, EmitDefaultValue = true)]
-        public decimal AssetId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AmountToTransfer
-        /// </summary>
-        [DataMember(Name = "amountToTransfer", EmitDefaultValue = false)]
-        public decimal AmountToTransfer { get; set; }
+        [DataMember(Name = "assets", IsRequired = true, EmitDefaultValue = true)]
+        public List<TransferAssetRequestInputAssetsInner> Assets { get; set; }
 
         /// <summary>
         /// Gets or Sets Optimistic
@@ -118,10 +89,7 @@ namespace Beam.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class TransferAssetRequestInput {\n");
-            sb.Append("  ReceiverProfileId: ").Append(ReceiverProfileId).Append("\n");
-            sb.Append("  AssetAddress: ").Append(AssetAddress).Append("\n");
-            sb.Append("  AssetId: ").Append(AssetId).Append("\n");
-            sb.Append("  AmountToTransfer: ").Append(AmountToTransfer).Append("\n");
+            sb.Append("  Assets: ").Append(Assets).Append("\n");
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
@@ -161,22 +129,10 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.ReceiverProfileId == input.ReceiverProfileId ||
-                    (this.ReceiverProfileId != null &&
-                    this.ReceiverProfileId.Equals(input.ReceiverProfileId))
-                ) && 
-                (
-                    this.AssetAddress == input.AssetAddress ||
-                    (this.AssetAddress != null &&
-                    this.AssetAddress.Equals(input.AssetAddress))
-                ) && 
-                (
-                    this.AssetId == input.AssetId ||
-                    this.AssetId.Equals(input.AssetId)
-                ) && 
-                (
-                    this.AmountToTransfer == input.AmountToTransfer ||
-                    this.AmountToTransfer.Equals(input.AmountToTransfer)
+                    this.Assets == input.Assets ||
+                    this.Assets != null &&
+                    input.Assets != null &&
+                    this.Assets.SequenceEqual(input.Assets)
                 ) && 
                 (
                     this.Optimistic == input.Optimistic ||
@@ -202,16 +158,10 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ReceiverProfileId != null)
+                if (this.Assets != null)
                 {
-                    hashCode = (hashCode * 59) + this.ReceiverProfileId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Assets.GetHashCode();
                 }
-                if (this.AssetAddress != null)
-                {
-                    hashCode = (hashCode * 59) + this.AssetAddress.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
-                hashCode = (hashCode * 59) + this.AmountToTransfer.GetHashCode();
                 hashCode = (hashCode * 59) + this.Optimistic.GetHashCode();
                 hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
                 if (this.PolicyId != null)
@@ -229,12 +179,6 @@ namespace Beam.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // AmountToTransfer (decimal) minimum
-            if (this.AmountToTransfer < (decimal)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AmountToTransfer, must be a value greater than or equal to 0.", new [] { "AmountToTransfer" });
-            }
-
             yield break;
         }
     }

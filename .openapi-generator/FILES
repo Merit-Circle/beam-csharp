@@ -65,6 +65,7 @@ src/Beam/Model/GetAssetResponseOwnershipByAddressesInnerUser.cs
 src/Beam/Model/GetAssetResponseOwnershipByAddressesInnerUserProfile.cs
 src/Beam/Model/GetAssetsResponse.cs
 src/Beam/Model/GetAssetsResponseDataInner.cs
+src/Beam/Model/GetChainCurrenciesResponseInner.cs
 src/Beam/Model/GetChainResponse.cs
 src/Beam/Model/GetChainResponseNativeCurrency.cs
 src/Beam/Model/GetGameResponse.cs
@@ -88,6 +89,7 @@ src/Beam/Model/RegenerateGameApiKeysResponseApiKeysInner.cs
 src/Beam/Model/SellAssetRequestInput.cs
 src/Beam/Model/SellAssetResponse.cs
 src/Beam/Model/TransferAssetRequestInput.cs
+src/Beam/Model/TransferAssetRequestInputAssetsInner.cs
 src/Beam/Model/TransferAssetResponse.cs
 src/Beam/Model/TransferNativeTokenRequestInput.cs
 src/Beam/Model/TransferTokenRequestInput.cs

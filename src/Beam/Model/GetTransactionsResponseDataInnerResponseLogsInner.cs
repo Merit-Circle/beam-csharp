@@ -43,13 +43,14 @@ namespace Beam.Model
         /// <param name="blockNumber">blockNumber (required).</param>
         /// <param name="blockHash">blockHash (required).</param>
         /// <param name="transactionIndex">transactionIndex (required).</param>
-        /// <param name="removed">removed.</param>
+        /// <param name="removed">removed (required).</param>
         /// <param name="address">address (required).</param>
         /// <param name="data">data (required).</param>
         /// <param name="topics">topics (required).</param>
         /// <param name="transactionHash">transactionHash (required).</param>
         /// <param name="logIndex">logIndex (required).</param>
-        public GetTransactionsResponseDataInnerResponseLogsInner(decimal blockNumber = default(decimal), string blockHash = default(string), decimal transactionIndex = default(decimal), bool removed = default(bool), string address = default(string), string data = default(string), List<string> topics = default(List<string>), string transactionHash = default(string), decimal logIndex = default(decimal))
+        /// <param name="orphaned">orphaned.</param>
+        public GetTransactionsResponseDataInnerResponseLogsInner(decimal blockNumber = default(decimal), string blockHash = default(string), decimal transactionIndex = default(decimal), bool removed = default(bool), string address = default(string), string data = default(string), List<string> topics = default(List<string>), string transactionHash = default(string), decimal logIndex = default(decimal), bool orphaned = default(bool))
         {
             this.BlockNumber = blockNumber;
             // to ensure "blockHash" is required (not null)
@@ -59,6 +60,7 @@ namespace Beam.Model
             }
             this.BlockHash = blockHash;
             this.TransactionIndex = transactionIndex;
+            this.Removed = removed;
             // to ensure "address" is required (not null)
             if (address == null)
             {
@@ -84,7 +86,7 @@ namespace Beam.Model
             }
             this.TransactionHash = transactionHash;
             this.LogIndex = logIndex;
-            this.Removed = removed;
+            this.Orphaned = orphaned;
         }
 
         /// <summary>
@@ -108,7 +110,7 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets Removed
         /// </summary>
-        [DataMember(Name = "removed", EmitDefaultValue = true)]
+        [DataMember(Name = "removed", IsRequired = true, EmitDefaultValue = true)]
         public bool Removed { get; set; }
 
         /// <summary>
@@ -142,6 +144,12 @@ namespace Beam.Model
         public decimal LogIndex { get; set; }
 
         /// <summary>
+        /// Gets or Sets Orphaned
+        /// </summary>
+        [DataMember(Name = "orphaned", EmitDefaultValue = true)]
+        public bool Orphaned { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -158,6 +166,7 @@ namespace Beam.Model
             sb.Append("  Topics: ").Append(Topics).Append("\n");
             sb.Append("  TransactionHash: ").Append(TransactionHash).Append("\n");
             sb.Append("  LogIndex: ").Append(LogIndex).Append("\n");
+            sb.Append("  Orphaned: ").Append(Orphaned).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -234,6 +243,10 @@ namespace Beam.Model
                 (
                     this.LogIndex == input.LogIndex ||
                     this.LogIndex.Equals(input.LogIndex)
+                ) && 
+                (
+                    this.Orphaned == input.Orphaned ||
+                    this.Orphaned.Equals(input.Orphaned)
                 );
         }
 
@@ -270,6 +283,7 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.TransactionHash.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.LogIndex.GetHashCode();
+                hashCode = (hashCode * 59) + this.Orphaned.GetHashCode();
                 return hashCode;
             }
         }
