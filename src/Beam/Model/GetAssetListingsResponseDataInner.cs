@@ -51,12 +51,12 @@ namespace Beam.Model
         /// <param name="startTime">startTime (required).</param>
         /// <param name="endTime">endTime (required).</param>
         /// <param name="quantityListed">quantityListed (required).</param>
-        /// <param name="signedOrderId">signedOrderId (required).</param>
+        /// <param name="orderId">orderId (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
         /// <param name="sellerAddress">sellerAddress (required).</param>
         /// <param name="contractId">contractId (required).</param>
         /// <param name="nft">nft (required).</param>
-        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string signedOrderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
+        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string orderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -109,12 +109,12 @@ namespace Beam.Model
             }
             this.EndTime = endTime;
             this.QuantityListed = quantityListed;
-            // to ensure "signedOrderId" is required (not null)
-            if (signedOrderId == null)
+            // to ensure "orderId" is required (not null)
+            if (orderId == null)
             {
-                throw new ArgumentNullException("signedOrderId is a required property for GetAssetListingsResponseDataInner and cannot be null");
+                throw new ArgumentNullException("orderId is a required property for GetAssetListingsResponseDataInner and cannot be null");
             }
-            this.SignedOrderId = signedOrderId;
+            this.OrderId = orderId;
             // to ensure "expiresAt" is required (not null)
             if (expiresAt == null)
             {
@@ -208,10 +208,10 @@ namespace Beam.Model
         public decimal QuantityListed { get; set; }
 
         /// <summary>
-        /// Gets or Sets SignedOrderId
+        /// Gets or Sets OrderId
         /// </summary>
-        [DataMember(Name = "signedOrderId", IsRequired = true, EmitDefaultValue = true)]
-        public string SignedOrderId { get; set; }
+        [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = true)]
+        public string OrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets ExpiresAt
@@ -256,7 +256,7 @@ namespace Beam.Model
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  QuantityListed: ").Append(QuantityListed).Append("\n");
-            sb.Append("  SignedOrderId: ").Append(SignedOrderId).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  SellerAddress: ").Append(SellerAddress).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
@@ -349,9 +349,9 @@ namespace Beam.Model
                     this.QuantityListed.Equals(input.QuantityListed)
                 ) && 
                 (
-                    this.SignedOrderId == input.SignedOrderId ||
-                    (this.SignedOrderId != null &&
-                    this.SignedOrderId.Equals(input.SignedOrderId))
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
                 ) && 
                 (
                     this.ExpiresAt == input.ExpiresAt ||
@@ -419,9 +419,9 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.EndTime.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.QuantityListed.GetHashCode();
-                if (this.SignedOrderId != null)
+                if (this.OrderId != null)
                 {
-                    hashCode = (hashCode * 59) + this.SignedOrderId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
                 }
                 if (this.ExpiresAt != null)
                 {

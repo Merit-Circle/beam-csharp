@@ -27,35 +27,16 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetChainCurrenciesResponseInner
+    /// GetChainCurrenciesResponseDataInner
     /// </summary>
-    [DataContract(Name = "GetChainCurrenciesResponse_inner")]
-    public partial class GetChainCurrenciesResponseInner : IEquatable<GetChainCurrenciesResponseInner>, IValidatableObject
+    [DataContract(Name = "GetChainCurrenciesResponse_data_inner")]
+    public partial class GetChainCurrenciesResponseDataInner : IEquatable<GetChainCurrenciesResponseDataInner>, IValidatableObject
     {
         /// <summary>
-        /// Defines Typename
+        /// Defines Currency
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum TypenameEnum
-        {
-            /// <summary>
-            /// Enum CurrencyQueryResult for value: CurrencyQueryResult
-            /// </summary>
-            [EnumMember(Value = "CurrencyQueryResult")]
-            CurrencyQueryResult = 1
-        }
-
-
-        /// <summary>
-        /// Gets or Sets Typename
-        /// </summary>
-        [DataMember(Name = "__typename", EmitDefaultValue = false)]
-        public TypenameEnum? Typename { get; set; }
-        /// <summary>
-        /// Defines Symbol
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SymbolEnum
+        public enum CurrencyEnum
         {
             /// <summary>
             /// Enum Avax for value: Avax
@@ -120,33 +101,31 @@ namespace Beam.Model
 
 
         /// <summary>
-        /// Gets or Sets Symbol
+        /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name = "symbol", IsRequired = true, EmitDefaultValue = true)]
-        public SymbolEnum Symbol { get; set; }
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
+        public CurrencyEnum Currency { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetChainCurrenciesResponseInner" /> class.
+        /// Initializes a new instance of the <see cref="GetChainCurrenciesResponseDataInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetChainCurrenciesResponseInner() { }
+        protected GetChainCurrenciesResponseDataInner() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetChainCurrenciesResponseInner" /> class.
+        /// Initializes a new instance of the <see cref="GetChainCurrenciesResponseDataInner" /> class.
         /// </summary>
-        /// <param name="typename">typename.</param>
         /// <param name="decimals">decimals (required).</param>
-        /// <param name="symbol">symbol (required).</param>
+        /// <param name="currency">currency (required).</param>
         /// <param name="tokenAddress">tokenAddress (required).</param>
-        public GetChainCurrenciesResponseInner(TypenameEnum? typename = default(TypenameEnum?), decimal decimals = default(decimal), SymbolEnum symbol = default(SymbolEnum), string tokenAddress = default(string))
+        public GetChainCurrenciesResponseDataInner(decimal decimals = default(decimal), CurrencyEnum currency = default(CurrencyEnum), string tokenAddress = default(string))
         {
             this.Decimals = decimals;
-            this.Symbol = symbol;
+            this.Currency = currency;
             // to ensure "tokenAddress" is required (not null)
             if (tokenAddress == null)
             {
-                throw new ArgumentNullException("tokenAddress is a required property for GetChainCurrenciesResponseInner and cannot be null");
+                throw new ArgumentNullException("tokenAddress is a required property for GetChainCurrenciesResponseDataInner and cannot be null");
             }
             this.TokenAddress = tokenAddress;
-            this.Typename = typename;
         }
 
         /// <summary>
@@ -168,10 +147,9 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetChainCurrenciesResponseInner {\n");
-            sb.Append("  Typename: ").Append(Typename).Append("\n");
+            sb.Append("class GetChainCurrenciesResponseDataInner {\n");
             sb.Append("  Decimals: ").Append(Decimals).Append("\n");
-            sb.Append("  Symbol: ").Append(Symbol).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  TokenAddress: ").Append(TokenAddress).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -193,15 +171,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetChainCurrenciesResponseInner);
+            return this.Equals(input as GetChainCurrenciesResponseDataInner);
         }
 
         /// <summary>
-        /// Returns true if GetChainCurrenciesResponseInner instances are equal
+        /// Returns true if GetChainCurrenciesResponseDataInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetChainCurrenciesResponseInner to be compared</param>
+        /// <param name="input">Instance of GetChainCurrenciesResponseDataInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetChainCurrenciesResponseInner input)
+        public bool Equals(GetChainCurrenciesResponseDataInner input)
         {
             if (input == null)
             {
@@ -209,16 +187,12 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.Typename == input.Typename ||
-                    this.Typename.Equals(input.Typename)
-                ) && 
-                (
                     this.Decimals == input.Decimals ||
                     this.Decimals.Equals(input.Decimals)
                 ) && 
                 (
-                    this.Symbol == input.Symbol ||
-                    this.Symbol.Equals(input.Symbol)
+                    this.Currency == input.Currency ||
+                    this.Currency.Equals(input.Currency)
                 ) && 
                 (
                     this.TokenAddress == input.TokenAddress ||
@@ -236,9 +210,8 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Typename.GetHashCode();
                 hashCode = (hashCode * 59) + this.Decimals.GetHashCode();
-                hashCode = (hashCode * 59) + this.Symbol.GetHashCode();
+                hashCode = (hashCode * 59) + this.Currency.GetHashCode();
                 if (this.TokenAddress != null)
                 {
                     hashCode = (hashCode * 59) + this.TokenAddress.GetHashCode();

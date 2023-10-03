@@ -45,7 +45,7 @@ namespace Beam.Model
         /// <param name="assetAddress">assetAddress (required).</param>
         /// <param name="assetId">assetId (required).</param>
         /// <param name="amountToTransfer">amountToTransfer (default to 1M).</param>
-        public TransferAssetRequestInputAssetsInner(string receiverEntityId = default(string), string receiverWalletAddress = default(string), string assetAddress = default(string), decimal assetId = default(decimal), decimal amountToTransfer = 1M)
+        public TransferAssetRequestInputAssetsInner(string receiverEntityId = default(string), string receiverWalletAddress = default(string), string assetAddress = default(string), string assetId = default(string), decimal amountToTransfer = 1M)
         {
             // to ensure "assetAddress" is required (not null)
             if (assetAddress == null)
@@ -53,6 +53,11 @@ namespace Beam.Model
                 throw new ArgumentNullException("assetAddress is a required property for TransferAssetRequestInputAssetsInner and cannot be null");
             }
             this.AssetAddress = assetAddress;
+            // to ensure "assetId" is required (not null)
+            if (assetId == null)
+            {
+                throw new ArgumentNullException("assetId is a required property for TransferAssetRequestInputAssetsInner and cannot be null");
+            }
             this.AssetId = assetId;
             this.ReceiverEntityId = receiverEntityId;
             this.ReceiverWalletAddress = receiverWalletAddress;
@@ -81,7 +86,7 @@ namespace Beam.Model
         /// Gets or Sets AssetId
         /// </summary>
         [DataMember(Name = "assetId", IsRequired = true, EmitDefaultValue = true)]
-        public decimal AssetId { get; set; }
+        public string AssetId { get; set; }
 
         /// <summary>
         /// Gets or Sets AmountToTransfer
@@ -154,7 +159,8 @@ namespace Beam.Model
                 ) && 
                 (
                     this.AssetId == input.AssetId ||
-                    this.AssetId.Equals(input.AssetId)
+                    (this.AssetId != null &&
+                    this.AssetId.Equals(input.AssetId))
                 ) && 
                 (
                     this.AmountToTransfer == input.AmountToTransfer ||
@@ -183,7 +189,10 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.AssetAddress.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
+                if (this.AssetId != null)
+                {
+                    hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.AmountToTransfer.GetHashCode();
                 return hashCode;
             }
