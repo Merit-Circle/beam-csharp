@@ -27,48 +27,11 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// SellAssetRequestInput
+    /// CreateAssetOfferRequestInput
     /// </summary>
-    [DataContract(Name = "SellAssetRequestInput")]
-    public partial class SellAssetRequestInput : IEquatable<SellAssetRequestInput>, IValidatableObject
+    [DataContract(Name = "CreateAssetOfferRequestInput")]
+    public partial class CreateAssetOfferRequestInput : IEquatable<CreateAssetOfferRequestInput>, IValidatableObject
     {
-        /// <summary>
-        /// Defines SellType
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum SellTypeEnum
-        {
-            /// <summary>
-            /// Enum FixedPrice for value: FixedPrice
-            /// </summary>
-            [EnumMember(Value = "FixedPrice")]
-            FixedPrice = 1,
-
-            /// <summary>
-            /// Enum DescendingAuction for value: DescendingAuction
-            /// </summary>
-            [EnumMember(Value = "DescendingAuction")]
-            DescendingAuction = 2,
-
-            /// <summary>
-            /// Enum AscendingAuction for value: AscendingAuction
-            /// </summary>
-            [EnumMember(Value = "AscendingAuction")]
-            AscendingAuction = 3,
-
-            /// <summary>
-            /// Enum NotForSale for value: NotForSale
-            /// </summary>
-            [EnumMember(Value = "NotForSale")]
-            NotForSale = 4
-        }
-
-
-        /// <summary>
-        /// Gets or Sets SellType
-        /// </summary>
-        [DataMember(Name = "sellType", IsRequired = true, EmitDefaultValue = true)]
-        public SellTypeEnum SellType { get; set; }
         /// <summary>
         /// Defines Currency
         /// </summary>
@@ -143,43 +106,37 @@ namespace Beam.Model
         [DataMember(Name = "currency", EmitDefaultValue = false)]
         public CurrencyEnum? Currency { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SellAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="CreateAssetOfferRequestInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SellAssetRequestInput() { }
+        protected CreateAssetOfferRequestInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SellAssetRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="CreateAssetOfferRequestInput" /> class.
         /// </summary>
         /// <param name="marketplaceId">marketplaceId (required).</param>
         /// <param name="quantity">quantity (required).</param>
         /// <param name="price">price (required).</param>
         /// <param name="startTime">startTime.</param>
         /// <param name="endTime">endTime.</param>
-        /// <param name="sellType">sellType (required).</param>
         /// <param name="currency">currency (default to CurrencyEnum.Mc).</param>
-        /// <param name="sponsor">sponsor (default to true).</param>
-        /// <param name="policyId">policyId.</param>
-        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), CurrencyEnum? currency = CurrencyEnum.Mc, bool sponsor = true, string policyId = default(string))
+        public CreateAssetOfferRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), CurrencyEnum? currency = CurrencyEnum.Mc)
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
             {
-                throw new ArgumentNullException("marketplaceId is a required property for SellAssetRequestInput and cannot be null");
+                throw new ArgumentNullException("marketplaceId is a required property for CreateAssetOfferRequestInput and cannot be null");
             }
             this.MarketplaceId = marketplaceId;
             this.Quantity = quantity;
             // to ensure "price" is required (not null)
             if (price == null)
             {
-                throw new ArgumentNullException("price is a required property for SellAssetRequestInput and cannot be null");
+                throw new ArgumentNullException("price is a required property for CreateAssetOfferRequestInput and cannot be null");
             }
             this.Price = price;
-            this.SellType = sellType;
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.Currency = currency;
-            this.Sponsor = sponsor;
-            this.PolicyId = policyId;
         }
 
         /// <summary>
@@ -213,34 +170,19 @@ namespace Beam.Model
         public string EndTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets Sponsor
-        /// </summary>
-        [DataMember(Name = "sponsor", EmitDefaultValue = true)]
-        public bool Sponsor { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PolicyId
-        /// </summary>
-        [DataMember(Name = "policyId", EmitDefaultValue = false)]
-        public string PolicyId { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SellAssetRequestInput {\n");
+            sb.Append("class CreateAssetOfferRequestInput {\n");
             sb.Append("  MarketplaceId: ").Append(MarketplaceId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("  Price: ").Append(Price).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
-            sb.Append("  SellType: ").Append(SellType).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
-            sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
-            sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -261,15 +203,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SellAssetRequestInput);
+            return this.Equals(input as CreateAssetOfferRequestInput);
         }
 
         /// <summary>
-        /// Returns true if SellAssetRequestInput instances are equal
+        /// Returns true if CreateAssetOfferRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of SellAssetRequestInput to be compared</param>
+        /// <param name="input">Instance of CreateAssetOfferRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SellAssetRequestInput input)
+        public bool Equals(CreateAssetOfferRequestInput input)
         {
             if (input == null)
             {
@@ -301,21 +243,8 @@ namespace Beam.Model
                     this.EndTime.Equals(input.EndTime))
                 ) && 
                 (
-                    this.SellType == input.SellType ||
-                    this.SellType.Equals(input.SellType)
-                ) && 
-                (
                     this.Currency == input.Currency ||
                     this.Currency.Equals(input.Currency)
-                ) && 
-                (
-                    this.Sponsor == input.Sponsor ||
-                    this.Sponsor.Equals(input.Sponsor)
-                ) && 
-                (
-                    this.PolicyId == input.PolicyId ||
-                    (this.PolicyId != null &&
-                    this.PolicyId.Equals(input.PolicyId))
                 );
         }
 
@@ -345,13 +274,7 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.EndTime.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.SellType.GetHashCode();
                 hashCode = (hashCode * 59) + this.Currency.GetHashCode();
-                hashCode = (hashCode * 59) + this.Sponsor.GetHashCode();
-                if (this.PolicyId != null)
-                {
-                    hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
-                }
                 return hashCode;
             }
         }

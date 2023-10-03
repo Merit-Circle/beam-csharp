@@ -28,6 +28,28 @@ namespace Beam.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Accept an offer for an asset
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <returns>AcceptOfferResponse</returns>
+        AcceptOfferResponse AcceptAssetOffer(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput);
+
+        /// <summary>
+        /// Accept an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <returns>ApiResponse of AcceptOfferResponse</returns>
+        ApiResponse<AcceptOfferResponse> AcceptAssetOfferWithHttpInfo(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput);
+        /// <summary>
         /// Buy listed asset
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
@@ -49,6 +71,28 @@ namespace Beam.Api
         /// <param name="buyAssetRequestInput"></param>
         /// <returns>ApiResponse of BuyAssetResponse</returns>
         ApiResponse<BuyAssetResponse> BuyListedAssetWithHttpInfo(string entityId, string orderId, BuyAssetRequestInput buyAssetRequestInput);
+        /// <summary>
+        /// Cancel an offer for an asset
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <returns>CancelOfferResponse</returns>
+        CancelOfferResponse CancelAssetOffer(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput);
+
+        /// <summary>
+        /// Cancel an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <returns>ApiResponse of CancelOfferResponse</returns>
+        ApiResponse<CancelOfferResponse> CancelAssetOfferWithHttpInfo(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput);
         /// <summary>
         /// Cancel asset listing
         /// </summary>
@@ -72,67 +116,151 @@ namespace Beam.Api
         /// <returns>ApiResponse of BuyAssetResponse</returns>
         ApiResponse<BuyAssetResponse> CancelListingWithHttpInfo(string entityId, string orderId, CancelAssetListingRequestInput cancelAssetListingRequestInput);
         /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"></param>
-        /// <returns>List&lt;GetChainCurrenciesResponseInner&gt;</returns>
-        List<GetChainCurrenciesResponseInner> GetChainCurrencies(decimal chainId);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"></param>
-        /// <returns>ApiResponse of List&lt;GetChainCurrenciesResponseInner&gt;</returns>
-        ApiResponse<List<GetChainCurrenciesResponseInner>> GetChainCurrenciesWithHttpInfo(decimal chainId);
-        /// <summary>
-        /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
-        /// </summary>
-        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="gameId"></param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="offset"> (optional)</param>
-        /// <returns>GetAssetListingsResponse</returns>
-        GetAssetListingsResponse GetListedAssets(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
-
-        /// <summary>
-        /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="gameId"></param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="offset"> (optional)</param>
-        /// <returns>ApiResponse of GetAssetListingsResponse</returns>
-        ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
-        /// <summary>
-        /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+        /// Make an offer for an asset
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="limit"> (optional)</param>
-        /// <param name="offset"> (optional)</param>
-        /// <returns>GetAssetListingsResponse</returns>
-        GetAssetListingsResponse GetListedAssetsForProfile(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <returns>CreateOfferResponse</returns>
+        CreateOfferResponse CreateAssetOffer(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput);
 
         /// <summary>
-        /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+        /// Make an offer for an asset
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <returns>ApiResponse of CreateOfferResponse</returns>
+        ApiResponse<CreateOfferResponse> CreateAssetOfferWithHttpInfo(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput);
+        /// <summary>
+        /// Get all offers for an asset
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <returns>GetAssetOffersResponse</returns>
+        GetAssetOffersResponse GetAssetOffers(string marketplaceId);
+
+        /// <summary>
+        /// Get all offers for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <returns>ApiResponse of GetAssetOffersResponse</returns>
+        ApiResponse<GetAssetOffersResponse> GetAssetOffersWithHttpInfo(string marketplaceId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <returns>GetChainCurrenciesResponse</returns>
+        GetChainCurrenciesResponse GetChainCurrencies(decimal chainId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <returns>ApiResponse of GetChainCurrenciesResponse</returns>
+        ApiResponse<GetChainCurrenciesResponse> GetChainCurrenciesWithHttpInfo(decimal chainId);
+        /// <summary>
+        /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <returns>GetAssetListingsResponse</returns>
+        GetAssetListingsResponse GetListedAssets(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+
+        /// <summary>
+        /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
-        ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        /// <summary>
+        /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <returns>GetAssetListingsResponse</returns>
+        GetAssetListingsResponse GetListedAssetsForProfile(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+
+        /// <summary>
+        /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
+        /// <param name="limit"> (optional)</param>
+        /// <param name="offset"> (optional)</param>
+        /// <returns>ApiResponse of GetAssetListingsResponse</returns>
+        ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        /// <summary>
+        /// Get all asset offers that player created
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <returns>GetAssetOffersResponse</returns>
+        GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId);
+
+        /// <summary>
+        /// Get all asset offers that player created
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <returns>ApiResponse of GetAssetOffersResponse</returns>
+        ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId);
+        /// <summary>
+        /// Get all offers that player created
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <returns>GetAssetOffersResponse</returns>
+        GetAssetOffersResponse GetPlayerOffers(string entityId);
+
+        /// <summary>
+        /// Get all offers that player created
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <returns>ApiResponse of GetAssetOffersResponse</returns>
+        ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId);
         /// <summary>
         /// List an asset for sale
         /// </summary>
@@ -163,6 +291,33 @@ namespace Beam.Api
     {
         #region Asynchronous Operations
         /// <summary>
+        /// Accept an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AcceptOfferResponse</returns>
+        System.Threading.Tasks.Task<AcceptOfferResponse> AcceptAssetOfferAsync(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Accept an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AcceptOfferResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AcceptOfferResponse>> AcceptAssetOfferWithHttpInfoAsync(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// Buy listed asset
         /// </summary>
         /// <remarks>
@@ -189,6 +344,33 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BuyAssetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<BuyAssetResponse>> BuyListedAssetWithHttpInfoAsync(string entityId, string orderId, BuyAssetRequestInput buyAssetRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Cancel an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CancelOfferResponse</returns>
+        System.Threading.Tasks.Task<CancelOfferResponse> CancelAssetOfferAsync(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Cancel an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CancelOfferResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CancelOfferResponse>> CancelAssetOfferWithHttpInfoAsync(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Cancel asset listing
         /// </summary>
@@ -217,6 +399,54 @@ namespace Beam.Api
         /// <returns>Task of ApiResponse (BuyAssetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<BuyAssetResponse>> CancelListingWithHttpInfoAsync(string entityId, string orderId, CancelAssetListingRequestInput cancelAssetListingRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
+        /// Make an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOfferResponse</returns>
+        System.Threading.Tasks.Task<CreateOfferResponse> CreateAssetOfferAsync(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Make an offer for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOfferResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CreateOfferResponse>> CreateAssetOfferWithHttpInfoAsync(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get all offers for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetOffersResponse</returns>
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetAssetOffersAsync(string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get all offers for an asset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetAssetOffersWithHttpInfoAsync(string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
@@ -225,8 +455,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;GetChainCurrenciesResponseInner&gt;</returns>
-        System.Threading.Tasks.Task<List<GetChainCurrenciesResponseInner>> GetChainCurrenciesAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of GetChainCurrenciesResponse</returns>
+        System.Threading.Tasks.Task<GetChainCurrenciesResponse> GetChainCurrenciesAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -237,8 +467,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;GetChainCurrenciesResponseInner&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<GetChainCurrenciesResponseInner>>> GetChainCurrenciesWithHttpInfoAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (GetChainCurrenciesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetChainCurrenciesResponse>> GetChainCurrenciesWithHttpInfoAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -247,11 +477,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
-        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
@@ -261,11 +493,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -274,11 +508,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
-        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
@@ -288,11 +524,61 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get all asset offers that player created
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetOffersResponse</returns>
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get all asset offers that player created
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get all offers that player created
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetOffersResponse</returns>
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get all offers that player created
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List an asset for sale
         /// </summary>
@@ -532,6 +818,161 @@ namespace Beam.Api
         }
 
         /// <summary>
+        /// Accept an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <returns>AcceptOfferResponse</returns>
+        public AcceptOfferResponse AcceptAssetOffer(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput)
+        {
+            Beam.Client.ApiResponse<AcceptOfferResponse> localVarResponse = AcceptAssetOfferWithHttpInfo(entityId, offerId, acceptAssetOfferRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Accept an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <returns>ApiResponse of AcceptOfferResponse</returns>
+        public Beam.Client.ApiResponse<AcceptOfferResponse> AcceptAssetOfferWithHttpInfo(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput)
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->AcceptAssetOffer");
+
+            // verify the required parameter 'offerId' is set
+            if (offerId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'offerId' when calling MarketplaceApi->AcceptAssetOffer");
+
+            // verify the required parameter 'acceptAssetOfferRequestInput' is set
+            if (acceptAssetOfferRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'acceptAssetOfferRequestInput' when calling MarketplaceApi->AcceptAssetOffer");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("offerId", Beam.Client.ClientUtils.ParameterToString(offerId)); // path parameter
+            localVarRequestOptions.Data = acceptAssetOfferRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AcceptOfferResponse>("/v1/marketplace/profiles/{entityId}/offers/{offerId}/accept", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AcceptAssetOffer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Accept an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AcceptOfferResponse</returns>
+        public async System.Threading.Tasks.Task<AcceptOfferResponse> AcceptAssetOfferAsync(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<AcceptOfferResponse> localVarResponse = await AcceptAssetOfferWithHttpInfoAsync(entityId, offerId, acceptAssetOfferRequestInput, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Accept an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="acceptAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AcceptOfferResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<AcceptOfferResponse>> AcceptAssetOfferWithHttpInfoAsync(string entityId, string offerId, AcceptAssetOfferRequestInput acceptAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->AcceptAssetOffer");
+
+            // verify the required parameter 'offerId' is set
+            if (offerId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'offerId' when calling MarketplaceApi->AcceptAssetOffer");
+
+            // verify the required parameter 'acceptAssetOfferRequestInput' is set
+            if (acceptAssetOfferRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'acceptAssetOfferRequestInput' when calling MarketplaceApi->AcceptAssetOffer");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("offerId", Beam.Client.ClientUtils.ParameterToString(offerId)); // path parameter
+            localVarRequestOptions.Data = acceptAssetOfferRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AcceptOfferResponse>("/v1/marketplace/profiles/{entityId}/offers/{offerId}/accept", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AcceptAssetOffer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Buy listed asset 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
@@ -680,6 +1121,161 @@ namespace Beam.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("BuyListedAsset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Cancel an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <returns>CancelOfferResponse</returns>
+        public CancelOfferResponse CancelAssetOffer(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput)
+        {
+            Beam.Client.ApiResponse<CancelOfferResponse> localVarResponse = CancelAssetOfferWithHttpInfo(entityId, offerId, cancelAssetOfferRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancel an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <returns>ApiResponse of CancelOfferResponse</returns>
+        public Beam.Client.ApiResponse<CancelOfferResponse> CancelAssetOfferWithHttpInfo(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput)
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->CancelAssetOffer");
+
+            // verify the required parameter 'offerId' is set
+            if (offerId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'offerId' when calling MarketplaceApi->CancelAssetOffer");
+
+            // verify the required parameter 'cancelAssetOfferRequestInput' is set
+            if (cancelAssetOfferRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'cancelAssetOfferRequestInput' when calling MarketplaceApi->CancelAssetOffer");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("offerId", Beam.Client.ClientUtils.ParameterToString(offerId)); // path parameter
+            localVarRequestOptions.Data = cancelAssetOfferRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<CancelOfferResponse>("/v1/marketplace/profiles/{entityId}/offers/{offerId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CancelAssetOffer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Cancel an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CancelOfferResponse</returns>
+        public async System.Threading.Tasks.Task<CancelOfferResponse> CancelAssetOfferAsync(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<CancelOfferResponse> localVarResponse = await CancelAssetOfferWithHttpInfoAsync(entityId, offerId, cancelAssetOfferRequestInput, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancel an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="offerId"></param>
+        /// <param name="cancelAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CancelOfferResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<CancelOfferResponse>> CancelAssetOfferWithHttpInfoAsync(string entityId, string offerId, CancelAssetOfferRequestInput cancelAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->CancelAssetOffer");
+
+            // verify the required parameter 'offerId' is set
+            if (offerId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'offerId' when calling MarketplaceApi->CancelAssetOffer");
+
+            // verify the required parameter 'cancelAssetOfferRequestInput' is set
+            if (cancelAssetOfferRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'cancelAssetOfferRequestInput' when calling MarketplaceApi->CancelAssetOffer");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("offerId", Beam.Client.ClientUtils.ParameterToString(offerId)); // path parameter
+            localVarRequestOptions.Data = cancelAssetOfferRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<CancelOfferResponse>("/v1/marketplace/profiles/{entityId}/offers/{offerId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CancelAssetOffer", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -842,14 +1438,280 @@ namespace Beam.Api
         }
 
         /// <summary>
+        /// Make an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <returns>CreateOfferResponse</returns>
+        public CreateOfferResponse CreateAssetOffer(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput)
+        {
+            Beam.Client.ApiResponse<CreateOfferResponse> localVarResponse = CreateAssetOfferWithHttpInfo(entityId, createAssetOfferRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <returns>ApiResponse of CreateOfferResponse</returns>
+        public Beam.Client.ApiResponse<CreateOfferResponse> CreateAssetOfferWithHttpInfo(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput)
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->CreateAssetOffer");
+
+            // verify the required parameter 'createAssetOfferRequestInput' is set
+            if (createAssetOfferRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'createAssetOfferRequestInput' when calling MarketplaceApi->CreateAssetOffer");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.Data = createAssetOfferRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<CreateOfferResponse>("/v1/marketplace/profiles/{entityId}/offers", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAssetOffer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Make an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of CreateOfferResponse</returns>
+        public async System.Threading.Tasks.Task<CreateOfferResponse> CreateAssetOfferAsync(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<CreateOfferResponse> localVarResponse = await CreateAssetOfferWithHttpInfoAsync(entityId, createAssetOfferRequestInput, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Make an offer for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createAssetOfferRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (CreateOfferResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<CreateOfferResponse>> CreateAssetOfferWithHttpInfoAsync(string entityId, CreateAssetOfferRequestInput createAssetOfferRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->CreateAssetOffer");
+
+            // verify the required parameter 'createAssetOfferRequestInput' is set
+            if (createAssetOfferRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'createAssetOfferRequestInput' when calling MarketplaceApi->CreateAssetOffer");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.Data = createAssetOfferRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateOfferResponse>("/v1/marketplace/profiles/{entityId}/offers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("CreateAssetOffer", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all offers for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <returns>GetAssetOffersResponse</returns>
+        public GetAssetOffersResponse GetAssetOffers(string marketplaceId)
+        {
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetAssetOffersWithHttpInfo(marketplaceId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all offers for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <returns>ApiResponse of GetAssetOffersResponse</returns>
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetAssetOffersWithHttpInfo(string marketplaceId)
+        {
+            // verify the required parameter 'marketplaceId' is set
+            if (marketplaceId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'marketplaceId' when calling MarketplaceApi->GetAssetOffers");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("marketplaceId", Beam.Client.ClientUtils.ParameterToString(marketplaceId)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAssetOffersResponse>("/v1/marketplace/offers/asset/{marketplaceId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAssetOffers", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all offers for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetOffersResponse</returns>
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetAssetOffersAsync(string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetAssetOffersWithHttpInfoAsync(marketplaceId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all offers for an asset 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetAssetOffersWithHttpInfoAsync(string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'marketplaceId' is set
+            if (marketplaceId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'marketplaceId' when calling MarketplaceApi->GetAssetOffers");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("marketplaceId", Beam.Client.ClientUtils.ParameterToString(marketplaceId)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAssetOffersResponse>("/v1/marketplace/offers/asset/{marketplaceId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAssetOffers", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         ///  
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"></param>
-        /// <returns>List&lt;GetChainCurrenciesResponseInner&gt;</returns>
-        public List<GetChainCurrenciesResponseInner> GetChainCurrencies(decimal chainId)
+        /// <returns>GetChainCurrenciesResponse</returns>
+        public GetChainCurrenciesResponse GetChainCurrencies(decimal chainId)
         {
-            Beam.Client.ApiResponse<List<GetChainCurrenciesResponseInner>> localVarResponse = GetChainCurrenciesWithHttpInfo(chainId);
+            Beam.Client.ApiResponse<GetChainCurrenciesResponse> localVarResponse = GetChainCurrenciesWithHttpInfo(chainId);
             return localVarResponse.Data;
         }
 
@@ -858,8 +1720,8 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"></param>
-        /// <returns>ApiResponse of List&lt;GetChainCurrenciesResponseInner&gt;</returns>
-        public Beam.Client.ApiResponse<List<GetChainCurrenciesResponseInner>> GetChainCurrenciesWithHttpInfo(decimal chainId)
+        /// <returns>ApiResponse of GetChainCurrenciesResponse</returns>
+        public Beam.Client.ApiResponse<GetChainCurrenciesResponse> GetChainCurrenciesWithHttpInfo(decimal chainId)
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -886,7 +1748,7 @@ namespace Beam.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<GetChainCurrenciesResponseInner>>("/v1/marketplace/chain-currencies/{chainId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetChainCurrenciesResponse>("/v1/marketplace/chain-currencies/{chainId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -903,10 +1765,10 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;GetChainCurrenciesResponseInner&gt;</returns>
-        public async System.Threading.Tasks.Task<List<GetChainCurrenciesResponseInner>> GetChainCurrenciesAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of GetChainCurrenciesResponse</returns>
+        public async System.Threading.Tasks.Task<GetChainCurrenciesResponse> GetChainCurrenciesAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<List<GetChainCurrenciesResponseInner>> localVarResponse = await GetChainCurrenciesWithHttpInfoAsync(chainId, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetChainCurrenciesResponse> localVarResponse = await GetChainCurrenciesWithHttpInfoAsync(chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -916,8 +1778,8 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;GetChainCurrenciesResponseInner&gt;)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<List<GetChainCurrenciesResponseInner>>> GetChainCurrenciesWithHttpInfoAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (GetChainCurrenciesResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetChainCurrenciesResponse>> GetChainCurrenciesWithHttpInfoAsync(decimal chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -947,7 +1809,7 @@ namespace Beam.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<GetChainCurrenciesResponseInner>>("/v1/marketplace/chain-currencies/{chainId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetChainCurrenciesResponse>("/v1/marketplace/chain-currencies/{chainId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -963,12 +1825,14 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAssetListingsResponse</returns>
-        public GetAssetListingsResponse GetListedAssets(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetAssetListingsResponse GetListedAssets(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetListedAssetsWithHttpInfo(gameId, limit, offset);
+            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetListedAssetsWithHttpInfo(gameId, filter, sort, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -977,10 +1841,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'gameId' is set
             if (gameId == null)
@@ -1003,6 +1869,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("gameId", Beam.Client.ClientUtils.ParameterToString(gameId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -1035,13 +1909,15 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetListedAssetsWithHttpInfoAsync(gameId, limit, offset, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetListedAssetsWithHttpInfoAsync(gameId, filter, sort, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1050,11 +1926,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="gameId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(string gameId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(string gameId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'gameId' is set
             if (gameId == null)
@@ -1079,6 +1957,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("gameId", Beam.Client.ClientUtils.ParameterToString(gameId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -1112,12 +1998,14 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAssetListingsResponse</returns>
-        public GetAssetListingsResponse GetListedAssetsForProfile(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetAssetListingsResponse GetListedAssetsForProfile(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetListedAssetsForProfileWithHttpInfo(entityId, limit, offset);
+            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetListedAssetsForProfileWithHttpInfo(entityId, filter, sort, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -1126,10 +2014,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -1152,6 +2042,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -1184,13 +2082,15 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetListedAssetsForProfileWithHttpInfoAsync(entityId, limit, offset, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetListedAssetsForProfileWithHttpInfoAsync(entityId, filter, sort, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1199,11 +2099,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -1228,6 +2130,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -1250,6 +2160,270 @@ namespace Beam.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetListedAssetsForProfile", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all asset offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <returns>GetAssetOffersResponse</returns>
+        public GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId)
+        {
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerAssetOffersWithHttpInfo(entityId, marketplaceId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all asset offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <returns>ApiResponse of GetAssetOffersResponse</returns>
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId)
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->GetPlayerAssetOffers");
+
+            // verify the required parameter 'marketplaceId' is set
+            if (marketplaceId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'marketplaceId' when calling MarketplaceApi->GetPlayerAssetOffers");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marketplaceId", Beam.Client.ClientUtils.ParameterToString(marketplaceId)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAssetOffersResponse>("/v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPlayerAssetOffers", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all asset offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetOffersResponse</returns>
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerAssetOffersWithHttpInfoAsync(entityId, marketplaceId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all asset offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="marketplaceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->GetPlayerAssetOffers");
+
+            // verify the required parameter 'marketplaceId' is set
+            if (marketplaceId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'marketplaceId' when calling MarketplaceApi->GetPlayerAssetOffers");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("marketplaceId", Beam.Client.ClientUtils.ParameterToString(marketplaceId)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAssetOffersResponse>("/v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPlayerAssetOffers", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <returns>GetAssetOffersResponse</returns>
+        public GetAssetOffersResponse GetPlayerOffers(string entityId)
+        {
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerOffersWithHttpInfo(entityId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <returns>ApiResponse of GetAssetOffersResponse</returns>
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId)
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->GetPlayerOffers");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetAssetOffersResponse>("/v1/marketplace/profiles/{entityId}/offers", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPlayerOffers", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get all offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetAssetOffersResponse</returns>
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerOffersWithHttpInfoAsync(entityId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all offers that player created 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling MarketplaceApi->GetPlayerOffers");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAssetOffersResponse>("/v1/marketplace/profiles/{entityId}/offers", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPlayerOffers", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

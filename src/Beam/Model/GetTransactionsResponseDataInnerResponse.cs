@@ -43,17 +43,19 @@ namespace Beam.Model
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="blockNumber">blockNumber.</param>
         /// <param name="transactionHash">transactionHash.</param>
+        /// <param name="userOpHash">userOpHash.</param>
         /// <param name="l1GasUsed">l1GasUsed.</param>
         /// <param name="gasUsed">gasUsed.</param>
         /// <param name="status">status.</param>
         /// <param name="logs">logs.</param>
         /// <param name="to">to.</param>
         /// <param name="error">error.</param>
-        public GetTransactionsResponseDataInnerResponse(decimal createdAt = default(decimal), decimal blockNumber = default(decimal), string transactionHash = default(string), string l1GasUsed = default(string), decimal gasUsed = default(decimal), decimal status = default(decimal), List<GetTransactionsResponseDataInnerResponseLogsInner> logs = default(List<GetTransactionsResponseDataInnerResponseLogsInner>), string to = default(string), Object error = default(Object))
+        public GetTransactionsResponseDataInnerResponse(decimal createdAt = default(decimal), decimal blockNumber = default(decimal), string transactionHash = default(string), string userOpHash = default(string), string l1GasUsed = default(string), decimal gasUsed = default(decimal), decimal status = default(decimal), List<GetTransactionsResponseDataInnerResponseLogsInner> logs = default(List<GetTransactionsResponseDataInnerResponseLogsInner>), string to = default(string), Object error = default(Object))
         {
             this.CreatedAt = createdAt;
             this.BlockNumber = blockNumber;
             this.TransactionHash = transactionHash;
+            this.UserOpHash = userOpHash;
             this.L1GasUsed = l1GasUsed;
             this.GasUsed = gasUsed;
             this.Status = status;
@@ -79,6 +81,12 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "transactionHash", EmitDefaultValue = false)]
         public string TransactionHash { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UserOpHash
+        /// </summary>
+        [DataMember(Name = "userOpHash", EmitDefaultValue = false)]
+        public string UserOpHash { get; set; }
 
         /// <summary>
         /// Gets or Sets L1GasUsed
@@ -127,6 +135,7 @@ namespace Beam.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  BlockNumber: ").Append(BlockNumber).Append("\n");
             sb.Append("  TransactionHash: ").Append(TransactionHash).Append("\n");
+            sb.Append("  UserOpHash: ").Append(UserOpHash).Append("\n");
             sb.Append("  L1GasUsed: ").Append(L1GasUsed).Append("\n");
             sb.Append("  GasUsed: ").Append(GasUsed).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -182,6 +191,11 @@ namespace Beam.Model
                     this.TransactionHash.Equals(input.TransactionHash))
                 ) && 
                 (
+                    this.UserOpHash == input.UserOpHash ||
+                    (this.UserOpHash != null &&
+                    this.UserOpHash.Equals(input.UserOpHash))
+                ) && 
+                (
                     this.L1GasUsed == input.L1GasUsed ||
                     (this.L1GasUsed != null &&
                     this.L1GasUsed.Equals(input.L1GasUsed))
@@ -226,6 +240,10 @@ namespace Beam.Model
                 if (this.TransactionHash != null)
                 {
                     hashCode = (hashCode * 59) + this.TransactionHash.GetHashCode();
+                }
+                if (this.UserOpHash != null)
+                {
+                    hashCode = (hashCode * 59) + this.UserOpHash.GetHashCode();
                 }
                 if (this.L1GasUsed != null)
                 {

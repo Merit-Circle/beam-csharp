@@ -43,6 +43,26 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetChainResponse</returns>
         ApiResponse<GetChainResponse> ChainWithHttpInfo();
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <returns>GetEstimateResponse</returns>
+        GetEstimateResponse EstimateProfileTransactionGas(string entityId, CreateTransactionRequestInput createTransactionRequestInput);
+
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <returns>ApiResponse of GetEstimateResponse</returns>
+        ApiResponse<GetEstimateResponse> EstimateProfileTransactionGasWithHttpInfo(string entityId, CreateTransactionRequestInput createTransactionRequestInput);
         #endregion Synchronous Operations
     }
 
@@ -73,6 +93,31 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetChainResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEstimateResponse</returns>
+        System.Threading.Tasks.Task<GetEstimateResponse> EstimateProfileTransactionGasAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEstimateResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetEstimateResponse>> EstimateProfileTransactionGasWithHttpInfoAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -381,6 +426,137 @@ namespace Beam.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Chain", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <returns>GetEstimateResponse</returns>
+        public GetEstimateResponse EstimateProfileTransactionGas(string entityId, CreateTransactionRequestInput createTransactionRequestInput)
+        {
+            Beam.Client.ApiResponse<GetEstimateResponse> localVarResponse = EstimateProfileTransactionGasWithHttpInfo(entityId, createTransactionRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <returns>ApiResponse of GetEstimateResponse</returns>
+        public Beam.Client.ApiResponse<GetEstimateResponse> EstimateProfileTransactionGasWithHttpInfo(string entityId, CreateTransactionRequestInput createTransactionRequestInput)
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling ChainApi->EstimateProfileTransactionGas");
+
+            // verify the required parameter 'createTransactionRequestInput' is set
+            if (createTransactionRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'createTransactionRequestInput' when calling ChainApi->EstimateProfileTransactionGas");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.Data = createTransactionRequestInput;
+
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<GetEstimateResponse>("/v1/chain/estimate/profiles/{entityId}/transaction", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EstimateProfileTransactionGas", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetEstimateResponse</returns>
+        public async System.Threading.Tasks.Task<GetEstimateResponse> EstimateProfileTransactionGasAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<GetEstimateResponse> localVarResponse = await EstimateProfileTransactionGasWithHttpInfoAsync(entityId, createTransactionRequestInput, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="entityId"></param>
+        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetEstimateResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetEstimateResponse>> EstimateProfileTransactionGasWithHttpInfoAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'entityId' is set
+            if (entityId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling ChainApi->EstimateProfileTransactionGas");
+
+            // verify the required parameter 'createTransactionRequestInput' is set
+            if (createTransactionRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'createTransactionRequestInput' when calling ChainApi->EstimateProfileTransactionGas");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            localVarRequestOptions.Data = createTransactionRequestInput;
+
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<GetEstimateResponse>("/v1/chain/estimate/profiles/{entityId}/transaction", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EstimateProfileTransactionGas", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

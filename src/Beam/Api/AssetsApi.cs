@@ -54,10 +54,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAssetsResponse</returns>
-        GetAssetsResponse GetContractAssets(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        GetAssetsResponse GetContractAssets(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
@@ -67,19 +69,23 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetsResponse</returns>
-        ApiResponse<GetAssetsResponse> GetContractAssetsWithHttpInfo(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        ApiResponse<GetAssetsResponse> GetContractAssetsWithHttpInfo(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAssetsResponse</returns>
-        GetAssetsResponse GetProfileAssets(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        GetAssetsResponse GetProfileAssets(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
 
         /// <summary>
         /// Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
@@ -89,10 +95,12 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetsResponse</returns>
-        ApiResponse<GetAssetsResponse> GetProfileAssetsWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        ApiResponse<GetAssetsResponse> GetProfileAssetsWithHttpInfo(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?));
         /// <summary>
         /// Get all the currencies owned by an account (ERC20)
         /// </summary>
@@ -233,11 +241,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetsResponse</returns>
-        System.Threading.Tasks.Task<GetAssetsResponse> GetContractAssetsAsync(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetsResponse> GetContractAssetsAsync(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
@@ -247,11 +257,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetsResponse>> GetContractAssetsWithHttpInfoAsync(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetsResponse>> GetContractAssetsWithHttpInfoAsync(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -260,11 +272,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetsResponse</returns>
-        System.Threading.Tasks.Task<GetAssetsResponse> GetProfileAssetsAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetsResponse> GetProfileAssetsAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
@@ -274,11 +288,13 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetsResponse>> GetProfileAssetsWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetsResponse>> GetProfileAssetsWithHttpInfoAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all the currencies owned by an account (ERC20)
         /// </summary>
@@ -769,12 +785,14 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAssetsResponse</returns>
-        public GetAssetsResponse GetContractAssets(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetAssetsResponse GetContractAssets(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = GetContractAssetsWithHttpInfo(assetAddress, limit, offset);
+            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = GetContractAssetsWithHttpInfo(assetAddress, filter, sort, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -783,10 +801,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetsResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetsResponse> GetContractAssetsWithHttpInfo(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetAssetsResponse> GetContractAssetsWithHttpInfo(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'assetAddress' is set
             if (assetAddress == null)
@@ -809,6 +829,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("assetAddress", Beam.Client.ClientUtils.ParameterToString(assetAddress)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -841,13 +869,15 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetsResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetsResponse> GetContractAssetsAsync(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetsResponse> GetContractAssetsAsync(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = await GetContractAssetsWithHttpInfoAsync(assetAddress, limit, offset, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = await GetContractAssetsWithHttpInfoAsync(assetAddress, filter, sort, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -856,11 +886,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="assetAddress"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetsResponse>> GetContractAssetsWithHttpInfoAsync(string assetAddress, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetsResponse>> GetContractAssetsWithHttpInfoAsync(string assetAddress, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'assetAddress' is set
             if (assetAddress == null)
@@ -885,6 +917,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("assetAddress", Beam.Client.ClientUtils.ParameterToString(assetAddress)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -918,12 +958,14 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAssetsResponse</returns>
-        public GetAssetsResponse GetProfileAssets(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetAssetsResponse GetProfileAssets(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = GetProfileAssetsWithHttpInfo(entityId, limit, offset);
+            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = GetProfileAssetsWithHttpInfo(entityId, filter, sort, limit, offset);
             return localVarResponse.Data;
         }
 
@@ -932,10 +974,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAssetsResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetsResponse> GetProfileAssetsWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetAssetsResponse> GetProfileAssetsWithHttpInfo(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -958,6 +1002,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
@@ -990,13 +1042,15 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetsResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetsResponse> GetProfileAssetsAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetsResponse> GetProfileAssetsAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = await GetProfileAssetsWithHttpInfoAsync(entityId, limit, offset, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetsResponse> localVarResponse = await GetProfileAssetsWithHttpInfoAsync(entityId, filter, sort, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1005,11 +1059,13 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="filter"> (optional)</param>
+        /// <param name="sort"> (optional)</param>
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetsResponse>> GetProfileAssetsWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetsResponse>> GetProfileAssetsWithHttpInfoAsync(string entityId, GetProfileAssetsFilterParameter? filter = default(GetProfileAssetsFilterParameter?), GetProfileAssetsSortParameter? sort = default(GetProfileAssetsSortParameter?), decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -1034,6 +1090,14 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            if (filter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "filter", filter));
+            }
+            if (sort != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "sort", sort));
+            }
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));

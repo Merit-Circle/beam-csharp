@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
 *AssetsApi* | [**TransferNativeToken**](docs/AssetsApi.md#transfernativetoken) | **POST** /v1/assets/profiles/{entityId}/transfer-native | Transfer the native token (MC)
 *AssetsApi* | [**TransferToken**](docs/AssetsApi.md#transfertoken) | **POST** /v1/assets/profiles/{entityId}/transfer-token | Transfer a token (token assets, ERC20)
 *ChainApi* | [**Chain**](docs/ChainApi.md#chain) | **GET** /v1/chain | 
+*ChainApi* | [**EstimateProfileTransactionGas**](docs/ChainApi.md#estimateprofiletransactiongas) | **POST** /v1/chain/estimate/profiles/{entityId}/transaction | Estimate gas fee for a transaction on behalf of a profile
 *ExchangeApi* | [**ConvertInput**](docs/ExchangeApi.md#convertinput) | **POST** /v1/exchange/profiles/{entityId}/convert/input | Trade an exact amount of `tokenIn` for a minimum amount of `tokenOut`
 *ExchangeApi* | [**ConvertToOutput**](docs/ExchangeApi.md#converttooutput) | **POST** /v1/exchange/profiles/{entityId}/convert/output | Swap a maximum amount of `tokenIn` for an exact amount of `tokenOut`
 *ExchangeApi* | [**GetQuoteForInput**](docs/ExchangeApi.md#getquoteforinput) | **GET** /v1/exchange/quote/input | Returns the maximum necessary input amount for a token trade, given a desired output amount
@@ -162,11 +163,17 @@ Class | Method | HTTP request | Description
 *GameApi* | [**RegenerateApiKeys**](docs/GameApi.md#regenerateapikeys) | **POST** /v1/game/regenerate-api-keys | Regenerate API keys
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
 *HealthApi* | [**Check**](docs/HealthApi.md#check) | **GET** /v1/health | 
+*MarketplaceApi* | [**AcceptAssetOffer**](docs/MarketplaceApi.md#acceptassetoffer) | **POST** /v1/marketplace/profiles/{entityId}/offers/{offerId}/accept | Accept an offer for an asset
 *MarketplaceApi* | [**BuyListedAsset**](docs/MarketplaceApi.md#buylistedasset) | **POST** /v1/marketplace/profiles/{entityId}/listing/{orderId} | Buy listed asset
+*MarketplaceApi* | [**CancelAssetOffer**](docs/MarketplaceApi.md#cancelassetoffer) | **DELETE** /v1/marketplace/profiles/{entityId}/offers/{offerId} | Cancel an offer for an asset
 *MarketplaceApi* | [**CancelListing**](docs/MarketplaceApi.md#cancellisting) | **DELETE** /v1/marketplace/profiles/{entityId}/listing/{orderId} | Cancel asset listing
+*MarketplaceApi* | [**CreateAssetOffer**](docs/MarketplaceApi.md#createassetoffer) | **POST** /v1/marketplace/profiles/{entityId}/offers | Make an offer for an asset
+*MarketplaceApi* | [**GetAssetOffers**](docs/MarketplaceApi.md#getassetoffers) | **GET** /v1/marketplace/offers/asset/{marketplaceId} | Get all offers for an asset
 *MarketplaceApi* | [**GetChainCurrencies**](docs/MarketplaceApi.md#getchaincurrencies) | **GET** /v1/marketplace/chain-currencies/{chainId} | 
 *MarketplaceApi* | [**GetListedAssets**](docs/MarketplaceApi.md#getlistedassets) | **GET** /v1/marketplace | Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
 *MarketplaceApi* | [**GetListedAssetsForProfile**](docs/MarketplaceApi.md#getlistedassetsforprofile) | **GET** /v1/marketplace/profiles/{entityId} | Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+*MarketplaceApi* | [**GetPlayerAssetOffers**](docs/MarketplaceApi.md#getplayerassetoffers) | **GET** /v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId} | Get all asset offers that player created
+*MarketplaceApi* | [**GetPlayerOffers**](docs/MarketplaceApi.md#getplayeroffers) | **GET** /v1/marketplace/profiles/{entityId}/offers | Get all offers that player created
 *MarketplaceApi* | [**ListAsset**](docs/MarketplaceApi.md#listasset) | **POST** /v1/marketplace/profiles/{entityId}/listing | List an asset for sale
 *ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{entityId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
 *ProfilesApi* | [**CreateProfile**](docs/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Creating a profile
@@ -183,14 +190,20 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [Model.AcceptAssetOfferRequestInput](docs/AcceptAssetOfferRequestInput.md)
+ - [Model.AcceptOfferResponse](docs/AcceptOfferResponse.md)
  - [Model.BuyAssetRequestInput](docs/BuyAssetRequestInput.md)
  - [Model.BuyAssetResponse](docs/BuyAssetResponse.md)
  - [Model.CancelAssetListingRequestInput](docs/CancelAssetListingRequestInput.md)
+ - [Model.CancelAssetOfferRequestInput](docs/CancelAssetOfferRequestInput.md)
+ - [Model.CancelOfferResponse](docs/CancelOfferResponse.md)
  - [Model.Check200Response](docs/Check200Response.md)
  - [Model.Check200ResponseInfoValue](docs/Check200ResponseInfoValue.md)
  - [Model.Check503Response](docs/Check503Response.md)
  - [Model.ConvertTokenRequestInput](docs/ConvertTokenRequestInput.md)
  - [Model.ConvertTokenResponse](docs/ConvertTokenResponse.md)
+ - [Model.CreateAssetOfferRequestInput](docs/CreateAssetOfferRequestInput.md)
+ - [Model.CreateOfferResponse](docs/CreateOfferResponse.md)
  - [Model.CreateProfileRequestInput](docs/CreateProfileRequestInput.md)
  - [Model.CreateProfileResponse](docs/CreateProfileResponse.md)
  - [Model.CreateProfileResponseWalletsInner](docs/CreateProfileResponseWalletsInner.md)
@@ -207,6 +220,8 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetListingsResponse](docs/GetAssetListingsResponse.md)
  - [Model.GetAssetListingsResponseDataInner](docs/GetAssetListingsResponseDataInner.md)
  - [Model.GetAssetListingsResponseDataInnerNft](docs/GetAssetListingsResponseDataInnerNft.md)
+ - [Model.GetAssetOffersResponse](docs/GetAssetOffersResponse.md)
+ - [Model.GetAssetOffersResponseDataInner](docs/GetAssetOffersResponseDataInner.md)
  - [Model.GetAssetResponse](docs/GetAssetResponse.md)
  - [Model.GetAssetResponseAttributesInner](docs/GetAssetResponseAttributesInner.md)
  - [Model.GetAssetResponseContract](docs/GetAssetResponseContract.md)
@@ -219,12 +234,17 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetResponseOwnershipByAddressesInnerUserProfile](docs/GetAssetResponseOwnershipByAddressesInnerUserProfile.md)
  - [Model.GetAssetsResponse](docs/GetAssetsResponse.md)
  - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
- - [Model.GetChainCurrenciesResponseInner](docs/GetChainCurrenciesResponseInner.md)
+ - [Model.GetChainCurrenciesResponse](docs/GetChainCurrenciesResponse.md)
+ - [Model.GetChainCurrenciesResponseDataInner](docs/GetChainCurrenciesResponseDataInner.md)
  - [Model.GetChainResponse](docs/GetChainResponse.md)
  - [Model.GetChainResponseNativeCurrency](docs/GetChainResponseNativeCurrency.md)
+ - [Model.GetEstimateResponse](docs/GetEstimateResponse.md)
  - [Model.GetGameResponse](docs/GetGameResponse.md)
  - [Model.GetGameResponseContractsInner](docs/GetGameResponseContractsInner.md)
  - [Model.GetGameResponsePoliciesInner](docs/GetGameResponsePoliciesInner.md)
+ - [Model.GetProfileAssetsFilterParameter](docs/GetProfileAssetsFilterParameter.md)
+ - [Model.GetProfileAssetsFilterParameterAttributesInner](docs/GetProfileAssetsFilterParameterAttributesInner.md)
+ - [Model.GetProfileAssetsSortParameter](docs/GetProfileAssetsSortParameter.md)
  - [Model.GetProfileCurrenciesResponse](docs/GetProfileCurrenciesResponse.md)
  - [Model.GetProfileCurrenciesResponseDataInner](docs/GetProfileCurrenciesResponseDataInner.md)
  - [Model.GetProfileNativeCurrencyResponse](docs/GetProfileNativeCurrencyResponse.md)

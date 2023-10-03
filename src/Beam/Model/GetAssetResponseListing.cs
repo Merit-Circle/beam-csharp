@@ -153,7 +153,6 @@ namespace Beam.Model
         /// <param name="id">id (required).</param>
         /// <param name="nftId">nftId (required).</param>
         /// <param name="contractId">contractId (required).</param>
-        /// <param name="signedOrderId">signedOrderId (required).</param>
         /// <param name="userId">userId (required).</param>
         /// <param name="sellType">sellType (required).</param>
         /// <param name="quantity">quantity (required).</param>
@@ -168,7 +167,8 @@ namespace Beam.Model
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
         /// <param name="currency">currency (required).</param>
-        public GetAssetResponseListing(string id = default(string), string nftId = default(string), string contractId = default(string), string signedOrderId = default(string), string userId = default(string), SellTypeEnum sellType = default(SellTypeEnum), decimal quantity = default(decimal), string tokenAddress = default(string), string price = default(string), string startPrice = default(string), string endPrice = default(string), string startTime = default(string), string endTime = default(string), string expiresAt = default(string), decimal platformFee = default(decimal), string createdAt = default(string), string updatedAt = default(string), CurrencyEnum currency = default(CurrencyEnum))
+        /// <param name="orderId">orderId.</param>
+        public GetAssetResponseListing(string id = default(string), string nftId = default(string), string contractId = default(string), string userId = default(string), SellTypeEnum sellType = default(SellTypeEnum), decimal quantity = default(decimal), string tokenAddress = default(string), string price = default(string), string startPrice = default(string), string endPrice = default(string), string startTime = default(string), string endTime = default(string), string expiresAt = default(string), decimal platformFee = default(decimal), string createdAt = default(string), string updatedAt = default(string), CurrencyEnum currency = default(CurrencyEnum), string orderId = default(string))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -188,12 +188,6 @@ namespace Beam.Model
                 throw new ArgumentNullException("contractId is a required property for GetAssetResponseListing and cannot be null");
             }
             this.ContractId = contractId;
-            // to ensure "signedOrderId" is required (not null)
-            if (signedOrderId == null)
-            {
-                throw new ArgumentNullException("signedOrderId is a required property for GetAssetResponseListing and cannot be null");
-            }
-            this.SignedOrderId = signedOrderId;
             // to ensure "userId" is required (not null)
             if (userId == null)
             {
@@ -233,6 +227,7 @@ namespace Beam.Model
             this.EndPrice = endPrice;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
+            this.OrderId = orderId;
         }
 
         /// <summary>
@@ -252,12 +247,6 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
         public string ContractId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SignedOrderId
-        /// </summary>
-        [DataMember(Name = "signedOrderId", IsRequired = true, EmitDefaultValue = true)]
-        public string SignedOrderId { get; set; }
 
         /// <summary>
         /// Gets or Sets UserId
@@ -332,6 +321,12 @@ namespace Beam.Model
         public string UpdatedAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets OrderId
+        /// </summary>
+        [DataMember(Name = "orderId", EmitDefaultValue = false)]
+        public string OrderId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -342,7 +337,6 @@ namespace Beam.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  NftId: ").Append(NftId).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
-            sb.Append("  SignedOrderId: ").Append(SignedOrderId).Append("\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  SellType: ").Append(SellType).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
@@ -357,6 +351,7 @@ namespace Beam.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -406,11 +401,6 @@ namespace Beam.Model
                     this.ContractId == input.ContractId ||
                     (this.ContractId != null &&
                     this.ContractId.Equals(input.ContractId))
-                ) && 
-                (
-                    this.SignedOrderId == input.SignedOrderId ||
-                    (this.SignedOrderId != null &&
-                    this.SignedOrderId.Equals(input.SignedOrderId))
                 ) && 
                 (
                     this.UserId == input.UserId ||
@@ -477,6 +467,11 @@ namespace Beam.Model
                 (
                     this.Currency == input.Currency ||
                     this.Currency.Equals(input.Currency)
+                ) && 
+                (
+                    this.OrderId == input.OrderId ||
+                    (this.OrderId != null &&
+                    this.OrderId.Equals(input.OrderId))
                 );
         }
 
@@ -500,10 +495,6 @@ namespace Beam.Model
                 if (this.ContractId != null)
                 {
                     hashCode = (hashCode * 59) + this.ContractId.GetHashCode();
-                }
-                if (this.SignedOrderId != null)
-                {
-                    hashCode = (hashCode * 59) + this.SignedOrderId.GetHashCode();
                 }
                 if (this.UserId != null)
                 {
@@ -549,6 +540,10 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.UpdatedAt.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                if (this.OrderId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OrderId.GetHashCode();
+                }
                 return hashCode;
             }
         }
