@@ -24,111 +24,144 @@ namespace Beam.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IChainApiSync : IApiAccessor
+    public interface IPolicyApiSync : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// 
+        /// Add a new policy to sponsor web3 actions
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
-        /// <returns>GetChainResponse</returns>
-        GetChainResponse Chain(decimal? chainId = default(decimal?));
+        /// <param name="addPolicyRequestInput"></param>
+        /// <returns>AddPolicyResponse</returns>
+        AddPolicyResponse CreatePolicy(AddPolicyRequestInput addPolicyRequestInput);
 
         /// <summary>
-        /// 
+        /// Add a new policy to sponsor web3 actions
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
-        /// <returns>ApiResponse of GetChainResponse</returns>
-        ApiResponse<GetChainResponse> ChainWithHttpInfo(decimal? chainId = default(decimal?));
+        /// <param name="addPolicyRequestInput"></param>
+        /// <returns>ApiResponse of AddPolicyResponse</returns>
+        ApiResponse<AddPolicyResponse> CreatePolicyWithHttpInfo(AddPolicyRequestInput addPolicyRequestInput);
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile
+        /// Removing a policy that sponsors web3 actions
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
-        /// <returns>GetEstimateResponse</returns>
-        GetEstimateResponse EstimateProfileTransactionGas(string entityId, CreateTransactionRequestInput createTransactionRequestInput);
+        /// <param name="policyId"></param>
+        /// <returns>RemovePolicyResponse</returns>
+        RemovePolicyResponse DeletePolicy(string policyId);
 
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile
+        /// Removing a policy that sponsors web3 actions
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
-        /// <returns>ApiResponse of GetEstimateResponse</returns>
-        ApiResponse<GetEstimateResponse> EstimateProfileTransactionGasWithHttpInfo(string entityId, CreateTransactionRequestInput createTransactionRequestInput);
+        /// <param name="policyId"></param>
+        /// <returns>ApiResponse of RemovePolicyResponse</returns>
+        ApiResponse<RemovePolicyResponse> DeletePolicyWithHttpInfo(string policyId);
+        /// <summary>
+        /// Get a list of policies
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns></returns>
+        void GetPolicies();
+
+        /// <summary>
+        /// Get a list of policies
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> GetPoliciesWithHttpInfo();
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IChainApiAsync : IApiAccessor
+    public interface IPolicyApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
         /// <summary>
-        /// 
+        /// Add a new policy to sponsor web3 actions
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
+        /// <param name="addPolicyRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetChainResponse</returns>
-        System.Threading.Tasks.Task<GetChainResponse> ChainAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of AddPolicyResponse</returns>
+        System.Threading.Tasks.Task<AddPolicyResponse> CreatePolicyAsync(AddPolicyRequestInput addPolicyRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// 
+        /// Add a new policy to sponsor web3 actions
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
+        /// <param name="addPolicyRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetChainResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (AddPolicyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddPolicyResponse>> CreatePolicyWithHttpInfoAsync(AddPolicyRequestInput addPolicyRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile
+        /// Removing a policy that sponsors web3 actions
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="policyId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetEstimateResponse</returns>
-        System.Threading.Tasks.Task<GetEstimateResponse> EstimateProfileTransactionGasAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of RemovePolicyResponse</returns>
+        System.Threading.Tasks.Task<RemovePolicyResponse> DeletePolicyAsync(string policyId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile
+        /// Removing a policy that sponsors web3 actions
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="policyId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetEstimateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetEstimateResponse>> EstimateProfileTransactionGasWithHttpInfoAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (RemovePolicyResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RemovePolicyResponse>> DeletePolicyWithHttpInfoAsync(string policyId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Get a list of policies
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task GetPoliciesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Get a list of policies
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetPoliciesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IChainApi : IChainApiSync, IChainApiAsync
+    public interface IPolicyApi : IPolicyApiSync, IPolicyApiAsync
     {
 
     }
@@ -136,29 +169,29 @@ namespace Beam.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class ChainApi : IDisposable, IChainApi
+    public partial class PolicyApi : IDisposable, IPolicyApi
     {
         private Beam.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class.
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class.
         /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
         /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <returns></returns>
-        public ChainApi() : this((string)null)
+        public PolicyApi() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class.
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class.
         /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
         /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <param name="basePath">The target service's base path in URL format.</param>
         /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
-        public ChainApi(string basePath)
+        public PolicyApi(string basePath)
         {
             this.Configuration = Beam.Client.Configuration.MergeConfigurations(
                 Beam.Client.GlobalConfiguration.Instance,
@@ -171,14 +204,14 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class using Configuration object.
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class using Configuration object.
         /// **IMPORTANT** This will also create an instance of HttpClient, which is less than ideal.
         /// It's better to reuse the <see href="https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net">HttpClient and HttpClientHandler</see>.
         /// </summary>
         /// <param name="configuration">An instance of Configuration.</param>
         /// <exception cref="ArgumentNullException"></exception>
         /// <returns></returns>
-        public ChainApi(Beam.Client.Configuration configuration)
+        public PolicyApi(Beam.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -193,7 +226,7 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class.
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class.
         /// </summary>
         /// <param name="client">An instance of HttpClient.</param>
         /// <param name="handler">An optional instance of HttpClientHandler that is used by HttpClient.</param>
@@ -203,12 +236,12 @@ namespace Beam.Api
         /// Some configuration settings will not be applied without passing an HttpClientHandler.
         /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
         /// </remarks>
-        public ChainApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
+        public PolicyApi(HttpClient client, HttpClientHandler handler = null) : this(client, (string)null, handler)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class.
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class.
         /// </summary>
         /// <param name="client">An instance of HttpClient.</param>
         /// <param name="basePath">The target service's base path in URL format.</param>
@@ -220,7 +253,7 @@ namespace Beam.Api
         /// Some configuration settings will not be applied without passing an HttpClientHandler.
         /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
         /// </remarks>
-        public ChainApi(HttpClient client, string basePath, HttpClientHandler handler = null)
+        public PolicyApi(HttpClient client, string basePath, HttpClientHandler handler = null)
         {
             if (client == null) throw new ArgumentNullException("client");
 
@@ -235,7 +268,7 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class using Configuration object.
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class using Configuration object.
         /// </summary>
         /// <param name="client">An instance of HttpClient.</param>
         /// <param name="configuration">An instance of Configuration.</param>
@@ -246,7 +279,7 @@ namespace Beam.Api
         /// Some configuration settings will not be applied without passing an HttpClientHandler.
         /// The features affected are: Setting and Retrieving Cookies, Client Certificates, Proxy settings.
         /// </remarks>
-        public ChainApi(HttpClient client, Beam.Client.Configuration configuration, HttpClientHandler handler = null)
+        public PolicyApi(HttpClient client, Beam.Client.Configuration configuration, HttpClientHandler handler = null)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
             if (client == null) throw new ArgumentNullException("client");
@@ -262,14 +295,14 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainApi"/> class
+        /// Initializes a new instance of the <see cref="PolicyApi"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>
         /// <param name="configuration">The configuration object.</param>
         /// <exception cref="ArgumentNullException"></exception>
-        public ChainApi(Beam.Client.ISynchronousClient client, Beam.Client.IAsynchronousClient asyncClient, Beam.Client.IReadableConfiguration configuration)
+        public PolicyApi(Beam.Client.ISynchronousClient client, Beam.Client.IAsynchronousClient asyncClient, Beam.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             if (asyncClient == null) throw new ArgumentNullException("asyncClient");
@@ -336,28 +369,33 @@ namespace Beam.Api
         }
 
         /// <summary>
-        ///  
+        /// Add a new policy to sponsor web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
-        /// <returns>GetChainResponse</returns>
-        public GetChainResponse Chain(decimal? chainId = default(decimal?))
+        /// <param name="addPolicyRequestInput"></param>
+        /// <returns>AddPolicyResponse</returns>
+        public AddPolicyResponse CreatePolicy(AddPolicyRequestInput addPolicyRequestInput)
         {
-            Beam.Client.ApiResponse<GetChainResponse> localVarResponse = ChainWithHttpInfo(chainId);
+            Beam.Client.ApiResponse<AddPolicyResponse> localVarResponse = CreatePolicyWithHttpInfo(addPolicyRequestInput);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  
+        /// Add a new policy to sponsor web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
-        /// <returns>ApiResponse of GetChainResponse</returns>
-        public Beam.Client.ApiResponse<GetChainResponse> ChainWithHttpInfo(decimal? chainId = default(decimal?))
+        /// <param name="addPolicyRequestInput"></param>
+        /// <returns>ApiResponse of AddPolicyResponse</returns>
+        public Beam.Client.ApiResponse<AddPolicyResponse> CreatePolicyWithHttpInfo(AddPolicyRequestInput addPolicyRequestInput)
         {
+            // verify the required parameter 'addPolicyRequestInput' is set
+            if (addPolicyRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'addPolicyRequestInput' when calling PolicyApi->CreatePolicy");
+
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -371,18 +409,20 @@ namespace Beam.Api
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            if (chainId != null)
+            localVarRequestOptions.Data = addPolicyRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
             {
-                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
             }
 
-
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetChainResponse>("/v1/chain", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<AddPolicyResponse>("/v1/policies", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Chain", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreatePolicy", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -390,31 +430,36 @@ namespace Beam.Api
         }
 
         /// <summary>
-        ///  
+        /// Add a new policy to sponsor web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
+        /// <param name="addPolicyRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetChainResponse</returns>
-        public async System.Threading.Tasks.Task<GetChainResponse> ChainAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of AddPolicyResponse</returns>
+        public async System.Threading.Tasks.Task<AddPolicyResponse> CreatePolicyAsync(AddPolicyRequestInput addPolicyRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetChainResponse> localVarResponse = await ChainWithHttpInfoAsync(chainId, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<AddPolicyResponse> localVarResponse = await CreatePolicyWithHttpInfoAsync(addPolicyRequestInput, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  
+        /// Add a new policy to sponsor web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="chainId"> (optional)</param>
+        /// <param name="addPolicyRequestInput"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetChainResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (AddPolicyResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<AddPolicyResponse>> CreatePolicyWithHttpInfoAsync(AddPolicyRequestInput addPolicyRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'addPolicyRequestInput' is set
+            if (addPolicyRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'addPolicyRequestInput' when calling PolicyApi->CreatePolicy");
+
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
+                "application/json"
             };
 
             // to determine the Accept header
@@ -429,19 +474,21 @@ namespace Beam.Api
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            if (chainId != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
-            }
+            localVarRequestOptions.Data = addPolicyRequestInput;
 
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetChainResponse>("/v1/chain", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AddPolicyResponse>("/v1/policies", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("Chain", localVarResponse);
+                Exception _exception = this.ExceptionFactory("CreatePolicy", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -449,39 +496,32 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// Removing a policy that sponsors web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
-        /// <returns>GetEstimateResponse</returns>
-        public GetEstimateResponse EstimateProfileTransactionGas(string entityId, CreateTransactionRequestInput createTransactionRequestInput)
+        /// <param name="policyId"></param>
+        /// <returns>RemovePolicyResponse</returns>
+        public RemovePolicyResponse DeletePolicy(string policyId)
         {
-            Beam.Client.ApiResponse<GetEstimateResponse> localVarResponse = EstimateProfileTransactionGasWithHttpInfo(entityId, createTransactionRequestInput);
+            Beam.Client.ApiResponse<RemovePolicyResponse> localVarResponse = DeletePolicyWithHttpInfo(policyId);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// Removing a policy that sponsors web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
-        /// <returns>ApiResponse of GetEstimateResponse</returns>
-        public Beam.Client.ApiResponse<GetEstimateResponse> EstimateProfileTransactionGasWithHttpInfo(string entityId, CreateTransactionRequestInput createTransactionRequestInput)
+        /// <param name="policyId"></param>
+        /// <returns>ApiResponse of RemovePolicyResponse</returns>
+        public Beam.Client.ApiResponse<RemovePolicyResponse> DeletePolicyWithHttpInfo(string policyId)
         {
-            // verify the required parameter 'entityId' is set
-            if (entityId == null)
-                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling ChainApi->EstimateProfileTransactionGas");
-
-            // verify the required parameter 'createTransactionRequestInput' is set
-            if (createTransactionRequestInput == null)
-                throw new Beam.Client.ApiException(400, "Missing required parameter 'createTransactionRequestInput' when calling ChainApi->EstimateProfileTransactionGas");
+            // verify the required parameter 'policyId' is set
+            if (policyId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'policyId' when calling PolicyApi->DeletePolicy");
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json"
             };
 
             // to determine the Accept header
@@ -495,16 +535,20 @@ namespace Beam.Api
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
-            localVarRequestOptions.Data = createTransactionRequestInput;
+            localVarRequestOptions.PathParameters.Add("policyId", Beam.Client.ClientUtils.ParameterToString(policyId)); // path parameter
 
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<GetEstimateResponse>("/v1/chain/estimate/profiles/{entityId}/transaction", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<RemovePolicyResponse>("/v1/policies/{policyId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("EstimateProfileTransactionGas", localVarResponse);
+                Exception _exception = this.ExceptionFactory("DeletePolicy", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -512,42 +556,35 @@ namespace Beam.Api
         }
 
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// Removing a policy that sponsors web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="policyId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetEstimateResponse</returns>
-        public async System.Threading.Tasks.Task<GetEstimateResponse> EstimateProfileTransactionGasAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of RemovePolicyResponse</returns>
+        public async System.Threading.Tasks.Task<RemovePolicyResponse> DeletePolicyAsync(string policyId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetEstimateResponse> localVarResponse = await EstimateProfileTransactionGasWithHttpInfoAsync(entityId, createTransactionRequestInput, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<RemovePolicyResponse> localVarResponse = await DeletePolicyWithHttpInfoAsync(policyId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Estimate gas fee for a transaction on behalf of a profile 
+        /// Removing a policy that sponsors web3 actions 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityId"></param>
-        /// <param name="createTransactionRequestInput"></param>
+        /// <param name="policyId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetEstimateResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetEstimateResponse>> EstimateProfileTransactionGasWithHttpInfoAsync(string entityId, CreateTransactionRequestInput createTransactionRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (RemovePolicyResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<RemovePolicyResponse>> DeletePolicyWithHttpInfoAsync(string policyId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'entityId' is set
-            if (entityId == null)
-                throw new Beam.Client.ApiException(400, "Missing required parameter 'entityId' when calling ChainApi->EstimateProfileTransactionGas");
-
-            // verify the required parameter 'createTransactionRequestInput' is set
-            if (createTransactionRequestInput == null)
-                throw new Beam.Client.ApiException(400, "Missing required parameter 'createTransactionRequestInput' when calling ChainApi->EstimateProfileTransactionGas");
+            // verify the required parameter 'policyId' is set
+            if (policyId == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'policyId' when calling PolicyApi->DeletePolicy");
 
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json"
             };
 
             // to determine the Accept header
@@ -562,17 +599,128 @@ namespace Beam.Api
             var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
-            localVarRequestOptions.Data = createTransactionRequestInput;
+            localVarRequestOptions.PathParameters.Add("policyId", Beam.Client.ClientUtils.ParameterToString(policyId)); // path parameter
 
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<GetEstimateResponse>("/v1/chain/estimate/profiles/{entityId}/transaction", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<RemovePolicyResponse>("/v1/policies/{policyId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("EstimateProfileTransactionGas", localVarResponse);
+                Exception _exception = this.ExceptionFactory("DeletePolicy", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get a list of policies 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns></returns>
+        public void GetPolicies()
+        {
+            GetPoliciesWithHttpInfo();
+        }
+
+        /// <summary>
+        /// Get a list of policies 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Beam.Client.ApiResponse<Object> GetPoliciesWithHttpInfo()
+        {
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<Object>("/v1/policies", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPolicies", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get a list of policies 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task GetPoliciesAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            await GetPoliciesWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Get a list of policies 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<Object>> GetPoliciesWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Object>("/v1/policies", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPolicies", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

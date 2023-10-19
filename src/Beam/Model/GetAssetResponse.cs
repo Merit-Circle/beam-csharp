@@ -217,7 +217,7 @@ namespace Beam.Model
         /// <param name="contract">contract (required).</param>
         /// <param name="listing">listing.</param>
         /// <param name="ownershipByAddresses">ownershipByAddresses.</param>
-        public GetAssetResponse(string id = default(string), string name = default(string), NetworkEnum network = default(NetworkEnum), decimal chainId = default(decimal), string contractAddress = default(string), string tokenId = default(string), string description = default(string), string mintedAt = default(string), string standardImageUrl = default(string), string thumbnailImageUrl = default(string), string youtubeUrl = default(string), string backgroundColor = default(string), string externalUrl = default(string), string tokenUri = default(string), RarityEnum? rarity = default(RarityEnum?), decimal? rarityScore = default(decimal?), decimal? normalizedRarityScore = default(decimal?), string lastSoldTokenAmount = default(string), LastSoldTokenCurrencyEnum? lastSoldTokenCurrency = default(LastSoldTokenCurrencyEnum?), string indexerDataSyncedAt = default(string), List<GetAssetResponseAttributesInner> attributes = default(List<GetAssetResponseAttributesInner>), GetAssetResponseContract contract = default(GetAssetResponseContract), GetAssetResponseListing listing = default(GetAssetResponseListing), List<GetAssetResponseOwnershipByAddressesInner> ownershipByAddresses = default(List<GetAssetResponseOwnershipByAddressesInner>))
+        public GetAssetResponse(string id = default(string), string name = default(string), NetworkEnum network = default(NetworkEnum), decimal chainId = default(decimal), string contractAddress = default(string), string tokenId = default(string), string description = default(string), string mintedAt = default(string), string standardImageUrl = default(string), string thumbnailImageUrl = default(string), string youtubeUrl = default(string), string backgroundColor = default(string), string externalUrl = default(string), string tokenUri = default(string), RarityEnum? rarity = default(RarityEnum?), decimal? rarityScore = default(decimal?), decimal? normalizedRarityScore = default(decimal?), string lastSoldTokenAmount = default(string), LastSoldTokenCurrencyEnum? lastSoldTokenCurrency = default(LastSoldTokenCurrencyEnum?), string indexerDataSyncedAt = default(string), List<GetAssetsResponseDataInnerAttributesInner> attributes = default(List<GetAssetsResponseDataInnerAttributesInner>), GetAssetResponseContract contract = default(GetAssetResponseContract), GetAssetResponseListing listing = default(GetAssetResponseListing), List<GetAssetResponseOwnershipByAddressesInner> ownershipByAddresses = default(List<GetAssetResponseOwnershipByAddressesInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -381,7 +381,7 @@ namespace Beam.Model
         /// Gets or Sets Attributes
         /// </summary>
         [DataMember(Name = "attributes", EmitDefaultValue = true)]
-        public List<GetAssetResponseAttributesInner> Attributes { get; set; }
+        public List<GetAssetsResponseDataInnerAttributesInner> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets Contract

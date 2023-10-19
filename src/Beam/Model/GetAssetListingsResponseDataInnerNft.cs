@@ -33,6 +33,49 @@ namespace Beam.Model
     public partial class GetAssetListingsResponseDataInnerNft : IEquatable<GetAssetListingsResponseDataInnerNft>, IValidatableObject
     {
         /// <summary>
+        /// Defines Rarity
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum RarityEnum
+        {
+            /// <summary>
+            /// Enum Common for value: Common
+            /// </summary>
+            [EnumMember(Value = "Common")]
+            Common = 1,
+
+            /// <summary>
+            /// Enum ExtremelyRare for value: ExtremelyRare
+            /// </summary>
+            [EnumMember(Value = "ExtremelyRare")]
+            ExtremelyRare = 2,
+
+            /// <summary>
+            /// Enum Rare for value: Rare
+            /// </summary>
+            [EnumMember(Value = "Rare")]
+            Rare = 3,
+
+            /// <summary>
+            /// Enum Uncommon for value: Uncommon
+            /// </summary>
+            [EnumMember(Value = "Uncommon")]
+            Uncommon = 4,
+
+            /// <summary>
+            /// Enum VeryRare for value: VeryRare
+            /// </summary>
+            [EnumMember(Value = "VeryRare")]
+            VeryRare = 5
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Rarity
+        /// </summary>
+        [DataMember(Name = "rarity", EmitDefaultValue = true)]
+        public RarityEnum? Rarity { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetAssetListingsResponseDataInnerNft" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -46,7 +89,11 @@ namespace Beam.Model
         /// <param name="assetType">assetType (required).</param>
         /// <param name="assetAddress">assetAddress (required).</param>
         /// <param name="assetId">assetId (required).</param>
-        public GetAssetListingsResponseDataInnerNft(string marketplaceId = default(string), string name = default(string), string imageUrl = default(string), string assetType = default(string), string assetAddress = default(string), string assetId = default(string))
+        /// <param name="rarity">rarity.</param>
+        /// <param name="rarityScore">rarityScore.</param>
+        /// <param name="attributes">attributes.</param>
+        /// <param name="chainId">chainId (default to 13337M).</param>
+        public GetAssetListingsResponseDataInnerNft(string marketplaceId = default(string), string name = default(string), string imageUrl = default(string), string assetType = default(string), string assetAddress = default(string), string assetId = default(string), RarityEnum? rarity = default(RarityEnum?), decimal? rarityScore = default(decimal?), List<GetAssetsResponseDataInnerAttributesInner> attributes = default(List<GetAssetsResponseDataInnerAttributesInner>), decimal chainId = 13337M)
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -84,6 +131,10 @@ namespace Beam.Model
                 throw new ArgumentNullException("assetId is a required property for GetAssetListingsResponseDataInnerNft and cannot be null");
             }
             this.AssetId = assetId;
+            this.Rarity = rarity;
+            this.RarityScore = rarityScore;
+            this.Attributes = attributes;
+            this.ChainId = chainId;
         }
 
         /// <summary>
@@ -123,6 +174,24 @@ namespace Beam.Model
         public string AssetId { get; set; }
 
         /// <summary>
+        /// Gets or Sets RarityScore
+        /// </summary>
+        [DataMember(Name = "rarityScore", EmitDefaultValue = true)]
+        public decimal? RarityScore { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Attributes
+        /// </summary>
+        [DataMember(Name = "attributes", EmitDefaultValue = true)]
+        public List<GetAssetsResponseDataInnerAttributesInner> Attributes { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ChainId
+        /// </summary>
+        [DataMember(Name = "chainId", EmitDefaultValue = false)]
+        public decimal ChainId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -136,6 +205,10 @@ namespace Beam.Model
             sb.Append("  AssetType: ").Append(AssetType).Append("\n");
             sb.Append("  AssetAddress: ").Append(AssetAddress).Append("\n");
             sb.Append("  AssetId: ").Append(AssetId).Append("\n");
+            sb.Append("  Rarity: ").Append(Rarity).Append("\n");
+            sb.Append("  RarityScore: ").Append(RarityScore).Append("\n");
+            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
+            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -200,6 +273,25 @@ namespace Beam.Model
                     this.AssetId == input.AssetId ||
                     (this.AssetId != null &&
                     this.AssetId.Equals(input.AssetId))
+                ) && 
+                (
+                    this.Rarity == input.Rarity ||
+                    this.Rarity.Equals(input.Rarity)
+                ) && 
+                (
+                    this.RarityScore == input.RarityScore ||
+                    (this.RarityScore != null &&
+                    this.RarityScore.Equals(input.RarityScore))
+                ) && 
+                (
+                    this.Attributes == input.Attributes ||
+                    this.Attributes != null &&
+                    input.Attributes != null &&
+                    this.Attributes.SequenceEqual(input.Attributes)
+                ) && 
+                (
+                    this.ChainId == input.ChainId ||
+                    this.ChainId.Equals(input.ChainId)
                 );
         }
 
@@ -236,6 +328,16 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.AssetId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Rarity.GetHashCode();
+                if (this.RarityScore != null)
+                {
+                    hashCode = (hashCode * 59) + this.RarityScore.GetHashCode();
+                }
+                if (this.Attributes != null)
+                {
+                    hashCode = (hashCode * 59) + this.Attributes.GetHashCode();
+                }
+                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 return hashCode;
             }
         }

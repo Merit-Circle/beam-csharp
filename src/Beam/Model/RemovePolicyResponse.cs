@@ -27,43 +27,30 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// CreateProfileRequestInput
+    /// RemovePolicyResponse
     /// </summary>
-    [DataContract(Name = "CreateProfileRequestInput")]
-    public partial class CreateProfileRequestInput : IEquatable<CreateProfileRequestInput>, IValidatableObject
+    [DataContract(Name = "RemovePolicyResponse")]
+    public partial class RemovePolicyResponse : IEquatable<RemovePolicyResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateProfileRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="RemovePolicyResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CreateProfileRequestInput() { }
+        protected RemovePolicyResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateProfileRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="RemovePolicyResponse" /> class.
         /// </summary>
-        /// <param name="entityId">entityId (required).</param>
-        /// <param name="chainId">chainId (default to 13337M).</param>
-        public CreateProfileRequestInput(string entityId = default(string), decimal chainId = 13337M)
+        /// <param name="success">success (required).</param>
+        public RemovePolicyResponse(bool success = default(bool))
         {
-            // to ensure "entityId" is required (not null)
-            if (entityId == null)
-            {
-                throw new ArgumentNullException("entityId is a required property for CreateProfileRequestInput and cannot be null");
-            }
-            this.EntityId = entityId;
-            this.ChainId = chainId;
+            this.Success = success;
         }
 
         /// <summary>
-        /// Gets or Sets EntityId
+        /// Gets or Sets Success
         /// </summary>
-        [DataMember(Name = "entityId", IsRequired = true, EmitDefaultValue = true)]
-        public string EntityId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets ChainId
-        /// </summary>
-        [DataMember(Name = "chainId", EmitDefaultValue = false)]
-        public decimal ChainId { get; set; }
+        [DataMember(Name = "success", IsRequired = true, EmitDefaultValue = true)]
+        public bool Success { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,9 +59,8 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateProfileRequestInput {\n");
-            sb.Append("  EntityId: ").Append(EntityId).Append("\n");
-            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
+            sb.Append("class RemovePolicyResponse {\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -95,15 +81,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateProfileRequestInput);
+            return this.Equals(input as RemovePolicyResponse);
         }
 
         /// <summary>
-        /// Returns true if CreateProfileRequestInput instances are equal
+        /// Returns true if RemovePolicyResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateProfileRequestInput to be compared</param>
+        /// <param name="input">Instance of RemovePolicyResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateProfileRequestInput input)
+        public bool Equals(RemovePolicyResponse input)
         {
             if (input == null)
             {
@@ -111,13 +97,8 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
-                ) && 
-                (
-                    this.ChainId == input.ChainId ||
-                    this.ChainId.Equals(input.ChainId)
+                    this.Success == input.Success ||
+                    this.Success.Equals(input.Success)
                 );
         }
 
@@ -130,11 +111,7 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityId != null)
-                {
-                    hashCode = (hashCode * 59) + this.EntityId.GetHashCode();
-                }
-                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
+                hashCode = (hashCode * 59) + this.Success.GetHashCode();
                 return hashCode;
             }
         }

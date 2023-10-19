@@ -118,12 +118,13 @@ namespace Example
             var apiInstance = new AssetsApi(httpClient, config, httpClientHandler);
             var assetAddress = "assetAddress_example";  // string | 
             var assetId = "assetId_example";  // string | 
+            var chainId = 8.14D;  // decimal? |  (optional) 
             var entityId = "entityId_example";  // string? |  (optional) 
 
             try
             {
                 // Get a single NFT (e.g. ERC721 / ERC1155)
-                GetAssetResponse result = apiInstance.GetAsset(assetAddress, assetId, entityId);
+                GetAssetResponse result = apiInstance.GetAsset(assetAddress, assetId, chainId, entityId);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -162,7 +163,6 @@ Class | Method | HTTP request | Description
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**RegenerateApiKeys**](docs/GameApi.md#regenerateapikeys) | **POST** /v1/game/regenerate-api-keys | Regenerate API keys
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
-*HealthApi* | [**Check**](docs/HealthApi.md#check) | **GET** /v1/health | 
 *MarketplaceApi* | [**AcceptAssetOffer**](docs/MarketplaceApi.md#acceptassetoffer) | **POST** /v1/marketplace/profiles/{entityId}/offers/{offerId}/accept | Accept an offer for an asset
 *MarketplaceApi* | [**BuyListedAsset**](docs/MarketplaceApi.md#buylistedasset) | **POST** /v1/marketplace/profiles/{entityId}/listing/{orderId} | Buy listed asset
 *MarketplaceApi* | [**CancelAssetOffer**](docs/MarketplaceApi.md#cancelassetoffer) | **DELETE** /v1/marketplace/profiles/{entityId}/offers/{offerId} | Cancel an offer for an asset
@@ -175,6 +175,9 @@ Class | Method | HTTP request | Description
 *MarketplaceApi* | [**GetPlayerAssetOffers**](docs/MarketplaceApi.md#getplayerassetoffers) | **GET** /v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId} | Get all asset offers that player created
 *MarketplaceApi* | [**GetPlayerOffers**](docs/MarketplaceApi.md#getplayeroffers) | **GET** /v1/marketplace/profiles/{entityId}/offers | Get all offers that player created
 *MarketplaceApi* | [**ListAsset**](docs/MarketplaceApi.md#listasset) | **POST** /v1/marketplace/profiles/{entityId}/listing | List an asset for sale
+*PolicyApi* | [**CreatePolicy**](docs/PolicyApi.md#createpolicy) | **POST** /v1/policies | Add a new policy to sponsor web3 actions
+*PolicyApi* | [**DeletePolicy**](docs/PolicyApi.md#deletepolicy) | **DELETE** /v1/policies/{policyId} | Removing a policy that sponsors web3 actions
+*PolicyApi* | [**GetPolicies**](docs/PolicyApi.md#getpolicies) | **GET** /v1/policies | Get a list of policies
 *ProfilesApi* | [**CreateConnectionRequest**](docs/ProfilesApi.md#createconnectionrequest) | **POST** /v1/profiles/{entityId}/create-connection-request | Generates a challenge which can be encoded in a QR code / app link for the user to take control of the profile
 *ProfilesApi* | [**CreateProfile**](docs/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Creating a profile
 *ProfilesApi* | [**CreateSignInRequest**](docs/ProfilesApi.md#createsigninrequest) | **POST** /v1/profiles/{entityId}/create-sign-in-request | Generates a challenge which can be encoded in a QR code / app link for the user to sign in to the game
@@ -192,14 +195,13 @@ Class | Method | HTTP request | Description
 
  - [Model.AcceptAssetOfferRequestInput](docs/AcceptAssetOfferRequestInput.md)
  - [Model.AcceptOfferResponse](docs/AcceptOfferResponse.md)
+ - [Model.AddPolicyRequestInput](docs/AddPolicyRequestInput.md)
+ - [Model.AddPolicyResponse](docs/AddPolicyResponse.md)
  - [Model.BuyAssetRequestInput](docs/BuyAssetRequestInput.md)
  - [Model.BuyAssetResponse](docs/BuyAssetResponse.md)
  - [Model.CancelAssetListingRequestInput](docs/CancelAssetListingRequestInput.md)
  - [Model.CancelAssetOfferRequestInput](docs/CancelAssetOfferRequestInput.md)
  - [Model.CancelOfferResponse](docs/CancelOfferResponse.md)
- - [Model.Check200Response](docs/Check200Response.md)
- - [Model.Check200ResponseInfoValue](docs/Check200ResponseInfoValue.md)
- - [Model.Check503Response](docs/Check503Response.md)
  - [Model.ConvertTokenRequestInput](docs/ConvertTokenRequestInput.md)
  - [Model.ConvertTokenResponse](docs/ConvertTokenResponse.md)
  - [Model.CreateAssetOfferRequestInput](docs/CreateAssetOfferRequestInput.md)
@@ -223,7 +225,6 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetOffersResponse](docs/GetAssetOffersResponse.md)
  - [Model.GetAssetOffersResponseDataInner](docs/GetAssetOffersResponseDataInner.md)
  - [Model.GetAssetResponse](docs/GetAssetResponse.md)
- - [Model.GetAssetResponseAttributesInner](docs/GetAssetResponseAttributesInner.md)
  - [Model.GetAssetResponseContract](docs/GetAssetResponseContract.md)
  - [Model.GetAssetResponseContractAvatar](docs/GetAssetResponseContractAvatar.md)
  - [Model.GetAssetResponseContractHeader](docs/GetAssetResponseContractHeader.md)
@@ -234,6 +235,8 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetResponseOwnershipByAddressesInnerUserProfile](docs/GetAssetResponseOwnershipByAddressesInnerUserProfile.md)
  - [Model.GetAssetsResponse](docs/GetAssetsResponse.md)
  - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
+ - [Model.GetAssetsResponseDataInnerAttributesInner](docs/GetAssetsResponseDataInnerAttributesInner.md)
+ - [Model.GetAssetsResponseDataInnerOwnersInner](docs/GetAssetsResponseDataInnerOwnersInner.md)
  - [Model.GetChainCurrenciesResponse](docs/GetChainCurrenciesResponse.md)
  - [Model.GetChainCurrenciesResponseDataInner](docs/GetChainCurrenciesResponseDataInner.md)
  - [Model.GetChainResponse](docs/GetChainResponse.md)
@@ -260,6 +263,7 @@ Class | Method | HTTP request | Description
  - [Model.RegenerateGameApiKeysRequestInput](docs/RegenerateGameApiKeysRequestInput.md)
  - [Model.RegenerateGameApiKeysResponse](docs/RegenerateGameApiKeysResponse.md)
  - [Model.RegenerateGameApiKeysResponseApiKeysInner](docs/RegenerateGameApiKeysResponseApiKeysInner.md)
+ - [Model.RemovePolicyResponse](docs/RemovePolicyResponse.md)
  - [Model.SellAssetRequestInput](docs/SellAssetRequestInput.md)
  - [Model.SellAssetResponse](docs/SellAssetResponse.md)
  - [Model.TransferAssetRequestInput](docs/TransferAssetRequestInput.md)
