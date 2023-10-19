@@ -74,8 +74,9 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut);
+        GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?));
 
         /// <summary>
         /// Returns the maximum necessary input amount for a token trade, given a desired output amount
@@ -87,8 +88,9 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut);
+        ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?));
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
         /// </summary>
@@ -96,8 +98,9 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn);
+        GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?));
 
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
@@ -109,8 +112,9 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn);
+        ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?));
         #endregion Synchronous Operations
     }
 
@@ -180,9 +184,10 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the maximum necessary input amount for a token trade, given a desired output amount
@@ -194,9 +199,10 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
         /// </summary>
@@ -207,9 +213,10 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
@@ -221,9 +228,10 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -726,10 +734,11 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        public GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut)
+        public GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = GetQuoteForInputWithHttpInfo(tokenIn, tokenOut, amountOut);
+            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = GetQuoteForInputWithHttpInfo(tokenIn, tokenOut, amountOut, chainId);
             return localVarResponse.Data;
         }
 
@@ -740,8 +749,9 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut)
+        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?))
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -774,6 +784,10 @@ namespace Beam.Api
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenIn", tokenIn));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenOut", tokenOut));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "amountOut", amountOut));
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -800,11 +814,12 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = await GetQuoteForInputWithHttpInfoAsync(tokenIn, tokenOut, amountOut, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = await GetQuoteForInputWithHttpInfoAsync(tokenIn, tokenOut, amountOut, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -815,9 +830,10 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountOut"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -852,6 +868,10 @@ namespace Beam.Api
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenIn", tokenIn));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenOut", tokenOut));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "amountOut", amountOut));
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -879,10 +899,11 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        public GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn)
+        public GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = GetQuoteForOutputWithHttpInfo(tokenIn, tokenOut, amountIn);
+            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = GetQuoteForOutputWithHttpInfo(tokenIn, tokenOut, amountIn, chainId);
             return localVarResponse.Data;
         }
 
@@ -893,8 +914,9 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn)
+        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?))
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -927,6 +949,10 @@ namespace Beam.Api
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenIn", tokenIn));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenOut", tokenOut));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "amountIn", amountIn));
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -953,11 +979,12 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = await GetQuoteForOutputWithHttpInfoAsync(tokenIn, tokenOut, amountIn, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = await GetQuoteForOutputWithHttpInfoAsync(tokenIn, tokenOut, amountIn, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -968,9 +995,10 @@ namespace Beam.Api
         /// <param name="tokenIn"></param>
         /// <param name="tokenOut"></param>
         /// <param name="amountIn"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -1005,6 +1033,10 @@ namespace Beam.Api
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenIn", tokenIn));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "tokenOut", tokenOut));
             localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "amountIn", amountIn));
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))

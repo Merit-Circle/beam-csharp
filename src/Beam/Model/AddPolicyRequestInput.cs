@@ -27,37 +27,45 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// CreateProfileRequestInput
+    /// AddPolicyRequestInput
     /// </summary>
-    [DataContract(Name = "CreateProfileRequestInput")]
-    public partial class CreateProfileRequestInput : IEquatable<CreateProfileRequestInput>, IValidatableObject
+    [DataContract(Name = "AddPolicyRequestInput")]
+    public partial class AddPolicyRequestInput : IEquatable<AddPolicyRequestInput>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateProfileRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="AddPolicyRequestInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CreateProfileRequestInput() { }
+        protected AddPolicyRequestInput() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateProfileRequestInput" /> class.
+        /// Initializes a new instance of the <see cref="AddPolicyRequestInput" /> class.
         /// </summary>
-        /// <param name="entityId">entityId (required).</param>
+        /// <param name="tokenAddress">tokenAddress (required).</param>
+        /// <param name="exchangeRate">exchangeRate (required).</param>
         /// <param name="chainId">chainId (default to 13337M).</param>
-        public CreateProfileRequestInput(string entityId = default(string), decimal chainId = 13337M)
+        public AddPolicyRequestInput(string tokenAddress = default(string), decimal exchangeRate = default(decimal), decimal chainId = 13337M)
         {
-            // to ensure "entityId" is required (not null)
-            if (entityId == null)
+            // to ensure "tokenAddress" is required (not null)
+            if (tokenAddress == null)
             {
-                throw new ArgumentNullException("entityId is a required property for CreateProfileRequestInput and cannot be null");
+                throw new ArgumentNullException("tokenAddress is a required property for AddPolicyRequestInput and cannot be null");
             }
-            this.EntityId = entityId;
+            this.TokenAddress = tokenAddress;
+            this.ExchangeRate = exchangeRate;
             this.ChainId = chainId;
         }
 
         /// <summary>
-        /// Gets or Sets EntityId
+        /// Gets or Sets TokenAddress
         /// </summary>
-        [DataMember(Name = "entityId", IsRequired = true, EmitDefaultValue = true)]
-        public string EntityId { get; set; }
+        [DataMember(Name = "tokenAddress", IsRequired = true, EmitDefaultValue = true)]
+        public string TokenAddress { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExchangeRate
+        /// </summary>
+        [DataMember(Name = "exchangeRate", IsRequired = true, EmitDefaultValue = true)]
+        public decimal ExchangeRate { get; set; }
 
         /// <summary>
         /// Gets or Sets ChainId
@@ -72,8 +80,9 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateProfileRequestInput {\n");
-            sb.Append("  EntityId: ").Append(EntityId).Append("\n");
+            sb.Append("class AddPolicyRequestInput {\n");
+            sb.Append("  TokenAddress: ").Append(TokenAddress).Append("\n");
+            sb.Append("  ExchangeRate: ").Append(ExchangeRate).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -95,15 +104,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CreateProfileRequestInput);
+            return this.Equals(input as AddPolicyRequestInput);
         }
 
         /// <summary>
-        /// Returns true if CreateProfileRequestInput instances are equal
+        /// Returns true if AddPolicyRequestInput instances are equal
         /// </summary>
-        /// <param name="input">Instance of CreateProfileRequestInput to be compared</param>
+        /// <param name="input">Instance of AddPolicyRequestInput to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CreateProfileRequestInput input)
+        public bool Equals(AddPolicyRequestInput input)
         {
             if (input == null)
             {
@@ -111,9 +120,13 @@ namespace Beam.Model
             }
             return 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+                    this.TokenAddress == input.TokenAddress ||
+                    (this.TokenAddress != null &&
+                    this.TokenAddress.Equals(input.TokenAddress))
+                ) && 
+                (
+                    this.ExchangeRate == input.ExchangeRate ||
+                    this.ExchangeRate.Equals(input.ExchangeRate)
                 ) && 
                 (
                     this.ChainId == input.ChainId ||
@@ -130,10 +143,11 @@ namespace Beam.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityId != null)
+                if (this.TokenAddress != null)
                 {
-                    hashCode = (hashCode * 59) + this.EntityId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.TokenAddress.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ExchangeRate.GetHashCode();
                 hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 return hashCode;
             }
@@ -146,6 +160,12 @@ namespace Beam.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // ExchangeRate (decimal) minimum
+            if (this.ExchangeRate < (decimal)1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExchangeRate, must be a value greater than or equal to 1.", new [] { "ExchangeRate" });
+            }
+
             yield break;
         }
     }

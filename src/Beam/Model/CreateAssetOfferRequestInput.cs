@@ -119,7 +119,8 @@ namespace Beam.Model
         /// <param name="startTime">startTime.</param>
         /// <param name="endTime">endTime.</param>
         /// <param name="currency">currency (default to CurrencyEnum.Mc).</param>
-        public CreateAssetOfferRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), CurrencyEnum? currency = CurrencyEnum.Mc)
+        /// <param name="chainId">chainId (default to 13337M).</param>
+        public CreateAssetOfferRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), CurrencyEnum? currency = CurrencyEnum.Mc, decimal chainId = 13337M)
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -137,6 +138,7 @@ namespace Beam.Model
             this.StartTime = startTime;
             this.EndTime = endTime;
             this.Currency = currency;
+            this.ChainId = chainId;
         }
 
         /// <summary>
@@ -170,6 +172,12 @@ namespace Beam.Model
         public string EndTime { get; set; }
 
         /// <summary>
+        /// Gets or Sets ChainId
+        /// </summary>
+        [DataMember(Name = "chainId", EmitDefaultValue = false)]
+        public decimal ChainId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -183,6 +191,7 @@ namespace Beam.Model
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -245,6 +254,10 @@ namespace Beam.Model
                 (
                     this.Currency == input.Currency ||
                     this.Currency.Equals(input.Currency)
+                ) && 
+                (
+                    this.ChainId == input.ChainId ||
+                    this.ChainId.Equals(input.ChainId)
                 );
         }
 
@@ -275,6 +288,7 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.EndTime.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Currency.GetHashCode();
+                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 return hashCode;
             }
         }

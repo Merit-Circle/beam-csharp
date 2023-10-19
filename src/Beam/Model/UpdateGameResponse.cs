@@ -47,9 +47,10 @@ namespace Beam.Model
         /// <param name="description">description (required).</param>
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
         /// <param name="logoImageUrl">logoImageUrl (required).</param>
+        /// <param name="chainIds">chainIds (required).</param>
         /// <param name="contracts">contracts (required).</param>
         /// <param name="policies">policies (required).</param>
-        public UpdateGameResponse(string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
+        public UpdateGameResponse(string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<int> chainIds = default(List<int>), List<GetGameResponseContractsInner> contracts = default(List<GetGameResponseContractsInner>), List<GetGameResponsePoliciesInner> policies = default(List<GetGameResponsePoliciesInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -93,6 +94,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("logoImageUrl is a required property for UpdateGameResponse and cannot be null");
             }
             this.LogoImageUrl = logoImageUrl;
+            // to ensure "chainIds" is required (not null)
+            if (chainIds == null)
+            {
+                throw new ArgumentNullException("chainIds is a required property for UpdateGameResponse and cannot be null");
+            }
+            this.ChainIds = chainIds;
             // to ensure "contracts" is required (not null)
             if (contracts == null)
             {
@@ -150,6 +157,12 @@ namespace Beam.Model
         public string LogoImageUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets ChainIds
+        /// </summary>
+        [DataMember(Name = "chainIds", IsRequired = true, EmitDefaultValue = true)]
+        public List<int> ChainIds { get; set; }
+
+        /// <summary>
         /// Gets or Sets Contracts
         /// </summary>
         [DataMember(Name = "contracts", IsRequired = true, EmitDefaultValue = true)]
@@ -176,6 +189,7 @@ namespace Beam.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
             sb.Append("  LogoImageUrl: ").Append(LogoImageUrl).Append("\n");
+            sb.Append("  ChainIds: ").Append(ChainIds).Append("\n");
             sb.Append("  Contracts: ").Append(Contracts).Append("\n");
             sb.Append("  Policies: ").Append(Policies).Append("\n");
             sb.Append("}\n");
@@ -249,6 +263,12 @@ namespace Beam.Model
                     this.LogoImageUrl.Equals(input.LogoImageUrl))
                 ) && 
                 (
+                    this.ChainIds == input.ChainIds ||
+                    this.ChainIds != null &&
+                    input.ChainIds != null &&
+                    this.ChainIds.SequenceEqual(input.ChainIds)
+                ) && 
+                (
                     this.Contracts == input.Contracts ||
                     this.Contracts != null &&
                     input.Contracts != null &&
@@ -298,6 +318,10 @@ namespace Beam.Model
                 if (this.LogoImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.LogoImageUrl.GetHashCode();
+                }
+                if (this.ChainIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChainIds.GetHashCode();
                 }
                 if (this.Contracts != null)
                 {

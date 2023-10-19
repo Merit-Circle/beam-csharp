@@ -47,8 +47,9 @@ namespace Beam.Model
         /// <param name="description">description (required).</param>
         /// <param name="coverImageUrl">coverImageUrl (required).</param>
         /// <param name="logoImageUrl">logoImageUrl (required).</param>
+        /// <param name="chainIds">chainIds (required).</param>
         /// <param name="apiKeys">apiKeys (required).</param>
-        public RegenerateGameApiKeysResponse(string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<RegenerateGameApiKeysResponseApiKeysInner> apiKeys = default(List<RegenerateGameApiKeysResponseApiKeysInner>))
+        public RegenerateGameApiKeysResponse(string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string name = default(string), string description = default(string), string coverImageUrl = default(string), string logoImageUrl = default(string), List<int> chainIds = default(List<int>), List<RegenerateGameApiKeysResponseApiKeysInner> apiKeys = default(List<RegenerateGameApiKeysResponseApiKeysInner>))
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -92,6 +93,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("logoImageUrl is a required property for RegenerateGameApiKeysResponse and cannot be null");
             }
             this.LogoImageUrl = logoImageUrl;
+            // to ensure "chainIds" is required (not null)
+            if (chainIds == null)
+            {
+                throw new ArgumentNullException("chainIds is a required property for RegenerateGameApiKeysResponse and cannot be null");
+            }
+            this.ChainIds = chainIds;
             // to ensure "apiKeys" is required (not null)
             if (apiKeys == null)
             {
@@ -143,6 +150,12 @@ namespace Beam.Model
         public string LogoImageUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets ChainIds
+        /// </summary>
+        [DataMember(Name = "chainIds", IsRequired = true, EmitDefaultValue = true)]
+        public List<int> ChainIds { get; set; }
+
+        /// <summary>
         /// Gets or Sets ApiKeys
         /// </summary>
         [DataMember(Name = "apiKeys", IsRequired = true, EmitDefaultValue = true)]
@@ -163,6 +176,7 @@ namespace Beam.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  CoverImageUrl: ").Append(CoverImageUrl).Append("\n");
             sb.Append("  LogoImageUrl: ").Append(LogoImageUrl).Append("\n");
+            sb.Append("  ChainIds: ").Append(ChainIds).Append("\n");
             sb.Append("  ApiKeys: ").Append(ApiKeys).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -235,6 +249,12 @@ namespace Beam.Model
                     this.LogoImageUrl.Equals(input.LogoImageUrl))
                 ) && 
                 (
+                    this.ChainIds == input.ChainIds ||
+                    this.ChainIds != null &&
+                    input.ChainIds != null &&
+                    this.ChainIds.SequenceEqual(input.ChainIds)
+                ) && 
+                (
                     this.ApiKeys == input.ApiKeys ||
                     this.ApiKeys != null &&
                     input.ApiKeys != null &&
@@ -278,6 +298,10 @@ namespace Beam.Model
                 if (this.LogoImageUrl != null)
                 {
                     hashCode = (hashCode * 59) + this.LogoImageUrl.GetHashCode();
+                }
+                if (this.ChainIds != null)
+                {
+                    hashCode = (hashCode * 59) + this.ChainIds.GetHashCode();
                 }
                 if (this.ApiKeys != null)
                 {

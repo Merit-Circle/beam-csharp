@@ -159,7 +159,8 @@ namespace Beam.Model
         /// <param name="currency">currency (default to CurrencyEnum.Mc).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), CurrencyEnum? currency = CurrencyEnum.Mc, bool sponsor = true, string policyId = default(string))
+        /// <param name="chainId">chainId (default to 13337M).</param>
+        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), CurrencyEnum? currency = CurrencyEnum.Mc, bool sponsor = true, string policyId = default(string), decimal chainId = 13337M)
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -180,6 +181,7 @@ namespace Beam.Model
             this.Currency = currency;
             this.Sponsor = sponsor;
             this.PolicyId = policyId;
+            this.ChainId = chainId;
         }
 
         /// <summary>
@@ -225,6 +227,12 @@ namespace Beam.Model
         public string PolicyId { get; set; }
 
         /// <summary>
+        /// Gets or Sets ChainId
+        /// </summary>
+        [DataMember(Name = "chainId", EmitDefaultValue = false)]
+        public decimal ChainId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -241,6 +249,7 @@ namespace Beam.Model
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
+            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -316,6 +325,10 @@ namespace Beam.Model
                     this.PolicyId == input.PolicyId ||
                     (this.PolicyId != null &&
                     this.PolicyId.Equals(input.PolicyId))
+                ) && 
+                (
+                    this.ChainId == input.ChainId ||
+                    this.ChainId.Equals(input.ChainId)
                 );
         }
 
@@ -352,6 +365,7 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 return hashCode;
             }
         }

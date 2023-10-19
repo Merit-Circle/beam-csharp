@@ -6,8 +6,8 @@ src/Beam/Api/AssetsApi.cs
 src/Beam/Api/ChainApi.cs
 src/Beam/Api/ExchangeApi.cs
 src/Beam/Api/GameApi.cs
-src/Beam/Api/HealthApi.cs
 src/Beam/Api/MarketplaceApi.cs
+src/Beam/Api/PolicyApi.cs
 src/Beam/Api/ProfilesApi.cs
 src/Beam/Api/TransactionsApi.cs
 src/Beam/Beam.csproj
@@ -31,14 +31,13 @@ src/Beam/Client/WebRequestPathBuilder.cs
 src/Beam/Model/AbstractOpenAPISchema.cs
 src/Beam/Model/AcceptAssetOfferRequestInput.cs
 src/Beam/Model/AcceptOfferResponse.cs
+src/Beam/Model/AddPolicyRequestInput.cs
+src/Beam/Model/AddPolicyResponse.cs
 src/Beam/Model/BuyAssetRequestInput.cs
 src/Beam/Model/BuyAssetResponse.cs
 src/Beam/Model/CancelAssetListingRequestInput.cs
 src/Beam/Model/CancelAssetOfferRequestInput.cs
 src/Beam/Model/CancelOfferResponse.cs
-src/Beam/Model/Check200Response.cs
-src/Beam/Model/Check200ResponseInfoValue.cs
-src/Beam/Model/Check503Response.cs
 src/Beam/Model/ConvertTokenRequestInput.cs
 src/Beam/Model/ConvertTokenResponse.cs
 src/Beam/Model/CreateAssetOfferRequestInput.cs
@@ -62,7 +61,6 @@ src/Beam/Model/GetAssetListingsResponseDataInnerNft.cs
 src/Beam/Model/GetAssetOffersResponse.cs
 src/Beam/Model/GetAssetOffersResponseDataInner.cs
 src/Beam/Model/GetAssetResponse.cs
-src/Beam/Model/GetAssetResponseAttributesInner.cs
 src/Beam/Model/GetAssetResponseContract.cs
 src/Beam/Model/GetAssetResponseContractAvatar.cs
 src/Beam/Model/GetAssetResponseContractHeader.cs
@@ -73,6 +71,8 @@ src/Beam/Model/GetAssetResponseOwnershipByAddressesInnerUser.cs
 src/Beam/Model/GetAssetResponseOwnershipByAddressesInnerUserProfile.cs
 src/Beam/Model/GetAssetsResponse.cs
 src/Beam/Model/GetAssetsResponseDataInner.cs
+src/Beam/Model/GetAssetsResponseDataInnerAttributesInner.cs
+src/Beam/Model/GetAssetsResponseDataInnerOwnersInner.cs
 src/Beam/Model/GetChainCurrenciesResponse.cs
 src/Beam/Model/GetChainCurrenciesResponseDataInner.cs
 src/Beam/Model/GetChainResponse.cs
@@ -99,6 +99,7 @@ src/Beam/Model/GetTransactionsResponseDataInnerResponseLogsInner.cs
 src/Beam/Model/RegenerateGameApiKeysRequestInput.cs
 src/Beam/Model/RegenerateGameApiKeysResponse.cs
 src/Beam/Model/RegenerateGameApiKeysResponseApiKeysInner.cs
+src/Beam/Model/RemovePolicyResponse.cs
 src/Beam/Model/SellAssetRequestInput.cs
 src/Beam/Model/SellAssetResponse.cs
 src/Beam/Model/TransferAssetRequestInput.cs

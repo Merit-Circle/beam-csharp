@@ -229,8 +229,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId);
+        GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId, decimal? chainId = default(decimal?));
 
         /// <summary>
         /// Get all asset offers that player created
@@ -241,15 +242,17 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId);
+        ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId, decimal? chainId = default(decimal?));
         /// <summary>
         /// Get all offers that player created
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        GetAssetOffersResponse GetPlayerOffers(string entityId);
+        GetAssetOffersResponse GetPlayerOffers(string entityId, decimal? chainId = default(decimal?));
 
         /// <summary>
         /// Get all offers that player created
@@ -259,8 +262,9 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId);
+        ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId, decimal? chainId = default(decimal?));
         /// <summary>
         /// List an asset for sale
         /// </summary>
@@ -540,9 +544,10 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all asset offers that player created
@@ -553,9 +558,10 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all offers that player created
         /// </summary>
@@ -564,9 +570,10 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all offers that player created
@@ -576,9 +583,10 @@ namespace Beam.Api
         /// </remarks>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List an asset for sale
         /// </summary>
@@ -2172,10 +2180,11 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        public GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId)
+        public GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId, decimal? chainId = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerAssetOffersWithHttpInfo(entityId, marketplaceId);
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerAssetOffersWithHttpInfo(entityId, marketplaceId, chainId);
             return localVarResponse.Data;
         }
 
@@ -2185,8 +2194,9 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId)
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId, decimal? chainId = default(decimal?))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2214,6 +2224,10 @@ namespace Beam.Api
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
             localVarRequestOptions.PathParameters.Add("marketplaceId", Beam.Client.ClientUtils.ParameterToString(marketplaceId)); // path parameter
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -2239,11 +2253,12 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerAssetOffersWithHttpInfoAsync(entityId, marketplaceId, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerAssetOffersWithHttpInfoAsync(entityId, marketplaceId, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2253,9 +2268,10 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="marketplaceId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2285,6 +2301,10 @@ namespace Beam.Api
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
             localVarRequestOptions.PathParameters.Add("marketplaceId", Beam.Client.ClientUtils.ParameterToString(marketplaceId)); // path parameter
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -2310,10 +2330,11 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        public GetAssetOffersResponse GetPlayerOffers(string entityId)
+        public GetAssetOffersResponse GetPlayerOffers(string entityId, decimal? chainId = default(decimal?))
         {
-            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerOffersWithHttpInfo(entityId);
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerOffersWithHttpInfo(entityId, chainId);
             return localVarResponse.Data;
         }
 
@@ -2322,8 +2343,9 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId)
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId, decimal? chainId = default(decimal?))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2346,6 +2368,10 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
@@ -2370,11 +2396,12 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerOffersWithHttpInfoAsync(entityId, cancellationToken).ConfigureAwait(false);
+            Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerOffersWithHttpInfoAsync(entityId, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2383,9 +2410,10 @@ namespace Beam.Api
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
+        /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2410,6 +2438,10 @@ namespace Beam.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("entityId", Beam.Client.ClientUtils.ParameterToString(entityId)); // path parameter
+            if (chainId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Beam.Client.ClientUtils.ParameterToMultiMap("", "chainId", chainId));
+            }
 
             // authentication (Beam API game key) required
             if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))

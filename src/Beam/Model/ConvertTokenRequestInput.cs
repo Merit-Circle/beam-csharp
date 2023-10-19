@@ -48,7 +48,8 @@ namespace Beam.Model
         /// <param name="optimistic">optimistic (default to false).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
-        public ConvertTokenRequestInput(string tokenIn = default(string), string tokenOut = default(string), string amountIn = default(string), string amountOut = default(string), string receiverEntityId = default(string), bool optimistic = false, bool sponsor = true, string policyId = default(string))
+        /// <param name="chainId">chainId (default to 13337M).</param>
+        public ConvertTokenRequestInput(string tokenIn = default(string), string tokenOut = default(string), string amountIn = default(string), string amountOut = default(string), string receiverEntityId = default(string), bool optimistic = false, bool sponsor = true, string policyId = default(string), decimal chainId = 13337M)
         {
             // to ensure "tokenIn" is required (not null)
             if (tokenIn == null)
@@ -78,6 +79,7 @@ namespace Beam.Model
             this.Optimistic = optimistic;
             this.Sponsor = sponsor;
             this.PolicyId = policyId;
+            this.ChainId = chainId;
         }
 
         /// <summary>
@@ -129,6 +131,12 @@ namespace Beam.Model
         public string PolicyId { get; set; }
 
         /// <summary>
+        /// Gets or Sets ChainId
+        /// </summary>
+        [DataMember(Name = "chainId", EmitDefaultValue = false)]
+        public decimal ChainId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -144,6 +152,7 @@ namespace Beam.Model
             sb.Append("  Optimistic: ").Append(Optimistic).Append("\n");
             sb.Append("  Sponsor: ").Append(Sponsor).Append("\n");
             sb.Append("  PolicyId: ").Append(PolicyId).Append("\n");
+            sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -216,6 +225,10 @@ namespace Beam.Model
                     this.PolicyId == input.PolicyId ||
                     (this.PolicyId != null &&
                     this.PolicyId.Equals(input.PolicyId))
+                ) && 
+                (
+                    this.ChainId == input.ChainId ||
+                    this.ChainId.Equals(input.ChainId)
                 );
         }
 
@@ -254,6 +267,7 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.PolicyId.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 return hashCode;
             }
         }

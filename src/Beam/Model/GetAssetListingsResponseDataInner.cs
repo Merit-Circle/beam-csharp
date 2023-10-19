@@ -51,12 +51,14 @@ namespace Beam.Model
         /// <param name="startTime">startTime (required).</param>
         /// <param name="endTime">endTime (required).</param>
         /// <param name="quantityListed">quantityListed (required).</param>
+        /// <param name="quantityFilled">quantityFilled (required).</param>
+        /// <param name="quantityAvailable">quantityAvailable (required).</param>
         /// <param name="orderId">orderId (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
         /// <param name="sellerAddress">sellerAddress (required).</param>
         /// <param name="contractId">contractId (required).</param>
         /// <param name="nft">nft (required).</param>
-        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), string orderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
+        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), decimal quantityFilled = default(decimal), decimal quantityAvailable = default(decimal), string orderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -109,6 +111,8 @@ namespace Beam.Model
             }
             this.EndTime = endTime;
             this.QuantityListed = quantityListed;
+            this.QuantityFilled = quantityFilled;
+            this.QuantityAvailable = quantityAvailable;
             // to ensure "orderId" is required (not null)
             if (orderId == null)
             {
@@ -208,6 +212,18 @@ namespace Beam.Model
         public decimal QuantityListed { get; set; }
 
         /// <summary>
+        /// Gets or Sets QuantityFilled
+        /// </summary>
+        [DataMember(Name = "quantityFilled", IsRequired = true, EmitDefaultValue = true)]
+        public decimal QuantityFilled { get; set; }
+
+        /// <summary>
+        /// Gets or Sets QuantityAvailable
+        /// </summary>
+        [DataMember(Name = "quantityAvailable", IsRequired = true, EmitDefaultValue = true)]
+        public decimal QuantityAvailable { get; set; }
+
+        /// <summary>
         /// Gets or Sets OrderId
         /// </summary>
         [DataMember(Name = "orderId", IsRequired = true, EmitDefaultValue = true)]
@@ -256,6 +272,8 @@ namespace Beam.Model
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("  QuantityListed: ").Append(QuantityListed).Append("\n");
+            sb.Append("  QuantityFilled: ").Append(QuantityFilled).Append("\n");
+            sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  SellerAddress: ").Append(SellerAddress).Append("\n");
@@ -349,6 +367,14 @@ namespace Beam.Model
                     this.QuantityListed.Equals(input.QuantityListed)
                 ) && 
                 (
+                    this.QuantityFilled == input.QuantityFilled ||
+                    this.QuantityFilled.Equals(input.QuantityFilled)
+                ) && 
+                (
+                    this.QuantityAvailable == input.QuantityAvailable ||
+                    this.QuantityAvailable.Equals(input.QuantityAvailable)
+                ) && 
+                (
                     this.OrderId == input.OrderId ||
                     (this.OrderId != null &&
                     this.OrderId.Equals(input.OrderId))
@@ -419,6 +445,8 @@ namespace Beam.Model
                     hashCode = (hashCode * 59) + this.EndTime.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.QuantityListed.GetHashCode();
+                hashCode = (hashCode * 59) + this.QuantityFilled.GetHashCode();
+                hashCode = (hashCode * 59) + this.QuantityAvailable.GetHashCode();
                 if (this.OrderId != null)
                 {
                     hashCode = (hashCode * 59) + this.OrderId.GetHashCode();

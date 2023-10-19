@@ -27,32 +27,43 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// Check200ResponseInfoValue
+    /// GetAssetsResponseDataInnerOwnersInner
     /// </summary>
-    [DataContract(Name = "check_200_response_info_value")]
-    public partial class Check200ResponseInfoValue : Dictionary<String, string>, IEquatable<Check200ResponseInfoValue>, IValidatableObject
+    [DataContract(Name = "GetAssetsResponse_data_inner_owners_inner")]
+    public partial class GetAssetsResponseDataInnerOwnersInner : IEquatable<GetAssetsResponseDataInnerOwnersInner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Check200ResponseInfoValue" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetsResponseDataInnerOwnersInner" /> class.
         /// </summary>
-        /// <param name="status">status.</param>
-        public Check200ResponseInfoValue(string status = default(string)) : base()
+        [JsonConstructorAttribute]
+        protected GetAssetsResponseDataInnerOwnersInner() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GetAssetsResponseDataInnerOwnersInner" /> class.
+        /// </summary>
+        /// <param name="address">address (required).</param>
+        /// <param name="quantity">quantity (required).</param>
+        public GetAssetsResponseDataInnerOwnersInner(string address = default(string), decimal quantity = default(decimal))
         {
-            this.Status = status;
-            this.AdditionalProperties = new Dictionary<string, object>();
+            // to ensure "address" is required (not null)
+            if (address == null)
+            {
+                throw new ArgumentNullException("address is a required property for GetAssetsResponseDataInnerOwnersInner and cannot be null");
+            }
+            this.Address = address;
+            this.Quantity = quantity;
         }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public string Status { get; set; }
+        [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
+        public string Address { get; set; }
 
         /// <summary>
-        /// Gets or Sets additional properties
+        /// Gets or Sets Quantity
         /// </summary>
-        [JsonExtensionData]
-        public IDictionary<string, object> AdditionalProperties { get; set; }
+        [DataMember(Name = "quantity", IsRequired = true, EmitDefaultValue = true)]
+        public decimal Quantity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,10 +72,9 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class Check200ResponseInfoValue {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  AdditionalProperties: ").Append(AdditionalProperties).Append("\n");
+            sb.Append("class GetAssetsResponseDataInnerOwnersInner {\n");
+            sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -73,7 +83,7 @@ namespace Beam.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -85,27 +95,30 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Check200ResponseInfoValue);
+            return this.Equals(input as GetAssetsResponseDataInnerOwnersInner);
         }
 
         /// <summary>
-        /// Returns true if Check200ResponseInfoValue instances are equal
+        /// Returns true if GetAssetsResponseDataInnerOwnersInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of Check200ResponseInfoValue to be compared</param>
+        /// <param name="input">Instance of GetAssetsResponseDataInnerOwnersInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Check200ResponseInfoValue input)
+        public bool Equals(GetAssetsResponseDataInnerOwnersInner input)
         {
             if (input == null)
             {
                 return false;
             }
-            return base.Equals(input) && 
+            return 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                )
-                && (this.AdditionalProperties.Count == input.AdditionalProperties.Count && !this.AdditionalProperties.Except(input.AdditionalProperties).Any());
+                    this.Address == input.Address ||
+                    (this.Address != null &&
+                    this.Address.Equals(input.Address))
+                ) && 
+                (
+                    this.Quantity == input.Quantity ||
+                    this.Quantity.Equals(input.Quantity)
+                );
         }
 
         /// <summary>
@@ -116,15 +129,12 @@ namespace Beam.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Status != null)
+                int hashCode = 41;
+                if (this.Address != null)
                 {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Address.GetHashCode();
                 }
-                if (this.AdditionalProperties != null)
-                {
-                    hashCode = (hashCode * 59) + this.AdditionalProperties.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 return hashCode;
             }
         }
@@ -135,16 +145,6 @@ namespace Beam.Model
         /// <param name="validationContext">Validation context</param>
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            return this.BaseValidate(validationContext);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        protected IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> BaseValidate(ValidationContext validationContext)
         {
             yield break;
         }

@@ -27,33 +27,23 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetAssetResponseAttributesInner
+    /// GetAssetsResponseDataInnerAttributesInner
     /// </summary>
-    [DataContract(Name = "GetAssetResponse_attributes_inner")]
-    public partial class GetAssetResponseAttributesInner : IEquatable<GetAssetResponseAttributesInner>, IValidatableObject
+    [DataContract(Name = "GetAssetsResponse_data_inner_attributes_inner")]
+    public partial class GetAssetsResponseDataInnerAttributesInner : IEquatable<GetAssetsResponseDataInnerAttributesInner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetResponseAttributesInner" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected GetAssetResponseAttributesInner() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetAssetResponseAttributesInner" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetsResponseDataInnerAttributesInner" /> class.
         /// </summary>
         /// <param name="type">type.</param>
-        /// <param name="value">value (required).</param>
+        /// <param name="value">value.</param>
         /// <param name="rarity">rarity.</param>
         /// <param name="displayType">displayType.</param>
         /// <param name="maxValue">maxValue.</param>
-        public GetAssetResponseAttributesInner(string type = default(string), string value = default(string), decimal? rarity = default(decimal?), string displayType = default(string), decimal? maxValue = default(decimal?))
+        public GetAssetsResponseDataInnerAttributesInner(string type = default(string), string value = default(string), decimal? rarity = default(decimal?), string displayType = default(string), decimal? maxValue = default(decimal?))
         {
-            // to ensure "value" is required (not null)
-            if (value == null)
-            {
-                throw new ArgumentNullException("value is a required property for GetAssetResponseAttributesInner and cannot be null");
-            }
-            this.Value = value;
             this.Type = type;
+            this.Value = value;
             this.Rarity = rarity;
             this.DisplayType = displayType;
             this.MaxValue = maxValue;
@@ -68,7 +58,7 @@ namespace Beam.Model
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name = "value", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "value", EmitDefaultValue = true)]
         public string Value { get; set; }
 
         /// <summary>
@@ -96,7 +86,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetAssetResponseAttributesInner {\n");
+            sb.Append("class GetAssetsResponseDataInnerAttributesInner {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Rarity: ").Append(Rarity).Append("\n");
@@ -122,15 +112,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetAssetResponseAttributesInner);
+            return this.Equals(input as GetAssetsResponseDataInnerAttributesInner);
         }
 
         /// <summary>
-        /// Returns true if GetAssetResponseAttributesInner instances are equal
+        /// Returns true if GetAssetsResponseDataInnerAttributesInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetAssetResponseAttributesInner to be compared</param>
+        /// <param name="input">Instance of GetAssetsResponseDataInnerAttributesInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetAssetResponseAttributesInner input)
+        public bool Equals(GetAssetsResponseDataInnerAttributesInner input)
         {
             if (input == null)
             {
