@@ -160,8 +160,10 @@ Class | Method | HTTP request | Description
 *ExchangeApi* | [**ConvertToOutput**](docs/ExchangeApi.md#converttooutput) | **POST** /v1/exchange/profiles/{entityId}/convert/output | Swap a maximum amount of `tokenIn` for an exact amount of `tokenOut`
 *ExchangeApi* | [**GetQuoteForInput**](docs/ExchangeApi.md#getquoteforinput) | **GET** /v1/exchange/quote/input | Returns the maximum necessary input amount for a token trade, given a desired output amount
 *ExchangeApi* | [**GetQuoteForOutput**](docs/ExchangeApi.md#getquoteforoutput) | **GET** /v1/exchange/quote/output | Returns the minimum expected output amount for a token trade, given an input amount
+*GameApi* | [**AddContractToGame**](docs/GameApi.md#addcontracttogame) | **POST** /v1/game/contracts | Add a new contract to the game
 *GameApi* | [**GetGame**](docs/GameApi.md#getgame) | **GET** /v1/game | Get information about your game
 *GameApi* | [**RegenerateApiKeys**](docs/GameApi.md#regenerateapikeys) | **POST** /v1/game/regenerate-api-keys | Regenerate API keys
+*GameApi* | [**RemoveContractFromGame**](docs/GameApi.md#removecontractfromgame) | **DELETE** /v1/game/contracts/{address}/{chainId} | Delete a contract from a game
 *GameApi* | [**UpdateGame**](docs/GameApi.md#updategame) | **PATCH** /v1/game | Updating name, description and/or coverImageUrl
 *MarketplaceApi* | [**AcceptAssetOffer**](docs/MarketplaceApi.md#acceptassetoffer) | **POST** /v1/marketplace/profiles/{entityId}/offers/{offerId}/accept | Accept an offer for an asset
 *MarketplaceApi* | [**BuyListedAsset**](docs/MarketplaceApi.md#buylistedasset) | **POST** /v1/marketplace/profiles/{entityId}/listing/{orderId} | Buy listed asset
@@ -195,6 +197,10 @@ Class | Method | HTTP request | Description
 
  - [Model.AcceptAssetOfferRequestInput](docs/AcceptAssetOfferRequestInput.md)
  - [Model.AcceptOfferResponse](docs/AcceptOfferResponse.md)
+ - [Model.AddContractRequestInput](docs/AddContractRequestInput.md)
+ - [Model.AddContractRequestInputAbiInner](docs/AddContractRequestInputAbiInner.md)
+ - [Model.AddContractRequestInputAbiInnerInputsInner](docs/AddContractRequestInputAbiInnerInputsInner.md)
+ - [Model.AddContractResponse](docs/AddContractResponse.md)
  - [Model.AddPolicyRequestInput](docs/AddPolicyRequestInput.md)
  - [Model.AddPolicyResponse](docs/AddPolicyResponse.md)
  - [Model.BuyAssetRequestInput](docs/BuyAssetRequestInput.md)
@@ -263,6 +269,7 @@ Class | Method | HTTP request | Description
  - [Model.RegenerateGameApiKeysRequestInput](docs/RegenerateGameApiKeysRequestInput.md)
  - [Model.RegenerateGameApiKeysResponse](docs/RegenerateGameApiKeysResponse.md)
  - [Model.RegenerateGameApiKeysResponseApiKeysInner](docs/RegenerateGameApiKeysResponseApiKeysInner.md)
+ - [Model.RemoveContractResponse](docs/RemoveContractResponse.md)
  - [Model.RemovePolicyResponse](docs/RemovePolicyResponse.md)
  - [Model.SellAssetRequestInput](docs/SellAssetRequestInput.md)
  - [Model.SellAssetResponse](docs/SellAssetResponse.md)

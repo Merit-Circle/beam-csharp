@@ -31,6 +31,10 @@ src/Beam/Client/WebRequestPathBuilder.cs
 src/Beam/Model/AbstractOpenAPISchema.cs
 src/Beam/Model/AcceptAssetOfferRequestInput.cs
 src/Beam/Model/AcceptOfferResponse.cs
+src/Beam/Model/AddContractRequestInput.cs
+src/Beam/Model/AddContractRequestInputAbiInner.cs
+src/Beam/Model/AddContractRequestInputAbiInnerInputsInner.cs
+src/Beam/Model/AddContractResponse.cs
 src/Beam/Model/AddPolicyRequestInput.cs
 src/Beam/Model/AddPolicyResponse.cs
 src/Beam/Model/BuyAssetRequestInput.cs
@@ -99,6 +103,7 @@ src/Beam/Model/GetTransactionsResponseDataInnerResponseLogsInner.cs
 src/Beam/Model/RegenerateGameApiKeysRequestInput.cs
 src/Beam/Model/RegenerateGameApiKeysResponse.cs
 src/Beam/Model/RegenerateGameApiKeysResponseApiKeysInner.cs
+src/Beam/Model/RemoveContractResponse.cs
 src/Beam/Model/RemovePolicyResponse.cs
 src/Beam/Model/SellAssetRequestInput.cs
 src/Beam/Model/SellAssetResponse.cs

@@ -28,6 +28,24 @@ namespace Beam.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Add a new contract to the game
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <returns>AddContractResponse</returns>
+        AddContractResponse AddContractToGame(AddContractRequestInput addContractRequestInput);
+
+        /// <summary>
+        /// Add a new contract to the game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <returns>ApiResponse of AddContractResponse</returns>
+        ApiResponse<AddContractResponse> AddContractToGameWithHttpInfo(AddContractRequestInput addContractRequestInput);
+        /// <summary>
         /// Get information about your game
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
@@ -62,6 +80,26 @@ namespace Beam.Api
         /// <returns>ApiResponse of RegenerateGameApiKeysResponse</returns>
         ApiResponse<RegenerateGameApiKeysResponse> RegenerateApiKeysWithHttpInfo(RegenerateGameApiKeysRequestInput regenerateGameApiKeysRequestInput);
         /// <summary>
+        /// Delete a contract from a game
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <returns>RemoveContractResponse</returns>
+        RemoveContractResponse RemoveContractFromGame(decimal chainId, string address);
+
+        /// <summary>
+        /// Delete a contract from a game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <returns>ApiResponse of RemoveContractResponse</returns>
+        ApiResponse<RemoveContractResponse> RemoveContractFromGameWithHttpInfo(decimal chainId, string address);
+        /// <summary>
         /// Updating name, description and/or coverImageUrl
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
@@ -88,6 +126,29 @@ namespace Beam.Api
     public interface IGameApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// Add a new contract to the game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AddContractResponse</returns>
+        System.Threading.Tasks.Task<AddContractResponse> AddContractToGameAsync(AddContractRequestInput addContractRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Add a new contract to the game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AddContractResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AddContractResponse>> AddContractToGameWithHttpInfoAsync(AddContractRequestInput addContractRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get information about your game
         /// </summary>
@@ -132,6 +193,31 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RegenerateGameApiKeysResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<RegenerateGameApiKeysResponse>> RegenerateApiKeysWithHttpInfoAsync(RegenerateGameApiKeysRequestInput regenerateGameApiKeysRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// Delete a contract from a game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RemoveContractResponse</returns>
+        System.Threading.Tasks.Task<RemoveContractResponse> RemoveContractFromGameAsync(decimal chainId, string address, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Delete a contract from a game
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RemoveContractResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RemoveContractResponse>> RemoveContractFromGameWithHttpInfoAsync(decimal chainId, string address, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Updating name, description and/or coverImageUrl
         /// </summary>
@@ -369,6 +455,133 @@ namespace Beam.Api
         }
 
         /// <summary>
+        /// Add a new contract to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <returns>AddContractResponse</returns>
+        public AddContractResponse AddContractToGame(AddContractRequestInput addContractRequestInput)
+        {
+            Beam.Client.ApiResponse<AddContractResponse> localVarResponse = AddContractToGameWithHttpInfo(addContractRequestInput);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add a new contract to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <returns>ApiResponse of AddContractResponse</returns>
+        public Beam.Client.ApiResponse<AddContractResponse> AddContractToGameWithHttpInfo(AddContractRequestInput addContractRequestInput)
+        {
+            // verify the required parameter 'addContractRequestInput' is set
+            if (addContractRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'addContractRequestInput' when calling GameApi->AddContractToGame");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = addContractRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<AddContractResponse>("/v1/game/contracts", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AddContractToGame", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Add a new contract to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of AddContractResponse</returns>
+        public async System.Threading.Tasks.Task<AddContractResponse> AddContractToGameAsync(AddContractRequestInput addContractRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<AddContractResponse> localVarResponse = await AddContractToGameWithHttpInfoAsync(addContractRequestInput, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Add a new contract to the game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="addContractRequestInput"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (AddContractResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<AddContractResponse>> AddContractToGameWithHttpInfoAsync(AddContractRequestInput addContractRequestInput, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'addContractRequestInput' is set
+            if (addContractRequestInput == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'addContractRequestInput' when calling GameApi->AddContractToGame");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.Data = addContractRequestInput;
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<AddContractResponse>("/v1/game/contracts", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("AddContractToGame", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get information about your game 
         /// </summary>
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
@@ -600,6 +813,137 @@ namespace Beam.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RegenerateApiKeys", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a contract from a game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <returns>RemoveContractResponse</returns>
+        public RemoveContractResponse RemoveContractFromGame(decimal chainId, string address)
+        {
+            Beam.Client.ApiResponse<RemoveContractResponse> localVarResponse = RemoveContractFromGameWithHttpInfo(chainId, address);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete a contract from a game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <returns>ApiResponse of RemoveContractResponse</returns>
+        public Beam.Client.ApiResponse<RemoveContractResponse> RemoveContractFromGameWithHttpInfo(decimal chainId, string address)
+        {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'address' when calling GameApi->RemoveContractFromGame");
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("chainId", Beam.Client.ClientUtils.ParameterToString(chainId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("address", Beam.Client.ClientUtils.ParameterToString(address)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Delete<RemoveContractResponse>("/v1/game/contracts/{address}/{chainId}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RemoveContractFromGame", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Delete a contract from a game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of RemoveContractResponse</returns>
+        public async System.Threading.Tasks.Task<RemoveContractResponse> RemoveContractFromGameAsync(decimal chainId, string address, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Beam.Client.ApiResponse<RemoveContractResponse> localVarResponse = await RemoveContractFromGameWithHttpInfoAsync(chainId, address, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Delete a contract from a game 
+        /// </summary>
+        /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="chainId"></param>
+        /// <param name="address"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (RemoveContractResponse)</returns>
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<RemoveContractResponse>> RemoveContractFromGameWithHttpInfoAsync(decimal chainId, string address, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'address' is set
+            if (address == null)
+                throw new Beam.Client.ApiException(400, "Missing required parameter 'address' when calling GameApi->RemoveContractFromGame");
+
+
+            Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Beam.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Beam.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("chainId", Beam.Client.ClientUtils.ParameterToString(chainId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("address", Beam.Client.ClientUtils.ParameterToString(address)); // path parameter
+
+            // authentication (Beam API game key) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<RemoveContractResponse>("/v1/game/contracts/{address}/{chainId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("RemoveContractFromGame", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

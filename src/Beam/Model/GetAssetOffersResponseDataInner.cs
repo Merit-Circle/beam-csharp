@@ -145,11 +145,12 @@ namespace Beam.Model
         /// <param name="quantityFilled">quantityFilled (required).</param>
         /// <param name="quantityAvailable">quantityAvailable (required).</param>
         /// <param name="offerer">offerer (required).</param>
+        /// <param name="offererEntityId">offererEntityId (required).</param>
         /// <param name="tokenAmount">tokenAmount (required).</param>
         /// <param name="tokenAmountNumber">tokenAmountNumber (required).</param>
         /// <param name="startTime">startTime (required).</param>
         /// <param name="endTime">endTime (required).</param>
-        public GetAssetOffersResponseDataInner(string orderId = default(string), KindEnum kind = default(KindEnum), CurrencyEnum currency = default(CurrencyEnum), decimal quantity = default(decimal), decimal quantityFilled = default(decimal), decimal quantityAvailable = default(decimal), string offerer = default(string), string tokenAmount = default(string), decimal tokenAmountNumber = default(decimal), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime))
+        public GetAssetOffersResponseDataInner(string orderId = default(string), KindEnum kind = default(KindEnum), CurrencyEnum currency = default(CurrencyEnum), decimal quantity = default(decimal), decimal quantityFilled = default(decimal), decimal quantityAvailable = default(decimal), string offerer = default(string), string offererEntityId = default(string), string tokenAmount = default(string), decimal tokenAmountNumber = default(decimal), DateTime startTime = default(DateTime), DateTime endTime = default(DateTime))
         {
             // to ensure "orderId" is required (not null)
             if (orderId == null)
@@ -168,6 +169,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("offerer is a required property for GetAssetOffersResponseDataInner and cannot be null");
             }
             this.Offerer = offerer;
+            // to ensure "offererEntityId" is required (not null)
+            if (offererEntityId == null)
+            {
+                throw new ArgumentNullException("offererEntityId is a required property for GetAssetOffersResponseDataInner and cannot be null");
+            }
+            this.OffererEntityId = offererEntityId;
             // to ensure "tokenAmount" is required (not null)
             if (tokenAmount == null)
             {
@@ -210,6 +217,12 @@ namespace Beam.Model
         public string Offerer { get; set; }
 
         /// <summary>
+        /// Gets or Sets OffererEntityId
+        /// </summary>
+        [DataMember(Name = "offererEntityId", IsRequired = true, EmitDefaultValue = true)]
+        public string OffererEntityId { get; set; }
+
+        /// <summary>
         /// Gets or Sets TokenAmount
         /// </summary>
         [DataMember(Name = "tokenAmount", IsRequired = true, EmitDefaultValue = true)]
@@ -248,6 +261,7 @@ namespace Beam.Model
             sb.Append("  QuantityFilled: ").Append(QuantityFilled).Append("\n");
             sb.Append("  QuantityAvailable: ").Append(QuantityAvailable).Append("\n");
             sb.Append("  Offerer: ").Append(Offerer).Append("\n");
+            sb.Append("  OffererEntityId: ").Append(OffererEntityId).Append("\n");
             sb.Append("  TokenAmount: ").Append(TokenAmount).Append("\n");
             sb.Append("  TokenAmountNumber: ").Append(TokenAmountNumber).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
@@ -318,6 +332,11 @@ namespace Beam.Model
                     this.Offerer.Equals(input.Offerer))
                 ) && 
                 (
+                    this.OffererEntityId == input.OffererEntityId ||
+                    (this.OffererEntityId != null &&
+                    this.OffererEntityId.Equals(input.OffererEntityId))
+                ) && 
+                (
                     this.TokenAmount == input.TokenAmount ||
                     (this.TokenAmount != null &&
                     this.TokenAmount.Equals(input.TokenAmount))
@@ -359,6 +378,10 @@ namespace Beam.Model
                 if (this.Offerer != null)
                 {
                     hashCode = (hashCode * 59) + this.Offerer.GetHashCode();
+                }
+                if (this.OffererEntityId != null)
+                {
+                    hashCode = (hashCode * 59) + this.OffererEntityId.GetHashCode();
                 }
                 if (this.TokenAmount != null)
                 {

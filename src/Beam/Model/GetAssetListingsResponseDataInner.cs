@@ -56,9 +56,10 @@ namespace Beam.Model
         /// <param name="orderId">orderId (required).</param>
         /// <param name="expiresAt">expiresAt (required).</param>
         /// <param name="sellerAddress">sellerAddress (required).</param>
+        /// <param name="sellerEntityId">sellerEntityId.</param>
         /// <param name="contractId">contractId (required).</param>
         /// <param name="nft">nft (required).</param>
-        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), decimal quantityFilled = default(decimal), decimal quantityAvailable = default(decimal), string orderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
+        public GetAssetListingsResponseDataInner(string marketplaceId = default(string), string price = default(string), string sellType = default(string), string startPrice = default(string), string endPrice = default(string), decimal platformFee = default(decimal), decimal royaltyFee = default(decimal), string currency = default(string), string startTime = default(string), string endTime = default(string), decimal quantityListed = default(decimal), decimal quantityFilled = default(decimal), decimal quantityAvailable = default(decimal), string orderId = default(string), string expiresAt = default(string), string sellerAddress = default(string), string sellerEntityId = default(string), string contractId = default(string), GetAssetListingsResponseDataInnerNft nft = default(GetAssetListingsResponseDataInnerNft))
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)
@@ -143,6 +144,7 @@ namespace Beam.Model
                 throw new ArgumentNullException("nft is a required property for GetAssetListingsResponseDataInner and cannot be null");
             }
             this.Nft = nft;
+            this.SellerEntityId = sellerEntityId;
         }
 
         /// <summary>
@@ -242,6 +244,12 @@ namespace Beam.Model
         public string SellerAddress { get; set; }
 
         /// <summary>
+        /// Gets or Sets SellerEntityId
+        /// </summary>
+        [DataMember(Name = "sellerEntityId", EmitDefaultValue = false)]
+        public string SellerEntityId { get; set; }
+
+        /// <summary>
         /// Gets or Sets ContractId
         /// </summary>
         [DataMember(Name = "contractId", IsRequired = true, EmitDefaultValue = true)]
@@ -277,6 +285,7 @@ namespace Beam.Model
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  SellerAddress: ").Append(SellerAddress).Append("\n");
+            sb.Append("  SellerEntityId: ").Append(SellerEntityId).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
             sb.Append("  Nft: ").Append(Nft).Append("\n");
             sb.Append("}\n");
@@ -390,6 +399,11 @@ namespace Beam.Model
                     this.SellerAddress.Equals(input.SellerAddress))
                 ) && 
                 (
+                    this.SellerEntityId == input.SellerEntityId ||
+                    (this.SellerEntityId != null &&
+                    this.SellerEntityId.Equals(input.SellerEntityId))
+                ) && 
+                (
                     this.ContractId == input.ContractId ||
                     (this.ContractId != null &&
                     this.ContractId.Equals(input.ContractId))
@@ -458,6 +472,10 @@ namespace Beam.Model
                 if (this.SellerAddress != null)
                 {
                     hashCode = (hashCode * 59) + this.SellerAddress.GetHashCode();
+                }
+                if (this.SellerEntityId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SellerEntityId.GetHashCode();
                 }
                 if (this.ContractId != null)
                 {
