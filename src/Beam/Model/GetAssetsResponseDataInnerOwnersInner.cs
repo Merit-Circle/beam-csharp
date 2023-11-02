@@ -41,8 +41,9 @@ namespace Beam.Model
         /// Initializes a new instance of the <see cref="GetAssetsResponseDataInnerOwnersInner" /> class.
         /// </summary>
         /// <param name="address">address (required).</param>
+        /// <param name="entityId">entityId.</param>
         /// <param name="quantity">quantity (required).</param>
-        public GetAssetsResponseDataInnerOwnersInner(string address = default(string), decimal quantity = default(decimal))
+        public GetAssetsResponseDataInnerOwnersInner(string address = default(string), string entityId = default(string), decimal quantity = default(decimal))
         {
             // to ensure "address" is required (not null)
             if (address == null)
@@ -51,6 +52,7 @@ namespace Beam.Model
             }
             this.Address = address;
             this.Quantity = quantity;
+            this.EntityId = entityId;
         }
 
         /// <summary>
@@ -58,6 +60,12 @@ namespace Beam.Model
         /// </summary>
         [DataMember(Name = "address", IsRequired = true, EmitDefaultValue = true)]
         public string Address { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EntityId
+        /// </summary>
+        [DataMember(Name = "entityId", EmitDefaultValue = false)]
+        public string EntityId { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
@@ -74,6 +82,7 @@ namespace Beam.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class GetAssetsResponseDataInnerOwnersInner {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  EntityId: ").Append(EntityId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -116,6 +125,11 @@ namespace Beam.Model
                     this.Address.Equals(input.Address))
                 ) && 
                 (
+                    this.EntityId == input.EntityId ||
+                    (this.EntityId != null &&
+                    this.EntityId.Equals(input.EntityId))
+                ) && 
+                (
                     this.Quantity == input.Quantity ||
                     this.Quantity.Equals(input.Quantity)
                 );
@@ -133,6 +147,10 @@ namespace Beam.Model
                 if (this.Address != null)
                 {
                     hashCode = (hashCode * 59) + this.Address.GetHashCode();
+                }
+                if (this.EntityId != null)
+                {
+                    hashCode = (hashCode * 59) + this.EntityId.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 return hashCode;

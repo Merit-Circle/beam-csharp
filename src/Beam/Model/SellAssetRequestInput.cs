@@ -82,58 +82,70 @@ namespace Beam.Model
             Avax = 1,
 
             /// <summary>
+            /// Enum Beam for value: Beam
+            /// </summary>
+            [EnumMember(Value = "Beam")]
+            Beam = 2,
+
+            /// <summary>
             /// Enum Eth for value: Eth
             /// </summary>
             [EnumMember(Value = "Eth")]
-            Eth = 2,
+            Eth = 3,
 
             /// <summary>
             /// Enum Matic for value: Matic
             /// </summary>
             [EnumMember(Value = "Matic")]
-            Matic = 3,
+            Matic = 4,
 
             /// <summary>
             /// Enum Mc for value: Mc
             /// </summary>
             [EnumMember(Value = "Mc")]
-            Mc = 4,
+            Mc = 5,
 
             /// <summary>
             /// Enum Usdc for value: Usdc
             /// </summary>
             [EnumMember(Value = "Usdc")]
-            Usdc = 5,
+            Usdc = 6,
 
             /// <summary>
             /// Enum Usdt for value: Usdt
             /// </summary>
             [EnumMember(Value = "Usdt")]
-            Usdt = 6,
+            Usdt = 7,
 
             /// <summary>
             /// Enum Wavax for value: Wavax
             /// </summary>
             [EnumMember(Value = "Wavax")]
-            Wavax = 7,
+            Wavax = 8,
+
+            /// <summary>
+            /// Enum Wbeam for value: Wbeam
+            /// </summary>
+            [EnumMember(Value = "Wbeam")]
+            Wbeam = 9,
 
             /// <summary>
             /// Enum Weth for value: Weth
             /// </summary>
             [EnumMember(Value = "Weth")]
-            Weth = 8,
+            Weth = 10,
 
             /// <summary>
             /// Enum Wmatic for value: Wmatic
             /// </summary>
             [EnumMember(Value = "Wmatic")]
-            Wmatic = 9,
+            Wmatic = 11,
 
             /// <summary>
             /// Enum Wmc for value: Wmc
             /// </summary>
             [EnumMember(Value = "Wmc")]
-            Wmc = 10
+            Wmc = 12
         }
 
 
@@ -156,11 +168,11 @@ namespace Beam.Model
         /// <param name="startTime">startTime.</param>
         /// <param name="endTime">endTime.</param>
         /// <param name="sellType">sellType (required).</param>
-        /// <param name="currency">currency (default to CurrencyEnum.Mc).</param>
+        /// <param name="currency">currency (default to CurrencyEnum.Beam).</param>
         /// <param name="sponsor">sponsor (default to true).</param>
         /// <param name="policyId">policyId.</param>
         /// <param name="chainId">chainId (default to 13337M).</param>
-        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), CurrencyEnum? currency = CurrencyEnum.Mc, bool sponsor = true, string policyId = default(string), decimal chainId = 13337M)
+        public SellAssetRequestInput(string marketplaceId = default(string), decimal quantity = default(decimal), string price = default(string), string startTime = default(string), string endTime = default(string), SellTypeEnum sellType = default(SellTypeEnum), CurrencyEnum? currency = CurrencyEnum.Beam, bool sponsor = true, string policyId = default(string), decimal chainId = 13337M)
         {
             // to ensure "marketplaceId" is required (not null)
             if (marketplaceId == null)

@@ -147,8 +147,12 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssetsApi* | [**GetAsset**](docs/AssetsApi.md#getasset) | **GET** /v1/assets/{assetAddress}/{assetId} | Get a single NFT (e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetContractAssetFilterOptions**](docs/AssetsApi.md#getcontractassetfilteroptions) | **POST** /v1/assets/filter-options/{assetAddress} | Get filter options for assets of contract (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetContractAssets**](docs/AssetsApi.md#getcontractassets) | **GET** /v1/assets/{assetAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
-*AssetsApi* | [**GetProfileAssets**](docs/AssetsApi.md#getprofileassets) | **GET** /v1/assets/profiles/{entityId} | Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetContractAssetsPost**](docs/AssetsApi.md#getcontractassetspost) | **POST** /v1/assets/{assetAddress} | Get all the assets of contract (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetProfileAssetFilterOptionsForGame**](docs/AssetsApi.md#getprofileassetfilteroptionsforgame) | **POST** /v1/assets/profiles/filter-options/{entityId} | Get filter options for assets of contract (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetProfileAssetsForGame**](docs/AssetsApi.md#getprofileassetsforgame) | **GET** /v1/assets/profiles/{entityId} | Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
+*AssetsApi* | [**GetProfileAssetsForGamePost**](docs/AssetsApi.md#getprofileassetsforgamepost) | **POST** /v1/assets/profiles/{entityId} | Get all the assets of a profile (NFT assets, e.g. ERC721 / ERC1155)
 *AssetsApi* | [**GetProfileCurrencies**](docs/AssetsApi.md#getprofilecurrencies) | **GET** /v1/assets/profiles/{entityId}/currencies | Get all the currencies owned by an account (ERC20)
 *AssetsApi* | [**GetProfileNativeCurrency**](docs/AssetsApi.md#getprofilenativecurrency) | **GET** /v1/assets/profiles/{entityId}/native | Get the native token balance
 *AssetsApi* | [**TransferAsset**](docs/AssetsApi.md#transferasset) | **POST** /v1/assets/profiles/{entityId}/transfer-asset | Transfer an asset (NFT assets, ERC721 / ERC1155)
@@ -174,8 +178,12 @@ Class | Method | HTTP request | Description
 *MarketplaceApi* | [**GetChainCurrencies**](docs/MarketplaceApi.md#getchaincurrencies) | **GET** /v1/marketplace/chain-currencies/{chainId} | 
 *MarketplaceApi* | [**GetListedAssets**](docs/MarketplaceApi.md#getlistedassets) | **GET** /v1/marketplace | Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
 *MarketplaceApi* | [**GetListedAssetsForProfile**](docs/MarketplaceApi.md#getlistedassetsforprofile) | **GET** /v1/marketplace/profiles/{entityId} | Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+*MarketplaceApi* | [**GetListedAssetsForProfilePost**](docs/MarketplaceApi.md#getlistedassetsforprofilepost) | **POST** /v1/marketplace/profiles/{entityId} | Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
+*MarketplaceApi* | [**GetListedAssetsPost**](docs/MarketplaceApi.md#getlistedassetspost) | **POST** /v1/marketplace | Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
 *MarketplaceApi* | [**GetPlayerAssetOffers**](docs/MarketplaceApi.md#getplayerassetoffers) | **GET** /v1/marketplace/profiles/{entityId}/offers/asset/{marketplaceId} | Get all asset offers that player created
 *MarketplaceApi* | [**GetPlayerOffers**](docs/MarketplaceApi.md#getplayeroffers) | **GET** /v1/marketplace/profiles/{entityId}/offers | Get all offers that player created
+*MarketplaceApi* | [**GetProfileAssetsFilterOptions**](docs/MarketplaceApi.md#getprofileassetsfilteroptions) | **POST** /v1/marketplace/filter-options | Get filter options for assets of a profile in a game (NFT assets, e.g. ERC721 / ERC1155)
+*MarketplaceApi* | [**GetProfileAssetsFilterOptions_0**](docs/MarketplaceApi.md#getprofileassetsfilteroptions_0) | **POST** /v1/marketplace/profiles/filter-options/{entityId} | Get filter options for assets of a profile in a game (NFT assets, e.g. ERC721 / ERC1155)
 *MarketplaceApi* | [**ListAsset**](docs/MarketplaceApi.md#listasset) | **POST** /v1/marketplace/profiles/{entityId}/listing | List an asset for sale
 *PolicyApi* | [**CreatePolicy**](docs/PolicyApi.md#createpolicy) | **POST** /v1/policies | Add a new policy to sponsor web3 actions
 *PolicyApi* | [**DeletePolicy**](docs/PolicyApi.md#deletepolicy) | **DELETE** /v1/policies/{policyId} | Removing a policy that sponsors web3 actions
@@ -225,6 +233,13 @@ Class | Method | HTTP request | Description
  - [Model.GetAllProfilesResponse](docs/GetAllProfilesResponse.md)
  - [Model.GetAllProfilesResponseDataInner](docs/GetAllProfilesResponseDataInner.md)
  - [Model.GetAllProfilesResponsePagination](docs/GetAllProfilesResponsePagination.md)
+ - [Model.GetAssetFilterOptionsBodyInput](docs/GetAssetFilterOptionsBodyInput.md)
+ - [Model.GetAssetFilterOptionsBodyInputFilter](docs/GetAssetFilterOptionsBodyInputFilter.md)
+ - [Model.GetAssetFilterOptionsBodyInputResponseOptionsInner](docs/GetAssetFilterOptionsBodyInputResponseOptionsInner.md)
+ - [Model.GetAssetFilterOptionsBodyInputResponseOptionsInnerPagination](docs/GetAssetFilterOptionsBodyInputResponseOptionsInnerPagination.md)
+ - [Model.GetAssetFilterOptionsResponse](docs/GetAssetFilterOptionsResponse.md)
+ - [Model.GetAssetFilterOptionsResponseAttributeValues](docs/GetAssetFilterOptionsResponseAttributeValues.md)
+ - [Model.GetAssetFilterOptionsResponseAttributeValuesDataInner](docs/GetAssetFilterOptionsResponseAttributeValuesDataInner.md)
  - [Model.GetAssetListingsResponse](docs/GetAssetListingsResponse.md)
  - [Model.GetAssetListingsResponseDataInner](docs/GetAssetListingsResponseDataInner.md)
  - [Model.GetAssetListingsResponseDataInnerNft](docs/GetAssetListingsResponseDataInnerNft.md)
@@ -239,6 +254,8 @@ Class | Method | HTTP request | Description
  - [Model.GetAssetResponseOwnershipByAddressesInner](docs/GetAssetResponseOwnershipByAddressesInner.md)
  - [Model.GetAssetResponseOwnershipByAddressesInnerUser](docs/GetAssetResponseOwnershipByAddressesInnerUser.md)
  - [Model.GetAssetResponseOwnershipByAddressesInnerUserProfile](docs/GetAssetResponseOwnershipByAddressesInnerUserProfile.md)
+ - [Model.GetAssetsBodyInput](docs/GetAssetsBodyInput.md)
+ - [Model.GetAssetsBodyInputFilter](docs/GetAssetsBodyInputFilter.md)
  - [Model.GetAssetsResponse](docs/GetAssetsResponse.md)
  - [Model.GetAssetsResponseDataInner](docs/GetAssetsResponseDataInner.md)
  - [Model.GetAssetsResponseDataInnerAttributesInner](docs/GetAssetsResponseDataInnerAttributesInner.md)
@@ -248,12 +265,14 @@ Class | Method | HTTP request | Description
  - [Model.GetChainResponse](docs/GetChainResponse.md)
  - [Model.GetChainResponseNativeCurrency](docs/GetChainResponseNativeCurrency.md)
  - [Model.GetEstimateResponse](docs/GetEstimateResponse.md)
+ - [Model.GetGameListedAssetFilterOptionsBodyInput](docs/GetGameListedAssetFilterOptionsBodyInput.md)
+ - [Model.GetGameListedAssetFilterOptionsBodyInputFilter](docs/GetGameListedAssetFilterOptionsBodyInputFilter.md)
  - [Model.GetGameResponse](docs/GetGameResponse.md)
  - [Model.GetGameResponseContractsInner](docs/GetGameResponseContractsInner.md)
  - [Model.GetGameResponsePoliciesInner](docs/GetGameResponsePoliciesInner.md)
- - [Model.GetProfileAssetsFilterParameter](docs/GetProfileAssetsFilterParameter.md)
- - [Model.GetProfileAssetsFilterParameterAttributesInner](docs/GetProfileAssetsFilterParameterAttributesInner.md)
- - [Model.GetProfileAssetsSortParameter](docs/GetProfileAssetsSortParameter.md)
+ - [Model.GetProfileAssetsForGameFilterParameter](docs/GetProfileAssetsForGameFilterParameter.md)
+ - [Model.GetProfileAssetsForGameFilterParameterAttributesInner](docs/GetProfileAssetsForGameFilterParameterAttributesInner.md)
+ - [Model.GetProfileAssetsForGameSortParameter](docs/GetProfileAssetsForGameSortParameter.md)
  - [Model.GetProfileCurrenciesResponse](docs/GetProfileCurrenciesResponse.md)
  - [Model.GetProfileCurrenciesResponseDataInner](docs/GetProfileCurrenciesResponseDataInner.md)
  - [Model.GetProfileNativeCurrencyResponse](docs/GetProfileNativeCurrencyResponse.md)

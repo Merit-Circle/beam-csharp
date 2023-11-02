@@ -33,6 +33,31 @@ namespace Beam.Model
     public partial class AddPolicyRequestInput : IEquatable<AddPolicyRequestInput>, IValidatableObject
     {
         /// <summary>
+        /// Defines RateType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum RateTypeEnum
+        {
+            /// <summary>
+            /// Enum Fixed for value: Fixed
+            /// </summary>
+            [EnumMember(Value = "Fixed")]
+            Fixed = 1,
+
+            /// <summary>
+            /// Enum Dynamic for value: Dynamic
+            /// </summary>
+            [EnumMember(Value = "Dynamic")]
+            Dynamic = 2
+        }
+
+
+        /// <summary>
+        /// Gets or Sets RateType
+        /// </summary>
+        [DataMember(Name = "rateType", IsRequired = true, EmitDefaultValue = true)]
+        public RateTypeEnum RateType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="AddPolicyRequestInput" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,9 +66,10 @@ namespace Beam.Model
         /// Initializes a new instance of the <see cref="AddPolicyRequestInput" /> class.
         /// </summary>
         /// <param name="tokenAddress">tokenAddress (required).</param>
-        /// <param name="exchangeRate">exchangeRate (required).</param>
+        /// <param name="amount">amount (required).</param>
+        /// <param name="rateType">rateType (required).</param>
         /// <param name="chainId">chainId (default to 13337M).</param>
-        public AddPolicyRequestInput(string tokenAddress = default(string), decimal exchangeRate = default(decimal), decimal chainId = 13337M)
+        public AddPolicyRequestInput(string tokenAddress = default(string), decimal amount = default(decimal), RateTypeEnum rateType = default(RateTypeEnum), decimal chainId = 13337M)
         {
             // to ensure "tokenAddress" is required (not null)
             if (tokenAddress == null)
@@ -51,7 +77,8 @@ namespace Beam.Model
                 throw new ArgumentNullException("tokenAddress is a required property for AddPolicyRequestInput and cannot be null");
             }
             this.TokenAddress = tokenAddress;
-            this.ExchangeRate = exchangeRate;
+            this.Amount = amount;
+            this.RateType = rateType;
             this.ChainId = chainId;
         }
 
@@ -62,10 +89,10 @@ namespace Beam.Model
         public string TokenAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExchangeRate
+        /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name = "exchangeRate", IsRequired = true, EmitDefaultValue = true)]
-        public decimal ExchangeRate { get; set; }
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
+        public decimal Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets ChainId
@@ -82,7 +109,8 @@ namespace Beam.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class AddPolicyRequestInput {\n");
             sb.Append("  TokenAddress: ").Append(TokenAddress).Append("\n");
-            sb.Append("  ExchangeRate: ").Append(ExchangeRate).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  RateType: ").Append(RateType).Append("\n");
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -125,8 +153,12 @@ namespace Beam.Model
                     this.TokenAddress.Equals(input.TokenAddress))
                 ) && 
                 (
-                    this.ExchangeRate == input.ExchangeRate ||
-                    this.ExchangeRate.Equals(input.ExchangeRate)
+                    this.Amount == input.Amount ||
+                    this.Amount.Equals(input.Amount)
+                ) && 
+                (
+                    this.RateType == input.RateType ||
+                    this.RateType.Equals(input.RateType)
                 ) && 
                 (
                     this.ChainId == input.ChainId ||
@@ -147,7 +179,8 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.TokenAddress.GetHashCode();
                 }
-                hashCode = (hashCode * 59) + this.ExchangeRate.GetHashCode();
+                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
+                hashCode = (hashCode * 59) + this.RateType.GetHashCode();
                 hashCode = (hashCode * 59) + this.ChainId.GetHashCode();
                 return hashCode;
             }
@@ -160,10 +193,10 @@ namespace Beam.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // ExchangeRate (decimal) minimum
-            if (this.ExchangeRate < (decimal)1)
+            // Amount (decimal) minimum
+            if (this.Amount < (decimal)1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExchangeRate, must be a value greater than or equal to 1.", new [] { "ExchangeRate" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Amount, must be a value greater than or equal to 1.", new [] { "Amount" });
             }
 
             yield break;

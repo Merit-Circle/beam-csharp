@@ -27,17 +27,17 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetProfileAssetsFilterParameterAttributesInner
+    /// GetProfileAssetsForGameFilterParameterAttributesInner
     /// </summary>
-    [DataContract(Name = "getProfileAssets_filter_parameter_attributes_inner")]
-    public partial class GetProfileAssetsFilterParameterAttributesInner : IEquatable<GetProfileAssetsFilterParameterAttributesInner>, IValidatableObject
+    [DataContract(Name = "getProfileAssetsForGame_filter_parameter_attributes_inner")]
+    public partial class GetProfileAssetsForGameFilterParameterAttributesInner : IEquatable<GetProfileAssetsForGameFilterParameterAttributesInner>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetProfileAssetsFilterParameterAttributesInner" /> class.
+        /// Initializes a new instance of the <see cref="GetProfileAssetsForGameFilterParameterAttributesInner" /> class.
         /// </summary>
         /// <param name="type">type.</param>
         /// <param name="value">value.</param>
-        public GetProfileAssetsFilterParameterAttributesInner(string type = default(string), string value = default(string))
+        public GetProfileAssetsForGameFilterParameterAttributesInner(string type = default(string), string value = default(string))
         {
             this.Type = type;
             this.Value = value;
@@ -62,7 +62,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetProfileAssetsFilterParameterAttributesInner {\n");
+            sb.Append("class GetProfileAssetsForGameFilterParameterAttributesInner {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
@@ -85,15 +85,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetProfileAssetsFilterParameterAttributesInner);
+            return this.Equals(input as GetProfileAssetsForGameFilterParameterAttributesInner);
         }
 
         /// <summary>
-        /// Returns true if GetProfileAssetsFilterParameterAttributesInner instances are equal
+        /// Returns true if GetProfileAssetsForGameFilterParameterAttributesInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetProfileAssetsFilterParameterAttributesInner to be compared</param>
+        /// <param name="input">Instance of GetProfileAssetsForGameFilterParameterAttributesInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetProfileAssetsFilterParameterAttributesInner input)
+        public bool Equals(GetProfileAssetsForGameFilterParameterAttributesInner input)
         {
             if (input == null)
             {

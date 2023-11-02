@@ -27,10 +27,10 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetProfileAssetsFilterParameter
+    /// GetAssetsBodyInputFilter
     /// </summary>
-    [DataContract(Name = "getProfileAssets_filter_parameter")]
-    public partial class GetProfileAssetsFilterParameter : IEquatable<GetProfileAssetsFilterParameter>, IValidatableObject
+    [DataContract(Name = "GetAssetsBodyInput_filter")]
+    public partial class GetAssetsBodyInputFilter : IEquatable<GetAssetsBodyInputFilter>, IValidatableObject
     {
         /// <summary>
         /// Defines SellTypes
@@ -64,11 +64,11 @@ namespace Beam.Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetProfileAssetsFilterParameter" /> class.
+        /// Initializes a new instance of the <see cref="GetAssetsBodyInputFilter" /> class.
         /// </summary>
         /// <param name="attributes">attributes.</param>
         /// <param name="sellTypes">sellTypes.</param>
-        public GetProfileAssetsFilterParameter(List<GetProfileAssetsFilterParameterAttributesInner> attributes = default(List<GetProfileAssetsFilterParameterAttributesInner>), List<SellTypesEnum> sellTypes = default(List<SellTypesEnum>))
+        public GetAssetsBodyInputFilter(List<GetProfileAssetsForGameFilterParameterAttributesInner> attributes = default(List<GetProfileAssetsForGameFilterParameterAttributesInner>), List<SellTypesEnum> sellTypes = default(List<SellTypesEnum>))
         {
             this.Attributes = attributes;
             this.SellTypes = sellTypes;
@@ -78,13 +78,13 @@ namespace Beam.Model
         /// Gets or Sets Attributes
         /// </summary>
         [DataMember(Name = "attributes", EmitDefaultValue = true)]
-        public List<GetProfileAssetsFilterParameterAttributesInner> Attributes { get; set; }
+        public List<GetProfileAssetsForGameFilterParameterAttributesInner> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets SellTypes
         /// </summary>
         [DataMember(Name = "sellTypes", EmitDefaultValue = true)]
-        public List<GetProfileAssetsFilterParameter.SellTypesEnum> SellTypes { get; set; }
+        public List<GetAssetsBodyInputFilter.SellTypesEnum> SellTypes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetProfileAssetsFilterParameter {\n");
+            sb.Append("class GetAssetsBodyInputFilter {\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  SellTypes: ").Append(SellTypes).Append("\n");
             sb.Append("}\n");
@@ -116,15 +116,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetProfileAssetsFilterParameter);
+            return this.Equals(input as GetAssetsBodyInputFilter);
         }
 
         /// <summary>
-        /// Returns true if GetProfileAssetsFilterParameter instances are equal
+        /// Returns true if GetAssetsBodyInputFilter instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetProfileAssetsFilterParameter to be compared</param>
+        /// <param name="input">Instance of GetAssetsBodyInputFilter to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetProfileAssetsFilterParameter input)
+        public bool Equals(GetAssetsBodyInputFilter input)
         {
             if (input == null)
             {

@@ -27,10 +27,10 @@ using OpenAPIDateConverter = Beam.Client.OpenAPIDateConverter;
 namespace Beam.Model
 {
     /// <summary>
-    /// GetProfileAssetsSortParameter
+    /// GetProfileAssetsForGameSortParameter
     /// </summary>
-    [DataContract(Name = "getProfileAssets_sort_parameter")]
-    public partial class GetProfileAssetsSortParameter : IEquatable<GetProfileAssetsSortParameter>, IValidatableObject
+    [DataContract(Name = "getProfileAssetsForGame_sort_parameter")]
+    public partial class GetProfileAssetsForGameSortParameter : IEquatable<GetProfileAssetsForGameSortParameter>, IValidatableObject
     {
         /// <summary>
         /// Defines RarityScore
@@ -208,7 +208,7 @@ namespace Beam.Model
         [DataMember(Name = "endPriceNumber", EmitDefaultValue = true)]
         public EndPriceNumberEnum? EndPriceNumber { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetProfileAssetsSortParameter" /> class.
+        /// Initializes a new instance of the <see cref="GetProfileAssetsForGameSortParameter" /> class.
         /// </summary>
         /// <param name="rarityScore">rarityScore.</param>
         /// <param name="start">start.</param>
@@ -217,7 +217,7 @@ namespace Beam.Model
         /// <param name="fixedPriceNumber">fixedPriceNumber.</param>
         /// <param name="startPriceNumber">startPriceNumber.</param>
         /// <param name="endPriceNumber">endPriceNumber.</param>
-        public GetProfileAssetsSortParameter(RarityScoreEnum? rarityScore = default(RarityScoreEnum?), StartEnum? start = default(StartEnum?), EndEnum? end = default(EndEnum?), CreatedAtEnum? createdAt = default(CreatedAtEnum?), FixedPriceNumberEnum? fixedPriceNumber = default(FixedPriceNumberEnum?), StartPriceNumberEnum? startPriceNumber = default(StartPriceNumberEnum?), EndPriceNumberEnum? endPriceNumber = default(EndPriceNumberEnum?))
+        public GetProfileAssetsForGameSortParameter(RarityScoreEnum? rarityScore = default(RarityScoreEnum?), StartEnum? start = default(StartEnum?), EndEnum? end = default(EndEnum?), CreatedAtEnum? createdAt = default(CreatedAtEnum?), FixedPriceNumberEnum? fixedPriceNumber = default(FixedPriceNumberEnum?), StartPriceNumberEnum? startPriceNumber = default(StartPriceNumberEnum?), EndPriceNumberEnum? endPriceNumber = default(EndPriceNumberEnum?))
         {
             this.RarityScore = rarityScore;
             this.Start = start;
@@ -235,7 +235,7 @@ namespace Beam.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetProfileAssetsSortParameter {\n");
+            sb.Append("class GetProfileAssetsForGameSortParameter {\n");
             sb.Append("  RarityScore: ").Append(RarityScore).Append("\n");
             sb.Append("  Start: ").Append(Start).Append("\n");
             sb.Append("  End: ").Append(End).Append("\n");
@@ -263,15 +263,15 @@ namespace Beam.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GetProfileAssetsSortParameter);
+            return this.Equals(input as GetProfileAssetsForGameSortParameter);
         }
 
         /// <summary>
-        /// Returns true if GetProfileAssetsSortParameter instances are equal
+        /// Returns true if GetProfileAssetsForGameSortParameter instances are equal
         /// </summary>
-        /// <param name="input">Instance of GetProfileAssetsSortParameter to be compared</param>
+        /// <param name="input">Instance of GetProfileAssetsForGameSortParameter to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GetProfileAssetsSortParameter input)
+        public bool Equals(GetProfileAssetsForGameSortParameter input)
         {
             if (input == null)
             {

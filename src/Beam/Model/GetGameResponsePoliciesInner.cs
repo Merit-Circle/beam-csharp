@@ -83,6 +83,31 @@ namespace Beam.Model
         [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = true)]
         public TypeEnum Type { get; set; }
         /// <summary>
+        /// Defines RateType
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum RateTypeEnum
+        {
+            /// <summary>
+            /// Enum Fixed for value: Fixed
+            /// </summary>
+            [EnumMember(Value = "Fixed")]
+            Fixed = 1,
+
+            /// <summary>
+            /// Enum Dynamic for value: Dynamic
+            /// </summary>
+            [EnumMember(Value = "Dynamic")]
+            Dynamic = 2
+        }
+
+
+        /// <summary>
+        /// Gets or Sets RateType
+        /// </summary>
+        [DataMember(Name = "rateType", IsRequired = true, EmitDefaultValue = true)]
+        public RateTypeEnum RateType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="GetGameResponsePoliciesInner" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -92,6 +117,7 @@ namespace Beam.Model
         /// </summary>
         /// <param name="model">model (required).</param>
         /// <param name="type">type (required).</param>
+        /// <param name="rateType">rateType (required).</param>
         /// <param name="id">id (required).</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
@@ -100,11 +126,12 @@ namespace Beam.Model
         /// <param name="chainId">chainId (required).</param>
         /// <param name="gameId">gameId (required).</param>
         /// <param name="token">token (required).</param>
-        /// <param name="exchangeRate">exchangeRate (required).</param>
-        public GetGameResponsePoliciesInner(ModelEnum model = default(ModelEnum), TypeEnum type = default(TypeEnum), string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string externalId = default(string), string name = default(string), int chainId = default(int), string gameId = default(string), string token = default(string), string exchangeRate = default(string))
+        /// <param name="amount">amount (required).</param>
+        public GetGameResponsePoliciesInner(ModelEnum model = default(ModelEnum), TypeEnum type = default(TypeEnum), RateTypeEnum rateType = default(RateTypeEnum), string id = default(string), Object createdAt = default(Object), Object updatedAt = default(Object), string externalId = default(string), string name = default(string), int chainId = default(int), string gameId = default(string), string token = default(string), string amount = default(string))
         {
             this.Model = model;
             this.Type = type;
+            this.RateType = rateType;
             // to ensure "id" is required (not null)
             if (id == null)
             {
@@ -148,12 +175,12 @@ namespace Beam.Model
                 throw new ArgumentNullException("token is a required property for GetGameResponsePoliciesInner and cannot be null");
             }
             this.Token = token;
-            // to ensure "exchangeRate" is required (not null)
-            if (exchangeRate == null)
+            // to ensure "amount" is required (not null)
+            if (amount == null)
             {
-                throw new ArgumentNullException("exchangeRate is a required property for GetGameResponsePoliciesInner and cannot be null");
+                throw new ArgumentNullException("amount is a required property for GetGameResponsePoliciesInner and cannot be null");
             }
-            this.ExchangeRate = exchangeRate;
+            this.Amount = amount;
         }
 
         /// <summary>
@@ -205,10 +232,10 @@ namespace Beam.Model
         public string Token { get; set; }
 
         /// <summary>
-        /// Gets or Sets ExchangeRate
+        /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name = "exchangeRate", IsRequired = true, EmitDefaultValue = true)]
-        public string ExchangeRate { get; set; }
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
+        public string Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -220,6 +247,7 @@ namespace Beam.Model
             sb.Append("class GetGameResponsePoliciesInner {\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  RateType: ").Append(RateType).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
@@ -228,7 +256,7 @@ namespace Beam.Model
             sb.Append("  ChainId: ").Append(ChainId).Append("\n");
             sb.Append("  GameId: ").Append(GameId).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
-            sb.Append("  ExchangeRate: ").Append(ExchangeRate).Append("\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -273,6 +301,10 @@ namespace Beam.Model
                     this.Type.Equals(input.Type)
                 ) && 
                 (
+                    this.RateType == input.RateType ||
+                    this.RateType.Equals(input.RateType)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -312,9 +344,9 @@ namespace Beam.Model
                     this.Token.Equals(input.Token))
                 ) && 
                 (
-                    this.ExchangeRate == input.ExchangeRate ||
-                    (this.ExchangeRate != null &&
-                    this.ExchangeRate.Equals(input.ExchangeRate))
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
                 );
         }
 
@@ -329,6 +361,7 @@ namespace Beam.Model
                 int hashCode = 41;
                 hashCode = (hashCode * 59) + this.Model.GetHashCode();
                 hashCode = (hashCode * 59) + this.Type.GetHashCode();
+                hashCode = (hashCode * 59) + this.RateType.GetHashCode();
                 if (this.Id != null)
                 {
                     hashCode = (hashCode * 59) + this.Id.GetHashCode();
@@ -358,9 +391,9 @@ namespace Beam.Model
                 {
                     hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
-                if (this.ExchangeRate != null)
+                if (this.Amount != null)
                 {
-                    hashCode = (hashCode * 59) + this.ExchangeRate.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Amount.GetHashCode();
                 }
                 return hashCode;
             }
