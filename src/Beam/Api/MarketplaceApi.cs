@@ -185,7 +185,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>GetAssetListingsResponse</returns>
         [Obsolete]
-        GetAssetListingsResponse GetListedAssets(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?));
+        GetAssetListingsResponse GetListedAssets(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort);
 
         /// <summary>
         /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
@@ -201,7 +201,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
         [Obsolete]
-        ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?));
+        ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort);
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -216,7 +216,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>GetAssetListingsResponse</returns>
         [Obsolete]
-        GetAssetListingsResponse GetListedAssetsForProfile(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?));
+        GetAssetListingsResponse GetListedAssetsForProfile(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort);
 
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
@@ -232,7 +232,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
         [Obsolete]
-        ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?));
+        ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort);
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -279,7 +279,7 @@ namespace Beam.Api
         /// <param name="marketplaceId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId, decimal? chainId = default(decimal?));
+        GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId, decimal? chainId);
 
         /// <summary>
         /// Get all asset offers that player created
@@ -292,7 +292,7 @@ namespace Beam.Api
         /// <param name="marketplaceId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId, decimal? chainId = default(decimal?));
+        ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId, decimal? chainId);
         /// <summary>
         /// Get all offers that player created
         /// </summary>
@@ -300,7 +300,7 @@ namespace Beam.Api
         /// <param name="entityId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        GetAssetOffersResponse GetPlayerOffers(string entityId, decimal? chainId = default(decimal?));
+        GetAssetOffersResponse GetPlayerOffers(string entityId, decimal? chainId);
 
         /// <summary>
         /// Get all offers that player created
@@ -312,7 +312,7 @@ namespace Beam.Api
         /// <param name="entityId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId, decimal? chainId = default(decimal?));
+        ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId, decimal? chainId);
         /// <summary>
         /// Get filter options for assets of a profile in a game (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -574,7 +574,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all listed assets for a game (NFT assets, e.g. ERC721 / ERC1155)
@@ -591,7 +591,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -607,7 +607,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
@@ -624,7 +624,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
         [Obsolete]
-        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all the assets listed by a profile (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -685,7 +685,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all asset offers that player created
@@ -699,7 +699,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get all offers that player created
         /// </summary>
@@ -711,7 +711,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get all offers that player created
@@ -724,7 +724,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Get filter options for assets of a profile in a game (NFT assets, e.g. ERC721 / ERC1155)
         /// </summary>
@@ -2025,7 +2025,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>GetAssetListingsResponse</returns>
         [Obsolete]
-        public GetAssetListingsResponse GetListedAssets(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?))
+        public GetAssetListingsResponse GetListedAssets(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort)
         {
             Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetListedAssetsWithHttpInfo(limit, offset, gameId, filter, sort);
             return localVarResponse.Data;
@@ -2042,7 +2042,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
         [Obsolete]
-        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?))
+        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsWithHttpInfo(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort)
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -2111,7 +2111,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsAsync(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetListedAssetsWithHttpInfoAsync(limit, offset, gameId, filter, sort, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2129,7 +2129,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), string? gameId = default(string?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsWithHttpInfoAsync(decimal? limit, decimal? offset, string? gameId, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
@@ -2200,7 +2200,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>GetAssetListingsResponse</returns>
         [Obsolete]
-        public GetAssetListingsResponse GetListedAssetsForProfile(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?))
+        public GetAssetListingsResponse GetListedAssetsForProfile(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort)
         {
             Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = GetListedAssetsForProfileWithHttpInfo(entityId, limit, offset, filter, sort);
             return localVarResponse.Data;
@@ -2217,7 +2217,7 @@ namespace Beam.Api
         /// <param name="sort"> (optional)</param>
         /// <returns>ApiResponse of GetAssetListingsResponse</returns>
         [Obsolete]
-        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?))
+        public Beam.Client.ApiResponse<GetAssetListingsResponse> GetListedAssetsForProfileWithHttpInfo(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2287,7 +2287,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetListingsResponse</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetListingsResponse> GetListedAssetsForProfileAsync(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetAssetListingsResponse> localVarResponse = await GetListedAssetsForProfileWithHttpInfoAsync(entityId, limit, offset, filter, sort, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2305,7 +2305,7 @@ namespace Beam.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetListingsResponse)</returns>
         [Obsolete]
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), GetProfileAssetsForGameFilterParameter? filter = default(GetProfileAssetsForGameFilterParameter?), GetProfileAssetsForGameSortParameter? sort = default(GetProfileAssetsForGameSortParameter?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetListingsResponse>> GetListedAssetsForProfileWithHttpInfoAsync(string entityId, decimal? limit, decimal? offset, GetProfileAssetsForGameFilterParameter? filter, GetProfileAssetsForGameSortParameter? sort, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2642,7 +2642,7 @@ namespace Beam.Api
         /// <param name="marketplaceId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        public GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId, decimal? chainId = default(decimal?))
+        public GetAssetOffersResponse GetPlayerAssetOffers(string entityId, string marketplaceId, decimal? chainId)
         {
             Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerAssetOffersWithHttpInfo(entityId, marketplaceId, chainId);
             return localVarResponse.Data;
@@ -2656,7 +2656,7 @@ namespace Beam.Api
         /// <param name="marketplaceId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId, decimal? chainId = default(decimal?))
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerAssetOffersWithHttpInfo(string entityId, string marketplaceId, decimal? chainId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2716,7 +2716,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerAssetOffersAsync(string entityId, string marketplaceId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerAssetOffersWithHttpInfoAsync(entityId, marketplaceId, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2731,7 +2731,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerAssetOffersWithHttpInfoAsync(string entityId, string marketplaceId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2792,7 +2792,7 @@ namespace Beam.Api
         /// <param name="entityId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetAssetOffersResponse</returns>
-        public GetAssetOffersResponse GetPlayerOffers(string entityId, decimal? chainId = default(decimal?))
+        public GetAssetOffersResponse GetPlayerOffers(string entityId, decimal? chainId)
         {
             Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = GetPlayerOffersWithHttpInfo(entityId, chainId);
             return localVarResponse.Data;
@@ -2805,7 +2805,7 @@ namespace Beam.Api
         /// <param name="entityId"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetAssetOffersResponse</returns>
-        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId, decimal? chainId = default(decimal?))
+        public Beam.Client.ApiResponse<GetAssetOffersResponse> GetPlayerOffersWithHttpInfo(string entityId, decimal? chainId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -2859,7 +2859,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAssetOffersResponse</returns>
-        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAssetOffersResponse> GetPlayerOffersAsync(string entityId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetAssetOffersResponse> localVarResponse = await GetPlayerOffersWithHttpInfoAsync(entityId, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -2873,7 +2873,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAssetOffersResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAssetOffersResponse>> GetPlayerOffersWithHttpInfoAsync(string entityId, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)

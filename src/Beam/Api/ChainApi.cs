@@ -33,7 +33,7 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetChainResponse</returns>
-        GetChainResponse Chain(decimal? chainId = default(decimal?));
+        GetChainResponse Chain(decimal? chainId);
 
         /// <summary>
         /// 
@@ -44,7 +44,7 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetChainResponse</returns>
-        ApiResponse<GetChainResponse> ChainWithHttpInfo(decimal? chainId = default(decimal?));
+        ApiResponse<GetChainResponse> ChainWithHttpInfo(decimal? chainId);
         /// <summary>
         /// Estimate gas fee for a transaction on behalf of a profile
         /// </summary>
@@ -84,7 +84,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetChainResponse</returns>
-        System.Threading.Tasks.Task<GetChainResponse> ChainAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetChainResponse> ChainAsync(decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -96,7 +96,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetChainResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Estimate gas fee for a transaction on behalf of a profile
         /// </summary>
@@ -341,7 +341,7 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetChainResponse</returns>
-        public GetChainResponse Chain(decimal? chainId = default(decimal?))
+        public GetChainResponse Chain(decimal? chainId)
         {
             Beam.Client.ApiResponse<GetChainResponse> localVarResponse = ChainWithHttpInfo(chainId);
             return localVarResponse.Data;
@@ -353,7 +353,7 @@ namespace Beam.Api
         /// <exception cref="Beam.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetChainResponse</returns>
-        public Beam.Client.ApiResponse<GetChainResponse> ChainWithHttpInfo(decimal? chainId = default(decimal?))
+        public Beam.Client.ApiResponse<GetChainResponse> ChainWithHttpInfo(decimal? chainId)
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -396,7 +396,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetChainResponse</returns>
-        public async System.Threading.Tasks.Task<GetChainResponse> ChainAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetChainResponse> ChainAsync(decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetChainResponse> localVarResponse = await ChainWithHttpInfoAsync(chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -409,7 +409,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetChainResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetChainResponse>> ChainWithHttpInfoAsync(decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();

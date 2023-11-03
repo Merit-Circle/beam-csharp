@@ -55,7 +55,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetTransactionsResponse</returns>
-        GetTransactionsResponse GetProfileTransactions(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        GetTransactionsResponse GetProfileTransactions(string entityId, decimal? limit, decimal? offset);
 
         /// <summary>
         /// Get a paginated list of transactions created on behalf of a profile
@@ -68,7 +68,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string entityId, decimal? limit, decimal? offset);
         /// <summary>
         /// Getting a transaction
         /// </summary>
@@ -94,7 +94,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetTransactionsResponse</returns>
-        GetTransactionsResponse GetTransactions(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        GetTransactionsResponse GetTransactions(decimal? limit, decimal? offset);
 
         /// <summary>
         /// Get a paginated list of transactions from your game
@@ -106,7 +106,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit, decimal? offset);
         #endregion Synchronous Operations
     }
 
@@ -153,7 +153,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string entityId, decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a paginated list of transactions created on behalf of a profile
@@ -167,7 +167,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string entityId, decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting a transaction
         /// </summary>
@@ -202,7 +202,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Get a paginated list of transactions from your game
@@ -215,7 +215,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -578,7 +578,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetTransactionsResponse</returns>
-        public GetTransactionsResponse GetProfileTransactions(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetTransactionsResponse GetProfileTransactions(string entityId, decimal? limit, decimal? offset)
         {
             Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = GetProfileTransactionsWithHttpInfo(entityId, limit, offset);
             return localVarResponse.Data;
@@ -592,7 +592,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        public Beam.Client.ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetTransactionsResponse> GetProfileTransactionsWithHttpInfo(string entityId, decimal? limit, decimal? offset)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -651,7 +651,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetProfileTransactionsAsync(string entityId, decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = await GetProfileTransactionsWithHttpInfoAsync(entityId, limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -666,7 +666,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string entityId, decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetProfileTransactionsWithHttpInfoAsync(string entityId, decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -851,7 +851,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetTransactionsResponse</returns>
-        public GetTransactionsResponse GetTransactions(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetTransactionsResponse GetTransactions(decimal? limit, decimal? offset)
         {
             Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = GetTransactionsWithHttpInfo(limit, offset);
             return localVarResponse.Data;
@@ -864,7 +864,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetTransactionsResponse</returns>
-        public Beam.Client.ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetTransactionsResponse> GetTransactionsWithHttpInfo(decimal? limit, decimal? offset)
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -917,7 +917,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTransactionsResponse</returns>
-        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetTransactionsResponse> GetTransactionsAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetTransactionsResponse> localVarResponse = await GetTransactionsWithHttpInfoAsync(limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -931,7 +931,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTransactionsResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetTransactionsResponse>> GetTransactionsWithHttpInfoAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();

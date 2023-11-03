@@ -96,7 +96,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAllProfilesResponse</returns>
-        GetAllProfilesResponse GetAllProfiles(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        GetAllProfilesResponse GetAllProfiles(decimal? limit, decimal? offset);
 
         /// <summary>
         /// Getting all profiles
@@ -108,7 +108,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAllProfilesResponse</returns>
-        ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?));
+        ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(decimal? limit, decimal? offset);
         /// <summary>
         /// Getting information on a profile
         /// </summary>
@@ -244,7 +244,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllProfilesResponse</returns>
-        System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Getting all profiles
@@ -257,7 +257,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllProfilesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Getting information on a profile
         /// </summary>
@@ -963,7 +963,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>GetAllProfilesResponse</returns>
-        public GetAllProfilesResponse GetAllProfiles(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public GetAllProfilesResponse GetAllProfiles(decimal? limit, decimal? offset)
         {
             Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = GetAllProfilesWithHttpInfo(limit, offset);
             return localVarResponse.Data;
@@ -976,7 +976,7 @@ namespace Beam.Api
         /// <param name="limit"> (optional)</param>
         /// <param name="offset"> (optional)</param>
         /// <returns>ApiResponse of GetAllProfilesResponse</returns>
-        public Beam.Client.ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(decimal? limit = default(decimal?), decimal? offset = default(decimal?))
+        public Beam.Client.ApiResponse<GetAllProfilesResponse> GetAllProfilesWithHttpInfo(decimal? limit, decimal? offset)
         {
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();
 
@@ -1029,7 +1029,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAllProfilesResponse</returns>
-        public async System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetAllProfilesResponse> GetAllProfilesAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetAllProfilesResponse> localVarResponse = await GetAllProfilesWithHttpInfoAsync(limit, offset, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -1043,7 +1043,7 @@ namespace Beam.Api
         /// <param name="offset"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAllProfilesResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(decimal? limit = default(decimal?), decimal? offset = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetAllProfilesResponse>> GetAllProfilesWithHttpInfoAsync(decimal? limit, decimal? offset, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Beam.Client.RequestOptions localVarRequestOptions = new Beam.Client.RequestOptions();

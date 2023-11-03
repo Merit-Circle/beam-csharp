@@ -76,7 +76,7 @@ namespace Beam.Api
         /// <param name="amountOut"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?));
+        GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut, decimal? chainId);
 
         /// <summary>
         /// Returns the maximum necessary input amount for a token trade, given a desired output amount
@@ -90,7 +90,7 @@ namespace Beam.Api
         /// <param name="amountOut"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?));
+        ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut, decimal? chainId);
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
         /// </summary>
@@ -100,7 +100,7 @@ namespace Beam.Api
         /// <param name="amountIn"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?));
+        GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn, decimal? chainId);
 
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
@@ -114,7 +114,7 @@ namespace Beam.Api
         /// <param name="amountIn"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?));
+        ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn, decimal? chainId);
         #endregion Synchronous Operations
     }
 
@@ -187,7 +187,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the maximum necessary input amount for a token trade, given a desired output amount
@@ -202,7 +202,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
         /// </summary>
@@ -216,7 +216,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Returns the minimum expected output amount for a token trade, given an input amount
@@ -231,7 +231,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -736,7 +736,7 @@ namespace Beam.Api
         /// <param name="amountOut"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        public GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?))
+        public GetQuoteResponse GetQuoteForInput(string tokenIn, string tokenOut, string amountOut, decimal? chainId)
         {
             Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = GetQuoteForInputWithHttpInfo(tokenIn, tokenOut, amountOut, chainId);
             return localVarResponse.Data;
@@ -751,7 +751,7 @@ namespace Beam.Api
         /// <param name="amountOut"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?))
+        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForInputWithHttpInfo(string tokenIn, string tokenOut, string amountOut, decimal? chainId)
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -817,7 +817,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForInputAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = await GetQuoteForInputWithHttpInfoAsync(tokenIn, tokenOut, amountOut, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -833,7 +833,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForInputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountOut, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -901,7 +901,7 @@ namespace Beam.Api
         /// <param name="amountIn"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>GetQuoteResponse</returns>
-        public GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?))
+        public GetQuoteResponse GetQuoteForOutput(string tokenIn, string tokenOut, string amountIn, decimal? chainId)
         {
             Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = GetQuoteForOutputWithHttpInfo(tokenIn, tokenOut, amountIn, chainId);
             return localVarResponse.Data;
@@ -916,7 +916,7 @@ namespace Beam.Api
         /// <param name="amountIn"></param>
         /// <param name="chainId"> (optional)</param>
         /// <returns>ApiResponse of GetQuoteResponse</returns>
-        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?))
+        public Beam.Client.ApiResponse<GetQuoteResponse> GetQuoteForOutputWithHttpInfo(string tokenIn, string tokenOut, string amountIn, decimal? chainId)
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
@@ -982,7 +982,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetQuoteResponse</returns>
-        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<GetQuoteResponse> GetQuoteForOutputAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             Beam.Client.ApiResponse<GetQuoteResponse> localVarResponse = await GetQuoteForOutputWithHttpInfoAsync(tokenIn, tokenOut, amountIn, chainId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -998,7 +998,7 @@ namespace Beam.Api
         /// <param name="chainId"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetQuoteResponse)</returns>
-        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId = default(decimal?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Beam.Client.ApiResponse<GetQuoteResponse>> GetQuoteForOutputWithHttpInfoAsync(string tokenIn, string tokenOut, string amountIn, decimal? chainId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'tokenIn' is set
             if (tokenIn == null)
